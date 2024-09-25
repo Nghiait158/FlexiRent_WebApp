@@ -1,0 +1,134 @@
+.navbar-brand{
+
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color:beige
+}
+.custom-nav-item  :hover{
+background-color: #5ba7b7;
+border: solid #5ba7b7 1px;
+border-radius: 10px;
+}
+.navbar-text{
+color: #20d0f3;
+font-size: 20px;
+}
+.custom-nav .custom-nav-item a {
+color: #fff !important;
+}
+
+.remove-vid-marg{
+margin: 0px;
+padding: 0px;
+}
+
+
+.vid-parent{
+position: relative;
+}
+video{
+width: 100%;
+height: 100%;
+}
+.vid-overlay{
+position: absolute;
+top: 0;
+left: 0;
+height: 0;
+width: 0;
+background-color: #225470;
+z-index: 1;
+opacity: 0.8;
+}
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+--bs-gutter-x: 5.5rem;
+--bs-gutter-y: 0;
+}
+.navbar-nav {
+--bs-nav-link-padding-x: 0;
+--bs-nav-link-padding-y: -2rem;
+--bs-nav-link-font-weight: ;
+--bs-nav-link-color: var(--bs-navbar-color);
+--bs-nav-link-hover-color: var(--bs-navbar-hover-color);
+--bs-nav-link-disabled-color: var(--bs-navbar-disabled-color);
+display: flex;
+flex-direction: column;
+padding-left: 50px;
+margin-bottom: 0;
+list-style: none;
+}
+.navbar-brand {
+font-size: 50px;
+}
+
+
+.my-content{
+font-family: "Pacifico", cursive;
+font-weight: 500;
+font-style: normal;
+
+}
+
+.vid-content{
+position: absolute;
+z-index: 2;
+top: 35%;
+left: 35%;
+text-align: center;
+color: antiquewhite;
+
+}
+.h1, h1 {
+font-size: calc(2rem + 1.5vw);
+}
+
+.small, small {
+font-size: 1.5em;
+}
+.h2, h2 {
+font-size: calc(2.325rem + .9vw);
+color:#fff;
+font-family: "DM Serif Display", serif;
+font-weight: 400;
+font-style: italic;
+}
+.bg-danger {
+--bs-bg-opacity: 1;
+background-color: black!important;
+}
+.h3, h3 {
+color: #fff;
+font-family: "Lora", serif;
+font-optical-sizing: auto;
+/* font-weight: ; */
+font-style: normal;
+}
+body{
+background-color: black;
+}
+@media screen and (min-width:0px) and (max-width:700px) {
+.my-content,
+.txt-banner{
+    display: none;
+}
+.vid-content{
+    top:12%;
+    left:60%
+}
+.custom-nav .custom-nav-item a{
+    padding: 10px, 20px;
+    background-color:#225470;
+}
+.custom-nav-item:hover{
+    background-color: none;
+    border: none;
+    border-radius: none;
+}
+/* .form-control{
+    display: none;
+}
+.btn-outline-success{
+    display: none;
+} */
+}
