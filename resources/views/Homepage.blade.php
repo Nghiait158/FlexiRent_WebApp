@@ -55,7 +55,6 @@
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ClientlSignUp">
                     Sign Up
                     </button>
-                    
             </div>
         </div>
         </div>
