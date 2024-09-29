@@ -1,0 +1,100 @@
+@font-face {
+    font-family: "Lato-Regular";
+    src: url(Lato-Regular.ttf);
+}
+
+.searchBar_booking{
+    display: flex;
+    width: 1064px;
+    padding: 6px 3px 6px 40px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 40px;
+    border: 4px solid var(--Green, #064749);
+    background: var(--White, #ffffff);
+    /* Center horizontally */
+    margin: 20px auto 0 auto; /* 20px space from the top, auto to center horizontally */
+    height: 50px;
+}
+.searchPart1{
+    width: 800px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.searchCity, 
+.searchDate,
+.searchGuest{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.searchCity p,
+.searchDate p,
+.searchGuest p{
+    color: var(--Text, #181A18);
+
+    /* Desktop/Subtitle bold */
+    font-family: "Lato-Regular";
+    font-style: italic;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+}
+.buttonSearch{
+    display: flex;
+    padding: 0 40px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 40px;
+    background: var(--Green, #064749);
+}
+
+.buttonSearch p{
+    color: var(--White, #FFF);
+    /* Desktop/Subtitle bold */
+    font-family: "Lato-Regular";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+
+
+.underSearchBar{
+    display: flex;
+    width: 1090px;
+    /* padding: 6px 6px 6px 40px; */
+    border-radius: 40px;
+    /* background: var(--White, #866e42); */
+    /* Center horizontally */
+    margin: 20px auto 0 auto; /* 20px space from the top, auto to center horizontally */
+}
+.moreFilter {
+    display: flex;
+    width: 150px;
+    padding: 0 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-radius: 40px;
+    background: var(--Green, #064749);
+    
+}
+
+.moreFilter p{
+    color: var(--White, #FFF);
+
+    /* Desktop/Subtitle bold */
+    font-family: "Lato-Regular";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+}
+.option{
+    display: flex;
+    padding: 0 20px;
+    align-items: center;
+    gap: 20px;
+}
