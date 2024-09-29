@@ -1,0 +1,39 @@
+/* Header */
+header {
+    background-color: #fff;
+    padding: 20px 60px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+}
+
+.container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    width: 90%;
+    max-width: 1480px;
+    margin: 0 auto;
+
+}
+
+.logo img {
+    width: 130px;
+    height: 58px;
+}
+
+.nav-list ul {
+    list-style: none; 
+    display: flex; 
+    gap: 40px; 
+}
+
+.nav-list a {
+    text-decoration: none; 
+    color: #333; 
+    font-weight: bold; 
+}
+
+.nav-list a:hover {
+    color: #007BFF; 
+    text-decoration: underline;
+}

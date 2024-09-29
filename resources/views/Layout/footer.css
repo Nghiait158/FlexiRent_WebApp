@@ -1,0 +1,138 @@
+/*Footer*/
+footer {
+    background-color: #f9f9f9;
+}
+
+footer .container {
+    max-width: 1480px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-left: 60px;
+    padding-bottom: 60px;
+    padding-right: 80px;
+    padding-top: 60px;
+}
+
+/*Phần logo và icons*/
+footer img {
+    width: 130px;
+    height: 58px;
+    flex-shrink: 0;
+    margin-bottom: 10px;
+}
+
+footer .social-icons {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.social-icons p {
+    color: var(--Text, #181A18);
+
+    /* Desktop/Text regular */
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 125% */
+}
+
+/*Phần link*/
+.link-section {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 60px;
+}
+
+.link-section div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+
+.link-section h4 {
+    margin-bottom: 16px;
+    color: var(--Text, #181A18);
+    /* Desktop/Subtitle bold */
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 133.333% */
+}
+
+.link-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.link-section li {
+    margin-bottom: 16px;
+}
+
+.link-section a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.link-section a:hover {
+    text-decoration: underline;
+}
+
+/*Phần email và button*/
+.stayup-section{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.stayup-section input[type="email"] {
+    display: flex;
+    padding: 12px 40px;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 12px;
+    background: var(--BG, #F2F0F2);
+    
+}
+
+.stayup-section button {
+    display: flex;
+    padding: 12px 40px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 40px;
+    background: var(--Green, #064749);
+    color: var(--White, #FFF);
+
+    /* Desktop/Subtitle bold */
+    font-family: Lato;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 133.333% */
+}
+
+.stayup-section h4{
+    color: var(--Text, #181A18);
+    /* Desktop/Subtitle bold */
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 133.333% */
+}
+
+.stayup-section p{
+    color: var(--Text, #181A18);
+    /* Desktop/Subtitle */
+    
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 133.333% */
+}
