@@ -6,21 +6,18 @@
 
 @font-face {
     font-family: "Molle";
-    src: url('/Frontend/Font-family/Molle/Molle-Regular.ttf');
+    src: url('../Font-family/Molle/Molle-Regular.ttf');
 }
 
 @font-face {
     font-family: "Lato";
-    src: url('/Frontend/css/Font-family/Lato/Lato-Regular.ttf');
+    src: url('../Font-family/Lato/Lato-Regular.ttf');
 }
 
 body {
     height: 4000px;
     padding-top: 83px;
 }
-
-
-
 
 
 .intro-video {
