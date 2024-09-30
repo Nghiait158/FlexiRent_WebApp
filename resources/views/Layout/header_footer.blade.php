@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{('/Frontend/css/header.css')}}" />
 
     <link rel="stylesheet" href="{{('/Frontend/css/bookingPage.css')}}" />
-
+    <link rel="stylesheet" href="{{('/Frontend/css/Homepage.css')}}">
 
 
 
@@ -25,10 +25,10 @@
             </div>
             <nav class="nav-list">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Landlords</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contacts</a></li>
+                    <li><a href="{{URL::to('/HomePage')}}">Home</a></li>
+                    <li><a href="{{URL::to('/')}}">Landlords</a></li>
+                    <li><a href="{{URL::to('/')}}">Blog</a></li>
+                    <li><a href="{{URL::to('/')}}">Contacts</a></li>
                 </ul>
             </nav>
         </div>

@@ -8,7 +8,10 @@ Route::get('/bookingPage', function () {
 
 
 Route::get('/', function () {
-    return view('Layout.header_footer');
+    return view('Homepage');
+});
+Route::get('/HomePage', function () {
+    return view('Homepage');
 });
 
 
