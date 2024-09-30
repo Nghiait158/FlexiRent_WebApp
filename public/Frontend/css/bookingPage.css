@@ -76,7 +76,7 @@
 }
 .moreFilter {
     position: fixed;
-    width: 211px;
+    width: 212px;
     padding: 0 20px;
     justify-content: space-between;
     align-items: flex-start;
@@ -200,7 +200,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: absolute; /* Để hiển thị dropdown đúng vị trí */
     margin-top: 10px;
-    
+    z-index: 5;
 }
 
 /* Các mục trong danh sách */
@@ -235,7 +235,7 @@
 
 
 .listProperties {
-    margin-top: 30px;
+    margin-top: 10px;
     display: flex;
     align-items: flex-start;
     position: relative;
@@ -248,7 +248,8 @@
     width: 800px;
     height: 900px;
     overflow-y: auto; /* Tạo cuộn cho phần showResult */
-    background-color: #49735A;
+    /* background-color: #49735A; */
+
 }
 
 
@@ -256,7 +257,7 @@
 
 /* Map */
 .GGmap{
-    /* margin-top: 40px; */
+    margin-top: 20px;
     width: 400px;
     height: 500px;
     background-color: #4329c7;
@@ -264,16 +265,67 @@
     top: 100px; /* Giữ GGmap dính cố định khi cuộn */
 }
 
-.listProperties .showResult .propertyShow{
+.listProperties .showResult .propertyShow {
+    margin-top: 20px;
     display: flex;
     align-items: flex-start;
-    align-self: stretch;
-    /* background-color: #ddd; */
     width: 756px;
     height: 188px;
     border-radius: 60px 60px 60px 12px;
     background: var(--BG, #F2F0F2);
+    overflow: hidden; /* Ẩn phần thừa của hình ảnh nếu vượt quá khung */
 }
-.listProperties .showResult .propertyShow img{
-    width: 306px;
+
+.listProperties .showResult .propertyShow img {
+    width: 305px; /* Đặt chiều dài hình ảnh là 305px */
+    height: 188px; /* Giữ tỷ lệ chiều cao */
+    object-fit: cover; 
+}
+.listProperties .showResult .propertyShow .propertyContent {
+    width: 417px; 
+    height: 188px; 
+    /* background-color: #064749; */
+}
+.listProperties .showResult .propertyShow .propertyContent p {
+    width: 353px;
+    height: 48px;
+    margin: 20px  0 0 20px;
+    color: var(--Text, #181A18);
+
+    /* Desktop/Subtitle bold */
+    font-family: "Lato-Regular";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 133.333% */
+}
+
+.listProperties .showResult .propertyShow .propertyContent .utilitiesList { 
+    margin: 14px 0 0 20px;
+    display: flex;
+}
+.listProperties .showResult .propertyShow .propertyContent .utilitiesList > div { 
+    margin-right: 20px;
+    color: var(--Text, #181A18);
+
+/* Desktop/Description */
+    font-family: "Lato-Regular";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; /* 114.286% */
+}
+.listProperties .showResult .propertyShow .propertyContent .utilitiesList > div:last-child { 
+    margin-right: 0;
+}
+
+.listProperties .showResult .propertyShow .propertyContent .advantagesProperty{
+    color: var(--Text, #181A18);
+
+    /* Desktop/Description */
+    font-family:"Lato-Regular";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; /* 114.286% */
 }
