@@ -13,9 +13,9 @@
 </head>
 <body>
     <header>
-        <div class="container">
+        <div class="containerHeader">
             <div class="logo">
-                <a href="#" target="_blank" rel="noopener noreferrer"><img src="image/Logo.png" alt="Logo"></a>
+                <a href="/" target="_blank" rel="noopener noreferrer">FlexiRent</a>
             </div>
             <nav class="nav-list">
                 <ul>
@@ -26,17 +26,21 @@
                 </ul>
             </nav>
         </div>
+
     </header>
 
-
+    
+    {{-- <div style="height: 550px; background-color=red;" > --}}
         @yield('content')
+    {{-- </div> --}}
+    
 
 
     <footer>
-        <div class="container">
+        <div class="containerFooter">
             <!-- Logo and Contact Info -->
             <div>
-                <a href="#" target="_blank" rel="noopener noreferrer"><img src="image/Logo.png" alt="Flex Living Logo"></a>
+                <a href="/" target="_blank" rel="noopener noreferrer" class="footerLogo">FlexiRent</a>
                 <p>Contact number: 02033074477</p>
                 <div class="social-icons">
                     <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

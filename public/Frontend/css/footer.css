@@ -2,8 +2,21 @@
 footer {
     background-color: #f9f9f9;
 }
-
-footer .container {
+@font-face {
+    font-family: 'Molle';
+    src: url(Font-family/Molle/Molle-Regular.ttf);
+}
+.footerLogo{
+    text-align: center;
+    font-family: "Molle";
+    font-style: italic;
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 66.67%;
+    color: #000;
+    text-decoration: none;
+}
+footer .containerFooter {
     max-width: 1480px;
     margin: 0 auto;
     display: flex;

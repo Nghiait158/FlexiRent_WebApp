@@ -3,10 +3,13 @@ header {
     background-color: #fff;
     padding: 20px 60px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
-.container {
+.containerHeader {
     display: flex;
     justify-content: space-between; 
     align-items: center; 
@@ -15,10 +18,19 @@ header {
     margin: 0 auto;
 
 }
-
-.logo img {
-    width: 130px;
-    height: 58px;
+@font-face {
+    font-family: 'Molle';
+    src: url(Font-family/Molle/Molle-Regular.ttf);
+}
+.logo a{
+    text-align: center;
+    font-family: "Molle";
+    font-style: italic;
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 66.67%;
+    color: #000;
+    text-decoration: none;
 }
 
 .nav-list ul {
@@ -36,4 +48,8 @@ header {
 .nav-list a:hover {
     color: #007BFF; 
     text-decoration: underline;
+}
+
+main{
+    margin-top: 100px;
 }
