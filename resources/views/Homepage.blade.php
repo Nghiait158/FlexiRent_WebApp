@@ -224,7 +224,7 @@
                 </div>
 
                 <div class="bespoke-btn">
-                    <a href="">Start booking</a>
+                    <a href="{{URL::to('/bookingPage')}}">Start booking</a>
                 </div>
             </div>
         </div>
