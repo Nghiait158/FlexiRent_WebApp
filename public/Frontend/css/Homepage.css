@@ -5,13 +5,13 @@
 }
 
 @font-face {
-    font-family: 'Molle';
-    src: url(/public/Frontend/css/Font-family/Molle/Molle-Regular.ttf);
+    font-family: "Molle";
+    src: url('/Frontend/Font-family/Molle/Molle-Regular.ttf');
 }
 
 @font-face {
-    font-family: 'Lato';
-    src: url(/public/Frontend/css/Font-family/Lato/Lato-Regular.ttf);
+    font-family: "Lato";
+    src: url('/Frontend/css/Font-family/Lato/Lato-Regular.ttf');
 }
 
 body {
@@ -19,86 +19,7 @@ body {
     padding-top: 83px;
 }
 
-header {
-    display: flex;
-    width: 100%;
-    height: 83px;
-    padding-left: 60px;
-    padding-right: 60px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 10px;
-    flex-shrink: 0px;
-    background-color: var(--White, #fff);
-    z-index: 1000;
-    position: fixed;
-    top: 0px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    user-select: none;
-}
 
-.header-container {
-    display: flex;
-    width: 100%;
-
-    justify-content: space-between;
-    align-items: center;
-}
-
-
-.header-logo {
-
-    text-align: center;
-    font-family: "Molle";
-    font-style: italic;
-    font-weight: 400;
-    font-size: 36px;
-    line-height: 66.67%;
-
-}
-
-.header-logo a {
-    color: #000;
-    text-decoration: none;
-}
-
-
-.header-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-.header-nav li {
-    color: var(--Text, #181A18);
-    font-family: "Lato";
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 133.3%;
-    padding: 10px 20px;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.header-nav li:hover {
-    background-color: #f4f4f4;
-    transform: scaleX(1.2);
-    transform: translateY(-3px);
-    cursor: pointer;
-}
-
-.header-nav li:active {
-    background-color: #f4f4f4;
-    box-shadow: inset 0 -3px 0 0 #00bcd4;
-}
-
-.header-nav a {
-    text-decoration: none;
-    color: black;
-    user-select: none;
-}
 
 
 
@@ -177,6 +98,7 @@ header {
     bottom: 0px;
     right: 50%;
     transform: translateX(50%) translateY(50%);
+    height: 64px;
 
 }
 
@@ -520,7 +442,7 @@ header {
     align-items: flex-start;
     gap: 60px;
     height: 506px;
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.80) 0%, rgba(0, 0, 0, 0.00) 100%), url(Image/sofa.png) lightgray 50% / cover no-repeat;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.80) 0%, rgba(0, 0, 0, 0.00) 100%), url('/Frontend/Image/sofa.png') lightgray 50% / cover no-repeat;
     background-position: center;
 }
 
@@ -567,20 +489,14 @@ header {
 
 .bespoke-btn:hover {
     background: #04605B;
-    /* Slightly lighter background on hover */
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-    /* Increase shadow for depth */
     transform: translateY(-3px);
-    /* Lift the button slightly */
 }
 
 .bespoke-btn:active {
     background: #03403F;
-    /* Even darker background when pressed */
     transform: translateY(2px);
-    /* Press effect */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-    /* Reduce shadow on press */
 }
 
 .bespoke-btn a {

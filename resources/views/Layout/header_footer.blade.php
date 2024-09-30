@@ -19,18 +19,22 @@
 </head>
 <body>
     <header>
-        <div class="containerHeader">
-            <div class="logo">
-                <a href="/" target="_blank" rel="noopener noreferrer">FlexiRent</a>
+        
+        <div class="header-container">
+            <div class="header-logo">
+                <a href="/resources/views/Layout/Homepage.html">FlexiRent</a>
             </div>
-            <nav class="nav-list">
-                <ul>
-                    <li><a href="{{URL::to('/HomePage')}}">Home</a></li>
-                    <li><a href="{{URL::to('/')}}">Landlords</a></li>
-                    <li><a href="{{URL::to('/')}}">Blog</a></li>
-                    <li><a href="{{URL::to('/')}}">Contacts</a></li>
-                </ul>
-            </nav>
+
+            <div class="header-nav">
+                <nav>
+                    <ul>
+                        <li><a href="{{URL::to('/HomePage')}}">Home</a></li>
+                        <li><a href="{{URL::to('/HomePage')}}">Manage Rental</a></li>
+                        <li><a href="{{URL::to('/HomePage')}}">Blog</a></li>
+                        <li><a href="{{URL::to('/HomePage')}}">Contacts</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
 
     </header>

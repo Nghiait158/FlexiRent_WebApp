@@ -189,25 +189,25 @@
                 <!-- block3 -->
                 <div class="location-block">
                     <h4>Thu Duc City</h4>
-                    <a href=""><img class="location-img" src="{{ ('/Frontend/Image/Location/Binh Thanh.png') }}" alt=""></a>
+                    <a href=""><img class="location-img" src="{{ ('/Frontend/Image/Location/Thu Duc.jfif') }}" alt=""></a>
                 </div>
 
                 <!-- block4 -->
                 <div class="location-block">
                     <h4>Go Vap District</h4>
-                    <a href=""><img class="location-img" src="{{ ('/Frontend/Image/Location/Binh Thanh.png') }}" alt=""></a>
+                    <a href=""><img class="location-img" src="{{ ('/Frontend/Image/Location/Go Vap.jfif') }}" alt=""></a>
                 </div>
-
+            
                 <!-- block5 -->
                 <div class="location-block">
                     <h4>District 2</h4>
-                    <a href=""><img class="location-img" src="{{ ('/Frontend/Image/Location/Binh Thanh.png') }}" alt=""></a>
+                    <a href=""><img class="location-img" src="{{ ('/Frontend/Image/Location/District-2.jfif') }}" alt=""></a>
                 </div>
 
                 <!-- block6 -->
                 <div class="location-block">
                     <h4>District 7</h4>
-                    <a href=""><img class="location-img" src="{{ ('/Frontend/Image/Location/Binh Thanh.png') }}" alt=""></a>
+                    <a href=""><img class="location-img" src="{{ ('/Frontend/Image/Location/District-7.jfif') }}" alt=""></a>
                 </div>
             </div>
 
