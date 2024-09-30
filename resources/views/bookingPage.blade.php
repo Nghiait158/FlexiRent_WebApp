@@ -44,10 +44,18 @@
 
         <div class="underSearchBar">
             <div class="moreFilter">
-                <p>More Filter</p> 
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="60" viewBox="0 0 20 20" fill="none">
-                    <path d="M10 14.167C9.78725 14.1659 9.57742 14.1175 9.38571 14.0253C9.19401 13.933 9.02524 13.7992 8.89166 13.6337L5.38333 9.38366C5.17833 9.1278 5.04932 8.8195 5.01101 8.49388C4.9727 8.16827 5.02664 7.83844 5.16666 7.54199C5.28023 7.28435 5.46556 7.06484 5.70051 6.90968C5.93547 6.75452 6.21012 6.67027 6.49166 6.66699H13.5083C13.7899 6.67027 14.0645 6.75452 14.2995 6.90968C14.5344 7.06484 14.7198 7.28435 14.8333 7.54199C14.9734 7.83844 15.0273 8.16827 14.989 8.49388C14.9507 8.8195 14.8217 9.1278 14.6167 9.38366L11.1083 13.6337C10.9747 13.7992 10.806 13.933 10.6143 14.0253C10.4226 14.1175 10.2127 14.1659 10 14.167Z" fill="white"/>
-                </svg>
+                <button type="button" >
+                    <p>More Filter</p> 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="60" viewBox="0 0 20 20" fill="none">
+                        <path d="M10 14.167C9.78725 14.1659 9.57742 14.1175 9.38571 14.0253C9.19401 13.933 9.02524 13.7992 8.89166 13.6337L5.38333 9.38366C5.17833 9.1278 5.04932 8.8195 5.01101 8.49388C4.9727 8.16827 5.02664 7.83844 5.16666 7.54199C5.28023 7.28435 5.46556 7.06484 5.70051 6.90968C5.93547 6.75452 6.21012 6.67027 6.49166 6.66699H13.5083C13.7899 6.67027 14.0645 6.75452 14.2995 6.90968C14.5344 7.06484 14.7198 7.28435 14.8333 7.54199C14.9734 7.83844 15.0273 8.16827 14.989 8.49388C14.9507 8.8195 14.8217 9.1278 14.6167 9.38366L11.1083 13.6337C10.9747 13.7992 10.806 13.933 10.6143 14.0253C10.4226 14.1175 10.2127 14.1659 10 14.167Z" fill="white"/>
+                    </svg>
+                </button>
+                <ul class="dropdown-menuFilter" id="dropdownMenuFilter">
+                    <li><button class="dropdown-itemFilter" type="button" onclick="selectItemFil(this)">Availability</button></li>
+                    <li><button class="dropdown-itemFilter" type="button" onclick="selectItemFilter(this)">Price (Low to High)</button></li>
+                    <li><button class="dropdown-itemFilter" type="button" onclick="selectItemFilter(this)">Price (High to Low)</button></li>
+                    <li><button class="dropdown-itemFilter" type="button" onclick="selectItemFilter(this)">Ratings (High to low)</button></li>
+                </ul>
             </div>
             <div class="chosenOptions">
                 <div class="option">
@@ -67,6 +75,50 @@
                     </svg>
                 </div>
             </div>
-        </div>
 
+            <div class="sortBy">
+                <p>Sort by: </p>
+                <div class="dropdown">
+                    <button class="dropdown-toggle" id="dropdownButton" type="button" onclick="toggleDropdown()">
+                        Availability
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M9.99997 14.167C9.78722 14.1659 9.57739 14.1175 9.38568 14.0253C9.19398 13.933 9.02521 13.7992 8.89163 13.6337L5.3833 9.38366C5.17829 9.1278 5.04929 8.8195 5.01098 8.49388C4.97267 8.16827 5.02661 7.83844 5.16663 7.54199C5.2802 7.28435 5.46553 7.06484 5.70048 6.90968C5.93544 6.75452 6.21009 6.67027 6.49163 6.66699H13.5083C13.7898 6.67027 14.0645 6.75452 14.2995 6.90968C14.5344 7.06484 14.7197 7.28435 14.8333 7.54199C14.9733 7.83844 15.0273 8.16827 14.989 8.49388C14.9506 8.8195 14.8216 9.1278 14.6166 9.38366L11.1083 13.6337C10.9747 13.7992 10.806 13.933 10.6142 14.0253C10.4225 14.1175 10.2127 14.1659 9.99997 14.167Z" fill="#49735A"/>
+                        </svg>
+                    </button>
+                    <ul class="dropdown-menu" id="dropdownMenu">
+                        <li><button class="dropdown-item" type="button" onclick="selectItem(this)">Availability</button></li>
+                        <li><button class="dropdown-item" type="button" onclick="selectItem(this)">Price (Low to High)</button></li>
+                        <li><button class="dropdown-item" type="button" onclick="selectItem(this)">Price (High to Low)</button></li>
+                        <li><button class="dropdown-item" type="button" onclick="selectItem(this)">Ratings (High to low)</button></li>
+                    </ul>
+                    
+                </div>
+                
+            </div>      
+        </div>
+<script>
+// Hàm mở hoặc đóng dropdown
+function toggleDropdown() {
+    const dropdown = document.querySelector('.dropdown');
+    dropdown.classList.toggle('show');
+}
+function toggleDropdownFilter() {
+    const dropdown = document.querySelector('.moreFilter');
+    dropdown.classList.toggle('show');
+}
+
+
+// Hàm chọn mục trong dropdown
+function selectItem(element) {
+    const selectedText = element.innerText;
+    document.getElementById('dropdownButton').innerText = selectedText;
+    toggleDropdown(); // Đóng dropdown sau khi chọn
+}
+// function selectItemFilter(element) {
+//     const selectedText = element.innerText;
+//     document.getElementById('dropdownButton').innerText = selectedText;
+//     toggleDropdownFilter(); // Đóng dropdown sau khi chọn
+// }
+
+</script>
     </main>
