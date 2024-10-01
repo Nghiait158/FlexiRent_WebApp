@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="{{('/Frontend/css/bookingPage.css')}}" />
     <link rel="stylesheet" href="{{('/Frontend/css/Homepage.css')}}">
+    <link rel="stylesheet" href="{{('/Frontend/css/Landlords.css')}}">
 
 
 
