@@ -401,3 +401,113 @@
     transform: scale(0.95); /* Nhỏ lại khi nhấn */
 }
 
+/*Timeline, how it works*/
+.how-it-works {
+    margin: 50px auto;
+    text-align: center;
+    width: 1440px;
+    height: 1520px;
+    flex-shrink: 0;
+    background: var(--BG, #E2F1E8);
+    margin-bottom: 140px;
+}
+
+.how-it-works .timeline {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    gap: 140px;
+}
+
+.how-it-works .block {
+    width: 462px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 300px;
+}
+
+.how-it-works .vertical-line {
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background-color: #333;
+    height: 1220px;
+}
+
+.how-it-works .timeline-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+    position: relative;
+    width: 100%;
+}
+
+.how-it-works .left .timeline-item {
+    align-items: flex-end;
+    text-align: right;
+    top: 60px;
+}
+
+.how-it-works .right .timeline-item {
+    align-items: flex-start;
+    text-align: left;
+    top: 310px;
+}
+
+.how-it-works .icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.how-it-works .timeline-item h2 {
+    color: var(--Text, #181A18);
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 44px; 
+    
+}
+
+.how-it-works .timeline-item h1 {
+    color: var(--Text, #181A18);
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px; /* 112.5% */
+    
+}
+
+.how-it-works .timeline-item p {
+    color: var(--Text, #181A18);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 125% */
+}
+
+.how-it-works .icon.top-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.how-it-works .icon.top-icon:nth-child(1) { top: 0px; }
+.how-it-works .icon.top-icon:nth-child(2) { top: 250px; }
+.how-it-works .icon.top-icon:nth-child(3) { top: 490px; }
+.how-it-works .icon.top-icon:nth-child(4) { top: 730px; }
+.how-it-works .icon.top-icon:nth-child(5) { top: 970px; }
+.how-it-works .icon.top-icon:nth-child(6) { top: 1220px; }
+
