@@ -155,7 +155,8 @@
                     {{-- <img src="{{ ('/Frontend/Image/Location/Binh Thanh.png') }}" alt=""> --}}
                 </div>
                 <div class="propertyContent">
-                    <p>Rhoncus suspendisse penatibus mauris, sit non</p>
+                    <a href="{{URL::to('/PropertyDetails')}}" style="text-decoration: none"><p>Rhoncus suspendisse penatibus mauris, sit non</p></a>
+
                     <div class="utilitiesList">
                         <div class="bedroom">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -207,7 +208,7 @@
                     {{-- <img src="{{ ('/Frontend/Image/Location/Binh Thanh.png') }}" alt=""> --}}
                 </div>
                 <div class="propertyContent">
-                    <p>Rhoncus suspendisse penatibus mauris, sit non</p>
+                    <a href="{{URL::to('/PropertyDetails')}}" style="text-decoration: none"><p>Rhoncus suspendisse penatibus mauris, sit non</p></a>
                     <div class="utilitiesList">
                         <div class="bedroom">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -259,7 +260,7 @@
                     {{-- <img src="{{ ('/Frontend/Image/Location/Binh Thanh.png') }}" alt=""> --}}
                 </div>
                 <div class="propertyContent">
-                    <p>Rhoncus suspendisse penatibus mauris, sit non</p>
+                    <a href="{{URL::to('/PropertyDetails')}}" style="text-decoration: none"><p>Rhoncus suspendisse penatibus mauris, sit non</p></a>
                     <div class="utilitiesList">
                         <div class="bedroom">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -311,7 +312,7 @@
                     {{-- <img src="{{ ('/Frontend/Image/Location/Binh Thanh.png') }}" alt=""> --}}
                 </div>
                 <div class="propertyContent">
-                    <p>Rhoncus suspendisse penatibus mauris, sit non</p>
+                    <a href="{{URL::to('/PropertyDetails')}}" style="text-decoration: none"><p>Rhoncus suspendisse penatibus mauris, sit non</p></a>
                     <div class="utilitiesList">
                         <div class="bedroom">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -363,7 +364,7 @@
                     {{-- <img src="{{ ('/Frontend/Image/Location/Binh Thanh.png') }}" alt=""> --}}
                 </div>
                 <div class="propertyContent">
-                    <p>Rhoncus suspendisse penatibus mauris, sit non</p>
+                    <a href="{{URL::to('/PropertyDetails')}}" style="text-decoration: none"><p>Rhoncus suspendisse penatibus mauris, sit non</p></a>
                     <div class="utilitiesList">
                         <div class="bedroom">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -415,7 +416,7 @@
                     {{-- <img src="{{ ('/Frontend/Image/Location/Binh Thanh.png') }}" alt=""> --}}
                 </div>
                 <div class="propertyContent">
-                    <p>Rhoncus suspendisse penatibus mauris, sit non</p>
+                    <a href="{{URL::to('/PropertyDetails')}}" style="text-decoration: none"><p>Rhoncus suspendisse penatibus mauris, sit non</p></a>
                     <div class="utilitiesList">
                         <div class="bedroom">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -467,7 +468,7 @@
                     {{-- <img src="{{ ('/Frontend/Image/Location/Binh Thanh.png') }}" alt=""> --}}
                 </div>
                 <div class="propertyContent">
-                    <p>Rhoncus suspendisse penatibus mauris, sit non</p>
+                    <a href="{{URL::to('/PropertyDetails')}}" style="text-decoration: none"><p>Rhoncus suspendisse penatibus mauris, sit non</p></a>
                     <div class="utilitiesList">
                         <div class="bedroom">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -519,7 +520,7 @@
                     {{-- <img src="{{ ('/Frontend/Image/Location/Binh Thanh.png') }}" alt=""> --}}
                 </div>
                 <div class="propertyContent">
-                    <p>Rhoncus suspendisse penatibus mauris, sit non</p>
+                    <a href="{{URL::to('/PropertyDetails')}}" style="text-decoration: none"><p>Rhoncus suspendisse penatibus mauris, sit non</p></a>
                     <div class="utilitiesList">
                         <div class="bedroom">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">

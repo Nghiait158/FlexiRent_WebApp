@@ -134,13 +134,194 @@ body{
 }
 .contentPropertyDetails .BoxformBooking{
     padding: 40px;
-    background-color: aqua;
+    /* background-color: rgb(132, 188, 84); */
     flex: 2; 
 
 }
-.BoxformBooking .formBooking{
-    
+.BoxformBooking .formbooking{
     width: 552px;
     height: 668px;
-    background-color: #FFF;
+    border-radius: 30px;
+    background: var(--BG, #F2F0F2);
+    display: inline-flex;
+    padding: 40px;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    
 }
+.formbooking h1 {
+    font-size: 24px;
+    text-align: center;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.checkInfo {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    width: 100%;
+    height: 172px;
+    margin-bottom: 20px;
+
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.totalPrice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 156px;
+    margin-bottom: 20px;
+    /* background-color: #f9f9f9;  */
+    /* padding: 10px; */
+}
+
+.ContinueBooking {
+    height: 96px;
+    width: 100%;
+    background-color: #FFB6C1; /* Hồng nhạt cho ContinueBooking */
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.ContinueBooking button {
+    width: 100%;
+    padding: 12px 0;
+    /* background-color: #007bff; */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+
+.checkmoveInOut {
+    display: flex;
+    justify-content: space-between; /* Đảm bảo phân bố khoảng cách hợp lý */
+}
+
+.moveIncheck,
+.moveOutcheck {
+    width: 215px; /* Đặt kích thước ví dụ cho mỗi div con, bạn có thể thay đổi kích thước này */
+    height: 90px; /* Đặt chiều cao ví dụ cho mỗi div con */
+
+}
+
+.moveIncheck p,
+.moveOutcheck p{
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 133.333% */
+}
+
+/* Khoảng cách giữa hai div con là 42px */
+.checkmoveInOut .moveIncheck {
+    margin-right: 42px;
+}
+
+
+.checkmoveInOut .checkDateMove{
+    margin-top: 12px;
+    display: flex;
+    width: 200px;
+    height: 48px;
+    padding: 12px 20px;
+    align-items: center;
+    gap: 12px;
+    border-radius: 12px;
+    background: var(--White, #FFF);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 133.333% */
+}
+
+.checkGuest {
+    width: 200px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center; /* Căn giữa theo trục dọc */
+    justify-content: space-between; /* Tạo khoảng cách đều giữa các phần tử */
+    /* padding: 10px; */
+    border-radius: 8px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 133.333% */
+}
+
+.checkGuest svg {
+    cursor: pointer; /* Thêm con trỏ tay để chỉ ra rằng các icon này có thể click */
+}
+.checkInfo .alluliti{
+    margin-top: 20px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 133.333% */
+}
+
+.checkGuest button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.checkGuest button:focus {
+    outline: none; /* Xóa khung outline khi bấm vào */
+}
+
+
+.Aver, .PayBooking, .totalCosts {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    align-items: center; /* Căn giữa các phần tử bên trong theo chiều dọc */
+    justify-content: space-between; /* Tạo khoảng cách giữa phần text và các phần tử khác */
+
+}
+
+.Aver p, .PayBooking p, .totalCosts p {
+    margin: 0;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 133.333% */
+}
+
+.Aver .price, .PayBooking .price, .totalCosts .price {
+    font-weight: bold;
+    font-size: 18px;
+    color: #000;
+}
+
+.Aver p, .PayBooking p {
+    margin-right: 8px; /* Tạo khoảng cách 8px giữa đoạn text và icon SVG */
+}
+
+.totalCosts div {
+    display: flex;
+    flex-direction: column; /* Sắp xếp giá và VAT theo chiều dọc */
+    text-align: right;
+}
+
+.totalPrice div {
+    display: flex; /* Sử dụng flexbox để căn chỉnh các phần tử nằm bên cạnh nhau */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+.totalPrice p {
+    margin: 0; /* Đặt margin gốc là 0 để tránh khoảng cách mặc định */
+    margin-bottom: 8px; /* Thêm khoảng cách dưới mỗi thẻ <p> */
+}
+
+
