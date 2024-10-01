@@ -1,0 +1,146 @@
+@font-face {
+    font-family: "Molle";
+    src: url('../Font-family/Molle/Molle-Regular.ttf');
+}
+
+@font-face {
+    font-family: "Lato";
+    src: url('../Font-family/Lato/Lato-Regular.ttf');
+}
+
+body{
+    font-family: "Lato";
+}
+
+.headerContainerImage {
+    position: relative;
+    display: flex; /* Sử dụng flexbox để sắp xếp */
+    width: 100%;
+    height: 480px; /* Chiều cao cố định */
+    /* background-color: aqua; */
+}
+
+.headerContainerImage .mainImg {
+    width: 70%; /* Đặt chiều rộng cho hình chính */
+    height: 100%; /* Đặt chiều cao đầy đủ */
+    border-radius: 10px;
+}
+
+.fourImgNext {
+    display: grid; /* Sử dụng grid để sắp xếp các hình ảnh nhỏ */
+    grid-template-columns: repeat(2, 1fr); /* 2 cột với chiều rộng bằng nhau */
+    gap: 10px; /* Khoảng cách giữa các hình ảnh nhỏ */
+    margin-left: 10px; /* Khoảng cách giữa hình chính và hình nhỏ */
+    width: 30%; /* Chiều rộng cho khung bên phải */
+    height: 100%; /* Chiều cao đầy đủ */
+    overflow: hidden; /* Ẩn phần nào đó nếu vượt quá chiều cao */
+}
+
+.fourImgNext img {
+    width: 275px;
+    height: 235px;
+
+    object-fit: cover; /* Đảm bảo hình ảnh không bị biến dạng */
+    border-radius: 10px; /* Bo tròn góc */
+}
+
+
+.headerContainerImage .VewAllPhoto{
+    display: inline-flex;
+    padding: 12px 40px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 40px;
+    background: var(--Green, #064749);
+    position: absolute; /* Đặt vị trí tuyệt đối */
+    top: 400px; /* Khoảng cách từ trên cùng */
+    left: 100px; /* Khoảng cách từ bên trái */
+    z-index: 10; /* Đảm bảo nó nằm trên cùng */
+    color: var(--White, #FFF);
+
+    /* Desktop/Subtitle bold */
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 133.333% */
+}
+
+.contentPropertyDetails {
+    margin: 60px 0 0 100px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+}
+.contentPropertyDetails .descriptionPropertyDetails{
+    width: 750px;
+    height: auto;
+    flex: 2;
+    /* background-color: rgb(147, 114, 72); */
+}
+.contentPropertyDetails .descriptionPropertyDetails h1{
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 60px; /* 115.385% */
+}
+.contentPropertyDetails .descriptionPropertyDetails h6{
+    margin-top: 16px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 133.333% */
+    
+}
+.infomation {
+    margin-top: 42px;
+    display: flex; /* Sử dụng flexbox để sắp xếp */
+    justify-content: space-between; /* Tạo khoảng cách giữa hai phần tử */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+.bedAndBath {
+    display: flex; /* Để hình ảnh và text nằm cạnh nhau */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 20px;
+}
+
+.bedAndBath > div {
+    display: flex; /* Đảm bảo các phần tử SVG và text bên trong div được căn ngang nhau */
+    align-items: center; /* Căn giữa dọc cho SVG và text */
+}
+.bedAndBath svg {
+    margin-right: 8px; /* Thêm khoảng cách giữa SVG và text là 8px */
+}
+.TienIch {
+    text-align: right; /* Đặt văn bản bên phải */
+}
+
+.descriptionPropertyDetails .description h1 {
+    margin-top: 50px;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 44px; /* 122.222% */
+}
+.descriptionPropertyDetails .description p {
+    margin-top: 12px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 125% */
+}
+.contentPropertyDetails .BoxformBooking{
+    padding: 40px;
+    background-color: aqua;
+    flex: 2; 
+
+}
+.BoxformBooking .formBooking{
+    
+    width: 552px;
+    height: 668px;
+    background-color: #FFF;
+}

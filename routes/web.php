@@ -14,7 +14,9 @@ Route::get('/HomePage', function () {
 Route::get('/Landlord', function () {
     return view('Landlords');
 });
-
+Route::get('/PropertyDetails', function () {
+    return view('PropertyDetails');
+});
 // Route::get('/bookingPage', function () {
 //     return view('bookingPage');
 // });
