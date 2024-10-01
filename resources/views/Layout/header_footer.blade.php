@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HomeUp </title>
+    <title>FlexiRent</title>
     <link rel="stylesheet" href="{{('/Frontend/css/footer.css')}}" />
     <link rel="stylesheet" href="{{('/Frontend/css/header.css')}}" />
 
@@ -23,7 +23,7 @@
         
         <div class="header-container">
             <div class="header-logo">
-                <a href="/resources/views/Layout/Homepage.html">FlexiRent</a>
+                <a href="{{URL::to('/HomePage')}}">FlexiRent</a>
             </div>
 
             <div class="header-nav">
@@ -44,7 +44,7 @@
         @yield('content')
        
     </main>
-    {{-- <div style="height: 550px; background-color=red;" > --}}
+    {{-- <div style="height: 550px; background-color:red;" > --}}
         
        
         
