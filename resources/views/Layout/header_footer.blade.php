@@ -30,7 +30,7 @@
                 <nav>
                     <ul>
                         <li><a href="{{URL::to('/HomePage')}}">Home</a></li>
-                        <li><a href="{{URL::to('/HomePage')}}">Manage Rental</a></li>
+                        <li><a href="{{URL::to('/Landlord')}}">Manage Rental</a></li>
                         <li><a href="{{URL::to('/HomePage')}}">Blog</a></li>
                         <li><a href="{{URL::to('/HomePage')}}">Contacts</a></li>
                     </ul>

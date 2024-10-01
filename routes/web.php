@@ -16,3 +16,7 @@ Route::get('/HomePage', function () {
 
 
 
+Route::get('/Landlord', function () {
+    return view('Landlords');
+});
+
