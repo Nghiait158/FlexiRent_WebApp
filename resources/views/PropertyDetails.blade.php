@@ -259,4 +259,16 @@
         </div>
     </div>
 </div>
+
+<div class="LocationPropertyDetails">
+    <h1>Location</h1>
+    @php
+        // Tạo URL Google Maps từ địa chỉ
+        $encodedAddress = urlencode($address);
+    @endphp
+    <div class="LocationMap">
+        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBoA17lY0Ew39efGfTQp_jOqnD_z9o41uo&q={{$encodedAddress}}" style="    border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>
+
 @endsection

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookingPageController;
+use App\Http\Controllers\PropertyDetailsPageController;
 
 use App\Http\Controllers\MapController;
 // --------FrontEnd-------------------------
@@ -14,16 +16,17 @@ Route::get('/HomePage', function () {
 Route::get('/Landlord', function () {
     return view('Landlords');
 });
-Route::get('/PropertyDetails', function () {
-    return view('PropertyDetails');
-});
-// Route::get('/bookingPage', function () {
-//     return view('bookingPage');
+// Route::get('/PropertyDetails', function () {
+//     return view('PropertyDetails');
 // });
+Route::get('/CheckoutPage', function () {
+    return view('CheckoutPage');
+});
 
 // Route::get('/map', [MapController::class, 'generateMapIframe']);
 
-Route::get('/bookingPage', [MapController::class, 'showMap']);
+Route::get('/bookingPage', [BookingPageController::class, 'showMap']);
+Route::get('/PropertyDetails', [PropertyDetailsPageController::class, 'showMap']);
 
 
 
