@@ -2,9 +2,9 @@
 @extends('Layout/header_footer')
 @section('content')
 
-    <!-- Form và image -->
-    <div class="container2">
-        <img src="{{ ('/Frontend/Image/Landlords/business.png') }}" alt="Background Image" class="background-image">
+            <!-- Form và image -->
+            <div class="container2">
+        <img src="image/business.png" alt="Background Image" class="background-image">
 
         <!-- Form Container -->
         <div class="form-container">
@@ -91,7 +91,7 @@
             </div>
         </div>
     </div>
-    
+
     <!--Timeline, how it works-->
     <div class="how-it-works">
         <h1>How it Works</h1>
@@ -157,6 +157,97 @@
     </div>
 
 
+    
     <!--Corporate Partnerships-->
     <div class="corporate">
         <div class="container">
+            <div class="header">
+                <h1>Corporate Partnerships</h1>
+                <p>We work with 100+ companies to meet accommodation needs in London. Offer a dedicated<br> booking manager that can help to find properties for your needs.</p>
+            </div>
+            <div class="image-gallery">
+                <div class="image-wrapper">
+                    <img src="image/bedroom-before.png" alt="Before" />
+                    <div class="label">Before</div>
+                </div>
+                <div class="image-wrapper">
+                    <img src="image/bedroom-after.png" alt="After" />
+                    <div class="label">After</div>
+                </div>
+            </div>
+            <div class="features">
+                <div class="feature">
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+  <path d="M31.666 5H11.666C10.3399 5 9.06816 5.52678 8.13048 6.46447C7.1928 7.40215 6.66602 8.67392 6.66602 10V30C6.66602 31.3261 7.1928 32.5979 8.13048 33.5355C9.06816 34.4732 10.3399 35 11.666 35H31.666C32.108 35 32.532 34.8244 32.8445 34.5118C33.1571 34.1993 33.3327 33.7754 33.3327 33.3333V6.66667C33.3327 6.22464 33.1571 5.80072 32.8445 5.48816C32.532 5.17559 32.108 5 31.666 5ZM11.666 31.6667C11.224 31.6667 10.8001 31.4911 10.4875 31.1785C10.1749 30.866 9.99935 30.442 9.99935 30C9.99935 29.558 10.1749 29.134 10.4875 28.8215C10.8001 28.5089 11.224 28.3333 11.666 28.3333H29.9993V31.6667H11.666Z" fill="black"/>
+</svg></div>
+                    <h2>Consequat risus</h2>
+                    <p>Euismod commodo feugiat purus egestas diam. Facilisi sed senectus consequat risus. Porta purus nec dui odio vehicula.</p>
+                </div>
+                <div class="feature">
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+  <path d="M31.666 34.583L27.816 19.583C29.2394 17.812 30.0103 15.6052 29.9993 13.333C29.9993 10.6808 28.9458 8.1373 27.0704 6.26194C25.195 4.38658 22.6515 3.33301 19.9993 3.33301C17.3472 3.33301 14.8036 4.38658 12.9283 6.26194C11.0529 8.1373 9.99933 10.6808 9.99933 13.333C9.99476 15.6227 10.784 17.8432 12.2327 19.6163L8.33266 34.583C8.24971 34.9029 8.26372 35.2402 8.37292 35.5521C8.48213 35.864 8.68159 36.1364 8.94596 36.3347C9.21034 36.533 9.52769 36.6482 9.8577 36.6657C10.1877 36.6832 10.5155 36.6022 10.7993 36.433L19.6827 31.2163L29.1493 36.4497C29.4051 36.604 29.7008 36.6794 29.9993 36.6663C30.2581 36.6746 30.5153 36.6224 30.7504 36.514C30.9855 36.4056 31.1922 36.2439 31.3539 36.0417C31.5157 35.8395 31.6281 35.6024 31.6823 35.3492C31.7364 35.096 31.7309 34.8337 31.666 34.583ZM19.9993 6.66634C21.3179 6.66634 22.6068 7.05733 23.7031 7.78988C24.7995 8.52242 25.6539 9.56361 26.1585 10.7818C26.6631 12 26.7951 13.3404 26.5379 14.6336C26.2807 15.9268 25.6457 17.1147 24.7134 18.0471C23.781 18.9794 22.5931 19.6143 21.2999 19.8716C20.0067 20.1288 18.6663 19.9968 17.4481 19.4922C16.2299 18.9876 15.1887 18.1331 14.4562 17.0368C13.7237 15.9405 13.3327 14.6515 13.3327 13.333C13.3327 11.5649 14.035 9.8692 15.2853 8.61896C16.5355 7.36872 18.2312 6.66634 19.9993 6.66634Z" fill="#181A18"/>
+</svg>️</div>
+                    <h2>Morbi pulvinar</h2>
+                    <p>Eu vulputate mi cras quam lectus. Ut ut dignissim amet dignissim gravida sit ullamcorper lectus.</p>
+                </div>
+                <div class="feature">
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+  <path d="M31.666 5H11.666C10.3399 5 9.06816 5.52678 8.13048 6.46447C7.1928 7.40215 6.66602 8.67392 6.66602 10V30C6.66602 31.3261 7.1928 32.5979 8.13048 33.5355C9.06816 34.4732 10.3399 35 11.666 35H31.666C32.108 35 32.532 34.8244 32.8445 34.5118C33.1571 34.1993 33.3327 33.7754 33.3327 33.3333V6.66667C33.3327 6.22464 33.1571 5.80072 32.8445 5.48816C32.532 5.17559 32.108 5 31.666 5ZM11.666 31.6667C11.224 31.6667 10.8001 31.4911 10.4875 31.1785C10.1749 30.866 9.99935 30.442 9.99935 30C9.99935 29.558 10.1749 29.134 10.4875 28.8215C10.8001 28.5089 11.224 28.3333 11.666 28.3333H29.9993V31.6667H11.666Z" fill="black"/>
+</svg></div>
+                    <h2>Turpis elit</h2>
+                    <p>Arcu venenatis id dignissim massa ipsum. Viverra mi habitant urna at elit dignissim cursus ut facilisi.</p>
+                </div>
+                <div class="feature">
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+  <path d="M31.666 34.583L27.816 19.583C29.2394 17.812 30.0103 15.6052 29.9993 13.333C29.9993 10.6808 28.9458 8.1373 27.0704 6.26194C25.195 4.38658 22.6515 3.33301 19.9993 3.33301C17.3472 3.33301 14.8036 4.38658 12.9283 6.26194C11.0529 8.1373 9.99933 10.6808 9.99933 13.333C9.99476 15.6227 10.784 17.8432 12.2327 19.6163L8.33266 34.583C8.24971 34.9029 8.26372 35.2402 8.37292 35.5521C8.48213 35.864 8.68159 36.1364 8.94596 36.3347C9.21034 36.533 9.52769 36.6482 9.8577 36.6657C10.1877 36.6832 10.5155 36.6022 10.7993 36.433L19.6827 31.2163L29.1493 36.4497C29.4051 36.604 29.7008 36.6794 29.9993 36.6663C30.2581 36.6746 30.5153 36.6224 30.7504 36.514C30.9855 36.4056 31.1922 36.2439 31.3539 36.0417C31.5157 35.8395 31.6281 35.6024 31.6823 35.3492C31.7364 35.096 31.7309 34.8337 31.666 34.583ZM19.9993 6.66634C21.3179 6.66634 22.6068 7.05733 23.7031 7.78988C24.7995 8.52242 25.6539 9.56361 26.1585 10.7818C26.6631 12 26.7951 13.3404 26.5379 14.6336C26.2807 15.9268 25.6457 17.1147 24.7134 18.0471C23.781 18.9794 22.5931 19.6143 21.2999 19.8716C20.0067 20.1288 18.6663 19.9968 17.4481 19.4922C16.2299 18.9876 15.1887 18.1331 14.4562 17.0368C13.7237 15.9405 13.3327 14.6515 13.3327 13.333C13.3327 11.5649 14.035 9.8692 15.2853 8.61896C16.5355 7.36872 18.2312 6.66634 19.9993 6.66634Z" fill="#181A18"/>
+</svg>️</div>
+                    <h2>Faucibus egestas</h2>
+                    <p>Vehicula arcu, felis, et urna, nunc, ut eget pellentesque scelerisque. Accumsan et velit nibh tempor.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pricing-container">
+        <div class="header">
+            <h1>Pricing</h1>
+            <p>Compare our pricing model to high street agents</p>
+        </div>
+        <div class="comparison">
+            <div class="agent-card">
+                <div class="card-header">
+                    <h2>High Street Agents</h2>
+                    <div class="price">12%</div>
+                    <p>management fee</p>
+                </div>
+                <div class="features">
+                    <div class="feature">6 to 12 months</div>
+                    <div class="feature">No maintenance</div>
+                    <div class="feature">No weekly cleaning</div>
+                    <div class="feature">No interior design</div>
+                    <div class="feature">5% void</div>
+                    <div class="feature">£24,900</div>
+                </div>
+                <button class="get-started">Get started</button>
+            </div>
+            <div class="vs">Vs</div>
+            <div class="agent-card">
+                <div class="card-header">
+                    <h2>Flex Living (guaranteed Rental)</h2>
+                    <div class="price">Fixed price</div>
+                    <p>monthly</p>
+                </div>
+                <div class="features">
+                    <div class="feature">3 to 5 years</div>
+                    <div class="feature">Free maintenance</div>
+                    <div class="feature">Weekly cleaning</div>
+                    <div class="feature">Interior design</div>
+                    <div class="feature">No void</div>
+                    <div class="feature">£30,000</div>
+                </div>
+                <button class="get-started">Get started</button>
+            </div>
+        </div>
+    </div>
+    
+@endsection
