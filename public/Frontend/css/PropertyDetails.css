@@ -62,11 +62,20 @@ body{
     /* Desktop/Subtitle bold */
     font-size: 18px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 24px; /* 133.333% */
+    cursor: pointer;
+    
+}
+
+.headerContainerImage .VewAllPhoto:hover {
+    background: #0b6b6e;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
 }
 
 .contentPropertyDetails {
+
     margin: 60px 0 0 100px;
     padding: 20px;
     display: flex;
@@ -181,26 +190,36 @@ body{
     /* padding: 10px; */
 }
 
+
+
 .ContinueBooking {
-    height: 96px;
-    width: 100%;
-    background-color: #FFB6C1; /* Hồng nhạt cho ContinueBooking */
-    padding: 10px;
-    border-radius: 8px;
-}
-
-.ContinueBooking button {
-    width: 100%;
-    padding: 12px 0;
-    /* background-color: #007bff; */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
+    display: flex;
+    padding: 12px 40px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 40px;
+    background: var(--Green, #064749);  
     cursor: pointer;
+
+    color: var(--White, #FFF);
+
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 133.333% */
 }
 
+.ContinueBooking a {
+    color: inherit;
+    text-decoration: none;
+}
 
+.ContinueBooking:hover {
+    background: #04695e; /* Lighter green on hover */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
 
 .checkmoveInOut {
     display: flex;
@@ -308,6 +327,7 @@ body{
     margin-right: 8px; /* Tạo khoảng cách 8px giữa đoạn text và icon SVG */
 }
 
+.Aver div, .PayBooking div,
 .totalCosts div {
     display: flex;
     flex-direction: column; /* Sắp xếp giá và VAT theo chiều dọc */
@@ -324,4 +344,59 @@ body{
     margin-bottom: 8px; /* Thêm khoảng cách dưới mỗi thẻ <p> */
 }
 
+.Amenities {
+    margin: 120px 180px 0 180px;
+    /* background-color: aqua; */
+    width: auto;
+    height: auto;
+}
 
+.Amenities h1 {
+    color: var(--Text, #181A18);
+    text-align: center;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px; /* 112.5% */
+}
+
+.iconAmenities {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between; /* Để các cột cách đều nhau */
+    align-items: center;
+}
+
+.iconAmenitiesColumn1 .iconsA {
+
+    display: flex;
+    justify-content: space-between; /* Đẩy nội dung text và SVG về hai phía */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    width: 280px;
+    margin-bottom: 24px;
+}
+
+.textContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.textContent h5 {
+    color: var(--Text, #181A18);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 133.333% */
+}
+.textContent p{
+    color: var(--Text, #181A18);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; /* 114.286% */
+}
+
+.iconsA svg {
+    margin-left: auto; /* Đẩy SVG sang lề phải */
+    flex-shrink: 0; /* Đảm bảo SVG không bị co lại */
+}
