@@ -1152,19 +1152,23 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Hover effect */
 .blog-container .swiper-slide:hover {
-    transform: scale(1.05); /* Slightly increase size on hover */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+    transform: scale(1.05);
+    /* Slightly increase size on hover */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    /* Add shadow on hover */
 }
 
 /* Click (active) effect */
 .blog-container .swiper-slide:active {
-    transform: scale(0.95); /* Slightly decrease size when clicked */
-    box-shadow: none; /* Remove shadow when clicked */
+    transform: scale(0.95);
+    /* Slightly decrease size when clicked */
+    box-shadow: none;
+    /* Remove shadow when clicked */
 }
 
 .blog-container .swiper-slide .text {
@@ -1250,18 +1254,142 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
-    transition: background-color 0.3s ease, transform 0.2s ease; 
+    transition: background-color 0.3s ease, transform 0.2s ease;
     /* 133.333% */
 }
 
 .blog-container .readBtn:hover {
-    background-color: #046e6f; /* Change background color on hover */
-    color: #ffffff; /* Ensure text color stays white */
-    transform: scale(1.05); /* Slightly increase size on hover */
+    background-color: #046e6f;
+    /* Change background color on hover */
+    color: #ffffff;
+    /* Ensure text color stays white */
+    transform: scale(1.05);
+    /* Slightly increase size on hover */
 }
 
 /* Click (active) effect */
 .blog-container .readBtn:active {
-    background-color: #032f30; /* Darker shade when clicked */
-    transform: scale(0.95); /* Slightly decrease size when clicked */
+    background-color: #032f30;
+    /* Darker shade when clicked */
+    transform: scale(0.95);
+    /* Slightly decrease size when clicked */
+}
+
+.link-container {
+    width: 100%;
+    padding: 140px 80px;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 60px
+}
+
+.link-container h1 {
+    width: 100%;
+    max-width: 847px;
+    text-align: center;
+}
+
+.link-container .link-block-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 160px;
+    width: 100%;
+    max-width: 1280px;
+}
+
+.link-container .link-block-container .link-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.link-container .link-block-container .link-block a {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    text-decoration: none;
+    gap: 12px;
+}
+
+.link-container .link-block-container .link-block a p {
+    color: var(--Green, #064749);
+    font-family: "Lato";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    /* 133.333% */
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.link-container .link-block-container .link-block a p:hover {
+    color: #04957a;
+    text-decoration: none;
+}
+
+
+.link-container .link-block-container .link-block a p:active {
+    color: #03634e;
+    transform: scale(0.98);
+}
+
+
+.link-container .link-block-container .link-block a svg {
+    width: 20px;
+    height: 20px;
+}
+
+
+.link-container .link-block-container .link-block a svg:hover {
+    fill: #04957a;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+
+.link-container .link-block-container .link-block a svg:active {
+    fill: #03634e;
+    transform: scale(0.95);
+}
+
+.cta-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 80px 140px;
+    justify-content: center;
+}
+
+.cta-container .background {
+    width: 100%;
+    max-width: 1440px;
+    height: 604px;
+    flex-shrink: 0;
+    position: relative;
+    background: url(https://s3-alpha-sig.figma.com/img/919c/2e15/ce01e43da547e4789055532ee2683c93?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=i5361alOe5gsZFGUUZM2kOmNWgoPSR4za6Zaqt3NuBm5Z4IeqM8jSnssR1FjOeawoh7N1JQKqBbvOMzZaRXxgCNtIR6PVoiht5q5pBmIyrigIOETAbG~CKyJD6ZEta-ZGLcakxOZ8emCtudtPNeLjNLVYCMwucBV9WkeRaV-OCB50sKkDfk0z~t0ePKV2QW8pj8LsjJvmaMvZ-n0GkhHHYTjDoKJrj6sMyA4uIr7JoltWKi1077y5vHvnwZdvYqdgA-brA238dlPabGX8vtUnnIckVv1Ffg4gnGH95sQImrvcHh4OrmDHDB-t1pXwnkf1GUQ75Xfp-19BBUekU95ug__) lightgray -124px -219.397px / 108.611% 172.648% no-repeat;
+}
+
+.cta-container .background .cta-content-container {
+    display: flex;
+    width: 493px;
+    padding: 60px 80px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    border-radius: 60px 60px 60px 12px;
+    background: var(--White, #FFF);
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
