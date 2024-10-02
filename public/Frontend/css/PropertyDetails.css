@@ -400,3 +400,30 @@ body{
     margin-left: auto; /* Đẩy SVG sang lề phải */
     flex-shrink: 0; /* Đảm bảo SVG không bị co lại */
 }
+
+
+.LocationPropertyDetails{
+    margin: 140px 120px 0 120px ;
+    width: 1645px;
+    height: auto;
+    /* background-color: aqua; */
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+.LocationPropertyDetails h1{
+    text-align: center;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px; /* 112.5% */
+}
+
+
+.LocationPropertyDetails .LocationMap iframe{
+    width: 1645px;  /* Make iframe take full width of the parent */
+    height: 500px; /* Make iframe take full height of the parent */
+    border: 0;    /* Remove default border */
+}
+

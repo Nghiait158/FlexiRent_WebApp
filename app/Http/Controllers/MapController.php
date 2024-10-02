@@ -57,11 +57,12 @@ class MapController extends Controller
         return "Không tìm thấy tọa độ.";
     }
     
-    public function showMap()
-    {
-        $address = "Trường Đại Học Quốc Tế"; 
-        return view('bookingPage', compact('address'));
-    }
+    // public function showMap()
+    // {
+    //     $address = "Trường Đại Học Quốc Tế"; 
+    //     return view('bookingPage', compact('address'));
+    // }
+
     
     
     
