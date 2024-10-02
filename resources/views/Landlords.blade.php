@@ -4,7 +4,7 @@
 
             <!-- Form và image -->
             <div class="container2">
-        <img src="image/business.png" alt="Background Image" class="background-image">
+        <img src="\Frontend\Image\Landlords\business.png" alt="Background Image" class="background-image">
 
         <!-- Form Container -->
         <div class="form-container">
@@ -167,11 +167,11 @@
             </div>
             <div class="image-gallery">
                 <div class="image-wrapper">
-                    <img src="image/bedroom-before.png" alt="Before" />
+                    <img src="\Frontend\Image\Landlords\bedroom-before.png" alt="Before" />
                     <div class="label">Before</div>
                 </div>
                 <div class="image-wrapper">
-                    <img src="image/bedroom-after.png" alt="After" />
+                    <img src="\Frontend\Image\Landlords\bedroom-after.png" alt="After" />
                     <div class="label">After</div>
                 </div>
             </div>
