@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{('/Frontend/css/Homepage.css')}}" />
     <link rel="stylesheet" href="{{('/Frontend/css/Landlords.css')}}" />
     <link rel="stylesheet" href="{{('/Frontend/css/PropertyDetails.css')}}" />
+    <link rel="stylesheet" href="{{('/Frontend/css/Blog.css')}}" />
     <link rel="icon" type="image/x-icon" href="{{('/Frontend/Image/favicon/FlexiRent.png')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
@@ -33,7 +34,7 @@
                     <ul>
                         <li><a href="{{URL::to('/HomePage')}}">Home</a></li>
                         <li><a href="{{URL::to('/Landlord')}}">Manage Rental</a></li>
-                        <li><a href="{{URL::to('/HomePage')}}">Blog</a></li>
+                        <li><a href="{{URL::to('/Blog')}}">Blog</a></li>
                         <li><a href="{{URL::to('/HomePage')}}">Contacts</a></li>
                     </ul>
                 </nav>
