@@ -335,8 +335,8 @@
                 <div class="title">CENTRAL MODERN</div>
                 <div class="topic">HOUSE</div>
                 <div class="des">
-                    
-The Marais district in Paris, France, is a famous rental location known for its historic charm and vibrant atmosphere. Characterized by narrow streets, beautiful architecture, and trendy boutiques, it is home to attractions like the Picasso Museum and Hôtel de Ville. The area features lively cafes, bistros, and the Marché des Enfants Rouges, one of the oldest covered markets in Paris. Centrally located, the Marais offers easy access to iconic landmarks such as Notre-Dame Cathedral and the Louvre Museum, making it an ideal choice for those seeking an authentic Parisian experience.
+
+                    The Marais district in Paris, France, is a famous rental location known for its historic charm and vibrant atmosphere. Characterized by narrow streets, beautiful architecture, and trendy boutiques, it is home to attractions like the Picasso Museum and Hôtel de Ville. The area features lively cafes, bistros, and the Marché des Enfants Rouges, one of the oldest covered markets in Paris. Centrally located, the Marais offers easy access to iconic landmarks such as Notre-Dame Cathedral and the Louvre Museum, making it an ideal choice for those seeking an authentic Parisian experience.
                 </div>
                 <div class="buttons">
                     <a href=""><button>RENT NOW</button></a>
@@ -351,10 +351,10 @@ The Marais district in Paris, France, is a famous rental location known for its 
             <img src="\Frontend\Image\house\house2.jpeg">
             <div class="content">
                 <div class="title">
-                    Name Slider
+                    Suburbs house
                 </div>
                 <div class="description">
-                    Description
+                    Beverly Hills, USA
                 </div>
             </div>
         </div>
@@ -362,10 +362,10 @@ The Marais district in Paris, France, is a famous rental location known for its 
             <img src="\Frontend\Image\house\house3.jpg">
             <div class="content">
                 <div class="title">
-                    Name Slider
+                    Central apartment
                 </div>
                 <div class="description">
-                    Description
+                    Binh Thanh, VN
                 </div>
             </div>
         </div>
@@ -373,10 +373,10 @@ The Marais district in Paris, France, is a famous rental location known for its 
             <img src="\Frontend\Image\house\house4.jpg">
             <div class="content">
                 <div class="title">
-                    Name Slider
+                    Luxury Villa
                 </div>
                 <div class="description">
-                    Description
+                    Malibu, USA
                 </div>
             </div>
         </div>
@@ -384,22 +384,22 @@ The Marais district in Paris, France, is a famous rental location known for its 
             <img src="\Frontend\Image\house\house5.webp">
             <div class="content">
                 <div class="title">
-                    Name Slider
+                    Central House
                 </div>
                 <div class="description">
-                    Description
+                    Marais, France
                 </div>
             </div>
         </div>
     </div>
     <!-- next prev -->
 
-    
+
     <!-- time running -->
     <div class="time"></div>
     <div class="arrows">
         <button id="prev">
-            <</button>
+            << /button>
                 <button id="next">></button>
     </div>
 </div>
@@ -407,7 +407,164 @@ The Marais district in Paris, France, is a famous rental location known for its 
 
 <script src="\Frontend\js\houseSlider.js"></script>
 
+<div class="partner-container">
+    <div class="partner-text">
+        <h1>What our partners think</h1>
+        <p>See what our partners say about us</p>
+    </div>
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="profile">
 
+                    <img class="profile-picture" src="\Frontend\Image\Homepage Profile\profile1.jpg" alt="">
+
+                    <div class="profile-content">
+                        <h4>Annie</h4>
+                        <p>Landlord in SE1</p>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    Nascetur urna, fusce consectetur massa nulla viverra aenean semper. Dignissim nibh sed condimentum
+                    eget ac suspendisse eget amet integer. Mattis etiam sagittis fermentum fames habitasse. Vulputate
+                    volutpat sit est, elementum. Accumsan nunc nunc arcu faucibus aliquam.
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="profile">
+
+                    <img class="profile-picture" src="\Frontend\Image\Homepage Profile\profile1.jpg" alt="">
+
+                    <div class="profile-content">
+                        <h4>Annie</h4>
+                        <p>Landlord in SE1</p>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    Nascetur urna, fusce consectetur massa nulla viverra aenean semper. Dignissim nibh sed condimentum
+                    eget ac suspendisse eget amet integer. Mattis etiam sagittis fermentum fames habitasse. Vulputate
+                    volutpat sit est, elementum. Accumsan nunc nunc arcu faucibus aliquam.
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="profile">
+
+                    <img class="profile-picture" src="\Frontend\Image\Homepage Profile\profile1.jpg" alt="">
+
+                    <div class="profile-content">
+                        <h4>Annie</h4>
+                        <p>Landlord in SE1</p>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    Nascetur urna, fusce consectetur massa nulla viverra aenean semper. Dignissim nibh sed condimentum
+                    eget ac suspendisse eget amet integer. Mattis etiam sagittis fermentum fames habitasse. Vulputate
+                    volutpat sit est, elementum. Accumsan nunc nunc arcu faucibus aliquam.
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="profile">
+
+                    <img class="profile-picture" src="\Frontend\Image\Homepage Profile\profile1.jpg" alt="">
+
+                    <div class="profile-content">
+                        <h4>Annie</h4>
+                        <p>Landlord in SE1</p>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    Nascetur urna, fusce consectetur massa nulla viverra aenean semper. Dignissim nibh sed condimentum
+                    eget ac suspendisse eget amet integer. Mattis etiam sagittis fermentum fames habitasse. Vulputate
+                    volutpat sit est, elementum. Accumsan nunc nunc arcu faucibus aliquam.
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="profile">
+
+                    <img class="profile-picture" src="\Frontend\Image\Homepage Profile\profile1.jpg" alt="">
+
+                    <div class="profile-content">
+                        <h4>Annie</h4>
+                        <p>Landlord in SE1</p>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    Nascetur urna, fusce consectetur massa nulla viverra aenean semper. Dignissim nibh sed condimentum
+                    eget ac suspendisse eget amet integer. Mattis etiam sagittis fermentum fames habitasse. Vulputate
+                    volutpat sit est, elementum. Accumsan nunc nunc arcu faucibus aliquam.
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="profile">
+
+                    <img class="profile-picture" src="\Frontend\Image\Homepage Profile\profile1.jpg" alt="">
+
+                    <div class="profile-content">
+                        <h4>Annie</h4>
+                        <p>Landlord in SE1</p>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    Nascetur urna, fusce consectetur massa nulla viverra aenean semper. Dignissim nibh sed condimentum
+                    eget ac suspendisse eget amet integer. Mattis etiam sagittis fermentum fames habitasse. Vulputate
+                    volutpat sit est, elementum. Accumsan nunc nunc arcu faucibus aliquam.
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="profile">
+
+                    <img class="profile-picture" src="\Frontend\Image\Homepage Profile\profile1.jpg" alt="">
+
+                    <div class="profile-content">
+                        <h4>Annie</h4>
+                        <p>Landlord in SE1</p>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    Nascetur urna, fusce consectetur massa nulla viverra aenean semper. Dignissim nibh sed condimentum
+                    eget ac suspendisse eget amet integer. Mattis etiam sagittis fermentum fames habitasse. Vulputate
+                    volutpat sit est, elementum. Accumsan nunc nunc arcu faucibus aliquam.
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="profile">
+
+                    <img class="profile-picture" src="\Frontend\Image\Homepage Profile\profile1.jpg" alt="">
+
+                    <div class="profile-content">
+                        <h4>Annie</h4>
+                        <p>Landlord in SE1</p>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    Nascetur urna, fusce consectetur massa nulla viverra aenean semper. Dignissim nibh sed condimentum
+                    eget ac suspendisse eget amet integer. Mattis etiam sagittis fermentum fames habitasse. Vulputate
+                    volutpat sit est, elementum. Accumsan nunc nunc arcu faucibus aliquam.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="button">
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+    </div>
+    <div class="swiper-pagination"></div>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="\Frontend\js\commentSlider.js"></script>
+    <!-- Initialize Swiper -->
+</div>
 
 
 
