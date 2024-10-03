@@ -770,7 +770,7 @@
 
 
 <div class="link-container">
-    
+
     <h1>Useful Links</h1>
     <div class="link-block-container">
         <div class="link-block">
@@ -834,7 +834,7 @@
         </div>
 
     </div>
-    
+
 </div>
 
 <!-- call to action (cta) -->
@@ -843,13 +843,25 @@
         <div class="cta-content-container">
             <div class="text-container">
                 <h2>Dictum nunc</h2>
-                <p>Vel mattis integer pulvinar morbi quis amet eu. In nunc facilisis proin fermentum, consectetur cursus. </p>
+                <p>Vel mattis integer pulvinar morbi quis amet eu. In nunc facilisis proin fermentum, consectetur cursus.</p>
             </div>
 
-            <div class="btn"></div>
+            <div class="dropdown-city">
+                <button class="dropbtn">Choose city <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M10 14.1667C9.78725 14.1657 9.57742 14.1173 9.38571 14.025C9.19401 13.9328 9.02524 13.799 8.89166 13.6334L5.38333 9.38341C5.17833 9.12755 5.04932 8.81925 5.01101 8.49364C4.9727 8.16803 5.02664 7.8382 5.16666 7.54175C5.28023 7.2841 5.46556 7.06459 5.70051 6.90943C5.93547 6.75427 6.21012 6.67003 6.49166 6.66675H13.5083C13.7899 6.67003 14.0645 6.75427 14.2995 6.90943C14.5344 7.06459 14.7198 7.2841 14.8333 7.54175C14.9734 7.8382 15.0273 8.16803 14.989 8.49364C14.9507 8.81925 14.8217 9.12755 14.6167 9.38341L11.1083 13.6334C10.9747 13.799 10.806 13.9328 10.6143 14.025C10.4226 14.1173 10.2127 14.1657 10 14.1667Z" fill="white" />
+                    </svg></button>
+                <div class="dropdown-content">
+                    <a href="#">City 1</a>
+                    <a href="#">City 2</a>
+                    <a href="#">City 3</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+
+
 
 
 @endsection
