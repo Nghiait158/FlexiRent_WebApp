@@ -1,19 +1,20 @@
 var swiper = new Swiper(".partnerSwiper", {
-    slidesPerView: 3,
-    spaceBetween: 30, 
-    centeredSlides: true, 
-    loop: true,
-    // autoplay: {  
-    //   delay: 3000, 
-    //   disableOnInteraction: false, 
-    // },
-    pagination: {
+  slidesPerView: 3,
+  spaceBetween: 30,
+  centeredSlides: true,
+  loop: true,
+  autoplay: {
+      delay: 0, 
+      disableOnInteraction: false,
+  },
+  speed: 3000,
+  pagination: {
       el: ".swiper-pagination",
       clickable: true,
-    },
-    navigation: {
+  },
+  loopAdditionalSlides: 3,
+  navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
-    },
-  });
-  
+  },
+});

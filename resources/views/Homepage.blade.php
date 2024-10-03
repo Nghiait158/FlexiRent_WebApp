@@ -1,5 +1,15 @@
 @extends('Layout/header_footer')
 @section('content')
+
+<script>
+    // Create a link element
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '/Frontend/css/swiper-bundle.min.home.css'; // Your CSS file path
+    // Append it to the head
+    document.head.appendChild(link);
+</script>
 <div class="intro-video">
     <video autoplay loop muted>
         <source src="{{ ('/Frontend/Video/intro-video.mp4') }}" type="video/mp4">
@@ -399,7 +409,8 @@
     <div class="time"></div>
     <div class="arrows">
         <button id="prev">
-            << /button>
+            <
+                </button>
                 <button id="next">></button>
     </div>
 </div>
@@ -556,7 +567,6 @@
 
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
-    <div class="swiper-pagination"></div>
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="\Frontend\js\commentSlider.js"></script>

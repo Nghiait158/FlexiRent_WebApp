@@ -1053,7 +1053,21 @@ body {
     padding: 0 60px;
     gap: 20px;
     user-select: none;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+
 }
+
+.swiper-slide:hover {
+    background-color: #007aff;
+}
+
+.partner-container .swiper-slide:hover .profile-content h4,
+.partner-container .swiper-slide:hover .profile-content p,
+.partner-container .swiper-slide:hover .comment {
+    color: #fff;
+    /* Change text color to white on hover */
+}
+
 
 .partner-container .profile {
     display: flex;
@@ -1346,6 +1360,7 @@ body {
 .link-container .link-block-container .link-block a svg {
     width: 20px;
     height: 20px;
+
 }
 
 
