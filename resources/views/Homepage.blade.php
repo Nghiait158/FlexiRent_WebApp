@@ -412,7 +412,7 @@
         <h1>What our partners think</h1>
         <p>See what our partners say about us</p>
     </div>
-    <div class="swiper mySwiper">
+    <div class="swiper partnerSwiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <div class="profile">
@@ -554,17 +554,313 @@
 
     </div>
 
-    <div class="button">
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-
-    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
     <div class="swiper-pagination"></div>
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="\Frontend\js\commentSlider.js"></script>
     <!-- Initialize Swiper -->
 </div>
+
+<div class="blog-container">
+    <h2>Read our blog</h2>
+
+    <div class="swiper blogSwiper">
+        <div class="swiper-wrapper">
+            <a href="" class="swiper-slide">
+                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/d51e/0114/6015144e93b4f0a379b9355fbb99cca1?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=a4RQxwm2vIpfdVF8G7Eeyn5IasYN7eZy7jljin8cv5v2CI7x8k0gTrYYsVNSflX-qozrn4a9qUcA0FllUWdkXsYvegNilEcHbOj841wlZSw-9pWXRgvmCNHIQbo8mVBcoyMT-FIglKaYSJqavo4zEFiDd4yTn1~IBTGQaxc~V-Y2K9wmUzOyHtgQL~NOE-6nVbiYeo3QfF44FrxXIB4pW537Q8uTn7C8d4PNVRee7VEqSU0iA7T8SDzGAMzSyjreMLZFy-A1wljQu0YBCw8lebOkjJLIQEiczm821zACuU7i4KUqezuUIvyduN9dOS6zPF5qb5ASOy6MJtLPCkFt6g__" alt="">
+
+                <div class="text">
+                    <div class="slide-content">
+                        <h2>Faucibus egestas ut sit purus ultricies at eu</h2>
+                        <p>Viverra tellus risus lacus commodo urna fringilla cursus nulla amet.</p>
+                    </div>
+                    <div class="time-to-read">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+                        </svg>
+                        <p>3 min read</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" class="swiper-slide">
+                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/816a/26dc/ca23d8635be9f936f7b906928bffa8f3?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=fOwYl7AHgp~ecYqAcgKjBtuQtLhCBlgDAYJ6XGDd8jEBrL1yaHWHXM7TvUhhTwZW3koC0UUHlICyh1Ds9g4BTREM77mCYteLqixcj0ZDIpzg7t~rMiU~YFdkfjV9LXU5uV3W4-oUgHsM-Pk3M~IkL0oe7OfmwZVKZs9J6lyu18rLQcOsqWhR~-E1TepfDiavr2Ck4OKoFGQliZzjsQkSvTEA8WND4ubbL3zTRIrRmz7cCCOFZUhcavXIBVNak0gVVZspOaQqfVe0fqGm0usMudrDQMhnrhzeQS3Y2Hh95GVIv4EFw4I2sC4wtqbAYdj3KVj9p2g00WCMqrLEVGwO5Q__" alt="">
+
+                <div class="text">
+                    <div class="slide-content">
+                        <h2>Turpis elit in dictum eget eget</h2>
+                        <p>Neque faucibus pharetra condimentum tincidunt commodo velit.</p>
+                    </div>
+                    <div class="time-to-read">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+                        </svg>
+                        <p>3 min read</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" class="swiper-slide">
+                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/a210/8b5b/70676d8adf7169e0cfb368a3f5e68b8c?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=mXO9Llg78hhxoOBnTnfvOvVhsrdan8IxJHLgZvECQ-HhrQmZgsunKCKc2-cX3obdNGUYqpsSalTn1OnjnRXhR~N~N56336ExXmVdhLi4Ny3tN-cQQbohd0bqm5pPfaLuRgNGlt4VEhafyFVjdpbN8pJGLXAujl6r-kgaciPBBE82jLK-vlKciU7FntgZhhq8iXihcwdTAi9FmlQoZSVVG0RGwPNwq27bUFc8sMINSgVI3SmvOBfcoGX9qZ~FxVpjELQxjuxBBbAI8H0FkNDTMgspHVwe~~JcfjVNvaWQZtXobY~vqKYTPEg1hSEOVOZRwvrDL~52pqPLyybvTtiDew__" alt="">
+
+                <div class="text">
+                    <div class="slide-content">
+                        <h2>Turpis elit in dictum eget eget</h2>
+                        <p>Convallis eu vel fames feugiat et venenatis nulla ipsum.</p>
+                    </div>
+                    <div class="time-to-read">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+                        </svg>
+                        <p>1 min read</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" class="swiper-slide">
+                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/7734/04fa/8d452f77369d5bdb11b8bac3b9352168?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lJCJqBBBlTvlxcQfzYIjaeHOG-f8Iu7sSPtyKBnxuvPG5NJtJJrOtUJw~hSyVbilbDIEPovt6Dz5W9WF6oT-pDJQU-OOqazG~IT4wVoIdv07BJ~khStjchs-ZjYNgZsk-N5vS634Q~wpXWrTe1dsumfWw~zWwXK24A9o2X~SpwO3DHzcaoWMJAyfQkuTWcx0Uv1U2fZI0XForJhp5FcwdxHLBt3yIOrqgsuFAt6ZytKx0-uY8l1CeooFJIU5Hw7yw25kRkcvamf2oQKdmwXInAcF6PaiB~Nj~sOl4KXD5lR0HkpYQFUiebJBrx9Q~fGnozN4gtMOrRBubUp4oOKU1Q__" alt="">
+
+                <div class="text">
+                    <div class="slide-content">
+                        <h2>Feugiat gravida sed sit lacus sagittis</h2>
+                        <p>Pellentesque ultrices hendrerit lacus lectus.</p>
+                    </div>
+                    <div class="time-to-read">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+                        </svg>
+                        <p>3 min read</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" class="swiper-slide">
+                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/d51e/0114/6015144e93b4f0a379b9355fbb99cca1?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=a4RQxwm2vIpfdVF8G7Eeyn5IasYN7eZy7jljin8cv5v2CI7x8k0gTrYYsVNSflX-qozrn4a9qUcA0FllUWdkXsYvegNilEcHbOj841wlZSw-9pWXRgvmCNHIQbo8mVBcoyMT-FIglKaYSJqavo4zEFiDd4yTn1~IBTGQaxc~V-Y2K9wmUzOyHtgQL~NOE-6nVbiYeo3QfF44FrxXIB4pW537Q8uTn7C8d4PNVRee7VEqSU0iA7T8SDzGAMzSyjreMLZFy-A1wljQu0YBCw8lebOkjJLIQEiczm821zACuU7i4KUqezuUIvyduN9dOS6zPF5qb5ASOy6MJtLPCkFt6g__" alt="">
+
+                <div class="text">
+                    <div class="slide-content">
+                        <h2>Faucibus egestas ut sit purus ultricies at eu</h2>
+                        <p>Viverra tellus risus lacus commodo urna fringilla cursus nulla amet.</p>
+                    </div>
+                    <div class="time-to-read">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+                        </svg>
+                        <p>3 min read</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" class="swiper-slide">
+                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/33a9/12db/06ff8628ba5031c7a86a8dcff57e3e80?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=J44uSGpohbwMUvBDuBc7SnvQmbaTxAgGSJItZ~DJ0z~YhGsPnyyb~tsgkU3XzBzCR~Q6S9zGVkJJKhlraCYB9778Wn832AEyN8APiJYXhCVlMxy~-5acSoFrOqF7SV5lvHE~ZfipsgOwPca1xPq3mUq1Qd1QRWtz~SJ65Eqd2LDlausU27TkCXEb97XEWumIijlnd8TauvTbA4oLhv9Frb-UVaMKfoR6Tb3qG6KHczL1rATKocpuvpuQ9vW4uEfM4n355YIQMzbUfrBFjTf8uB~Hvgpsit8dIzTDuVq1-tOS5WOXHbky7cwse~NTrK49Ku~TRW3yvXw-z~uNpWoSZg__" alt="">
+
+                <div class="text">
+                    <div class="slide-content">
+                        <h2>Feugiat gravida sed sit lacus sagittis</h2>
+                        <p>Dolor elit viverra facilisis aliquam, aliquet arcu nec.</p>
+                    </div>
+                    <div class="time-to-read">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+                        </svg>
+                        <p>3 min read</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" class="swiper-slide">
+                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/d51e/0114/6015144e93b4f0a379b9355fbb99cca1?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=a4RQxwm2vIpfdVF8G7Eeyn5IasYN7eZy7jljin8cv5v2CI7x8k0gTrYYsVNSflX-qozrn4a9qUcA0FllUWdkXsYvegNilEcHbOj841wlZSw-9pWXRgvmCNHIQbo8mVBcoyMT-FIglKaYSJqavo4zEFiDd4yTn1~IBTGQaxc~V-Y2K9wmUzOyHtgQL~NOE-6nVbiYeo3QfF44FrxXIB4pW537Q8uTn7C8d4PNVRee7VEqSU0iA7T8SDzGAMzSyjreMLZFy-A1wljQu0YBCw8lebOkjJLIQEiczm821zACuU7i4KUqezuUIvyduN9dOS6zPF5qb5ASOy6MJtLPCkFt6g__" alt="">
+
+                <div class="text">
+                    <div class="slide-content">
+                        <h2>Faucibus egestas ut sit purus ultricies at eu</h2>
+                        <p>Viverra tellus risus lacus commodo urna fringilla cursus nulla amet.</p>
+                    </div>
+                    <div class="time-to-read">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+                        </svg>
+                        <p>3 min read</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" class="swiper-slide">
+                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/816a/26dc/ca23d8635be9f936f7b906928bffa8f3?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=fOwYl7AHgp~ecYqAcgKjBtuQtLhCBlgDAYJ6XGDd8jEBrL1yaHWHXM7TvUhhTwZW3koC0UUHlICyh1Ds9g4BTREM77mCYteLqixcj0ZDIpzg7t~rMiU~YFdkfjV9LXU5uV3W4-oUgHsM-Pk3M~IkL0oe7OfmwZVKZs9J6lyu18rLQcOsqWhR~-E1TepfDiavr2Ck4OKoFGQliZzjsQkSvTEA8WND4ubbL3zTRIrRmz7cCCOFZUhcavXIBVNak0gVVZspOaQqfVe0fqGm0usMudrDQMhnrhzeQS3Y2Hh95GVIv4EFw4I2sC4wtqbAYdj3KVj9p2g00WCMqrLEVGwO5Q__" alt="">
+
+                <div class="text">
+                    <div class="slide-content">
+                        <h2>Turpis elit in dictum eget eget</h2>
+                        <p>Neque faucibus pharetra condimentum tincidunt commodo velit.</p>
+                    </div>
+                    <div class="time-to-read">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+                        </svg>
+                        <p>3 min read</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" class="swiper-slide">
+                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/a210/8b5b/70676d8adf7169e0cfb368a3f5e68b8c?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=mXO9Llg78hhxoOBnTnfvOvVhsrdan8IxJHLgZvECQ-HhrQmZgsunKCKc2-cX3obdNGUYqpsSalTn1OnjnRXhR~N~N56336ExXmVdhLi4Ny3tN-cQQbohd0bqm5pPfaLuRgNGlt4VEhafyFVjdpbN8pJGLXAujl6r-kgaciPBBE82jLK-vlKciU7FntgZhhq8iXihcwdTAi9FmlQoZSVVG0RGwPNwq27bUFc8sMINSgVI3SmvOBfcoGX9qZ~FxVpjELQxjuxBBbAI8H0FkNDTMgspHVwe~~JcfjVNvaWQZtXobY~vqKYTPEg1hSEOVOZRwvrDL~52pqPLyybvTtiDew__" alt="">
+
+                <div class="text">
+                    <div class="slide-content">
+                        <h2>Turpis elit in dictum eget eget</h2>
+                        <p>Convallis eu vel fames feugiat et venenatis nulla ipsum.</p>
+                    </div>
+                    <div class="time-to-read">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+                        </svg>
+                        <p>1 min read</p>
+                    </div>
+                </div>
+            </a>
+
+
+
+            <a href="" class="swiper-slide">
+                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/d51e/0114/6015144e93b4f0a379b9355fbb99cca1?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=a4RQxwm2vIpfdVF8G7Eeyn5IasYN7eZy7jljin8cv5v2CI7x8k0gTrYYsVNSflX-qozrn4a9qUcA0FllUWdkXsYvegNilEcHbOj841wlZSw-9pWXRgvmCNHIQbo8mVBcoyMT-FIglKaYSJqavo4zEFiDd4yTn1~IBTGQaxc~V-Y2K9wmUzOyHtgQL~NOE-6nVbiYeo3QfF44FrxXIB4pW537Q8uTn7C8d4PNVRee7VEqSU0iA7T8SDzGAMzSyjreMLZFy-A1wljQu0YBCw8lebOkjJLIQEiczm821zACuU7i4KUqezuUIvyduN9dOS6zPF5qb5ASOy6MJtLPCkFt6g__" alt="">
+
+                <div class="text">
+                    <div class="slide-content">
+                        <h2>Faucibus egestas ut sit purus ultricies at eu</h2>
+                        <p>Viverra tellus risus lacus commodo urna fringilla cursus nulla amet.</p>
+                    </div>
+                    <div class="time-to-read">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+                        </svg>
+                        <p>3 min read</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" class="swiper-slide">
+                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/33a9/12db/06ff8628ba5031c7a86a8dcff57e3e80?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=J44uSGpohbwMUvBDuBc7SnvQmbaTxAgGSJItZ~DJ0z~YhGsPnyyb~tsgkU3XzBzCR~Q6S9zGVkJJKhlraCYB9778Wn832AEyN8APiJYXhCVlMxy~-5acSoFrOqF7SV5lvHE~ZfipsgOwPca1xPq3mUq1Qd1QRWtz~SJ65Eqd2LDlausU27TkCXEb97XEWumIijlnd8TauvTbA4oLhv9Frb-UVaMKfoR6Tb3qG6KHczL1rATKocpuvpuQ9vW4uEfM4n355YIQMzbUfrBFjTf8uB~Hvgpsit8dIzTDuVq1-tOS5WOXHbky7cwse~NTrK49Ku~TRW3yvXw-z~uNpWoSZg__" alt="">
+
+                <div class="text">
+                    <div class="slide-content">
+                        <h2>Feugiat gravida sed sit lacus sagittis</h2>
+                        <p>Dolor elit viverra facilisis aliquam, aliquet arcu nec.</p>
+                    </div>
+                    <div class="time-to-read">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+                        </svg>
+                        <p>3 min read</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="swiper-scrollbar"></div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="\Frontend\js\homeBlogSlider.js"></script>
+
+
+    <a class="readBtn" href="">Read more</a>
+</div>
+
+
+<div class="link-container">
+
+    <h1>Useful Links</h1>
+    <div class="link-block-container">
+        <div class="link-block">
+            <a href="">
+                <p>West London Apartments</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4.16683 10.8334H14.0502L11.0252 14.4668C10.9551 14.551 10.9024 14.6482 10.8699 14.7529C10.8374 14.8576 10.8259 14.9676 10.836 15.0767C10.8563 15.297 10.9633 15.5003 11.1335 15.6418C11.3037 15.7832 11.5231 15.8513 11.7434 15.8309C11.9638 15.8106 12.167 15.7036 12.3085 15.5334L16.4752 10.5334C16.5032 10.4936 16.5283 10.4519 16.5502 10.4084C16.5502 10.3668 16.5918 10.3418 16.6085 10.3001C16.6463 10.2045 16.666 10.1028 16.6668 10.0001C16.666 9.89734 16.6463 9.79563 16.6085 9.70008C16.6085 9.65842 16.5668 9.63342 16.5502 9.59175C16.5283 9.5483 16.5032 9.50652 16.4752 9.46675L12.3085 4.46675C12.2301 4.37268 12.132 4.29703 12.0211 4.24518C11.9102 4.19333 11.7893 4.16655 11.6668 4.16675C11.4721 4.16637 11.2834 4.23418 11.1335 4.35842C11.0491 4.42837 10.9794 4.51429 10.9282 4.61125C10.8771 4.7082 10.8456 4.81429 10.8355 4.92344C10.8255 5.03259 10.8371 5.14265 10.8696 5.24732C10.9021 5.35199 10.955 5.44921 11.0252 5.53342L14.0502 9.16675H4.16683C3.94582 9.16675 3.73385 9.25455 3.57757 9.41083C3.42129 9.56711 3.3335 9.77907 3.3335 10.0001C3.3335 10.2211 3.42129 10.4331 3.57757 10.5893C3.73385 10.7456 3.94582 10.8334 4.16683 10.8334Z" fill="#181A18" />
+                </svg>
+            </a>
+            <a href="">
+                <p>Riverside Apartments</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4.16683 10.8334H14.0502L11.0252 14.4668C10.9551 14.551 10.9024 14.6482 10.8699 14.7529C10.8374 14.8576 10.8259 14.9676 10.836 15.0767C10.8563 15.297 10.9633 15.5003 11.1335 15.6418C11.3037 15.7832 11.5231 15.8513 11.7434 15.8309C11.9638 15.8106 12.167 15.7036 12.3085 15.5334L16.4752 10.5334C16.5032 10.4936 16.5283 10.4519 16.5502 10.4084C16.5502 10.3668 16.5918 10.3418 16.6085 10.3001C16.6463 10.2045 16.666 10.1028 16.6668 10.0001C16.666 9.89734 16.6463 9.79563 16.6085 9.70008C16.6085 9.65842 16.5668 9.63342 16.5502 9.59175C16.5283 9.5483 16.5032 9.50652 16.4752 9.46675L12.3085 4.46675C12.2301 4.37268 12.132 4.29703 12.0211 4.24518C11.9102 4.19333 11.7893 4.16655 11.6668 4.16675C11.4721 4.16637 11.2834 4.23418 11.1335 4.35842C11.0491 4.42837 10.9794 4.51429 10.9282 4.61125C10.8771 4.7082 10.8456 4.81429 10.8355 4.92344C10.8255 5.03259 10.8371 5.14265 10.8696 5.24732C10.9021 5.35199 10.955 5.44921 11.0252 5.53342L14.0502 9.16675H4.16683C3.94582 9.16675 3.73385 9.25455 3.57757 9.41083C3.42129 9.56711 3.3335 9.77907 3.3335 10.0001C3.3335 10.2211 3.42129 10.4331 3.57757 10.5893C3.73385 10.7456 3.94582 10.8334 4.16683 10.8334Z" fill="#181A18" />
+                </svg>
+            </a>
+            <a href="">
+                <p>Apartments in Finance Sector City of London</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4.16683 10.8334H14.0502L11.0252 14.4668C10.9551 14.551 10.9024 14.6482 10.8699 14.7529C10.8374 14.8576 10.8259 14.9676 10.836 15.0767C10.8563 15.297 10.9633 15.5003 11.1335 15.6418C11.3037 15.7832 11.5231 15.8513 11.7434 15.8309C11.9638 15.8106 12.167 15.7036 12.3085 15.5334L16.4752 10.5334C16.5032 10.4936 16.5283 10.4519 16.5502 10.4084C16.5502 10.3668 16.5918 10.3418 16.6085 10.3001C16.6463 10.2045 16.666 10.1028 16.6668 10.0001C16.666 9.89734 16.6463 9.79563 16.6085 9.70008C16.6085 9.65842 16.5668 9.63342 16.5502 9.59175C16.5283 9.5483 16.5032 9.50652 16.4752 9.46675L12.3085 4.46675C12.2301 4.37268 12.132 4.29703 12.0211 4.24518C11.9102 4.19333 11.7893 4.16655 11.6668 4.16675C11.4721 4.16637 11.2834 4.23418 11.1335 4.35842C11.0491 4.42837 10.9794 4.51429 10.9282 4.61125C10.8771 4.7082 10.8456 4.81429 10.8355 4.92344C10.8255 5.03259 10.8371 5.14265 10.8696 5.24732C10.9021 5.35199 10.955 5.44921 11.0252 5.53342L14.0502 9.16675H4.16683C3.94582 9.16675 3.73385 9.25455 3.57757 9.41083C3.42129 9.56711 3.3335 9.77907 3.3335 10.0001C3.3335 10.2211 3.42129 10.4331 3.57757 10.5893C3.73385 10.7456 3.94582 10.8334 4.16683 10.8334Z" fill="#181A18" />
+                </svg>
+            </a>
+            <a href="">
+                <p>Apartments in Soho, Fitrovia</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4.16683 10.8334H14.0502L11.0252 14.4668C10.9551 14.551 10.9024 14.6482 10.8699 14.7529C10.8374 14.8576 10.8259 14.9676 10.836 15.0767C10.8563 15.297 10.9633 15.5003 11.1335 15.6418C11.3037 15.7832 11.5231 15.8513 11.7434 15.8309C11.9638 15.8106 12.167 15.7036 12.3085 15.5334L16.4752 10.5334C16.5032 10.4936 16.5283 10.4519 16.5502 10.4084C16.5502 10.3668 16.5918 10.3418 16.6085 10.3001C16.6463 10.2045 16.666 10.1028 16.6668 10.0001C16.666 9.89734 16.6463 9.79563 16.6085 9.70008C16.6085 9.65842 16.5668 9.63342 16.5502 9.59175C16.5283 9.5483 16.5032 9.50652 16.4752 9.46675L12.3085 4.46675C12.2301 4.37268 12.132 4.29703 12.0211 4.24518C11.9102 4.19333 11.7893 4.16655 11.6668 4.16675C11.4721 4.16637 11.2834 4.23418 11.1335 4.35842C11.0491 4.42837 10.9794 4.51429 10.9282 4.61125C10.8771 4.7082 10.8456 4.81429 10.8355 4.92344C10.8255 5.03259 10.8371 5.14265 10.8696 5.24732C10.9021 5.35199 10.955 5.44921 11.0252 5.53342L14.0502 9.16675H4.16683C3.94582 9.16675 3.73385 9.25455 3.57757 9.41083C3.42129 9.56711 3.3335 9.77907 3.3335 10.0001C3.3335 10.2211 3.42129 10.4331 3.57757 10.5893C3.73385 10.7456 3.94582 10.8334 4.16683 10.8334Z" fill="#181A18" />
+                </svg>
+            </a>
+            <a href="">
+                <p>East London Aaprtments</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4.16683 10.8334H14.0502L11.0252 14.4668C10.9551 14.551 10.9024 14.6482 10.8699 14.7529C10.8374 14.8576 10.8259 14.9676 10.836 15.0767C10.8563 15.297 10.9633 15.5003 11.1335 15.6418C11.3037 15.7832 11.5231 15.8513 11.7434 15.8309C11.9638 15.8106 12.167 15.7036 12.3085 15.5334L16.4752 10.5334C16.5032 10.4936 16.5283 10.4519 16.5502 10.4084C16.5502 10.3668 16.5918 10.3418 16.6085 10.3001C16.6463 10.2045 16.666 10.1028 16.6668 10.0001C16.666 9.89734 16.6463 9.79563 16.6085 9.70008C16.6085 9.65842 16.5668 9.63342 16.5502 9.59175C16.5283 9.5483 16.5032 9.50652 16.4752 9.46675L12.3085 4.46675C12.2301 4.37268 12.132 4.29703 12.0211 4.24518C11.9102 4.19333 11.7893 4.16655 11.6668 4.16675C11.4721 4.16637 11.2834 4.23418 11.1335 4.35842C11.0491 4.42837 10.9794 4.51429 10.9282 4.61125C10.8771 4.7082 10.8456 4.81429 10.8355 4.92344C10.8255 5.03259 10.8371 5.14265 10.8696 5.24732C10.9021 5.35199 10.955 5.44921 11.0252 5.53342L14.0502 9.16675H4.16683C3.94582 9.16675 3.73385 9.25455 3.57757 9.41083C3.42129 9.56711 3.3335 9.77907 3.3335 10.0001C3.3335 10.2211 3.42129 10.4331 3.57757 10.5893C3.73385 10.7456 3.94582 10.8334 4.16683 10.8334Z" fill="#181A18" />
+                </svg>
+            </a>
+        </div>
+
+        <div class="link-block">
+            <a href="">
+                <p>Suitable for Families or Groups</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4.16683 10.8334H14.0502L11.0252 14.4668C10.9551 14.551 10.9024 14.6482 10.8699 14.7529C10.8374 14.8576 10.8259 14.9676 10.836 15.0767C10.8563 15.297 10.9633 15.5003 11.1335 15.6418C11.3037 15.7832 11.5231 15.8513 11.7434 15.8309C11.9638 15.8106 12.167 15.7036 12.3085 15.5334L16.4752 10.5334C16.5032 10.4936 16.5283 10.4519 16.5502 10.4084C16.5502 10.3668 16.5918 10.3418 16.6085 10.3001C16.6463 10.2045 16.666 10.1028 16.6668 10.0001C16.666 9.89734 16.6463 9.79563 16.6085 9.70008C16.6085 9.65842 16.5668 9.63342 16.5502 9.59175C16.5283 9.5483 16.5032 9.50652 16.4752 9.46675L12.3085 4.46675C12.2301 4.37268 12.132 4.29703 12.0211 4.24518C11.9102 4.19333 11.7893 4.16655 11.6668 4.16675C11.4721 4.16637 11.2834 4.23418 11.1335 4.35842C11.0491 4.42837 10.9794 4.51429 10.9282 4.61125C10.8771 4.7082 10.8456 4.81429 10.8355 4.92344C10.8255 5.03259 10.8371 5.14265 10.8696 5.24732C10.9021 5.35199 10.955 5.44921 11.0252 5.53342L14.0502 9.16675H4.16683C3.94582 9.16675 3.73385 9.25455 3.57757 9.41083C3.42129 9.56711 3.3335 9.77907 3.3335 10.0001C3.3335 10.2211 3.42129 10.4331 3.57757 10.5893C3.73385 10.7456 3.94582 10.8334 4.16683 10.8334Z" fill="#181A18" />
+                </svg>
+            </a>
+            <a href="">
+                <p>Apartments with Parking</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4.16683 10.8334H14.0502L11.0252 14.4668C10.9551 14.551 10.9024 14.6482 10.8699 14.7529C10.8374 14.8576 10.8259 14.9676 10.836 15.0767C10.8563 15.297 10.9633 15.5003 11.1335 15.6418C11.3037 15.7832 11.5231 15.8513 11.7434 15.8309C11.9638 15.8106 12.167 15.7036 12.3085 15.5334L16.4752 10.5334C16.5032 10.4936 16.5283 10.4519 16.5502 10.4084C16.5502 10.3668 16.5918 10.3418 16.6085 10.3001C16.6463 10.2045 16.666 10.1028 16.6668 10.0001C16.666 9.89734 16.6463 9.79563 16.6085 9.70008C16.6085 9.65842 16.5668 9.63342 16.5502 9.59175C16.5283 9.5483 16.5032 9.50652 16.4752 9.46675L12.3085 4.46675C12.2301 4.37268 12.132 4.29703 12.0211 4.24518C11.9102 4.19333 11.7893 4.16655 11.6668 4.16675C11.4721 4.16637 11.2834 4.23418 11.1335 4.35842C11.0491 4.42837 10.9794 4.51429 10.9282 4.61125C10.8771 4.7082 10.8456 4.81429 10.8355 4.92344C10.8255 5.03259 10.8371 5.14265 10.8696 5.24732C10.9021 5.35199 10.955 5.44921 11.0252 5.53342L14.0502 9.16675H4.16683C3.94582 9.16675 3.73385 9.25455 3.57757 9.41083C3.42129 9.56711 3.3335 9.77907 3.3335 10.0001C3.3335 10.2211 3.42129 10.4331 3.57757 10.5893C3.73385 10.7456 3.94582 10.8334 4.16683 10.8334Z" fill="#181A18" />
+                </svg>
+            </a>
+            <a href="">
+                <p>Apartments with Elevator</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4.16683 10.8334H14.0502L11.0252 14.4668C10.9551 14.551 10.9024 14.6482 10.8699 14.7529C10.8374 14.8576 10.8259 14.9676 10.836 15.0767C10.8563 15.297 10.9633 15.5003 11.1335 15.6418C11.3037 15.7832 11.5231 15.8513 11.7434 15.8309C11.9638 15.8106 12.167 15.7036 12.3085 15.5334L16.4752 10.5334C16.5032 10.4936 16.5283 10.4519 16.5502 10.4084C16.5502 10.3668 16.5918 10.3418 16.6085 10.3001C16.6463 10.2045 16.666 10.1028 16.6668 10.0001C16.666 9.89734 16.6463 9.79563 16.6085 9.70008C16.6085 9.65842 16.5668 9.63342 16.5502 9.59175C16.5283 9.5483 16.5032 9.50652 16.4752 9.46675L12.3085 4.46675C12.2301 4.37268 12.132 4.29703 12.0211 4.24518C11.9102 4.19333 11.7893 4.16655 11.6668 4.16675C11.4721 4.16637 11.2834 4.23418 11.1335 4.35842C11.0491 4.42837 10.9794 4.51429 10.9282 4.61125C10.8771 4.7082 10.8456 4.81429 10.8355 4.92344C10.8255 5.03259 10.8371 5.14265 10.8696 5.24732C10.9021 5.35199 10.955 5.44921 11.0252 5.53342L14.0502 9.16675H4.16683C3.94582 9.16675 3.73385 9.25455 3.57757 9.41083C3.42129 9.56711 3.3335 9.77907 3.3335 10.0001C3.3335 10.2211 3.42129 10.4331 3.57757 10.5893C3.73385 10.7456 3.94582 10.8334 4.16683 10.8334Z" fill="#181A18" />
+                </svg>
+            </a>
+            <a href="">
+                <p>Apartments suitable for physical disabilities</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4.16683 10.8334H14.0502L11.0252 14.4668C10.9551 14.551 10.9024 14.6482 10.8699 14.7529C10.8374 14.8576 10.8259 14.9676 10.836 15.0767C10.8563 15.297 10.9633 15.5003 11.1335 15.6418C11.3037 15.7832 11.5231 15.8513 11.7434 15.8309C11.9638 15.8106 12.167 15.7036 12.3085 15.5334L16.4752 10.5334C16.5032 10.4936 16.5283 10.4519 16.5502 10.4084C16.5502 10.3668 16.5918 10.3418 16.6085 10.3001C16.6463 10.2045 16.666 10.1028 16.6668 10.0001C16.666 9.89734 16.6463 9.79563 16.6085 9.70008C16.6085 9.65842 16.5668 9.63342 16.5502 9.59175C16.5283 9.5483 16.5032 9.50652 16.4752 9.46675L12.3085 4.46675C12.2301 4.37268 12.132 4.29703 12.0211 4.24518C11.9102 4.19333 11.7893 4.16655 11.6668 4.16675C11.4721 4.16637 11.2834 4.23418 11.1335 4.35842C11.0491 4.42837 10.9794 4.51429 10.9282 4.61125C10.8771 4.7082 10.8456 4.81429 10.8355 4.92344C10.8255 5.03259 10.8371 5.14265 10.8696 5.24732C10.9021 5.35199 10.955 5.44921 11.0252 5.53342L14.0502 9.16675H4.16683C3.94582 9.16675 3.73385 9.25455 3.57757 9.41083C3.42129 9.56711 3.3335 9.77907 3.3335 10.0001C3.3335 10.2211 3.42129 10.4331 3.57757 10.5893C3.73385 10.7456 3.94582 10.8334 4.16683 10.8334Z" fill="#181A18" />
+                </svg>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- call to action (cta) -->
+<div class="cta-container">
+    <div class="background">
+        <div class="cta-content-container">
+            <div class="text-container">
+                <h2>Dictum nunc</h2>
+                <p>Vel mattis integer pulvinar morbi quis amet eu. In nunc facilisis proin fermentum, consectetur cursus.</p>
+            </div>
+
+            <div class="dropdown-city">
+                <button class="dropbtn">Choose city <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M10 14.1667C9.78725 14.1657 9.57742 14.1173 9.38571 14.025C9.19401 13.9328 9.02524 13.799 8.89166 13.6334L5.38333 9.38341C5.17833 9.12755 5.04932 8.81925 5.01101 8.49364C4.9727 8.16803 5.02664 7.8382 5.16666 7.54175C5.28023 7.2841 5.46556 7.06459 5.70051 6.90943C5.93547 6.75427 6.21012 6.67003 6.49166 6.66675H13.5083C13.7899 6.67003 14.0645 6.75427 14.2995 6.90943C14.5344 7.06459 14.7198 7.2841 14.8333 7.54175C14.9734 7.8382 15.0273 8.16803 14.989 8.49364C14.9507 8.81925 14.8217 9.12755 14.6167 9.38341L11.1083 13.6334C10.9747 13.799 10.806 13.9328 10.6143 14.025C10.4226 14.1173 10.2127 14.1657 10 14.1667Z" fill="white" />
+                    </svg></button>
+                <div class="dropdown-content">
+                    <a href="#">City 1</a>
+                    <a href="#">City 2</a>
+                    <a href="#">City 3</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 
 

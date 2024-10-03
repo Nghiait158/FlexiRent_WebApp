@@ -16,6 +16,11 @@ Route::get('/HomePage', function () {
 Route::get('/Landlord', function () {
     return view('Landlords');
 });
+
+Route::get('/Blog', function () {
+    return view('Blog');
+});
+
 // Route::get('/PropertyDetails', function () {
 //     return view('PropertyDetails');
 // });

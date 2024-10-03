@@ -1,2 +1,2 @@
 
-# HomeUp_WebApp
+# FlexiRent WebApp

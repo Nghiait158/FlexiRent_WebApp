@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="{{('/Frontend/css/Homepage.css')}}" />
     <link rel="stylesheet" href="{{('/Frontend/css/Landlords.css')}}" />
     <link rel="stylesheet" href="{{('/Frontend/css/PropertyDetails.css')}}" />
+    <link rel="stylesheet" href="{{('/Frontend/css/Blog.css')}}" />
     <link rel="icon" type="image/x-icon" href="{{('/Frontend/Image/favicon/FlexiRent.png')}}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /> -->
+    <link rel="stylesheet" href="\Frontend\css\swiper-bundle.min.css">
     {{-- Boostrapp --}}
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> --}}
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> --}}
@@ -33,7 +33,7 @@
                     <ul>
                         <li><a href="{{URL::to('/HomePage')}}">Home</a></li>
                         <li><a href="{{URL::to('/Landlord')}}">Manage Rental</a></li>
-                        <li><a href="{{URL::to('/HomePage')}}">Blog</a></li>
+                        <li><a href="{{URL::to('/Blog')}}">Blog</a></li>
                         <li><a href="{{URL::to('/HomePage')}}">Contacts</a></li>
                     </ul>
                 </nav>

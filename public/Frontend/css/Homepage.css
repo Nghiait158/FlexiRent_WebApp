@@ -739,7 +739,7 @@ body {
 .thumbnail {
     position: absolute;
     bottom: 50px;
-    left: 50%;
+    left: 55%;
     width: max-content;
     z-index: 100;
     display: flex;
@@ -988,7 +988,7 @@ body {
 
 .partner-container {
     width: 100%;
-    height: 700px;
+    height: 590px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1067,7 +1067,7 @@ body {
     flex-shrink: 0;
     border-radius: 80px;
     margin-right: 10px;
-    object-fit:cover;
+    object-fit: cover;
 }
 
 
@@ -1113,4 +1113,348 @@ body {
 .partner-container .swiper {
     margin-left: auto;
     margin-right: auto;
+}
+
+
+.blog-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 826px;
+    gap: 60px;
+}
+
+
+.blog-container .swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+
+
+.blog-container .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 413px;
+    height: 544px;
+    padding-bottom: 60px;
+    gap: 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 60px;
+    background: var(--BG, #F2F0F2);
+    text-decoration: none;
+    color: var(--Text, #181A18);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.blog-container .swiper-slide:hover {
+    transform: scale(1.05);
+    /* Slightly increase size on hover */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    /* Add shadow on hover */
+}
+
+/* Click (active) effect */
+.blog-container .swiper-slide:active {
+    transform: scale(0.95);
+    /* Slightly decrease size when clicked */
+    box-shadow: none;
+    /* Remove shadow when clicked */
+}
+
+.blog-container .swiper-slide .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.blog-container .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 300px;
+    border-radius: 60px 60px 0px 0px;
+
+}
+
+.blog-container .swiper-slide .text .slide-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 0 24px;
+}
+
+
+.blog-container .swiper-slide .slide-content h2,
+.blog-container .swiper-slide .slide-content p {
+    font-family: "Lato";
+    font-style: normal;
+    text-align: left;
+    text-decoration: none;
+}
+
+.blog-container .swiper-slide .slide-content h2 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 44px;
+}
+
+.blog-container .swiper-slide .slide-content p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.blog-container .swiper-slide .time-to-read {
+    display: flex;
+    padding: 0px 32px;
+    align-items: center;
+    gap: 12px;
+}
+
+.blog-container .swiper-slide .time-to-read svg {
+    width: 24px;
+    height: 24px;
+}
+
+.blog-container .swiper-slide .time-to-read p {
+    color: var(--Text, #181A18);
+    text-align: center;
+    /* Desktop/H4 */
+    font-family: "Lato";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    /* 133.333% */
+}
+
+.blog-container .readBtn {
+    text-align: center;
+    justify-content: center;
+    padding: 12px 40px;
+    border-radius: 40px;
+    background: var(--Green, #064749);
+    color: var(--White, #FFF);
+    text-decoration: none;
+    /* Desktop/Subtitle bold */
+    font-family: "Lato";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    /* 133.333% */
+}
+
+.blog-container .readBtn:hover {
+    background-color: #046e6f;
+    /* Change background color on hover */
+    color: #ffffff;
+    /* Ensure text color stays white */
+    transform: scale(1.05);
+    /* Slightly increase size on hover */
+}
+
+/* Click (active) effect */
+.blog-container .readBtn:active {
+    background-color: #032f30;
+    /* Darker shade when clicked */
+    transform: scale(0.95);
+    /* Slightly decrease size when clicked */
+}
+
+.link-container {
+    width: 100%;
+    padding: 140px 80px;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 60px
+}
+
+.link-container h1 {
+    width: 100%;
+    max-width: 847px;
+    text-align: center;
+}
+
+.link-container .link-block-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 160px;
+    width: 100%;
+    max-width: 1280px;
+}
+
+.link-container .link-block-container .link-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.link-container .link-block-container .link-block a {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    text-decoration: none;
+    gap: 12px;
+}
+
+.link-container .link-block-container .link-block a p {
+    color: var(--Green, #064749);
+    font-family: "Lato";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    /* 133.333% */
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.link-container .link-block-container .link-block a p:hover {
+    color: #04957a;
+    text-decoration: none;
+}
+
+
+.link-container .link-block-container .link-block a p:active {
+    color: #03634e;
+    transform: scale(0.98);
+}
+
+
+.link-container .link-block-container .link-block a svg {
+    width: 20px;
+    height: 20px;
+}
+
+
+.link-container .link-block-container .link-block a svg:hover {
+    fill: #04957a;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+
+.link-container .link-block-container .link-block a svg:active {
+    fill: #03634e;
+    transform: scale(0.95);
+}
+
+.cta-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 80px 140px;
+    justify-content: center;
+}
+
+.cta-container .background {
+    width: 100%;
+    max-width: 1440px;
+    height: 604px;
+    flex-shrink: 0;
+    position: relative;
+    background: url(https://s3-alpha-sig.figma.com/img/919c/2e15/ce01e43da547e4789055532ee2683c93?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=i5361alOe5gsZFGUUZM2kOmNWgoPSR4za6Zaqt3NuBm5Z4IeqM8jSnssR1FjOeawoh7N1JQKqBbvOMzZaRXxgCNtIR6PVoiht5q5pBmIyrigIOETAbG~CKyJD6ZEta-ZGLcakxOZ8emCtudtPNeLjNLVYCMwucBV9WkeRaV-OCB50sKkDfk0z~t0ePKV2QW8pj8LsjJvmaMvZ-n0GkhHHYTjDoKJrj6sMyA4uIr7JoltWKi1077y5vHvnwZdvYqdgA-brA238dlPabGX8vtUnnIckVv1Ffg4gnGH95sQImrvcHh4OrmDHDB-t1pXwnkf1GUQ75Xfp-19BBUekU95ug__) lightgray -124px -219.397px / 108.611% 172.648% no-repeat;
+}
+
+.cta-container .background .cta-content-container {
+    display: flex;
+    width: 493px;
+    padding: 60px 80px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    border-radius: 60px 60px 60px 12px;
+    background: var(--White, #FFF);
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cta-container .background .cta-content-container .dropdown-city {
+    position: relative;
+    width: 100%;
+    max-width: 325px;
+}
+
+.cta-container .background .cta-content-container .dropdown-city .dropbtn {
+    border-radius: 40px;
+    background: var(--Green, #064749);
+    display: flex;
+    width: 100%;
+    padding: 12px 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+    cursor: pointer;
+    align-items: center;
+    font-size: 16px;
+    color: var(--White, #FFF);
+    border: none;
+    /* Desktop/Subtitle bold */
+    font-family: Lato;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    /* 133.333% */
+}
+
+.cta-container .background .cta-content-container .dropdown-city .dropbtn svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.cta-container .background .cta-content-container .dropdown-city .dropdown-content {
+    background-color: #fff;
+    position: absolute;
+    top: 100%;
+    /* Position just below the button */
+    left: 0;
+    min-width: 325px;
+    /* Match the button width */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    display: none;
+    /* Hidden by default */
+    z-index: 4;
+}
+
+.cta-container .background .cta-content-container .dropdown-city .dropdown-content a {
+    display: block;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.cta-container .background .cta-content-container .dropdown-city .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.cta-container .background .cta-content-container .dropdown-city:hover .dropdown-content {
+    display: block;
 }
