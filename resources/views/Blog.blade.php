@@ -17,6 +17,7 @@
     link.href = '/Frontend/css/Blog.css'; // Your CSS file path
     // Append it to the head
     document.head.appendChild(link);
+
 </script>
 
 
@@ -208,6 +209,8 @@
         <span>Load more</span>
     </div>
 </div>
+
+<script src="\Frontend\js\Blog.js"></script>
 
 
 <div class="blog-container">
