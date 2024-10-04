@@ -6,6 +6,16 @@ footer {
     font-family: 'Molle';
     src: url(Font-family/Molle/Molle-Regular.ttf);
 }
+
+
+@font-face {
+    font-family: "Lato";
+    src: url('../Font-family/Lato/Lato-Regular.ttf');
+}
+
+body{
+    font-family: "Lato";
+}
 .footerLogo{
     text-align: center;
     font-family: "Molle";

@@ -6,10 +6,18 @@
     var link = document.createElement('link');
     link.rel = 'stylesheet';
     link.type = 'text/css';
+    link.href = '/Frontend/css/Homepage.css'; // Your CSS file path
+    // Append it to the head
+    document.head.appendChild(link);
+
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
     link.href = '/Frontend/css/swiper-bundle.min.home.css'; // Your CSS file path
     // Append it to the head
     document.head.appendChild(link);
 </script>
+
 <div class="intro-video">
     <video autoplay loop muted>
         <source src="{{ ('/Frontend/Video/intro-video.mp4') }}" type="video/mp4">

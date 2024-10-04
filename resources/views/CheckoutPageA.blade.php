@@ -6,7 +6,7 @@
     var link = document.createElement('link');
     link.rel = 'stylesheet';
     link.type = 'text/css';
-    // link.href = '/Frontend/css/swiper-bundle.min.blogPage.css'; // Your CSS file path
+    link.href = 'Frontend/css/checkoutPageA.css'; // Your CSS file path
     // Append it to the head
     document.head.appendChild(link);
 </script>

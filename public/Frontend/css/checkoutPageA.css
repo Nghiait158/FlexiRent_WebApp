@@ -4,11 +4,6 @@
     box-sizing: border-box;
 }
 
-@font-face {
-    font-family: "Lato";
-    src: url('../Font-family/Lato/Lato-Regular.ttf');
-}
-
 
 body {
     padding-top: 83px;
@@ -17,7 +12,6 @@ body {
 main {
     display: flex;
     justify-content: center;
-
     padding-top: 60px;
     padding-bottom: 140px;
 }

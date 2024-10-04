@@ -2,7 +2,6 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-
 }
 
 
@@ -84,7 +83,7 @@ body {
     justify-content: center;
 }
 
-.picture-container .picture-content{
+.picture-container .picture-content {
     width: 100%;
     min-width: 800px;
     position: relative;
@@ -309,6 +308,7 @@ body {
     align-items: center;
     height: 826px;
     gap: 60px;
+    padding-bottom: 140px;
 }
 
 
@@ -424,39 +424,4 @@ body {
     font-weight: 700;
     line-height: 32px;
     /* 133.333% */
-}
-
-.blog-container .readBtn {
-    text-align: center;
-    justify-content: center;
-    padding: 12px 40px;
-    border-radius: 40px;
-    background: var(--Green, #064749);
-    color: var(--White, #FFF);
-    text-decoration: none;
-    /* Desktop/Subtitle bold */
-    font-family: "Lato";
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    /* 133.333% */
-}
-
-.blog-container .readBtn:hover {
-    background-color: #046e6f;
-    /* Change background color on hover */
-    color: #ffffff;
-    /* Ensure text color stays white */
-    transform: scale(1.05);
-    /* Slightly increase size on hover */
-}
-
-/* Click (active) effect */
-.blog-container .readBtn:active {
-    background-color: #032f30;
-    /* Darker shade when clicked */
-    transform: scale(0.95);
-    /* Slightly decrease size when clicked */
 }

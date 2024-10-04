@@ -9,12 +9,21 @@
     link.href = '/Frontend/css/swiper-bundle.min.blogPage.css'; // Your CSS file path
     // Append it to the head
     document.head.appendChild(link);
+
+    // Create a link element
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '/Frontend/css/Blog.css'; // Your CSS file path
+    // Append it to the head
+    document.head.appendChild(link);
 </script>
 
 
 <div class="blog-title-container">
     <p>Flex Living
         Insights</p>
+
 </div>
 
 <div class="nav-container">
@@ -405,7 +414,6 @@
     <script src="\Frontend\js\blogBlogSlider.js"></script>
 
 
-    <a class="readBtn" href="">Read more</a>
 </div>
 
 
