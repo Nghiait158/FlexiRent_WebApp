@@ -1,9 +1,10 @@
+
 @extends('Layout/header_footer')
 @section('content')
 
-    <!-- Form và image -->
-    <div class="container2">
-        <img src="{{ ('/Frontend/Image/Landlords/business.png') }}" alt="Background Image" class="background-image">
+            <!-- Form và image -->
+            <div class="container2">
+        <img src="\Frontend\Image\Landlords\business.png" alt="Background Image" class="background-image">
 
         <!-- Form Container -->
         <div class="form-container">
@@ -90,7 +91,7 @@
             </div>
         </div>
     </div>
-    
+
     <!--Timeline, how it works-->
     <div class="how-it-works">
         <h1>How it Works</h1>
@@ -156,6 +157,7 @@
     </div>
 
 
+    
     <!--Corporate Partnerships-->
     <div class="corporate">
         <div class="container">
@@ -165,11 +167,11 @@
             </div>
             <div class="image-gallery">
                 <div class="image-wrapper">
-                    <img src="{{ ('/Frontend/Image/Landlords/bedroom-before.png') }}" alt="Before" />
+                    <img src="\Frontend\Image\Landlords\bedroom-before.png" alt="Before" />
                     <div class="label">Before</div>
                 </div>
                 <div class="image-wrapper">
-                    <img src="{{ ('/Frontend/Image/Landlords/bedroom-after.png') }}" alt="After" />
+                    <img src="\Frontend\Image\Landlords\bedroom-after.png" alt="After" />
                     <div class="label">After</div>
                 </div>
             </div>
@@ -247,6 +249,5 @@
             </div>
         </div>
     </div>
-
-
-@endsection 
+    
+@endsection

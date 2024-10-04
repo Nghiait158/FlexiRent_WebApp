@@ -1,6 +1,6 @@
 @font-face {
-    font-family: "Lato-Regular";
-    src: url('/Frontend/Font-family/Lato/Lato-Regular.ttf');
+    font-family: "Lato";
+    src: url('../Font-family/Lato/Lato-Regular.ttf');
 }
 .mainBooking{
     margin-top: 20px;
@@ -40,7 +40,7 @@
     color: var(--Text, #181A18);
 
     /* Desktop/Subtitle bold */
-    font-family: "Lato-Regular";
+    font-family: "Lato";
     font-style: italic;
     font-size: 18px;
     font-style: normal;
@@ -59,7 +59,7 @@
 .buttonSearch p{
     color: var(--White, #FFF);
     /* Desktop/Subtitle bold */
-    font-family: "Lato-Regular";
+    font-family: "Lato";
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -76,7 +76,7 @@
 }
 .moreFilter {
     position: fixed;
-    width: 212px;
+    width: 214px;
     padding: 0 20px;
     justify-content: space-between;
     align-items: flex-start;
@@ -97,7 +97,7 @@
 
 .moreFilter p {
     color: var(--White, #FFF);
-    font-family: "Lato-Regular";
+    font-family: "Lato";
     font-size: 18px;
     font-weight: 700;
 }
@@ -149,6 +149,17 @@
     gap: 20px;
 
 }
+
+.chosenOptions > div p{ 
+    color: var(--Text, #181A18);
+
+    /* Desktop/Subtitle */
+    font-family: "Lato";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 133.333% */
+}
 .sortBy {
     display: flex; 
     align-items: center;
@@ -161,7 +172,7 @@
 .sortBy p{
     color: var(--Text, #181A18);
     /* Desktop/Subtitle bold */
-    font-family: "Lato-Regular";
+    font-family: "Lato";
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -178,7 +189,7 @@
     color: #49735A;
 
     /* Desktop/Subtitle bold */
-    font-family: "Lato-Regular";
+    font-family: "Lato";
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -216,7 +227,7 @@
     color: #49735A;
 
     /* Desktop/Subtitle bold */
-    font-family: "Lato-Regular";
+    font-family: "Lato";
     font-size: 18px;
     font-style: normal;
     font-weight: 600;
@@ -257,12 +268,19 @@
 
 /* Map */
 .GGmap{
+    margin-left: 50px;
     margin-top: 20px;
     width: 400px;
     height: 500px;
-    background-color: #4329c7;
+    /* background-color: #4329c7; */
     position: sticky;
     top: 100px; /* Giữ GGmap dính cố định khi cuộn */
+    border-radius: 10px;
+}
+.GGmap iframe {
+    width: 100%;  /* Make iframe take full width of the parent */
+    height: 100%; /* Make iframe take full height of the parent */
+    border: 0;    /* Remove default border */
 }
 
 .listProperties .showResult .propertyShow {
@@ -282,6 +300,7 @@
     object-fit: cover; 
 }
 .listProperties .showResult .propertyShow .propertyContent {
+    margin-left: 20px;
     width: 417px; 
     height: 188px; 
     /* background-color: #064749; */
@@ -289,11 +308,11 @@
 .listProperties .showResult .propertyShow .propertyContent p {
     width: 353px;
     height: 48px;
-    margin: 20px  0 0 20px;
+    margin: 20px  0 0;
     color: var(--Text, #181A18);
 
     /* Desktop/Subtitle bold */
-    font-family: "Lato-Regular";
+    font-family: "Lato";
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -301,7 +320,7 @@
 }
 
 .listProperties .showResult .propertyShow .propertyContent .utilitiesList { 
-    margin: 14px 0 0 20px;
+    margin: 14px 0 0 0;
     display: flex;
 }
 .listProperties .showResult .propertyShow .propertyContent .utilitiesList > div { 
@@ -309,7 +328,7 @@
     color: var(--Text, #181A18);
 
 /* Desktop/Description */
-    font-family: "Lato-Regular";
+    font-family: "Lato";
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -320,12 +339,142 @@
 }
 
 .listProperties .showResult .propertyShow .propertyContent .advantagesProperty{
+    margin-top: 12px;
     color: var(--Text, #181A18);
 
     /* Desktop/Description */
-    font-family:"Lato-Regular";
+    font-family: "Lato";
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 16px; /* 114.286% */
+}
+
+
+
+.listProperties .showResult .propertyShow .propertyContent .AvailableIn{
+    /* margin-top: 14px; */
+    margin-top: 0;
+    /* width: 200px; */
+    /* height: 28px; */
+    height: auto;
+    width: auto;
+    display: flex;
+    padding: 4px 20px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 30px;
+    background: #49735A;
+
+    color: var(--White, #FFF);
+    font-family: "Lato";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+
+}
+
+.propertyContent .lastLine-propertyContent{
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    /* justify-content: space-between; */
+    gap: 12px;
+}
+
+.listProperties .pricePerMonth{
+
+    height: auto;
+    width: auto;
+    margin-left: 12px;
+    color: var(--Text, #181A18);
+    font-family: "Lato";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.ShowMore{
+    width: auto;
+    height: auto;
+    /* display: flex; */
+    padding: 12px 40px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 40px;
+    background: var(--Green, #064749);
+
+        color: var(--White, #FFF);
+
+    /* Desktop/Subtitle bold */
+    font-family: "Lato";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 133.333% */
+}
+
+
+.bottomContent{
+    margin:150px 0 0 250px;
+    width: 1280px;
+}
+.bottomContent h3 {
+    color: var(--Text, #181A18);
+
+    /* Desktop/H3 */
+    font-family: "Lato";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 44px; /* 122.222% */
+}
+.bottomContent .contentDropDown1 h4{
+        color: var(--Text, #181A18);
+
+    /* Desktop/H4 */
+    font-family: "Lato";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px; /* 133.333% */
+}
+.bottomContent p{
+    margin-top: 20px;
+    color: var(--Text, #181A18);
+
+    /* Desktop/Text regular */
+    font-family: "Lato";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 125% */
+}
+
+.bottomContent .contentDropDown1 {
+    margin-top: 20px;
+    width: 1280px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* gap: 40px; */
+    align-self: stretch;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Đặt không gian giữa h4 và SVG */
+    align-items: center; /* Căn chỉnh theo chiều dọc */
+    width: 100%; /* Đảm bảo chiều rộng 100% */
+}
+
+.header-container h4 {
+    margin: 0; /* Bỏ margin để căn chỉnh tốt hơn */
+    cursor: pointer; 
+}
+.svg-close, .svg-open {
+    cursor: pointer; /* Con trỏ thay đổi khi hover vào SVG */
 }

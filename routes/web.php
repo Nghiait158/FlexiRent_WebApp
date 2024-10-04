@@ -1,18 +1,37 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookingPageController;
+use App\Http\Controllers\PropertyDetailsPageController;
 
-Route::get('/bookingPage', function () {
-    return view('bookingPage');
-});
-
-
+use App\Http\Controllers\MapController;
+// --------FrontEnd-------------------------
 Route::get('/', function () {
     return view('Homepage');
 });
 Route::get('/HomePage', function () {
     return view('Homepage');
 });
+
+Route::get('/Landlord', function () {
+    return view('Landlords');
+});
+
+Route::get('/Blog', function () {
+    return view('Blog');
+});
+
+// Route::get('/PropertyDetails', function () {
+//     return view('PropertyDetails');
+// });
+Route::get('/CheckoutPage', function () {
+    return view('CheckoutPage');
+});
+
+// Route::get('/map', [MapController::class, 'generateMapIframe']);
+
+Route::get('/bookingPage', [BookingPageController::class, 'showMap']);
+Route::get('/PropertyDetails', [PropertyDetailsPageController::class, 'showMap']);
 
 
 
