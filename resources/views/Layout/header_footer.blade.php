@@ -59,7 +59,7 @@
             <!-- Logo and Contact Info -->
             <div>
                 <a href="/" target="_blank" rel="noopener noreferrer" class="footerLogo">FlexiRent</a>
-                <p>Contact number: +84 77889999</p>
+                <p style="margin-top: 26px;">Contact number: +84 77889999</p>
                 <div class="social-icons">
                     <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path d="M15.1508 8.39994C14.3843 8.39731 13.6249 8.54583 12.9159 8.83701C12.2069 9.12819 11.5623 9.55632 11.019 10.0969C10.4756 10.6375 10.0442 11.2799 9.74934 11.9873C9.45452 12.6948 9.30209 13.4535 9.30078 14.2199V20.0999C9.30078 20.3386 9.3956 20.5676 9.56439 20.7363C9.73317 20.9051 9.96209 20.9999 10.2008 20.9999H12.3008C12.5395 20.9999 12.7684 20.9051 12.9372 20.7363C13.106 20.5676 13.2008 20.3386 13.2008 20.0999V14.2199C13.2006 13.9473 13.2578 13.6778 13.3688 13.4288C13.4798 13.1798 13.642 12.957 13.8448 12.7749C14.0477 12.5928 14.2867 12.4555 14.5461 12.3719C14.8056 12.2884 15.0798 12.2604 15.3508 12.2899C15.8368 12.3512 16.2834 12.5886 16.606 12.9572C16.9286 13.3259 17.1046 13.8001 17.1008 14.2899V20.0999C17.1008 20.3386 17.1956 20.5676 17.3644 20.7363C17.5332 20.9051 17.7621 20.9999 18.0008 20.9999H20.1008C20.3395 20.9999 20.5684 20.9051 20.7372 20.7363C20.906 20.5676 21.0008 20.3386 21.0008 20.0999V14.2199C20.9995 13.4535 20.847 12.6948 20.5522 11.9873C20.2574 11.2799 19.826 10.6375 19.2826 10.0969C18.7393 9.55632 18.0946 9.12819 17.3857 8.83701C16.6767 8.54583 15.9172 8.39731 15.1508 8.39994Z" fill="#064749"/>
@@ -110,8 +110,10 @@
 
             <!-- Subscribe -->
             <div class ="stayup-section">
-                <h4>Stay up to date</h4>
-                <p>Be the first to know about our newest apartments</p>
+                <div class ="textField">
+                    <h4>Stay up to date</h4>
+                    <p>Be the first to know about our newest apartments</p>
+                </div>
                 <form>
                     <input type="email" placeholder="Email address">
                     <button type="submit" style="margin-top: 18px;">Subscribe</button>
