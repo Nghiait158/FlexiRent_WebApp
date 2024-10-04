@@ -6,6 +6,16 @@ footer {
     font-family: 'Molle';
     src: url(Font-family/Molle/Molle-Regular.ttf);
 }
+
+
+@font-face {
+    font-family: "Lato";
+    src: url('../Font-family/Lato/Lato-Regular.ttf');
+}
+
+body{
+    font-family: "Lato";
+}
 .footerLogo{
     text-align: center;
     font-family: "Molle";
@@ -15,6 +25,7 @@ footer {
     line-height: 66.67%;
     color: #000;
     text-decoration: none;
+    margin-bottom: 26px;
 }
 footer .containerFooter {
     max-width: 1480px;
@@ -40,6 +51,8 @@ footer .social-icons {
     display: flex;
     align-items: flex-start;
     gap: 12px;
+    margin-top: 20px;
+    margin-bottom: 12px;
 }
 
 .social-icons p {
@@ -111,6 +124,8 @@ footer .social-icons {
     align-self: stretch;
     border-radius: 12px;
     background: var(--BG, #F2F0F2);
+    margin-top: 20px;
+    margin-bottom: 20px;
     
 }
 
@@ -122,13 +137,25 @@ footer .social-icons {
     border-radius: 40px;
     background: var(--Green, #064749);
     color: var(--White, #FFF);
-
-    /* Desktop/Subtitle bold */
     font-family: Lato;
+    border: none    ;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
     line-height: 24px; /* 133.333% */
+    cursor: pointer;
+}
+
+.stayup-section button:hover {
+    background-color: #003f39;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    
+}
+
+.stayup-section button:active {
+    transform: scale(0.95);
 }
 
 .stayup-section h4{
@@ -148,4 +175,8 @@ footer .social-icons {
     font-style: normal;
     font-weight: 400;
     line-height: 24px; /* 133.333% */
+}
+
+.stayup-section .textField {
+    gap: 8px;
 }

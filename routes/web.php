@@ -21,11 +21,11 @@ Route::get('/Blog', function () {
     return view('Blog');
 });
 
-// Route::get('/PropertyDetails', function () {
-//     return view('PropertyDetails');
-// });
-Route::get('/CheckoutPage', function () {
-    return view('CheckoutPage');
+Route::get('/PropertyDetails', function () {
+    return view('PropertyDetails');
+});
+Route::get('/CheckoutPageA', function () {
+    return view('CheckoutPageA');
 });
 
 // Route::get('/map', [MapController::class, 'generateMapIframe']);

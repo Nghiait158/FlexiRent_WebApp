@@ -1,5 +1,23 @@
 @extends('Layout/header_footer')
 @section('content')
+
+<script>
+    // Create a link element
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '/Frontend/css/Homepage.css'; // Your CSS file path
+    // Append it to the head
+    document.head.appendChild(link);
+
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '/Frontend/css/swiper-bundle.min.home.css'; // Your CSS file path
+    // Append it to the head
+    document.head.appendChild(link);
+</script>
+
 <div class="intro-video">
     <video autoplay loop muted>
         <source src="{{ ('/Frontend/Video/intro-video.mp4') }}" type="video/mp4">
@@ -292,8 +310,8 @@
                     Known for its luxury real estate, Beverly Hills and its surrounding suburbs have many famous rental homes. These properties often feature sprawling lawns, large pools, and celebrity appeal.
                 </div>
                 <div class="buttons">
-                    <a href=""><button>RENT NOW</button></a>
-                    <a href=""><button>SEE MORE</button></a>
+                    <a href="{{URL::to('/CheckoutPageA')}}"><button>RENT NOW</button></a>
+                    <a href="{{URL::to('/PropertyDetails')}}"><button>SEE MORE</button></a>
                 </div>
             </div>
         </div>
@@ -307,8 +325,8 @@
                     Prime location with modern apartments with swimming pools, fitness centers, and 24/7 security.Landmark 81, the tallest building in Vietnam, is also part of the development, offering high-end retail and dining options, enhancing the luxurious lifestyle available at Vinhomes Central Park.
                 </div>
                 <div class="buttons">
-                    <a href=""><button>RENT NOW</button></a>
-                    <a href=""><button>SEE MORE</button></a>
+                    <a href="{{URL::to('/CheckoutPageA')}}"><button>RENT NOW</button></a>
+                    <a href="{{URL::to('/PropertyDetails')}}"><button>SEE MORE</button></a>
                 </div>
             </div>
         </div>
@@ -323,8 +341,8 @@
                     Malibu, California, is renowned for its luxurious beachfront rentals that offer stunning ocean views and private beach access. The area features a diverse range of properties, from modern villas to classic estates, catering to those seeking an upscale lifestyle. Residents and visitors enjoy proximity to beautiful beaches like Zuma Beach and El Matador State Beach, perfect for sunbathing and surfing. Many of these rentals boast upscale amenities, including infinity pools, outdoor entertainment spaces, and spa facilities, making Malibu an ideal destination for luxury living by the coast.
                 </div>
                 <div class="buttons">
-                    <a href=""><button>RENT NOW</button></a>
-                    <a href=""><button>SEE MORE</button></a>
+                    <a href="{{URL::to('/CheckoutPageA')}}"><button>RENT NOW</button></a>
+                    <a href="{{URL::to('/PropertyDetails')}}"><button>SEE MORE</button></a>
                 </div>
             </div>
         </div>
@@ -339,8 +357,8 @@
                     The Marais district in Paris, France, is a famous rental location known for its historic charm and vibrant atmosphere. Characterized by narrow streets, beautiful architecture, and trendy boutiques, it is home to attractions like the Picasso Museum and Hôtel de Ville. The area features lively cafes, bistros, and the Marché des Enfants Rouges, one of the oldest covered markets in Paris. Centrally located, the Marais offers easy access to iconic landmarks such as Notre-Dame Cathedral and the Louvre Museum, making it an ideal choice for those seeking an authentic Parisian experience.
                 </div>
                 <div class="buttons">
-                    <a href=""><button>RENT NOW</button></a>
-                    <a href=""><button>SEE MORE</button></a>
+                    <a href="{{URL::to('/CheckoutPageA')}}"><button>RENT NOW</button></a>
+                    <a href="{{URL::to('/PropertyDetails')}}"><button>SEE MORE</button></a>
                 </div>
             </div>
         </div>
@@ -399,7 +417,8 @@
     <div class="time"></div>
     <div class="arrows">
         <button id="prev">
-            << /button>
+            <
+                </button>
                 <button id="next">></button>
     </div>
 </div>
@@ -554,9 +573,7 @@
 
     </div>
 
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-pagination"></div>
+
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="\Frontend\js\commentSlider.js"></script>
@@ -757,7 +774,9 @@
                 </div>
             </a>
         </div>
-        <div class="swiper-scrollbar"></div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
     </div>
 
     <!-- Swiper JS -->

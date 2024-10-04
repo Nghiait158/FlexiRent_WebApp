@@ -2,6 +2,19 @@
 @extends('Layout/header_footer')
 @section('content')
 
+<script>
+    // Create a link element
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '/Frontend/css/Landlords.css'; // Your CSS file path
+    // Append it to the head
+    document.head.appendChild(link);
+
+
+</script>
+
+
             <!-- Form và image -->
             <div class="container2">
         <img src="\Frontend\Image\Landlords\business.png" alt="Background Image" class="background-image">
