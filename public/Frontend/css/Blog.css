@@ -300,3 +300,163 @@ body {
     font-size: 18px;
     font-weight: 700;
 }
+
+
+.blog-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 826px;
+    gap: 60px;
+}
+
+
+.blog-container .swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+
+
+.blog-container .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 413px;
+    height: 544px;
+    padding-bottom: 60px;
+    gap: 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 60px;
+    background: var(--BG, #F2F0F2);
+    text-decoration: none;
+    color: var(--Text, #181A18);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.blog-container .swiper-slide:hover {
+    transform: scale(1.05);
+    /* Slightly increase size on hover */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    /* Add shadow on hover */
+}
+
+/* Click (active) effect */
+.blog-container .swiper-slide:active {
+    transform: scale(0.95);
+    /* Slightly decrease size when clicked */
+    box-shadow: none;
+    /* Remove shadow when clicked */
+}
+
+.blog-container .swiper-slide .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.blog-container .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 300px;
+    border-radius: 60px 60px 0px 0px;
+
+}
+
+.blog-container .swiper-slide .text .slide-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 0 24px;
+}
+
+
+.blog-container .swiper-slide .slide-content h2,
+.blog-container .swiper-slide .slide-content p {
+    font-family: "Lato";
+    font-style: normal;
+    text-align: left;
+    text-decoration: none;
+}
+
+.blog-container .swiper-slide .slide-content h2 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 44px;
+}
+
+.blog-container .swiper-slide .slide-content p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.blog-container .swiper-slide .time-to-read {
+    display: flex;
+    padding: 0px 32px;
+    align-items: center;
+    gap: 12px;
+}
+
+.blog-container .swiper-slide .time-to-read svg {
+    width: 24px;
+    height: 24px;
+}
+
+.blog-container .swiper-slide .time-to-read p {
+    color: var(--Text, #181A18);
+    text-align: center;
+    /* Desktop/H4 */
+    font-family: "Lato";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    /* 133.333% */
+}
+
+.blog-container .readBtn {
+    text-align: center;
+    justify-content: center;
+    padding: 12px 40px;
+    border-radius: 40px;
+    background: var(--Green, #064749);
+    color: var(--White, #FFF);
+    text-decoration: none;
+    /* Desktop/Subtitle bold */
+    font-family: "Lato";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    /* 133.333% */
+}
+
+.blog-container .readBtn:hover {
+    background-color: #046e6f;
+    /* Change background color on hover */
+    color: #ffffff;
+    /* Ensure text color stays white */
+    transform: scale(1.05);
+    /* Slightly increase size on hover */
+}
+
+/* Click (active) effect */
+.blog-container .readBtn:active {
+    background-color: #032f30;
+    /* Darker shade when clicked */
+    transform: scale(0.95);
+    /* Slightly decrease size when clicked */
+}

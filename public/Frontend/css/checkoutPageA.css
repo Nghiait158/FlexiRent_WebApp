@@ -1,0 +1,271 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Lato";
+    src: url('../Font-family/Lato/Lato-Regular.ttf');
+}
+
+
+body {
+    padding-top: 83px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+
+    padding-top: 60px;
+    padding-bottom: 140px;
+}
+
+.page-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 128px;
+    width: 100%;
+    max-width: 1280px;
+
+}
+
+.page-container .review-container {
+    width: 100%;
+    max-width: 630px;
+    height: 100%;
+    max-height: 512px;
+    gap: 60px;
+}
+
+
+.price-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+
+
+.page-container .review-container .title {
+    color: var(--Text, #181A18);
+
+    /* Desktop/H1 */
+    font-family: Lato;
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 60px;
+    /* 115.385% */
+    padding-bottom: 60px;
+}
+
+.page-container .review-container .prices {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 32px;
+}
+
+.page-container .review-container .prices .monthly-rent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+}
+
+.prices .monthly-rent .content,
+.page-container .review-container .prices .additional-fee,
+.page-container .review-container .prices .total-charges {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+h4 {
+    color: var(--Text, #181A18);
+
+    /* Desktop/Subtitle bold */
+    font-family: Lato;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* 133.333% */
+}
+
+p {
+    color: var(--Text, #181A18);
+
+    /* Desktop/Subtitle */
+    font-family: Lato;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    /* 133.333% */
+}
+
+svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.page-container .review-container .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.button-container .button-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.button-container .button-text a {
+    display: flex;
+    padding: 12px 40px;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--White, #FFF);
+
+    /* Desktop/Subtitle bold */
+    font-family: Lato;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    /* 133.333% */
+    border-radius: 40px;
+    background: var(--Green, #064749);
+}
+
+.button-container .button-text p {
+    color: var(--Text, #181A18);
+
+    /* Desktop/Description */
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    /* 114.286% */
+}
+
+
+
+.page-container .detail-container {
+    display: flex;
+    width: 522px;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    border-radius: 30px;
+    height: 718px;
+    background: var(--BG, #F2F0F2);
+}
+
+.page-container .detail-container .image {
+    height: 282px;
+    align-self: stretch;
+    border-radius: 30px 30px 0px 0px;
+    background: url('/Frontend/Image/checkoutPageA/pic1.jfif') lightgray 50% / cover no-repeat;
+}
+
+
+.page-container .detail-container .points {
+    display: flex;
+    padding: 0px 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    align-self: stretch;
+}
+
+.page-container .detail-container .points .moves {
+    display: flex;
+    align-items: flex-start;
+    gap: 42px;
+}
+
+.page-container .detail-container .points .moves .time {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.page-container .detail-container .points .moves .time p {
+    display: flex;
+    width: 200px;
+    padding: 12px 20px 12px 0px;
+    align-items: center;
+    gap: 12px;
+    border-radius: 12px;
+}
+
+.page-container .detail-container .points .guests {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.page-container .detail-container .payment-timeline {
+    display: flex;
+    padding: 0px 40px 40px 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    align-self: stretch;
+}
+
+
+.page-container .detail-container .payment-timeline .steps {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    align-self: stretch;
+}
+
+.page-container .detail-container .payment-timeline .steps .timeline svg {
+    width: 12px;
+    height: 64px;
+}
+
+.page-container .detail-container .payment-timeline .steps .point {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    flex: 1 0 0;
+}
+
+.page-container .detail-container .payment-timeline .steps .point .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.page-container .detail-container .payment-timeline .steps .point .content .text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.page-container .detail-container .payment-timeline .steps .point .content .text p{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
