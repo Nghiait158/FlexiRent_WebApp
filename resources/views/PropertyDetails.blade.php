@@ -1,6 +1,17 @@
 @extends('Layout/header_footer')
 @section('content')
 
+<script>
+    // Create a link element
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '/Frontend/css/PropertyDetails.css'; // Your CSS file path
+    // Append it to the head
+    document.head.appendChild(link);
+
+</script>
+
 <div class="headerContainerImage">
     <img class="mainImg" src="{{ ('/Frontend/Image/PropertyDetails/main.png') }}" alt="">
     <div class="VewAllPhoto">
@@ -130,9 +141,7 @@
                     </div>
                 </div>
             </div>
-            <div class="ContinueBooking">
-                <a href="{{URL::to('/CheckoutPage')}}" style="text-decoration: none">Continue booking</a>
-            </div>
+                <a class="ContinueBooking" href="{{URL::to('/CheckoutPageA')}}" style="text-decoration: none">Continue booking</a>
 
         </div>
     </div>

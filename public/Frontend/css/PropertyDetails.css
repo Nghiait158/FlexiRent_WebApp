@@ -1,15 +1,13 @@
-@font-face {
-    font-family: "Molle";
-    src: url('../Font-family/Molle/Molle-Regular.ttf');
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
 }
 
-@font-face {
-    font-family: "Lato";
-    src: url('../Font-family/Lato/Lato-Regular.ttf');
-}
 
 body{
     font-family: "Lato";
+    padding-top: 83px;
 }
 
 .headerContainerImage {

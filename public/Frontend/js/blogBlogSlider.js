@@ -1,19 +1,15 @@
-var swiper = new Swiper(".blogSwiper", {
+var swiper = new Swiper(".blogSwiperBlog", {
     effect: "coverflow",
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: "auto",
     rewind: true,
     coverflowEffect: {
-      rotate: 10,
+      rotate: 0,
       stretch: 0,
-      depth: 200,
+      depth: 100,
       modifier: 1,
-      slideShadows: true,
-    },
-    scrollbar: {
-      el: ".swiper-scrollbar",
-      hide: true,
+      slideShadows: false,
     },
     navigation: {
       nextEl: ".swiper-button-next",

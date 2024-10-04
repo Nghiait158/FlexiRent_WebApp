@@ -273,25 +273,22 @@
 }
 
 :root {
-    --swiper-navigation-size: 24px
+    --swiper-navigation-size: 44px
 }
-
 
 .swiper-button-next,
 .swiper-button-prev {
     position: absolute;
-    bottom: 10px;
-    width: 24px;
-    height: 20px;
+    top: var(--swiper-navigation-top-offset, 50%);
+    width: calc(var(--swiper-navigation-size)/ 44 * 27);
+    height: var(--swiper-navigation-size);
+    margin-top: calc(0px - (var(--swiper-navigation-size)/ 2));
     z-index: 10;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    border-radius: 12px;
-    background: var(--Green, #064749);
-    padding: 20px 25px;
+    color: var(--swiper-navigation-color, var(--swiper-theme-color))
 }
 
 .swiper-button-next.swiper-button-disabled,
@@ -328,7 +325,7 @@
 
 .swiper-button-prev,
 .swiper-rtl .swiper-button-next {
-    left: var(--swiper-navigation-sides-offset, 5%);
+    left: var(--swiper-navigation-sides-offset, 10px);
     right: auto
 }
 
@@ -359,7 +356,7 @@
 
 .swiper-button-next,
 .swiper-rtl .swiper-button-prev {
-    right: var(--swiper-navigation-sides-offset, 5%);
+    right: var(--swiper-navigation-sides-offset, 10px);
     left: auto
 }
 

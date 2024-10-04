@@ -6,6 +6,16 @@ footer {
     font-family: 'Molle';
     src: url(Font-family/Molle/Molle-Regular.ttf);
 }
+
+
+@font-face {
+    font-family: "Lato";
+    src: url('../Font-family/Lato/Lato-Regular.ttf');
+}
+
+body{
+    font-family: "Lato";
+}
 .footerLogo{
     text-align: center;
     font-family: "Molle";
@@ -128,6 +138,7 @@ footer .social-icons {
     background: var(--Green, #064749);
     color: var(--White, #FFF);
     font-family: Lato;
+    border: none    ;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -140,6 +151,7 @@ footer .social-icons {
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     transform: scale(1.05);
+    
 }
 
 .stayup-section button:active {

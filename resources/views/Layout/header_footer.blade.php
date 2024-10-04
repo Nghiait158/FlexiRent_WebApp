@@ -7,12 +7,6 @@
     <title>FlexiRent</title>
     <link rel="stylesheet" href="{{('/Frontend/css/footer.css')}}" />
     <link rel="stylesheet" href="{{('/Frontend/css/header.css')}}" />
-
-    <link rel="stylesheet" href="{{('/Frontend/css/bookingPage.css')}}" />
-    <link rel="stylesheet" href="{{('/Frontend/css/Homepage.css')}}" />
-    <link rel="stylesheet" href="{{('/Frontend/css/Landlords.css')}}" />
-    <link rel="stylesheet" href="{{('/Frontend/css/PropertyDetails.css')}}" />
-    <link rel="stylesheet" href="{{('/Frontend/css/Blog.css')}}" />
     <link rel="icon" type="image/x-icon" href="{{('/Frontend/Image/favicon/FlexiRent.png')}}">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /> -->
     
