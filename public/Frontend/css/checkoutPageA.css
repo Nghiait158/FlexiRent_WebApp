@@ -6,6 +6,7 @@
 
 
 body {
+    font-family: "Lato";
     padding-top: 83px;
 }
 
@@ -135,7 +136,7 @@ svg {
     color: var(--White, #FFF);
 
     /* Desktop/Subtitle bold */
-    font-family: Lato;
+    font-family: "Lato";
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -144,6 +145,17 @@ svg {
     border-radius: 40px;
     background: var(--Green, #064749);
 }
+
+.button-container .button-text a:hover{
+    transform: scale(1.05);
+    background-color: #053c3f;
+}
+
+.button-container .button-text a:active{
+    transform: scale(0.95);
+    background-color: #0a696e;
+}
+
 
 .button-container .button-text p {
     color: var(--Text, #181A18);

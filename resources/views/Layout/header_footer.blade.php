@@ -25,10 +25,10 @@
             <div class="header-nav">
                 <nav>
                     <ul>
-                        <li><a href="{{URL::to('/HomePage')}}">Home</a></li>
-                        <li><a href="{{URL::to('/Landlord')}}">Manage Rental</a></li>
-                        <li><a href="{{URL::to('/Blog')}}">Blog</a></li>
-                        <li><a href="{{URL::to('/HomePage')}}">Contacts</a></li>
+                        <a href="{{URL::to('/HomePage')}}">Home</a>
+                        <a href="{{URL::to('/Landlord')}}">Manage Rental</a>
+                        <a href="{{URL::to('/Blog')}}">Blog</a>
+                        <a href="{{URL::to('/HomePage')}}">Contacts</a>
                     </ul>
                 </nav>
             </div>
