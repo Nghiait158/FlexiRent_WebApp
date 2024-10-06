@@ -8,7 +8,7 @@ class PropertyDetailsPageController extends Controller
 {
     public function showMap()
     {
-        $address = "Bcons Suối Tiên"; 
+        $address = "London, Notting Hill"; 
         return view('PropertyDetails', compact('address'));
     }
 }
