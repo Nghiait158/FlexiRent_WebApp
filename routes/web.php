@@ -7,15 +7,16 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BookingPageController;
 use App\Http\Controllers\LandlordController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\PropertyDetailsPageController;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -24,6 +25,25 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+use App\Http\Controllers\DashboardController;
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+});
+
+
+Route::get('admin/dashboard',[AdminController::class,'index'])->
+        middleware(['auth','admin']);
+
+Route::get('guest/dashboard',[GuestController::class,'index'])->
+        middleware(['auth','guest']);
+
+Route::get('landlord/dashboard',[LandlordController::class,'index'])->
+        middleware(['auth','landlord']);
+
+
+
 // ------FrontEnd------------------------
 Route::get('/', function () {
     return view('Homepage');
@@ -43,9 +63,9 @@ Route::get('/Blog', function () {
 Route::get('/PropertyDetails', function () {
     return view('PropertyDetails');
 });
-// Route::get('/CheckoutPageA', function () {
-//     return view('CheckoutPageA');
-// });
+Route::get('/CheckoutPageA', function () {
+    return view('CheckoutPageA');
+});
 
 // Route::get('/map', [MapController::class, 'generateMapIframe']);
 
