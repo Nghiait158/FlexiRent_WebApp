@@ -45,4 +45,18 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function admin()
+    {
+        return $this->hasOne(Admin::class, 'id');
+    }
+
+    public function guest()
+    {
+        return $this->hasOne(Guest::class, 'id');
+    }
+
+    public function landlord()
+    {
+        return $this->hasOne(Landlord::class, 'id');
+    }
 }
