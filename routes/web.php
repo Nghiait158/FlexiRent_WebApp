@@ -8,6 +8,7 @@ use App\Http\Controllers\BookingPageController;
 use App\Http\Controllers\LandlordController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminManageController;
 
 use App\Http\Controllers\PropertyDetailsPageController;
 
@@ -43,14 +44,13 @@ Route::middleware(['auth','admin'])->group(function () {
         
 });
         
-
 Route::get('guest/dashboard',[GuestController::class,'index'])->
         middleware(['auth','guest']);
 
 Route::get('landlord/dashboard',[LandlordController::class,'index'])->
         middleware(['auth','landlord']);
 
-
+Route::get('/admin', [AdminManageController::class, 'index']);
 
 // ------FrontEnd------------------------
 Route::get('/', function () {
