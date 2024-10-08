@@ -33,8 +33,16 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-Route::get('admin/dashboard',[AdminController::class,'index'])->
-        middleware(['auth','admin']);
+// Route::get('admin/dashboard',[AdminController::class,'index'])->
+//         middleware(['auth','admin']);
+
+
+
+Route::middleware(['auth','admin'])->group(function () {
+        Route::get('admin/dashboard', [AdminController::class, 'index']);
+        
+});
+        
 
 Route::get('guest/dashboard',[GuestController::class,'index'])->
         middleware(['auth','guest']);
