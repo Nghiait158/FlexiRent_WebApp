@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+// use App\Models\Property;
 class Amenity extends Model
 {
     use HasFactory;
-
+    protected $table = 'amenities';
     protected $primaryKey = 'amenity_id';
 
     protected $fillable = [

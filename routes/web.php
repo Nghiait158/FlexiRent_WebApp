@@ -15,6 +15,9 @@ use App\Http\Controllers\PropertyDetailsPageController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Route::get('/dash', function () {
+    return view('dashboard');
+});
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
@@ -36,21 +39,39 @@ Route::middleware(['auth'])->group(function () {
 
 // Route::get('admin/dashboard',[AdminController::class,'index'])->
 //         middleware(['auth','admin']);
-
+// Route::get('guest/dashboard',[GuestController::class,'index'])->
+//         middleware(['auth','guest']);
+// Route::get('landlord/dashboard',[LandlordController::class,'index'])->
+//         middleware(['auth','landlord']);
 
 
 Route::middleware(['auth','admin'])->group(function () {
         Route::get('admin/dashboard', [AdminController::class, 'index']);
-        
+        Route::get('/admin', [AdminManageController::class, 'index']);
+        Route::post('/updateAdmin/{adminID}', [AdminManageController::class, 'updateAdmin']);
 });
         
-Route::get('guest/dashboard',[GuestController::class,'index'])->
-        middleware(['auth','guest']);
 
-Route::get('landlord/dashboard',[LandlordController::class,'index'])->
-        middleware(['auth','landlord']);
+Route::middleware(['auth','guest','admin'])->group(function () {
+    // Backend---------------
+    Route::get('guest/dashboard',[GuestController::class,'index']);
 
-Route::get('/admin', [AdminManageController::class, 'index']);
+
+    // Frontend---------------
+Route::get('/CheckoutPageA', function () {
+    return view('CheckoutPageA');
+});
+    
+Route::get('/CheckoutPageB', function () {
+    return view('CheckoutPageB');
+});
+});
+
+
+Route::middleware(['auth','landlord','admin'])->group(function () {
+    Route::get('landlord/dashboard',[LandlordController::class,'index']);
+});
+        
 
 // ------FrontEnd------------------------
 Route::get('/', function () {
@@ -71,13 +92,13 @@ Route::get('/Blog', function () {
 Route::get('/PropertyDetails', function () {
     return view('PropertyDetails');
 });
-Route::get('/CheckoutPageA', function () {
-    return view('CheckoutPageA');
-});
+// Route::get('/CheckoutPageA', function () {
+//     return view('CheckoutPageA');
+// });
 
-Route::get('/CheckoutPageB', function () {
-    return view('CheckoutPageB');
-});
+// Route::get('/CheckoutPageB', function () {
+//     return view('CheckoutPageB');
+// });
 
 // Route::get('/map', [MapController::class, 'generateMapIframe']);
 

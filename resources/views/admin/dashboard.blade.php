@@ -1,21 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin</title>
-</head>
-<body>
-        Admin Dashboard
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
+@extends('admin.admin_layout')
+@section('admin_content')
 
-            <x-responsive-nav-link :href="route('logout')"
-                    onclick="event.preventDefault();
-                                this.closest('form').submit();">
-                {{ __('Log Out') }}
-            </x-responsive-nav-link>
-        </form>
-</body>
-</html>
+    <h1>Admin Dashboard</h1>
+
+    <form  role="form" action="{{URL::to('/updateArea/')}}" method="post">
+        {{ csrf_field() }}
+        <div class="mb-3">
+            <label for="admin_id" class="form-label">Admin_ID</label>
+            <input type="text"class="form-control" name="admin_id" value="{{ $currentAdmin ? $currentAdmin->admin_id : '' }}">
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" value="{{ $currentAdmin ? $currentAdmin->name : 'Unnamed' }}">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" value="{{ $currentAdmin ? $currentAdmin->email : 'Indefinite' }}">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        @if (Route::has('password.request'))
+        <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+            {{ __('Change password') }}
+        </a>
+        @endif
+        <br>
+        <button type="submit" class="btn btn-primary">Update information</button>
+    </form>
+
+@endsection

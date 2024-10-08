@@ -16,7 +16,7 @@ class Landlord
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->role != 'landlord') {
+        if (Auth::check() && Auth::user()->role != 'landlord'&& Auth::user()->role != 'admin') {
             return redirect('/');
         }
         return $next($request);

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-<title>Dashboard</title>
+<title>Admin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -86,17 +86,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
-                <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                <li><a href="{{URL::to('/logout')}}"><i ></i><form method="POST" action="{{ route('logout') }}">
+                {{-- <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li> --}}
+                {{-- <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li> --}}
+                <li>    
+                    <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
-                    <x-dropdown-link :href="route('logout')"
+            
+                    <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
-                    </x-dropdown-link>
-                </form></a></li>
+                    </x-responsive-nav-link>
+                </form>
+                </li>
             </ul>
         </li>
         <!-- user login dropdown end -->
@@ -113,25 +115,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="{{URL::to('/admin')}}">
+                    <a class="active" href="{{URL::to('/admin/dashboard')}}">
                         <i class="fa fa-dashboard"></i>
-                        <span>Tổng quan</span>
+                        <span>Dashboard</span>
                     </a>
                 </li>
                  
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
-                        <span>Khu vực</span>
+                        <span>Admin</span>
                     </a>
                     <ul class="sub">
-                        {{-- <li><a href="{{URL::to('/manage-slider')}}">Profile</a></li> --}}
-                        <li><a href="{{URL::to('/area_manage')}}">Quản lý các khu vực</a></li>
-                        <li><a href="{{URL::to('/add_area')}}">Thêm khu vực</a></li>
-                        
+                        <li><a href="{{URL::to('/manage_admin')}}">Manage admins</a></li>
+                        <li><a href="{{URL::to('/add_admin')}}">Add Admin</a></li>
                     </ul>
                 </li>
-                <li class="sub-menu">
+                {{-- <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
                         <span>Thể Loại</span>
@@ -140,8 +140,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="{{URL::to('/category_manage')}}">Quản lý các thể loại</a></li>
                         <li><a href="{{URL::to('/add_category')}}">Thêm thể loại</a></li>
                     </ul>
-                </li>
-                <li class="sub-menu">
+                </li> --}}
+                {{-- <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
                         <span>Địa Điểm</span>
@@ -154,9 +154,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="{{URL::to('/thucvat_manage')}}">Quản lý ThucVat</a></li>
                         <li><a href="{{URL::to('/add_thucvat')}}">Thêm ThucVat</a></li>
                     </ul>
-                </li>
+                </li> --}}
 
-                <li class="sub-menu">
+                {{-- <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
                         <span>Các loại vé</span>
@@ -167,8 +167,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="{{URL::to('/ticketImg_manage')}}">Quản lý hình ảnh loại vé</a></li>
                         <li><a href="{{URL::to('/add_ticketImg')}}">Thêm hình ảnh loại vé</a></li>
                     </ul>
-                </li>
-                <li class="sub-menu">
+                </li> --}}
+                {{-- <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
                         <span>Các sự kiện</span>
@@ -179,9 +179,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="{{URL::to('/eventImg_manage')}}">Quản lý hình ảnh sự kiện</a></li>
                         <li><a href="{{URL::to('/add_eventImg')}}">Thêm hình ảnh sự kiện</a></li>
                     </ul>
-                </li>
+                </li> --}}
                    
-                </li>
+                {{-- </li>
                  <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
@@ -191,7 +191,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a href="{{URL::to('/imgMainPage_manage')}}">Quản lý hình ảnh</a></li>
 						<li><a href="{{URL::to('/add_imgMainPage')}}">Thêm hình ảnh</a></li>
                     </ul>
-                </li>
+                </li> --}}
 
                 
              

@@ -16,7 +16,7 @@ class Guest
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->role != 'guest') {
+        if (Auth::check() && Auth::user()->role != 'guest'&& Auth::user()->role != 'admin') {
             return redirect('/');
         }
         return $next($request);
