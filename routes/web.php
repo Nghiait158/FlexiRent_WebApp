@@ -67,6 +67,10 @@ Route::get('/CheckoutPageA', function () {
     return view('CheckoutPageA');
 });
 
+Route::get('/CheckoutPageB', function () {
+    return view('CheckoutPageB');
+});
+
 // Route::get('/map', [MapController::class, 'generateMapIframe']);
 
 Route::get('/bookingPage', [BookingPageController::class, 'showMap']);
