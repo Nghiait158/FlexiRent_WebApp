@@ -52,7 +52,7 @@
             </div>
             <div class="button-container">
                 <div class="button-text">
-                    <a href="">Confirm and pay</a>
+                    <a href="{{URL::to('/CheckoutPageB')}}">Confirm and pay</a>
                     <p>You won’t be charged yet</p>
                 </div>
             </div>

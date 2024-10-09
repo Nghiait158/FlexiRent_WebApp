@@ -272,6 +272,12 @@ svg {
     gap: 20px;
 }
 
+.page-container .detail-container .points .guests svg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .page-container .detail-container .payment-timeline {
     display: flex;
     padding: 0px 40px 40px 40px;
