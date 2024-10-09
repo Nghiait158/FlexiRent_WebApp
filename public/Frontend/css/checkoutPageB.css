@@ -126,10 +126,7 @@ h4 {
 
 #phone {
     border-radius: 8px;
-    /* Rounded corners */
-    border: 1px solid #ccc;
-    /* Border color */
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    
 }
 
 #phone::placeholder {

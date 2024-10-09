@@ -36,6 +36,12 @@
     // Append it to the head
     document.head.appendChild(script);
 
+    var script = document.createElement('script');
+    script.src = '/Frontend/js/phone.js'; // JavaScript file path
+    script.type = 'text/javascript';
+    // Append it to the head
+    document.head.appendChild(script);
+
 
     var link = document.createElement('link');
     link.rel = 'stylesheet';
@@ -87,7 +93,7 @@
                 <h3>Purpose of stay</h3>
 
                 <div class="form-check mb-2 pl-3">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                     <label class="form-check-label" for="flexRadioDefault1">
                         Bussiness Travel/ Work
                     </label>
