@@ -1,5 +1,5 @@
 $(function() {
-    var dateFormat = "mm/dd/yy",
+    var dateFormat = "dd.mm.yy", // Change date format to dd.mm.yy
         minDays = 14, // Minimum days between "from" and "to" dates
         from = $("#from")
             .datepicker({
@@ -7,7 +7,8 @@ $(function() {
                 changeMonth: true,
                 changeYear: true,
                 numberOfMonths: 1,
-                dateFormat: "dd.mm.yy"
+                minDate: 0, // Prevent booking before today
+                dateFormat: dateFormat // Set the date format
             })
             .on("change", function() {
                 var selectedFromDate = getDate(this);
@@ -23,7 +24,8 @@ $(function() {
                 changeMonth: true,
                 changeYear: true,
                 numberOfMonths: 1,
-                dateFormat: "dd.mm.yy"
+                minDate: minDays, // Prevent booking before 14 days from today
+                dateFormat: dateFormat // Set the date format
             })
             .on("change", function() {
                 var selectedToDate = getDate(this);
