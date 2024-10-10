@@ -46,3 +46,23 @@ $(function() {
         return date;
     }
 });
+
+
+// JS for calendar
+const inputs = document.querySelectorAll('.pick-date input');
+
+// Add event listeners for focus and blur
+inputs.forEach(input => {
+  input.addEventListener('focus', () => {
+    input.placeholder = ''; // Clear placeholder on focus
+  });
+
+  input.addEventListener('blur', () => {
+    if (input.value === '') {
+      input.placeholder = input.getAttribute('data-placeholder'); // Restore placeholder if empty
+    }
+  });
+
+  // Store the original placeholder in a data attribute
+  input.setAttribute('data-placeholder', input.placeholder);
+});
