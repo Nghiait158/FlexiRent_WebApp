@@ -49,9 +49,15 @@
             </label>
 
             <label class="inline-flex items-center p-2">
-                <input type="radio" name="role" value="user" class="form-radio" required> <!-- Assuming 2 is the ID for 'User' -->
-                <span class="ml-2">{{ __('User') }}</span>
+                <input type="radio" name="role" value="guest" class="form-radio" required> <!-- Assuming 2 is the ID for 'User' -->
+                <span class="ml-2">{{ __('Guest') }}</span>
             </label>
+            @if (Auth::check() && Auth::user()->role == 'admin')
+                <label class="inline-flex items-center p-2">
+                    <input type="radio" name="role" value="admin" class="form-radio" required>
+                    <span class="ml-2">{{ __('Admin') }}</span>
+                </label>
+            @endif
 
             <x-input-error :messages="$errors->get('role')" class="mt-2" />
         </div>

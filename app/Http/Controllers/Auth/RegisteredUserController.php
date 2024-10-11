@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Admin;
+use App\Models\Landlord;
+use App\Models\Guest;
+
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -39,14 +43,45 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => Hash::make(value: $request->password),
             'role' => $request->role,
         ]);
 
+        if ($user->role == 'landlord') {
+            $landlord = new Landlord();
+            // $landlord->landlord_id = $user->id;
+            $landlord->id = $user->id; 
+            $landlord->first_name= $user->name;
+            $landlord->last_name= $user->name;
+            $landlord->save();            
+        }else if($user ->role=='guest') {
+            $guest = new Guest();
+            // $landlord->landlord_id = $user->id;
+            $guest->id = $user->id; 
+            $guest->first_name= $user->name;
+            $guest->last_name= $user->name;
+            $guest->save(); 
+        }else {
+            $admin = new Admin();
+            // $admin->admin_id = $user->id;
+            $admin->id = $user->id; 
+            $admin->name= $user->name;
+            $admin->save(); 
+        }
+
+        
+
         event(new Registered($user));
 
-        Auth::login($user);
+        // Auth::login($user);
+        // if($request ->user()->role === 'admin'){
+        //     return redirect('admin/dashboard');
+        // }else if ($request ->user()-> role === 'landlord') {
+        //     return redirect('landlord/dashboard');
+        // }else if ($request ->user()-> role === 'guest'){
+        //     return redirect('guest/dashboard');            
+        // }
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect('admin/dashboard');
     }
 }

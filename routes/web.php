@@ -58,13 +58,13 @@ Route::middleware(['auth','guest','admin'])->group(function () {
 
 
     // Frontend---------------
-Route::get('/CheckoutPageA', function () {
-    return view('CheckoutPageA');
-});
-    
-Route::get('/CheckoutPageB', function () {
-    return view('CheckoutPageB');
-});
+    Route::get('/CheckoutPageA', function () {
+        return view('CheckoutPageA');
+    });
+        
+    Route::get('/CheckoutPageB', function () {
+        return view('CheckoutPageB');
+    });
 });
 
 
