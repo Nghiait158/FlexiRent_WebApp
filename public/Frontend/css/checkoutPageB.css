@@ -1,0 +1,488 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: 83px;
+    font-family: "Lato";
+}
+
+label {
+    color: var(--Text, #181A18);
+
+    /* Desktop/Subtitle */
+    font-family: "Lato";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    /* 133.333% */
+}
+
+h4 {
+    color: var(--Text, #181A18);
+
+    /* Desktop/Subtitle bold */
+    font-family: Lato;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* 133.333% */
+}
+
+.page-container,
+.payment-method-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    gap: 128px;
+    margin-top: 60px;
+    align-items: center;
+    /* Changed to center for proper alignment */
+    padding: 16px;
+    /* Add some padding for small screens */
+}
+
+.guest-container,
+.detail-container {
+    display: flex;
+    flex-direction: column;
+    height: 914px;
+}
+
+
+.guest-container {
+    width: 100%;
+    max-width: 630px;
+    gap: 60px;
+}
+
+.guest-container h2 {
+    color: var(--Text, #181A18);
+
+    /* Desktop/H1 */
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 60px;
+    /* 115.385% */
+}
+
+.guest-container h3 {
+    color: var(--Text, #181A18);
+
+    /* Desktop/H4 */
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    /* 133.333% */
+}
+
+
+.guest-container .field {
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.guest-container .field .input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.guest-container .form-control::placeholder {
+    color: #49735A;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.guest-container .form-control {
+    display: flex;
+    width: 430px;
+    padding: 12px 40px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 12px;
+    background: var(--BG, #F2F0F2);
+}
+
+.selected {
+    font-weight: bold;
+}
+
+#phone {
+    border-radius: 8px;
+
+}
+
+#phone::placeholder {
+    color: #49735A;
+    margin-left: 12px;
+}
+
+
+.guest-container .field .purpose {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.guest-container .field .booking-other-person {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.page-container .detail-container {
+    display: flex;
+    width: 100%;
+    max-width: 522px;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    border-radius: 30px;
+    background: var(--BG, #F2F0F2);
+}
+
+.page-container .detail-container .image {
+    height: 282px;
+    align-self: stretch;
+    border-radius: 30px 30px 0px 0px;
+    background: url('/Frontend/Image/checkoutPageB/pic1.jfif') lightgray 50% / cover no-repeat;
+}
+
+
+.page-container .detail-container .points {
+    display: flex;
+    padding: 0px 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    align-self: stretch;
+}
+
+.page-container .detail-container .points .moves {
+    display: flex;
+    align-items: flex-start;
+    gap: 42px;
+}
+
+.page-container .detail-container .points .moves .move {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.page-container .detail-container .points .moves .move label {
+    color: var(--Text, #181A18);
+
+    /* Desktop/Subtitle bold */
+    font-family: "Lato";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    /* 133.333% */
+}
+
+.page-container .detail-container .points .moves .move .pick-date {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    gap: 12px;
+    border-radius: 12px;
+    padding: 12px 20px 12px 0px;
+}
+
+.page-container .detail-container .points .moves .move .pick-date input {
+    width: 150px;
+    background-color: #f0f0f0;
+    border: none;
+    color: var(--Text, #181A18);
+
+    /* Desktop/Subtitle */
+    font-family: "Lato";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    /* 133.333% */
+}
+
+
+.page-container .detail-container .points .guests {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.page-container .detail-container .costs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.page-container .detail-container .costs .cost {
+    display: flex;
+    width: 442px;
+
+}
+
+.page-container .detail-container .costs .cost .payment {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.page-container .detail-container .costs .cost .payment svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-container .detail-container .costs .cost .number {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 150px;
+}
+
+.page-container .detail-container .costs .cost .number p {
+    margin: 0;
+    display: flex;
+    font-size: 16px;
+
+}
+
+.page-container .detail-container .payment-timeline {
+    display: flex;
+    padding: 0px 40px 40px 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    align-self: stretch;
+}
+
+
+.page-container .detail-container .payment-timeline .steps {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    align-self: stretch;
+}
+
+.page-container .detail-container .payment-timeline .steps .timeline svg {
+    width: 12px;
+    height: 64px;
+}
+
+.page-container .detail-container .payment-timeline .steps .point {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    flex: 1 0 0;
+}
+
+.page-container .detail-container .payment-timeline .steps .point .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.page-container .detail-container .payment-timeline .steps .point .content .text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.page-container .detail-container .payment-timeline .steps .point .content .text p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+@media (max-width: 1024px) {
+    .page-container {
+        gap: 64px;
+        /* Reduce gap on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .page-container {
+        flex-direction: column;
+        /* Stack items on smaller screens */
+        gap: 32px;
+    }
+
+    .guest-container,
+    .detail-container {
+        max-width: 100%;
+        /* Ensure full width on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .page-container {
+        padding: 8px;
+        gap: 16px;
+        /* Further reduce gap on very small screens */
+    }
+
+    .guest-container,
+    .detail-container {
+        max-width: 100%;
+        /* Full width on extra small screens */
+    }
+}
+
+
+.payment-method {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 630px;
+    gap: 60px;
+    padding-bottom: 140px;
+}
+
+.payment-method .selection-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.selection-container .form-select {
+    display: flex;
+    width: 430px;
+    padding: 12px 40px;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-radius: 12px;
+    background: var(--BG, #F2F0F2);
+    color: #49735A;
+}
+
+.selection-container .form-select option {
+    color: #181A18;
+}
+
+.selection-container .form-select .options {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+}
+
+.selection-container .ToS {
+    color: var(--Text, #181A18);
+
+    /* Desktop/Text regular */
+    font-family: "Lato";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    /* 125% */
+}
+
+.selection-container .ToS a {
+    color: #064749;
+}
+
+.selection-container .book-btn {
+    display: flex;
+    padding: 12px 40px;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 40px;
+    background: var(--Green, #064749);
+    border: none;
+
+    /* Desktop/Subtitle bold */
+
+    font-family: "Lato";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    border: none;
+    color: #FFF;
+    /* 133.333% */
+
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.selection-container a {
+    text-decoration: none;
+}
+
+.selection-container .book-btn:hover {
+    background: #056666;
+    /* Darken the green color or change it */
+    transform: translateY(-2px);
+    /* Slightly lift the button on hover */
+}
+
+/* Active state (when clicked) */
+.selection-container .book-btn:active {
+    background: #043f40;
+    /* Even darker green for active state */
+    transform: translateY(2px);
+    /* Pressed effect */
+}
+
+.adjust {
+    display: flex;
+    width: 100%;
+    max-width: 522px;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    border-radius: 30px;
+    background: var(--BG, #F2F0F2);
+}
+
+.payment-method h3 {
+    color: var(--Text, #181A18);
+
+    /* Desktop/H2 */
+    font-family: "Lato";
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px;
+    /* 112.5% */
+}

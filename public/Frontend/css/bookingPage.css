@@ -489,3 +489,65 @@ body {
 .svg-close, .svg-open {
     cursor: pointer; /* Con trỏ thay đổi khi hover vào SVG */
 }
+
+
+.moves {
+    display: flex;
+    flex-direction: row;
+    /* Keeps children in a horizontal line */
+    align-items: center;
+    /* Aligns items vertically in the center */
+    gap: 12px;
+    /* Adjust gap as needed */
+}
+
+.moves .move {
+    display: flex;
+    flex-direction: row;
+    /* Keep the child elements of .move in a horizontal line */
+    align-items: center;
+    /* Aligns items vertically in the center */
+}
+
+
+
+.moves .move .pick-date {
+    display: flex;
+    flex-direction: row;
+    /* Keeps child elements of .pick-date in a horizontal line */
+    align-items: center;
+    /* Aligns items vertically in the center */
+    gap: 10px;
+    /* Space between elements in the pick-date section */
+    border-radius: 12px;
+    padding: 8px 0px;
+}
+
+.pick-date input {
+    height: 35px;
+    width: 110px;
+    background-color: #fff;
+    border: none;
+    text-align: center; /* Center the text, including the placeholder */
+    padding: 5px;
+}
+
+.pick-date input,
+.moves .move .pick-date input::placeholder {
+    color: var(--Text, #181A18);
+
+    /* Desktop/Subtitle bold */
+    font-family: "Lato";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    /* 133.333% */
+}
+
+.vertical-line {
+    width: 1px;
+    height: 48px;
+    background: #49735A;
+    margin: 0 10px;
+}

@@ -5,45 +5,58 @@
 }
 
 
-body{
+body {
     font-family: "Lato";
-    padding-top: 83px;
+    padding-top: 86px;
 }
 
 .headerContainerImage {
     position: relative;
-    display: flex; /* Sử dụng flexbox để sắp xếp */
+    display: flex;
+    /* Sử dụng flexbox để sắp xếp */
     width: 100%;
-    height: 480px; /* Chiều cao cố định */
+    height: 480px;
+    /* Chiều cao cố định */
     /* background-color: aqua; */
 }
 
 .headerContainerImage .mainImg {
-    width: 70%; /* Đặt chiều rộng cho hình chính */
-    height: 100%; /* Đặt chiều cao đầy đủ */
+    width: 70%;
+    /* Đặt chiều rộng cho hình chính */
+    height: 100%;
+    /* Đặt chiều cao đầy đủ */
     border-radius: 10px;
 }
 
 .fourImgNext {
-    display: grid; /* Sử dụng grid để sắp xếp các hình ảnh nhỏ */
-    grid-template-columns: repeat(2, 1fr); /* 2 cột với chiều rộng bằng nhau */
-    gap: 10px; /* Khoảng cách giữa các hình ảnh nhỏ */
-    margin-left: 10px; /* Khoảng cách giữa hình chính và hình nhỏ */
-    width: 30%; /* Chiều rộng cho khung bên phải */
-    height: 100%; /* Chiều cao đầy đủ */
-    overflow: hidden; /* Ẩn phần nào đó nếu vượt quá chiều cao */
+    display: grid;
+    /* Sử dụng grid để sắp xếp các hình ảnh nhỏ */
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 cột với chiều rộng bằng nhau */
+    gap: 10px;
+    /* Khoảng cách giữa các hình ảnh nhỏ */
+    margin-left: 10px;
+    /* Khoảng cách giữa hình chính và hình nhỏ */
+    width: 30%;
+    /* Chiều rộng cho khung bên phải */
+    height: 100%;
+    /* Chiều cao đầy đủ */
+    overflow: hidden;
+    /* Ẩn phần nào đó nếu vượt quá chiều cao */
 }
 
 .fourImgNext img {
     width: 275px;
     height: 235px;
 
-    object-fit: cover; /* Đảm bảo hình ảnh không bị biến dạng */
-    border-radius: 10px; /* Bo tròn góc */
+    object-fit: cover;
+    /* Đảm bảo hình ảnh không bị biến dạng */
+    border-radius: 10px;
+    /* Bo tròn góc */
 }
 
 
-.headerContainerImage .VewAllPhoto{
+.headerContainerImage .VewAllPhoto {
     display: inline-flex;
     padding: 12px 40px;
     justify-content: center;
@@ -51,19 +64,24 @@ body{
     gap: 10px;
     border-radius: 40px;
     background: var(--Green, #064749);
-    position: absolute; /* Đặt vị trí tuyệt đối */
-    top: 400px; /* Khoảng cách từ trên cùng */
-    left: 100px; /* Khoảng cách từ bên trái */
-    z-index: 10; /* Đảm bảo nó nằm trên cùng */
+    position: absolute;
+    /* Đặt vị trí tuyệt đối */
+    top: 400px;
+    /* Khoảng cách từ trên cùng */
+    left: 100px;
+    /* Khoảng cách từ bên trái */
+    z-index: 10;
+    /* Đảm bảo nó nằm trên cùng */
     color: var(--White, #FFF);
 
     /* Desktop/Subtitle bold */
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
-    line-height: 24px; /* 133.333% */
+    line-height: 24px;
+    /* 133.333% */
     cursor: pointer;
-    
+
 }
 
 .headerContainerImage .VewAllPhoto:hover {
@@ -73,56 +91,70 @@ body{
 }
 
 .contentPropertyDetails {
-
-    margin: 60px 0 0 100px;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    width: 100%;
+   display: flex;
+   justify-content: center;
 
 }
-.contentPropertyDetails .descriptionPropertyDetails{
+
+.contentPropertyDetails .descriptionPropertyDetails {
     width: 750px;
     height: auto;
     flex: 2;
     /* background-color: rgb(147, 114, 72); */
 }
-.contentPropertyDetails .descriptionPropertyDetails h1{
+
+.contentPropertyDetails .descriptionPropertyDetails h1 {
     font-size: 52px;
     font-style: normal;
     font-weight: 700;
-    line-height: 60px; /* 115.385% */
+    line-height: 60px;
+    /* 115.385% */
 }
-.contentPropertyDetails .descriptionPropertyDetails h6{
+
+.contentPropertyDetails .descriptionPropertyDetails h6 {
     margin-top: 16px;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px; /* 133.333% */
-    
+    line-height: 24px;
+    /* 133.333% */
+
 }
+
 .infomation {
     margin-top: 42px;
-    display: flex; /* Sử dụng flexbox để sắp xếp */
-    justify-content: space-between; /* Tạo khoảng cách giữa hai phần tử */
-    align-items: center; /* Căn giữa theo chiều dọc */
+    display: flex;
+    /* Sử dụng flexbox để sắp xếp */
+    justify-content: space-between;
+    /* Tạo khoảng cách giữa hai phần tử */
+    align-items: center;
+    /* Căn giữa theo chiều dọc */
 }
 
 .bedAndBath {
-    display: flex; /* Để hình ảnh và text nằm cạnh nhau */
-    align-items: center; /* Căn giữa theo chiều dọc */
+    display: flex;
+    /* Để hình ảnh và text nằm cạnh nhau */
+    align-items: center;
+    /* Căn giữa theo chiều dọc */
     gap: 20px;
 }
 
-.bedAndBath > div {
-    display: flex; /* Đảm bảo các phần tử SVG và text bên trong div được căn ngang nhau */
-    align-items: center; /* Căn giữa dọc cho SVG và text */
+.bedAndBath>div {
+    display: flex;
+    /* Đảm bảo các phần tử SVG và text bên trong div được căn ngang nhau */
+    align-items: center;
+    /* Căn giữa dọc cho SVG và text */
 }
+
 .bedAndBath svg {
-    margin-right: 8px; /* Thêm khoảng cách giữa SVG và text là 8px */
+    margin-right: 8px;
+    /* Thêm khoảng cách giữa SVG và text là 8px */
 }
+
 .TienIch {
-    text-align: right; /* Đặt văn bản bên phải */
+    text-align: right;
+    /* Đặt văn bản bên phải */
 }
 
 .descriptionPropertyDetails .description h1 {
@@ -130,24 +162,35 @@ body{
     font-size: 36px;
     font-style: normal;
     font-weight: 700;
-    line-height: 44px; /* 122.222% */
+    line-height: 44px;
+    /* 122.222% */
 }
+
 .descriptionPropertyDetails .description p {
     margin-top: 12px;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 20px; /* 125% */
+    line-height: 20px;
+    /* 125% */
 }
-.contentPropertyDetails .BoxformBooking{
+
+.contentPropertyDetails .BoxformBooking {
     padding: 40px;
     /* background-color: rgb(132, 188, 84); */
-    flex: 2; 
+    flex: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 110px;
+    width: 100%;
+    max-width: 1280px;
 
 }
-.BoxformBooking .formbooking{
+
+.BoxformBooking .formbooking {
     width: 552px;
-    height: 668px;
     border-radius: 30px;
     background: var(--BG, #F2F0F2);
     display: inline-flex;
@@ -156,8 +199,9 @@ body{
     align-items: center;
     gap: 40px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    
+
 }
+
 .formbooking h1 {
     font-size: 24px;
     text-align: center;
@@ -197,7 +241,7 @@ body{
     align-items: flex-start;
     gap: 10px;
     border-radius: 40px;
-    background: var(--Green, #064749);  
+    background: var(--Green, #064749);
     cursor: pointer;
 
     color: var(--White, #FFF);
@@ -205,7 +249,8 @@ body{
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
-    line-height: 24px; /* 133.333% */
+    line-height: 24px;
+    /* 133.333% */
 }
 
 .ContinueBooking a {
@@ -214,29 +259,34 @@ body{
 }
 
 .ContinueBooking:hover {
-    background: #04695e; /* Lighter green on hover */
+    background: #04695e;
+    /* Lighter green on hover */
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
     transform: scale(1.05);
 }
 
 .checkmoveInOut {
     display: flex;
-    justify-content: space-between; /* Đảm bảo phân bố khoảng cách hợp lý */
+    justify-content: space-between;
+    /* Đảm bảo phân bố khoảng cách hợp lý */
 }
 
 .moveIncheck,
 .moveOutcheck {
-    width: 215px; /* Đặt kích thước ví dụ cho mỗi div con, bạn có thể thay đổi kích thước này */
-    height: 90px; /* Đặt chiều cao ví dụ cho mỗi div con */
+    width: 215px;
+    /* Đặt kích thước ví dụ cho mỗi div con, bạn có thể thay đổi kích thước này */
+    height: 90px;
+    /* Đặt chiều cao ví dụ cho mỗi div con */
 
 }
 
 .moveIncheck p,
-.moveOutcheck p{
+.moveOutcheck p {
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
-    line-height: 24px; /* 133.333% */
+    line-height: 24px;
+    /* 133.333% */
 }
 
 /* Khoảng cách giữa hai div con là 42px */
@@ -245,7 +295,7 @@ body{
 }
 
 
-.checkmoveInOut .checkDateMove{
+.checkmoveInOut .checkDateMove {
     margin-top: 12px;
     display: flex;
     width: 200px;
@@ -258,32 +308,39 @@ body{
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px; /* 133.333% */
+    line-height: 24px;
+    /* 133.333% */
 }
 
 .checkGuest {
     width: 200px;
     margin-top: 20px;
     display: flex;
-    align-items: center; /* Căn giữa theo trục dọc */
-    justify-content: space-between; /* Tạo khoảng cách đều giữa các phần tử */
+    align-items: center;
+    /* Căn giữa theo trục dọc */
+    justify-content: space-between;
+    /* Tạo khoảng cách đều giữa các phần tử */
     /* padding: 10px; */
     border-radius: 8px;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
-    line-height: 24px; /* 133.333% */
+    line-height: 24px;
+    /* 133.333% */
 }
 
 .checkGuest svg {
-    cursor: pointer; /* Thêm con trỏ tay để chỉ ra rằng các icon này có thể click */
+    cursor: pointer;
+    /* Thêm con trỏ tay để chỉ ra rằng các icon này có thể click */
 }
-.checkInfo .alluliti{
+
+.checkInfo .alluliti {
     margin-top: 20px;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px; /* 133.333% */
+    line-height: 24px;
+    /* 133.333% */
 }
 
 .checkGuest button {
@@ -294,52 +351,70 @@ body{
 }
 
 .checkGuest button:focus {
-    outline: none; /* Xóa khung outline khi bấm vào */
+    outline: none;
+    /* Xóa khung outline khi bấm vào */
 }
 
 
-.Aver, .PayBooking, .totalCosts {
+.Aver,
+.PayBooking,
+.totalCosts {
     display: flex;
     width: 100%;
     padding: 10px;
-    align-items: center; /* Căn giữa các phần tử bên trong theo chiều dọc */
-    justify-content: space-between; /* Tạo khoảng cách giữa phần text và các phần tử khác */
+    align-items: center;
+    /* Căn giữa các phần tử bên trong theo chiều dọc */
+    justify-content: space-between;
+    /* Tạo khoảng cách giữa phần text và các phần tử khác */
 
 }
 
-.Aver p, .PayBooking p, .totalCosts p {
+.Aver p,
+.PayBooking p,
+.totalCosts p {
     margin: 0;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px; /* 133.333% */
+    line-height: 24px;
+    /* 133.333% */
 }
 
-.Aver .price, .PayBooking .price, .totalCosts .price {
+.Aver .price,
+.PayBooking .price,
+.totalCosts .price {
     font-weight: bold;
     font-size: 18px;
     color: #000;
 }
 
-.Aver p, .PayBooking p {
-    margin-right: 8px; /* Tạo khoảng cách 8px giữa đoạn text và icon SVG */
+.Aver p,
+.PayBooking p {
+    margin-right: 8px;
+    /* Tạo khoảng cách 8px giữa đoạn text và icon SVG */
 }
 
-.Aver div, .PayBooking div,
+.Aver div,
+.PayBooking div,
 .totalCosts div {
     display: flex;
-    flex-direction: column; /* Sắp xếp giá và VAT theo chiều dọc */
+    flex-direction: column;
+    /* Sắp xếp giá và VAT theo chiều dọc */
     text-align: right;
 }
 
 .totalPrice div {
-    display: flex; /* Sử dụng flexbox để căn chỉnh các phần tử nằm bên cạnh nhau */
-    align-items: center; /* Căn giữa theo chiều dọc */
+    display: flex;
+    /* Sử dụng flexbox để căn chỉnh các phần tử nằm bên cạnh nhau */
+    align-items: center;
+    /* Căn giữa theo chiều dọc */
 }
 
 .totalPrice p {
-    margin: 0; /* Đặt margin gốc là 0 để tránh khoảng cách mặc định */
-    margin-bottom: 8px; /* Thêm khoảng cách dưới mỗi thẻ <p> */
+    margin: 0;
+    /* Đặt margin gốc là 0 để tránh khoảng cách mặc định */
+    margin-bottom: 8px;
+    /* Thêm khoảng cách dưới mỗi thẻ <p> */
 }
 
 .Amenities {
@@ -355,21 +430,25 @@ body{
     font-size: 48px;
     font-style: normal;
     font-weight: 700;
-    line-height: 54px; /* 112.5% */
+    line-height: 54px;
+    /* 112.5% */
 }
 
 .iconAmenities {
     margin-top: 60px;
     display: flex;
-    justify-content: space-between; /* Để các cột cách đều nhau */
+    justify-content: space-between;
+    /* Để các cột cách đều nhau */
     align-items: center;
 }
 
 .iconAmenitiesColumn1 .iconsA {
 
     display: flex;
-    justify-content: space-between; /* Đẩy nội dung text và SVG về hai phía */
-    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: space-between;
+    /* Đẩy nội dung text và SVG về hai phía */
+    align-items: center;
+    /* Căn giữa theo chiều dọc */
     width: 280px;
     margin-bottom: 24px;
 }
@@ -384,24 +463,29 @@ body{
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px; /* 133.333% */
+    line-height: 24px;
+    /* 133.333% */
 }
-.textContent p{
+
+.textContent p {
     color: var(--Text, #181A18);
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 16px; /* 114.286% */
+    line-height: 16px;
+    /* 114.286% */
 }
 
 .iconsA svg {
-    margin-left: auto; /* Đẩy SVG sang lề phải */
-    flex-shrink: 0; /* Đảm bảo SVG không bị co lại */
+    margin-left: auto;
+    /* Đẩy SVG sang lề phải */
+    flex-shrink: 0;
+    /* Đảm bảo SVG không bị co lại */
 }
 
 
-.LocationPropertyDetails{
-    margin: 140px 120px 0 120px ;
+.LocationPropertyDetails {
+    margin: 140px 120px 0 120px;
     width: 1645px;
     height: auto;
     /* background-color: aqua; */
@@ -410,18 +494,97 @@ body{
     align-items: center;
     gap: 60px;
 }
-.LocationPropertyDetails h1{
+
+.LocationPropertyDetails h1 {
     text-align: center;
     font-size: 48px;
     font-style: normal;
     font-weight: 700;
-    line-height: 54px; /* 112.5% */
+    line-height: 54px;
+    /* 112.5% */
 }
 
 
-.LocationPropertyDetails .LocationMap iframe{
-    width: 1645px;  /* Make iframe take full width of the parent */
-    height: 500px; /* Make iframe take full height of the parent */
-    border: 0;    /* Remove default border */
+.LocationPropertyDetails .LocationMap iframe {
+    width: 1645px;
+    /* Make iframe take full width of the parent */
+    height: 500px;
+    /* Make iframe take full height of the parent */
+    border: 0;
+    /* Remove default border */
 }
 
+.moves {
+    display: flex;
+    align-items: flex-start;
+    gap: 42px;
+}
+
+.moves .move {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+
+}
+
+.moves .move label {
+    color: var(--Text, #181A18);
+
+    /* Desktop/Subtitle bold */
+    font-family: "Lato";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    /* 133.333% */
+}
+
+.moves .move .pick-date {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    gap: 12px;
+    border-radius: 12px;
+    padding: 12px 20px;
+    background-color: #fff;
+}
+
+.moves .move .pick-date input {
+    width: 130px;
+    background-color: #fff;
+    border: none;
+    color: var(--Text, #181A18);
+
+    /* Desktop/Subtitle */
+    font-family: "Lato";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    /* 133.333% */
+}
+
+.button {
+    display: flex;
+    width: 441px;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+
+.button p {
+    color: var(--Text, #181A18);
+    text-align: center;
+
+    /* Desktop/Description */
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    /* 114.286% */
+    align-self: stretch;
+}

@@ -30,7 +30,7 @@
                         <a href="{{URL::to('/HomePage')}}">Home</a>
                         <a href="{{URL::to('/Landlord')}}">Manage Rental</a>
                         <a href="{{URL::to('/Blog')}}">Blog</a>
-                        <a href="{{URL::to('/HomePage')}}">Contacts</a>
+                        <a href="{{URL::to('/Contact')}}">Contacts</a>
                     </ul>
                 </nav>
             </div>

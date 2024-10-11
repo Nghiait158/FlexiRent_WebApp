@@ -92,6 +92,10 @@ Route::get('/Blog', function () {
 Route::get('/PropertyDetails', function () {
     return view('PropertyDetails');
 });
+
+Route::get('/Contact', function () {
+    return view('contactPage');
+});
 // Route::get('/CheckoutPageA', function () {
 //     return view('CheckoutPageA');
 // });
