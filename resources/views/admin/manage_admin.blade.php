@@ -30,7 +30,7 @@
             <td><span class="text-ellipsis">{{ $admin->user ? $admin->user->email : 'N/A' }}</span></td>
             
             <td>
-              {{-- <a href="{{ URL::to('/editArea/'.$area->areaID) }}" class="active styling-edit" ui-toggle-class=""> --}}
+              <a href="{{ URL::to('/editAdmin/'.$admin->admin_id) }}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i></a>
               {{-- <a onclick="return confirm('Bạn có chắc là muốn xóa khu vực này ko?')" href="{{ URL::to('/deleteArea/'.$area->areaID) }}" class="active styling-edit" ui-toggle-class=""> --}}
                 <i class="fa fa-times text-danger text"></i>
