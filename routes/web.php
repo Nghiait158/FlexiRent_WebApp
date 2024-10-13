@@ -49,11 +49,17 @@ Route::middleware(['auth','admin'])->group(function () {
         Route::get('admin/dashboard', [AdminController::class, 'currentAdmin']);
         Route::get('/admin', action: [AdminManageController::class, 'index']);
         Route::post('/updatecurrentAdmin/{adminID}', [AdminController::class, 'updatecurrentAdmin']);
+        // -------------- Manage admin-----------
         Route::get('/manage_admin', [AdminController::class, 'manage_admin']);
         Route::get('/editAdmin/{admin_id}', [AdminController::class, 'editAdmin']);
         Route::post('/updateAdmin/{adminID}', [AdminController::class, 'updateAdmin']);
         Route::get('/deleteAdmin/{admin_id}', [AdminController::class, 'deleteAdmin']);
 
+        // -------------Manage Landlord-----------
+        Route::get('/manage_landlord', [LandlordController::class, 'manage_landlord']);
+        Route::get('/editLandlord/{landlord_id}', [LandlordController::class, 'editLandlord']);
+        Route::post('/updateLandlord/{landlord_id}', [LandlordController::class, 'updateLandlord']);
+        Route::get('/deleteLandlord/{landlord_id}', [LandlordController::class, 'deleteLandlord']);
         
 });
         

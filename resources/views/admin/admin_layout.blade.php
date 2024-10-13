@@ -128,7 +128,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </a>
                     <ul class="sub">
                         <li><a href="{{URL::to('/manage_admin')}}">Manage admins</a></li>
-                        <li><a href="{{URL::to('/add_admin')}}">Add Admin</a></li>
+                        {{-- <li><a href="{{URL::to('/add_admin')}}">Add Admin</a></li> --}}
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Landlord</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{URL::to('/manage_landlord')}}">Manage Landlord</a></li>
+                        {{-- <li><a href="{{URL::to('/add_admin')}}">Add Landlord</a></li> --}}
                     </ul>
                 </li>
                 {{-- <li class="sub-menu">

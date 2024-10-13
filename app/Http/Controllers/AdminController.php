@@ -52,14 +52,7 @@ class AdminController extends Controller
     }
 
 
-
-
-
-
-
-
-
-
+// --------------------Manage Admin -------------------------------------
 
     public function editAdmin($admin_id){
         $editAdmin = Admin::with('user')->find($admin_id);
