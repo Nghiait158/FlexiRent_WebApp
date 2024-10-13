@@ -61,6 +61,12 @@ Route::middleware(['auth','admin'])->group(function () {
         Route::post('/updateLandlord/{landlord_id}', [LandlordController::class, 'updateLandlord']);
         Route::get('/deleteLandlord/{landlord_id}', [LandlordController::class, 'deleteLandlord']);
         
+        // -------------- Manage Guest-------------
+        Route::get('/manage_guest', [GuestController::class, 'manage_guest']);
+        Route::get('/editGuest/{guest_id}', [GuestController::class, 'editGuest']);
+        Route::post('/updateGuest/{guest_id}', [GuestController::class, 'updateGuest']);
+        Route::get('/deleteGuest/{guest_id}', [GuestController::class, 'deleteGuest']);
+        
 });
         
 

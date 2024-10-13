@@ -33,7 +33,7 @@
             <td>
               <a href="{{ URL::to('/editLandlord/'.$landlord->landlord_id) }}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i></a>
-              <a onclick="return confirm('Are you sure to delete this admin?')" href="{{ URL::to('/deleteLandlord/'.$landlord->landlord_id) }}" class="active styling-edit" ui-toggle-class="">
+              <a onclick="return confirm('Are you sure to delete this landlord?')" href="{{ URL::to('/deleteLandlord/'.$landlord->landlord_id) }}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
             </td>
