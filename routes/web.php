@@ -47,11 +47,13 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth','admin'])->group(function () {
         Route::get('admin/dashboard', [AdminController::class, 'currentAdmin']);
-        Route::get('/admin', [AdminManageController::class, 'index']);
-        Route::post('/updateAdmin/{adminID}', [AdminController::class, 'updatecurrentAdmin']);
+        Route::get('/admin', action: [AdminManageController::class, 'index']);
+        Route::post('/updatecurrentAdmin/{adminID}', [AdminController::class, 'updatecurrentAdmin']);
         Route::get('/manage_admin', [AdminController::class, 'manage_admin']);
         Route::get('/editAdmin/{admin_id}', [AdminController::class, 'editAdmin']);
-        
+        Route::post('/updateAdmin/{adminID}', [AdminController::class, 'updateAdmin']);
+        Route::get('/deleteAdmin/{admin_id}', [AdminController::class, 'deleteAdmin']);
+
         
 });
         

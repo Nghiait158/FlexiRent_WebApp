@@ -15,26 +15,26 @@
                     }
                     ?>
                 <div class="panel-body">
-                    {{-- @foreach($allArea as $key => $area) --}}
-
                     <div class="position-center">
                         <form role="form" action="{{URL::to('/updateAdmin/'.$editAdmin-> admin_id)}}" method="post">
                             {{ csrf_field() }}
-
                         <div class="form-group">
                             <label for="admin_id">admin_id</label>
                             <input type="text" value="{{ $editAdmin->admin_id }}" class="form-control" name="admin_id" id="admin_id">
                         </div>
 
                         <div class="form-group">
-                            <label for="name">Tên khu vưc(name)</label>
-                            <input type="text" value="{{ $editArea->areaName }}" class="form-control" name="areaName" id="areaName">
+                            <label for="name">(name)</label>
+                            <input type="text" value="{{ $editAdmin->name }}" class="form-control" name="name" id="name">
                         </div>
-                       
-                        <button type="submit" name="updateArea" class="btn btn-info">cập nhật khu vực </button>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" value="{{ $editAdmin->user->email }}" class="form-control" name="email" id="email">
+                        </div>
+                        
+                        <button type="submit" name="updateArea" class="btn btn-info">Update admin</button>
                         </form>
                     </div>
-                    {{-- @endforeach --}}
                 </div>
             </section>
 </div>    

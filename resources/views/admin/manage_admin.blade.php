@@ -32,7 +32,7 @@
             <td>
               <a href="{{ URL::to('/editAdmin/'.$admin->admin_id) }}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i></a>
-              {{-- <a onclick="return confirm('Bạn có chắc là muốn xóa khu vực này ko?')" href="{{ URL::to('/deleteArea/'.$area->areaID) }}" class="active styling-edit" ui-toggle-class=""> --}}
+              <a onclick="return confirm('Are you sure to delete this admin?')" href="{{ URL::to('/deleteAdmin/'.$admin->admin_id) }}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
             </td>

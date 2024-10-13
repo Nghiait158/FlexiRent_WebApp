@@ -2,8 +2,14 @@
 @section('admin_content')
 
     <h1>Admin Dashboard</h1>
-
-    <form role="form" action="{{ URL::to('/updateAdmin/' . ($currentAdmin ? $currentAdmin->admin_id : '')) }}" method="post">
+    <?php
+        $message = Session::get('message');
+        if($message){
+            echo '<span class="text-alert">'.$message.'</span>';
+            Session::put('message',null);
+        }
+    ?>
+    <form role="form" action="{{ URL::to('/updatecurrentAdmin/' . ($currentAdmin ? $currentAdmin->admin_id : '')) }}" method="post">
         {{ csrf_field() }}
         
         <div class="mb-3">

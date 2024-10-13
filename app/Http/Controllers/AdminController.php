@@ -8,38 +8,29 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    public function manage_admin(){  //hiển thị danh sách các job 
+    public function manage_admin(){  
         $Alladmins = Admin::with('user')->get();
-
-        // Trả về view với danh sách admin
         return view('admin.manage_admin', compact('Alladmins'));
     }
     public function currentAdmin(){
         $currentUser = Auth::user();
-        // Kiểm tra xem user hiện tại có admin không
         $currentAdmin = Admin::where('id', $currentUser->id)->first();
-        // Nếu không tìm thấy admin
         if (!$currentAdmin) {
             return redirect()->back()->with('error', 'No admin data found for this user.');
         }
-        // dd($currentUser);
-        // Trả về view và truyền dữ liệu admin vào
+
+        // dd($currentAdmin);
         return view('admin.dashboard', compact('currentAdmin'));
     }
-    public function editAdmin($areaID){
-        // $editPosts= DB::table('posts')->where('postID',$postID)->get();
-        // $editArea=Area::find($areaID);
-        // $allArea= view('admin.editArea')->with('editArea', $editArea);
-        // return view('admin.admin_layout')->with('admin.editArea',$allArea);
-    }
+    
     public function updatecurrentAdmin(Request $request, $admin_id) {
-        // Xác thực dữ liệu đầu vào
+
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $admin_id, // Bỏ qua email cho admin hiện tại
+            'email' => 'required|email|unique:users,email,' . $admin_id, 
         ]);
 
-        // Tìm admin dựa trên admin_id
+
         $admin = Admin::find($admin_id);
         
         if ($admin) {
@@ -51,16 +42,59 @@ class AdminController extends Controller
                 $user->save();
             }
 
-            // Đặt thông báo thành công
             Session::put('message', 'Admin updated successfully.');
         } else {
-            // Đặt thông báo lỗi nếu không tìm thấy admin
             Session::put('message', 'Admin not found.');
             return redirect()->back();
         }
 
-        // Điều hướng trở lại dashboard
         return redirect()->to('admin/dashboard');
+    }
+
+
+
+
+
+
+
+
+
+
+
+    public function editAdmin($admin_id){
+        $editAdmin = Admin::with('user')->find($admin_id);
+        $data = [
+            'editAdmin' => $editAdmin,
+        ];
+        return view('admin.edit_Admin', $data);
+    }
+    public function updateAdmin(Request $request, $admin_id){
+        $data= $request->all();
+        $admin = Admin::with('user')->find($admin_id);
+        if (!$admin) {
+            return redirect()->back()->withErrors(['error' => 'Admin not found']);
+        }
+        $admin->admin_id  = $data['admin_id'];
+        $admin->name = $data['name'];
+        $admin->user->email = $data['email'];
+        
+        $admin->save();
+        Session::put('message','Update admin successful');
+        return Redirect::to('manage_admin');
+    }
+    public function deleteAdmin($admin_id){
+        $admin = Admin::with('user')->find($admin_id);
+        if ($admin) {
+            $user = $admin->user;
+            if ($user) {
+                $user->delete(); 
+            }
+            $admin->delete();
+            Session::flash('message', 'Delete Admin sucesfull');
+        } else {
+            Session::flash('message', 'Admin does not exist');
+        }
+        return Redirect::to('manage_admin');
     }
     
 }
