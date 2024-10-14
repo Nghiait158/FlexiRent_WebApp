@@ -8,10 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    public function manage_admin(){  
-        $Alladmins = Admin::with('user')->get();
-        return view('admin.manage_admin', compact('Alladmins'));
-    }
+
     public function currentAdmin(){
         $currentUser = Auth::user();
         $currentAdmin = Admin::where('id', $currentUser->id)->first();
@@ -53,12 +50,18 @@ class AdminController extends Controller
 
 
 // --------------------Manage Admin -------------------------------------
-
+    public function manage_admin(){  
+        $Alladmins = Admin::with('user')->get();
+        return view('admin.manage_admin', compact('Alladmins'));
+    }
     public function editAdmin($admin_id){
         $editAdmin = Admin::with('user')->find($admin_id);
+        $helo='Nghia';
         $data = [
             'editAdmin' => $editAdmin,
+            'heelo'=> $helo,
         ];
+        dd($editAdmin);
         return view('admin.edit_Admin', $data);
     }
     public function updateAdmin(Request $request, $admin_id){
@@ -67,6 +70,7 @@ class AdminController extends Controller
         if (!$admin) {
             return redirect()->back()->withErrors(['error' => 'Admin not found']);
         }
+        
         $admin->admin_id  = $data['admin_id'];
         $admin->name = $data['name'];
         $admin->user->email = $data['email'];

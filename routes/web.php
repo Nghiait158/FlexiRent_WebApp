@@ -49,6 +49,8 @@ Route::middleware(['auth','admin'])->group(function () {
         Route::get('admin/dashboard', [AdminController::class, 'currentAdmin']);
         Route::get('/admin', action: [AdminManageController::class, 'index']);
         Route::post('/updatecurrentAdmin/{adminID}', [AdminController::class, 'updatecurrentAdmin']);
+
+
         // -------------- Manage admin-----------
         Route::get('/manage_admin', [AdminController::class, 'manage_admin']);
         Route::get('/editAdmin/{admin_id}', [AdminController::class, 'editAdmin']);
@@ -66,6 +68,7 @@ Route::middleware(['auth','admin'])->group(function () {
         Route::get('/editGuest/{guest_id}', [GuestController::class, 'editGuest']);
         Route::post('/updateGuest/{guest_id}', [GuestController::class, 'updateGuest']);
         Route::get('/deleteGuest/{guest_id}', [GuestController::class, 'deleteGuest']);
+        
         
 });
         
