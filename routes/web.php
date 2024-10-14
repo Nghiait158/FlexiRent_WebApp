@@ -3,13 +3,12 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-
 use App\Http\Controllers\BookingPageController;
 use App\Http\Controllers\LandlordController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminManageController;
-
+use App\Http\Controllers\Amenitycontroller; 
 use App\Http\Controllers\PropertyDetailsPageController;
 
 // Route::get('/', function () {
@@ -66,7 +65,14 @@ Route::middleware(['auth','admin'])->group(function () {
         Route::get('/editGuest/{guest_id}', [GuestController::class, 'editGuest']);
         Route::post('/updateGuest/{guest_id}', [GuestController::class, 'updateGuest']);
         Route::get('/deleteGuest/{guest_id}', [GuestController::class, 'deleteGuest']);
-        
+
+        // Manage Amenities
+        Route::get('/manage_amenity', [Amenitycontroller::class, 'manage_amenity']);
+        Route::get('/editAmenity/{amenity_id}', [Amenitycontroller::class, 'editAmenity']);
+        Route::post('/updateAmenity/{amenity_id}', [Amenitycontroller::class, 'updateAmenity']);
+        Route::get('/deleteAmenity/{amenity_id}', [Amenitycontroller::class, 'deleteAmenity']);
+        Route::get('/addAmenity', [Amenitycontroller::class, 'addAmenity']);
+        Route::post('/saveAmenity', [Amenitycontroller::class, 'saveAmenity']);
 });
         
 

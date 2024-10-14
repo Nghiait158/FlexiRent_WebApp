@@ -5,7 +5,7 @@
     <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading">
-                    Update admin into database
+                   add-amenity-into-DB
                 </header>
                  <?php
                     $message = Session::get('message');
@@ -15,26 +15,27 @@
                     }
                     ?>
                 <div class="panel-body">
+
                     <div class="position-center">
-                        <form role="form" action="{{URL::to('/updateAdmin/'.$editAdmin-> admin_id)}}" method="post">
+                        <form role="form" action="{{URL::to('/saveAmenity')}}" method="post">
                             {{ csrf_field() }}
+                         <div class="form-group">
+                                <label for="amenity_id">amenity_id</label>
+                                <input type="text" class="form-control" name="amenity_id"  id="amenity_id">
+                        </div>
                         <div class="form-group">
-                            <label for="admin_id">admin_id</label>
-                            <input type="text" value="{{ $editAdmin->admin_id }}" class="form-control" name="admin_id" id="admin_id">
+                            <label for="amenity_name">amenity_name</label>
+                            <input type="text" class="form-control" name="amenity_name"  id="amenity_name"  >
+                        </div>
+                        <div class="form-group">
+                            <label for="icon">icon</label>
+                            <input type="text" class="form-control" name="icon"  id="icon" >
                         </div>
 
-                        <div class="form-group">
-                            <label for="name">(name)</label>
-                            <input type="text" value="{{ $editAdmin->name }}" class="form-control" name="name" id="name">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="text" value="{{ $editAdmin->user->email }}" class="form-control" name="email" id="email">
-                        </div>
-                        
-                        <button type="submit" name="updateAdmin" class="btn btn-info">Update admin</button>
+                        <button type="submit" name="addAmenity" class="btn btn-info">Add amenity</button>
                         </form>
                     </div>
+
                 </div>
             </section>
 </div>    
