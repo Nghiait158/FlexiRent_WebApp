@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminManageController;
 use App\Http\Controllers\Amenitycontroller; 
 use App\Http\Controllers\ReviewController; 
+use App\Http\Controllers\BookingController; 
 
 use App\Http\Controllers\PropertyDetailsPageController;
 
@@ -78,13 +79,21 @@ Route::middleware(['auth','admin'])->group(function () {
         Route::get('/addAmenity', [Amenitycontroller::class, 'addAmenity']);
         Route::post('/saveAmenity', [Amenitycontroller::class, 'saveAmenity']);
 
-        // Manage Reivew
+        // Manage Review
         Route::get('/manage_review', [ReviewController::class, 'manage_review']);
         Route::get('/editReview/{review_id}', [ReviewController::class, 'editReview']);
         Route::post('/updateReview/{review_id}', [ReviewController::class, 'updateReview']);
         Route::get('/deleteReview/{review_id}', [ReviewController::class, 'deleteReview']);
         Route::get('/addReview', [ReviewController::class, 'addReview']);
         Route::post('/saveReview', [ReviewController::class, 'saveReview']);
+
+        // Manage booking
+        Route::get('/manage_booking', [BookingController::class, 'manage_booking']);
+        Route::get('/editBooking/{booking_id}', [BookingController::class, 'editBooking']);
+        Route::post('/updateBooking/{booking_id}', [BookingController::class, 'updateBooking']);
+        Route::get('/deleteBooking/{booking_id}', [BookingController::class, 'deleteBooking']);
+        Route::get('/addBooking', [BookingController::class, 'addBooking']);
+        Route::post('/saveBooking', [BookingController::class, 'saveBooking']);
 
 });
         

@@ -37,7 +37,7 @@
             <td>
               <a href="{{ URL::to('/editReview/'.$review->review_id) }}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i></a>
-              <a onclick="return confirm('Are you sure to delete this landlord?')" href="{{ URL::to('/deleteReview/'.$review->review_id) }}" class="active styling-edit" ui-toggle-class="">
+              <a onclick="return confirm('Are you sure to delete this review?')" href="{{ URL::to('/deleteReview/'.$review->review_id) }}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
             </td>
