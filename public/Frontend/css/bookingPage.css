@@ -362,7 +362,10 @@ body {
 }
 
 
-
+.img img:hover {
+    filter: brightness(0.8); /* Hiệu ứng thay đổi độ sáng khi hover */
+    transition: 0.3s; /* Hiệu ứng chuyển đổi mượt mà */
+}
 .listProperties .showResult .propertyShow .propertyContent .AvailableIn{
     /* margin-top: 14px; */
     margin-top: 0;
@@ -371,7 +374,7 @@ body {
     height: auto;
     width: auto;
     display: flex;
-    padding: 4px 20px;
+    padding: 4px 10px;
     align-items: center;
     gap: 10px;
     border-radius: 30px;

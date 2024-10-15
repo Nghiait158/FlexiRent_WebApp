@@ -59,7 +59,10 @@
                             <label for="description">Description</label>
                             <textarea class="form-control" rows="4" cols="50" name="description" id="description">{{ old('description', $editProperty->description) }}</textarea>
                         </div>
-                        
+                        <div class="form-group">
+                            <label for="available">available</label>
+                            <input type="text" value="{{ $editProperty->available }}" class="form-control" name="available" id="available">
+                        </div>
                         <div class="form-group">
                             <label for="view">view</label>
                             <input type="text" value="{{ $editProperty->view }}" class="form-control" name="view" id="view">

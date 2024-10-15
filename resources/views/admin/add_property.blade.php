@@ -54,10 +54,13 @@
                             <label for="description">description (text)</label>
                             <textarea class="form-control" name="description" id="description" ></textarea>
                         </div>
-                        
                         <div class="form-group">
                             <label for="view">view (varchar(255))</label>
                             <input type="text" class="form-control" name="view"  id="view" >
+                        </div>                        
+                        <div class="form-group">
+                            <label for="available">available (date)</label>
+                            <input type="text" class="form-control" name="available"  id="available" >
                         </div>
                         <div class="form-group">
                             <label for="floor">floor (int(11))</label>

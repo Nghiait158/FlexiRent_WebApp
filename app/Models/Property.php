@@ -23,6 +23,7 @@ class Property extends Model
         'elevator',
         'price_per_month',
         'description',
+        'available',
     ];
 
     public function landlord()
@@ -33,5 +34,9 @@ class Property extends Model
     public function amenities()
     {
         return $this->belongsToMany(Amenity::class, 'property_amenities', 'property_id', 'amenity_id');
+    }
+    public function images()
+    {
+        return $this->hasMany(PropertyImg::class, 'property_id', 'property_id');
     }
 }

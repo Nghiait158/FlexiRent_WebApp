@@ -12,7 +12,7 @@ use App\Http\Controllers\AdminManageController;
 use App\Http\Controllers\Amenitycontroller;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\BookingController; 
-
+use App\Http\Controllers\PropertyImgController; 
 use App\Http\Controllers\Propertycontroller;
 use App\Http\Controllers\PropertyDetailsPageController;
 
@@ -89,6 +89,15 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/addProperty', [Propertycontroller::class, 'addProperty']);
     Route::post('/saveProperty', [Propertycontroller::class, 'saveProperty']);
 
+    // ---------Property Img-----------------
+    Route::get('/manage_PropertyImg/{property_id}', [PropertyImgController::class, 'manage_PropertyImg']);
+    Route::get('/editPropertyImg/{propertyImg_id}', [PropertyImgController::class, 'editPropertyImg']);
+    Route::post('/updatePropertyImg/{propertyImg_id}', [PropertyImgController::class, 'updatePropertyImg']);
+    Route::get('/deletePropertyImg/{propertyImg_id}', [PropertyImgController::class, 'deletePropertyImg']);
+    Route::get('/addPropertyImg/{property_id}', [PropertyImgController::class, 'addPropertyImg']);
+    Route::post('/savePropertyImg/{property_id}', [PropertyImgController::class, 'savePropertyImg']);
+
+
     // Manage Review
     Route::get('/manage_review', [ReviewController::class, 'manage_review']);
     Route::get('/editReview/{review_id}', [ReviewController::class, 'editReview']);
@@ -107,13 +116,16 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
     // ---------Booking-----------------
-    // Manage booking
     Route::get('/manage_booking', [BookingController::class, 'manage_booking']);
     Route::get('/editBooking/{booking_id}', [BookingController::class, 'editBooking']);
     Route::post('/updateBooking/{booking_id}', [BookingController::class, 'updateBooking']);
     Route::get('/deleteBooking/{booking_id}', [BookingController::class, 'deleteBooking']);
     Route::get('/addBooking', [BookingController::class, 'addBooking']);
     Route::post('/saveBooking', [BookingController::class, 'saveBooking']);
+
+
+
+    
 });
 
 
@@ -173,5 +185,5 @@ Route::get('/Contact', function () {
 
 // Route::get('/map', [MapController::class, 'generateMapIframe']);
 
-Route::get('/bookingPage', [BookingPageController::class, 'showMap']);
+Route::get('/bookingPage', [BookingPageController::class, 'sendData']);
 Route::get('/PropertyDetails', [PropertyDetailsPageController::class, 'showMap']);

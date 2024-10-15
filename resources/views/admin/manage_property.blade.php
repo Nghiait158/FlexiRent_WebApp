@@ -18,6 +18,7 @@
                     <tr>
                         <th style="width:30px;"></th>
                         <th>property_id</th>
+                        <th>propertyImg</th>
                         <th>property_name</th>
                         <th>landlord_id</th>
                         <th>location</th>
@@ -25,6 +26,7 @@
                         <th>nbathrooms</th>
                         <th>area</th>
                         <th>description</th>
+                        <th>available</th>
                         <th>view</th>
                         <th>floor</th>
                         <th>elevator</th>
@@ -45,7 +47,17 @@
                             <a class="active styling-edit" ui-toggle-class="" href="{{URL::to('/deleteProperty/'.$property->property_id)}}">
                                 <i class="fa fa-times text-danger text"></i></a>
                         </td>
+
                         <td><span class="text-ellipsis">{{ $property->property_id }} </span></td>
+                        
+                        <td>
+                            <a class="active styling-edit" ui-toggle-class="" href="{{URL::to('/manage_PropertyImg/'.$property->property_id)}}">
+
+                                <i class="fa fa-picture-o text-success text-active"></i></a>
+
+                            <a class="active styling-edit" ui-toggle-class="" href="{{URL::to('/addPropertyImg/'.$property->property_id)}}">
+                                <i class="fa fa-plus text-danger text"></i></a>
+                        </td>
                         <td><span class="text-ellipsis">{{ $property->property_name ?:'N/A'}}</span></td>
                         <td><span class="text-ellipsis">{{ $property->landlord_id ?:'N/A'}}</span></td>
                         <td><span class="text-ellipsis">{{ $property->location }} </span></td>
@@ -53,6 +65,7 @@
                         <td><span class="text-ellipsis">{{ $property->nbathrooms ?:'N/A'}}</span></td>
                         <td><span class="text-ellipsis">{{ $property->area }} </span></td>
                         <td><span class="text-ellipsis">{{ $property->description }} </span></td>
+                        <td><span class="text-ellipsis">{{ $property->available }} </span></td>
                         <td><span class="text-ellipsis">{{ $property->view ?:'N/A'}}</span></td>
                         <td><span class="text-ellipsis">{{ $property->floor ?:'N/A'}}</span></td>
                         <td><span class="text-ellipsis">{{ $property->elevator }} </span></td>
