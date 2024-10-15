@@ -21,21 +21,27 @@
                             <select name="property_id" id="property_id" class="form-control" required>
                                 <option value="">-- Select Property --</option>
                                 @foreach ($properties as $property)
-                                <option value="{{ $editPropertyAmenity->property_id }}">{{ $property->property_name }} (ID: {{ $property->property_id }} || Location: {{ $property->location }} ||
-                                    Owner: {{ $landlords->where('landlord_id', $property->landlord_id)->first() ? ($landlords->where('landlord_id', $property->landlord_id)->first()->first_name . ' ' . $landlords->where('landlord_id', $property->landlord_id)->first()->last_name) : 'N/A' }})</option>
+                                    <option value="{{ $property->property_id }}" {{ $editPropertyAmenity->property_id == $property->property_id ? 'selected' : '' }}>
+                                        {{ $property->property_name }} (ID: {{ $property->property_id }} || Location: {{ $property->location }} ||
+                                        Owner: {{ $landlords->where('landlord_id', $property->landlord_id)->first() ? ($landlords->where('landlord_id', $property->landlord_id)->first()->first_name . ' ' . $landlords->where('landlord_id', $property->landlord_id)->first()->last_name) : 'N/A' }})
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
+                        
 
                         <div class="form-group">
                             <label for="amenity_id">Amenity ID</label>
                             <select name="amenity_id" id="amenity_id" class="form-control" required>
                                 <option value="">-- Select Amenity --</option>
                                 @foreach ($amenities as $amenity)
-                                <option value="{{ $editPropertyAmenity->amenity_id }}">{{ $amenity->amenity_name }}</option>
+                                    <option value="{{ $amenity->amenity_id }}" {{ $editPropertyAmenity->amenity_id == $amenity->amenity_id ? 'selected' : '' }}>
+                                        {{ $amenity->amenity_name }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
+                        
 
                         <button type="submit" name="updatePropertyAmenity" class="btn btn-info">Update Property Amenity</button>
                     </form>

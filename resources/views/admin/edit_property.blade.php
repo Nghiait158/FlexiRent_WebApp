@@ -28,15 +28,17 @@
                             <input type="text" value="{{ $editProperty->property_name }}" class="form-control" name="property_name" id="property_name">
                         </div>
                         <div class="form-group">
-                            <label for="landlord_id">landlord_id</label>
+                            <label for="landlord_id">Landlord</label>
                             <select name="landlord_id" id="landlord_id" class="form-control">
                                 <option value="">-- Select Landlord --</option>
                                 @foreach ($landlords as $landlord)
-                                <option value="{{$landlord->landlord_id}}">Name: {{$landlord -> first_name}} {{$landlord -> last_name}} (ID: {{$landlord -> landlord_id}})</option>
-
+                                    <option value="{{ $landlord->landlord_id }}" {{ $editProperty->landlord_id == $landlord->landlord_id ? 'selected' : '' }}>
+                                        Name: {{ $landlord->first_name }} {{ $landlord->last_name }} (ID: {{ $landlord->landlord_id }})
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
+                        
                         <div class="form-group">
                             <label for="location">location</label>
                             <input type="text" value="{{ $editProperty->location }}" class="form-control" name="location" id="location">

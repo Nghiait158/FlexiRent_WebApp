@@ -12,10 +12,11 @@ class AdminController extends Controller
     public function currentAdmin(){
         $currentUser = Auth::user();
         $currentAdmin = Admin::where('id', $currentUser->id)->first();
+
+
         if (!$currentAdmin) {
             return redirect()->back()->with('error', 'No admin data found for this user.');
         }
-
         // dd($currentAdmin);
         return view('admin.dashboard', compact('currentAdmin'));
     }

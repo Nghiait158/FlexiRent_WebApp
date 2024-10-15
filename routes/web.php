@@ -19,9 +19,9 @@ use App\Http\Controllers\PropertyDetailsPageController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/dash', function () {
-    return view('dashboard');
-});
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// });
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
@@ -96,13 +96,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/deleteReview/{review_id}', [ReviewController::class, 'deleteReview']);
     Route::get('/addReview', [ReviewController::class, 'addReview']);
     Route::post('/saveReview', [ReviewController::class, 'saveReview']);
-        // Manage Review
-        Route::get('/manage_review', [ReviewController::class, 'manage_review']);
-        Route::get('/editReview/{review_id}', [ReviewController::class, 'editReview']);
-        Route::post('/updateReview/{review_id}', [ReviewController::class, 'updateReview']);
-        Route::get('/deleteReview/{review_id}', [ReviewController::class, 'deleteReview']);
-        Route::get('/addReview', [ReviewController::class, 'addReview']);
-        Route::post('/saveReview', [ReviewController::class, 'saveReview']);
 
     // Manage Property Amenity
     Route::get('/manage_property_amenity', [PropertyAmenityController::class, 'manage_property_amenity']);
@@ -111,20 +104,20 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/deletePropertyAmenity/{property_id}/{amenity_id}', [PropertyAmenityController::class, 'deletePropertyAmenity']);
     Route::get('/addPropertyAmenity', [PropertyAmenityController::class, 'addPropertyAmenity']);
     Route::post('/savePropertyAmenity', [PropertyAmenityController::class, 'savePropertyAmenity']);
+
+
+    // ---------Booking-----------------
+    // Manage booking
+    Route::get('/manage_booking', [BookingController::class, 'manage_booking']);
+    Route::get('/editBooking/{booking_id}', [BookingController::class, 'editBooking']);
+    Route::post('/updateBooking/{booking_id}', [BookingController::class, 'updateBooking']);
+    Route::get('/deleteBooking/{booking_id}', [BookingController::class, 'deleteBooking']);
+    Route::get('/addBooking', [BookingController::class, 'addBooking']);
+    Route::post('/saveBooking', [BookingController::class, 'saveBooking']);
 });
 
 
-Route::middleware(['auth', 'guest', 'admin'])->group(function () {
-        // Manage booking
-        Route::get('/manage_booking', [BookingController::class, 'manage_booking']);
-        Route::get('/editBooking/{booking_id}', [BookingController::class, 'editBooking']);
-        Route::post('/updateBooking/{booking_id}', [BookingController::class, 'updateBooking']);
-        Route::get('/deleteBooking/{booking_id}', [BookingController::class, 'deleteBooking']);
-        Route::get('/addBooking', [BookingController::class, 'addBooking']);
-        Route::post('/saveBooking', [BookingController::class, 'saveBooking']);
 
-});
-        
 
 Route::middleware(['auth','guest','admin'])->group(function () {
     // Backend---------------

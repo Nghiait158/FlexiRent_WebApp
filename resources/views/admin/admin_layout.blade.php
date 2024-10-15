@@ -162,9 +162,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </a>
                         <ul class="sub">
                             <li><a href="{{URL::to('/manage_guest')}}">Manage Guest</a></li>
-                            {{-- <li><a href="{{URL::to('/add_admin')}}">Add Landlord</a>
-                    </li> --}}
-                    </ul>
+                        </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
@@ -174,6 +172,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <ul class="sub">
                             <li><a href="{{URL::to('/manage_amenity')}}">Manage Amenity</a></li>
                             <li><a href="{{URL::to('/addAmenity')}}">Add Amenity</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Booking</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="{{URL::to('/manage_booking')}}">Manage booking</a></li>
+                            <li><a href="{{URL::to('/addBooking')}}">Add booking</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">

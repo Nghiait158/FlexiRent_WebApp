@@ -12,11 +12,11 @@ class DashboardController extends Controller
 
         // Kiểm tra vai trò của user
         if ($user->role === 'admin') {
-            return view('admin.dashboard'); // Trả về view cho admin
+            return redirect()->to('admin/dashboard'); // Trả về view cho admin
         } elseif ($user->role === 'landlord') {
-            return view('landlord.dashboard'); // Trả về view cho landlord
+            return redirect()->to('landlord/dashboard'); // Trả về view cho landlord
         } elseif ($user->role === 'guest') {
-            return view('guest.dashboard'); // Trả về view cho landlord
+            return redirect()->to('guest/dashboard'); // Trả về view cho landlord
         }
          else {
             abort(403, 'Unauthorized action.'); // Nếu không phải admin hoặc landlord
