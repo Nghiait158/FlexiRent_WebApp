@@ -56,7 +56,7 @@ class AdminController extends Controller
     }
     public function editAdmin($admin_id){
         $editAdmin = Admin::with('user')->find($admin_id);
-        $helo='Nghia';
+        $helo='Nghia'; 
         $data = [
             'editAdmin' => $editAdmin,
             'heelo'=> $helo,

@@ -9,6 +9,8 @@ use App\Http\Controllers\GuestController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminManageController;
 use App\Http\Controllers\Amenitycontroller; 
+use App\Http\Controllers\ReviewController; 
+
 use App\Http\Controllers\PropertyDetailsPageController;
 
 // Route::get('/', function () {
@@ -75,6 +77,15 @@ Route::middleware(['auth','admin'])->group(function () {
         Route::get('/deleteAmenity/{amenity_id}', [Amenitycontroller::class, 'deleteAmenity']);
         Route::get('/addAmenity', [Amenitycontroller::class, 'addAmenity']);
         Route::post('/saveAmenity', [Amenitycontroller::class, 'saveAmenity']);
+
+        // Manage Reivew
+        Route::get('/manage_review', [ReviewController::class, 'manage_review']);
+        Route::get('/editReview/{review_id}', [ReviewController::class, 'editReview']);
+        Route::post('/updateReview/{review_id}', [ReviewController::class, 'updateReview']);
+        Route::get('/deleteReview/{review_id}', [ReviewController::class, 'deleteReview']);
+        Route::get('/addReview', [ReviewController::class, 'addReview']);
+        Route::post('/saveReview', [ReviewController::class, 'saveReview']);
+
 });
         
 

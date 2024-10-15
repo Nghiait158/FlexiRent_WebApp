@@ -176,7 +176,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <li><a href="{{URL::to('/addAmenity')}}">Add Amenity</a></li>
                         </ul>
                     </li>
-
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Review</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="{{URL::to('/manage_review')}}">Manage Review</a></li>
+                            <li><a href="{{URL::to('/addReview')}}">Add Review</a></li>
+                        </ul>
+                    </li>
 
 
                     </ul>
