@@ -45,35 +45,39 @@ class ReviewController extends Controller
 
     public function editReview($review_id ){
         $editReview = Review::find($review_id );
+        $listProperty= Property::all();
+        $listGuest= Guest::all(); 
         $data = [
             'editReview' => $editReview,
+            'listProperty' => $listProperty,
+            'listGuest' => $listGuest,
         ];
         return view('admin.edit_review', $data);
     }
     public function updateReview(Request $request, $review_id){
         $data= $request->all();
-        $review = Review::with('property')->find($review_id);
+        $review = Review::with('guest','property')->find($review_id);
         if (!$review) {
             return redirect()->back()->withErrors(['error' => 'Review not found']);
         }
         $review->review_id  = $data['review_id'];
         $review->property_id   = $data['property_id'];
-        $review->amenity_name = $data['amenity_name'];
-        $review->icon = $data['icon'];
-
+        $review->guest_id   = $data['guest_id'];
+        $review->rating = $data['rating'];
+        $review->comment = $data['comment'];
         $review->save();
-        Session::put('message','Update amenity successful');
-        return Redirect::to('manage_amenity');
+        Session::put('message','Update review successful');
+        return Redirect::to('manage_review');
     }
-    public function deleteAmenity($review_id  ){
-        $review = Review::find($review_id  );
+    public function deleteReview($review_id  ){
+        $review = Review::find($review_id);
         if ($review) {
             $review->delete();
-            Session::flash('message', 'Delete amenity successful');
+            Session::flash('message', 'Delete review successful');
         } else {
-            Session::flash('message', 'Amenity does not exist');
+            Session::flash('message', 'Review does not exist');
         }
-        return Redirect::to('manage_amenity');
+        return Redirect::to('manage_review');
     }
     
 
