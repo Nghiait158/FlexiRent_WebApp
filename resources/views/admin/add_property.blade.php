@@ -39,32 +39,36 @@
                             <input type="text" class="form-control" name="location"  id="location" >
                         </div>
                         <div class="form-group">
-                            <label for="nbedrooms">nbedrooms</label>
+                            <label for="nbedrooms">nbedrooms (int)</label>
                             <input type="text" class="form-control" name="nbedrooms"  id="nbedrooms" >
                         </div>
                         <div class="form-group">
-                            <label for="nbathrooms">nbathrooms</label>
+                            <label for="nbathrooms">nbathrooms (int)</label>
                             <input type="text" class="form-control" name="nbathrooms"  id="nbathrooms" >
                         </div>
                         <div class="form-group">
-                            <label for="area">area</label>
+                            <label for="area">area (double)</label>
                             <input type="text" class="form-control" name="area"  id="area" >
+                        </div>
+                        <div class="form-group">
+                            <label for="description">description (text)</label>
+                            <textarea class="form-control" name="description" id="description" ></textarea>
                         </div>
                         
                         <div class="form-group">
-                            <label for="view">view</label>
+                            <label for="view">view (varchar(255))</label>
                             <input type="text" class="form-control" name="view"  id="view" >
                         </div>
                         <div class="form-group">
-                            <label for="floor">floor</label>
+                            <label for="floor">floor (int(11))</label>
                             <input type="text" class="form-control" name="floor"  id="floor" >
                         </div>
                         <div class="form-group">
-                            <label for="elevator">elevator</label>
+                            <label for="elevator">elevator (1 or 0)</label>
                             <input type="text" class="form-control" name="elevator"  id="elevator" >
                         </div>
                         <div class="form-group">
-                            <label for="price_per_month">price_per_month</label>
+                            <label for="price_per_month">price_per_month (decimal(10,2))</label>
                             <input type="text" class="form-control" name="price_per_month"  id="price_per_month" >
                         </div>
                         

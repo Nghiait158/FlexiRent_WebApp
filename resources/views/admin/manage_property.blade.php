@@ -16,6 +16,7 @@
             <table class="table table-striped b-t b-light">
                 <thead>
                     <tr>
+                        <th style="width:30px;"></th>
                         <th>property_id</th>
                         <th>property_name</th>
                         <th>landlord_id</th>
@@ -23,31 +24,19 @@
                         <th>nbedrooms</th>
                         <th>nbathrooms</th>
                         <th>area</th>
+                        <th>description</th>
                         <th>view</th>
                         <th>floor</th>
                         <th>elevator</th>
                         <th>price_per_month</th>
-                        <th>created_at</th>
-                        <th>updated_at</th>
-                        <th style="width:30px;"></th>
+                        {{-- <th>created_at</th>
+                        <th>updated_at</th> --}}
+
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($allProperty ?? [] as $property)
                     <tr>
-                        <td><span class="text-ellipsis">{{ $property->property_id }} </span></td>
-                        <td><span class="text-ellipsis">{{ $property->property_name ?:'N/A'}}</span></td>
-                        <td><span class="text-ellipsis">{{ $property->landlord_id ?:'N/A'}}</span></td>
-                        <td><span class="text-ellipsis">{{ $property->location }} </span></td>
-                        <td><span class="text-ellipsis">{{ $property->nbedrooms ?:'N/A'}}</span></td>
-                        <td><span class="text-ellipsis">{{ $property->nbathrooms ?:'N/A'}}</span></td>
-                        <td><span class="text-ellipsis">{{ $property->area }} </span></td>
-                        <td><span class="text-ellipsis">{{ $property->view ?:'N/A'}}</span></td>
-                        <td><span class="text-ellipsis">{{ $property->floor ?:'N/A'}}</span></td>
-                        <td><span class="text-ellipsis">{{ $property->elevator }} </span></td>
-                        <td><span class="text-ellipsis">{{ $property->price_per_month ?:'N/A'}}</span></td>
-                        <td><span class="text-ellipsis">{{ $property->created_at ?:'N/A'}}</span></td>
-                        <td><span class="text-ellipsis">{{ $property->updated_at ?:'N/A' }}</span></td>
                         <td>
                             <a class="active styling-edit" ui-toggle-class="" href="{{URL::to('/editProperty/'.$property->property_id)}}">
 
@@ -56,6 +45,21 @@
                             <a class="active styling-edit" ui-toggle-class="" href="{{URL::to('/deleteProperty/'.$property->property_id)}}">
                                 <i class="fa fa-times text-danger text"></i></a>
                         </td>
+                        <td><span class="text-ellipsis">{{ $property->property_id }} </span></td>
+                        <td><span class="text-ellipsis">{{ $property->property_name ?:'N/A'}}</span></td>
+                        <td><span class="text-ellipsis">{{ $property->landlord_id ?:'N/A'}}</span></td>
+                        <td><span class="text-ellipsis">{{ $property->location }} </span></td>
+                        <td><span class="text-ellipsis">{{ $property->nbedrooms ?:'N/A'}}</span></td>
+                        <td><span class="text-ellipsis">{{ $property->nbathrooms ?:'N/A'}}</span></td>
+                        <td><span class="text-ellipsis">{{ $property->area }} </span></td>
+                        <td><span class="text-ellipsis">{{ $property->description }} </span></td>
+                        <td><span class="text-ellipsis">{{ $property->view ?:'N/A'}}</span></td>
+                        <td><span class="text-ellipsis">{{ $property->floor ?:'N/A'}}</span></td>
+                        <td><span class="text-ellipsis">{{ $property->elevator }} </span></td>
+                        <td><span class="text-ellipsis">{{ $property->price_per_month ?:'N/A'}}</span></td>
+                        {{-- <td><span class="text-ellipsis">{{ $property->created_at ?:'N/A'}}</span></td>
+                        <td><span class="text-ellipsis">{{ $property->updated_at ?:'N/A' }}</span></td> --}}
+                       
                     </tr>
                     @endforeach
                 </tbody>

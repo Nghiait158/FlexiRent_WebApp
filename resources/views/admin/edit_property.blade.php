@@ -53,9 +53,13 @@
                         </div>
                         <div class="form-group">
                             <label for="area">area</label>
-                            <input type="text" value="{{ $editProperty->area }}" class="form-control" name="area" id="area">
+                            <input type="textarea" value="{{ $editProperty->area }}" class="form-control" name="area" id="area">
                         </div>
-
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" rows="4" cols="50" name="description" id="description">{{ old('description', $editProperty->description) }}</textarea>
+                        </div>
+                        
                         <div class="form-group">
                             <label for="view">view</label>
                             <input type="text" value="{{ $editProperty->view }}" class="form-control" name="view" id="view">

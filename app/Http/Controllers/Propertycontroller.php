@@ -41,6 +41,8 @@ class Propertycontroller extends Controller
         $property->nbedrooms = $data['nbedrooms'];
         $property->nbathrooms = $data['nbathrooms'];
         $property->area = $data['area'];
+        $property->description = $data['description'];
+        
         $property->view = $data['view'];
         $property->floor = $data['floor'];
         $property->elevator = $data['elevator'];
@@ -77,6 +79,7 @@ class Propertycontroller extends Controller
         $property->nbedrooms = $data['nbedrooms'];
         $property->nbathrooms = $data['nbathrooms'];
         $property->area = $data['area'];
+        $property->description = $data['description'];
         $property->view = $data['view'];
         $property->floor = $data['floor'];
         $property->elevator = $data['elevator'];

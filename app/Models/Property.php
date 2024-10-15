@@ -22,6 +22,7 @@ class Property extends Model
         'floor',
         'elevator',
         'price_per_month',
+        'description',
     ];
 
     public function landlord()
