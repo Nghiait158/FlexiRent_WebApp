@@ -28,7 +28,7 @@ class Amenitycontroller extends Controller
         $data= $request->all();
         $amenity = Amenity::find($amenity_id);
         if (!$amenity) {
-            return redirect()->back()->withErrors(['error' => 'Guest not found']);
+            return redirect()->back()->withErrors(['error' => 'Amenity not found']);
         }
         $amenity->amenity_id = $data['amenity_id'];
         $amenity->amenity_name = $data['amenity_name'];
@@ -51,7 +51,7 @@ class Amenitycontroller extends Controller
     
 
     public function addAmenity(){
-        return view('admin.add-amenity');
+        return view('admin.add_amenity');
     }   
 
     public function saveAmenity(Request $request){
