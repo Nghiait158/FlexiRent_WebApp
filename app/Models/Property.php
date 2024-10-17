@@ -15,6 +15,8 @@ class Property extends Model
         'property_name',
         'landlord_id',
         'location',
+        'city',             
+        'district',  
         'nbedrooms',
         'nbathrooms',
         'area',
@@ -24,6 +26,8 @@ class Property extends Model
         'price_per_month',
         'description',
         'available',
+        'guest_capacity',   
+        
     ];
 
     public function landlord()

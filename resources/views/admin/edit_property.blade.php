@@ -32,17 +32,37 @@
                             <select name="landlord_id" id="landlord_id" class="form-control">
                                 <option value="">-- Select Landlord --</option>
                                 @foreach ($landlords as $landlord)
-                                    <option value="{{ $landlord->landlord_id }}" {{ $editProperty->landlord_id == $landlord->landlord_id ? 'selected' : '' }}>
-                                        Name: {{ $landlord->first_name }} {{ $landlord->last_name }} (ID: {{ $landlord->landlord_id }})
-                                    </option>
+                                <option value="{{ $landlord->landlord_id }}" {{ $editProperty->landlord_id == $landlord->landlord_id ? 'selected' : '' }}>
+                                    Name: {{ $landlord->first_name }} {{ $landlord->last_name }} (ID: {{ $landlord->landlord_id }})
+                                </option>
                                 @endforeach
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="location">location</label>
                             <input type="text" value="{{ $editProperty->location }}" class="form-control" name="location" id="location">
                         </div>
+
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <select class="form-control" name="city" id="city" onchange="updateDistricts()">
+                                <option value="{{ $editProperty->city }}" {{ $editProperty->city == $editProperty->city ? 'selected' : '' }}>
+                                    {{$editProperty->city}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="district">District</label>
+                            <select class="form-control" name="district" id="district">
+                                <option value="{{ $editProperty->district}}" {{ $editProperty->district == $editProperty->district ? 'selected' : '' }}>
+                                    {{$editProperty->district}}
+                                </option>
+                            </select>
+
+                        </div>
+
                         <div class="form-group">
                             <label for="nbedrooms">nbedrooms</label>
                             <input type="text" value="{{ $editProperty->nbedrooms }}" class="form-control" name="nbedrooms" id="nbedrooms">
@@ -80,8 +100,16 @@
                             <input type="text" value="{{ $editProperty->price_per_month }}" class="form-control" name="price_per_month" id="price_per_month">
                         </div>
 
+                        <div class="form-group">
+                            <label for="guest_capacity">guest_capacity</label>
+                            <input type="text" value="{{ $editProperty->guest_capacity }}" class="form-control" name="guest_capacity" id="guest_capacity">
+                        </div>
+
+
                         <button type="submit" name="addProperty" class="btn btn-info">Update property</button>
                     </form>
+                    <script src="\backend\js\updateLocation.js"></script>
+
                 </div>
             </div>
         </section>

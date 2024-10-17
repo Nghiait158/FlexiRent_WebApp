@@ -1,6 +1,6 @@
 $(function() {
     var dateFormat = "dd.mm.yy", // Change date format to dd.mm.yy
-        minDays = 14, // Minimum days between "from" and "to" dates
+        minDays = 7, // Minimum days between "from" and "to" dates
         from = $("#from")
             .datepicker({
                 defaultDate: "+1w",

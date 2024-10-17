@@ -34,10 +34,11 @@ class Propertycontroller extends Controller
         if (!$property) {
             return redirect()->back()->withErrors(['error' => 'Property not found']);
         }
-        $property->property_id = $data['property_id'];
         $property->property_name = $data['property_name'];
         $property->landlord_id = $data['landlord_id'];
         $property->location = $data['location'];
+        $property->district = $data['district'];
+        $property->city = $data['city'];
         $property->nbedrooms = $data['nbedrooms'];
         $property->nbathrooms = $data['nbathrooms'];
         $property->area = $data['area'];
@@ -47,6 +48,8 @@ class Propertycontroller extends Controller
         $property->floor = $data['floor'];
         $property->elevator = $data['elevator'];
         $property->price_per_month = $data['price_per_month'];
+        $property->guest_capacity = $data['guest_capacity'];
+        
 
         $property->save();
         Session::put('message','Update property successful');
@@ -76,6 +79,8 @@ class Propertycontroller extends Controller
         $property->property_name = $data['property_name'];
         $property->landlord_id = $data['landlord_id'];
         $property->location = $data['location'];
+        $property->district = $data['district'];
+        $property->city = $data['city'];
         $property->nbedrooms = $data['nbedrooms'];
         $property->nbathrooms = $data['nbathrooms'];
         $property->area = $data['area'];
@@ -85,6 +90,7 @@ class Propertycontroller extends Controller
         $property->floor = $data['floor'];
         $property->elevator = $data['elevator'];
         $property->price_per_month = $data['price_per_month'];
+        $property->guest_capacity = $data['guest_capacity'];
         
 
         $property ->save();

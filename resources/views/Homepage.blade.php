@@ -23,6 +23,12 @@
     // Append it to the head
     document.head.appendChild(script);
 
+    var script = document.createElement('script');
+    script.src = '/Frontend/js/suggestLocation.js'; // JavaScript file path
+    script.type = 'text/javascript';
+    // Append it to the head
+    document.head.appendChild(script);
+
     var link = document.createElement('link');
     link.rel = 'stylesheet';
     link.type = 'text/css';
@@ -65,7 +71,10 @@
                         d="M17.2583 16.075L14.425 13.25C15.3392 12.0854 15.8352 10.6472 15.8333 9.16667C15.8333 7.84813 15.4423 6.5592 14.7098 5.46287C13.9773 4.36654 12.9361 3.51206 11.7179 3.00747C10.4997 2.50289 9.15927 2.37087 7.86607 2.6281C6.57286 2.88534 5.38497 3.52027 4.45262 4.45262C3.52027 5.38497 2.88534 6.57286 2.6281 7.86607C2.37087 9.15927 2.50289 10.4997 3.00747 11.7179C3.51206 12.9361 4.36654 13.9773 5.46287 14.7098C6.5592 15.4423 7.84813 15.8333 9.16667 15.8333C10.6472 15.8352 12.0854 15.3392 13.25 14.425L16.075 17.2583C16.1525 17.3364 16.2446 17.3984 16.3462 17.4407C16.4477 17.4831 16.5567 17.5048 16.6667 17.5048C16.7767 17.5048 16.8856 17.4831 16.9872 17.4407C17.0887 17.3984 17.1809 17.3364 17.2583 17.2583C17.3364 17.1809 17.3984 17.0887 17.4407 16.9872C17.4831 16.8856 17.5048 16.7767 17.5048 16.6667C17.5048 16.5567 17.4831 16.4477 17.4407 16.3462C17.3984 16.2446 17.3364 16.1525 17.2583 16.075ZM4.16667 9.16667C4.16667 8.17776 4.45991 7.21106 5.00932 6.38882C5.55873 5.56657 6.33962 4.92571 7.25325 4.54727C8.16688 4.16883 9.17222 4.06982 10.1421 4.26274C11.112 4.45567 12.0029 4.93187 12.7022 5.63114C13.4015 6.3304 13.8777 7.22131 14.0706 8.19122C14.2635 9.16112 14.1645 10.1665 13.7861 11.0801C13.4076 11.9937 12.7668 12.7746 11.9445 13.324C11.1223 13.8734 10.1556 14.1667 9.16667 14.1667C7.84059 14.1667 6.56882 13.6399 5.63114 12.7022C4.69345 11.7645 4.16667 10.4928 4.16667 9.16667Z"
                         fill="#181A18" />
                 </svg>
-                <p>Select a city</p>
+                <div class="search-container">
+                    <input type="text" id="location-input" placeholder="Select a city" onkeyup="showSuggestions(this.value)">
+                    <div id="suggestions" class="suggestions"></div>
+                </div>
             </div>
             <div class="vertical-line"></div>
             <div class="searchDate">
@@ -91,38 +100,34 @@
                     </div>
 
                 </div>
+                <script src="\Frontend\js\suggestLocation.js"></script>
                 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
                 <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
             </div>
             <div class="vertical-line"></div>
             <div class="searchGuest">
-                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" viewBox="0 0 21 20" fill="none">
                     <path
                         d="M7.90029 9.16667C8.55956 9.16667 9.20403 8.97117 9.75219 8.6049C10.3004 8.23863 10.7276 7.71803 10.9799 7.10895C11.2322 6.49986 11.2982 5.82964 11.1696 5.18303C11.041 4.53643 10.7235 3.94249 10.2573 3.47631C9.79114 3.01014 9.19719 2.69267 8.55059 2.56405C7.90399 2.43543 7.23376 2.50144 6.62468 2.75374C6.01559 3.00603 5.49499 3.43327 5.12872 3.98143C4.76245 4.5296 4.56696 5.17406 4.56696 5.83334C4.56696 6.71739 4.91814 7.56524 5.54327 8.19036C6.16839 8.81548 7.01623 9.16667 7.90029 9.16667ZM14.567 10.8333C15.0614 10.8333 15.5448 10.6867 15.9559 10.412C16.367 10.1373 16.6874 9.74686 16.8767 9.29004C17.0659 8.83323 17.1154 8.33056 17.0189 7.84561C16.9225 7.36066 16.6844 6.9152 16.3347 6.56557C15.9851 6.21594 15.5396 5.97784 15.0547 5.88137C14.5697 5.78491 14.0671 5.83442 13.6102 6.02364C13.1534 6.21286 12.763 6.53329 12.4883 6.94441C12.2136 7.35553 12.067 7.83888 12.067 8.33334C12.067 8.99638 12.3303 9.63226 12.7992 10.1011C13.268 10.5699 13.9039 10.8333 14.567 10.8333ZM17.9003 16.6667C18.1213 16.6667 18.3333 16.5789 18.4895 16.4226C18.6458 16.2663 18.7336 16.0543 18.7336 15.8333C18.733 15.0545 18.514 14.2914 18.1016 13.6307C17.6893 12.97 17.0999 12.4381 16.4006 12.0954C15.7012 11.7527 14.9198 11.6128 14.1449 11.6917C13.3701 11.7705 12.6329 12.065 12.017 12.5417C11.2007 11.7286 10.162 11.1755 9.03181 10.952C7.90162 10.7285 6.73056 10.8447 5.66631 11.2859C4.60207 11.7272 3.6923 12.4736 3.05174 13.4312C2.41118 14.3888 2.06851 15.5146 2.06696 16.6667C2.06696 16.8877 2.15475 17.0996 2.31103 17.2559C2.46731 17.4122 2.67928 17.5 2.90029 17.5H12.9003C13.1213 17.5 13.3333 17.4122 13.4895 17.2559C13.6458 17.0996 13.7336 16.8877 13.7336 16.6667"
                         fill="#181A18" />
                 </svg>
                 <p>Guest</p>
-                <div class="buttonPlus">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24"
-                        fill="none">
-                        <path
-                            d="M19.3999 11H13.3999V5C13.3999 4.73478 13.2945 4.48043 13.107 4.29289C12.9195 4.10536 12.6651 4 12.3999 4C12.1347 4 11.8803 4.10536 11.6928 4.29289C11.5053 4.48043 11.3999 4.73478 11.3999 5V11H5.3999C5.13469 11 4.88033 11.1054 4.6928 11.2929C4.50526 11.4804 4.3999 11.7348 4.3999 12C4.3999 12.2652 4.50526 12.5196 4.6928 12.7071C4.88033 12.8946 5.13469 13 5.3999 13H11.3999V19C11.3999 19.2652 11.5053 19.5196 11.6928 19.7071C11.8803 19.8946 12.1347 20 12.3999 20C12.6651 20 12.9195 19.8946 13.107 19.7071C13.2945 19.5196 13.3999 19.2652 13.3999 19V13H19.3999C19.6651 13 19.9195 12.8946 20.107 12.7071C20.2945 12.5196 20.3999 12.2652 20.3999 12C20.3999 11.7348 20.2945 11.4804 20.107 11.2929C19.9195 11.1054 19.6651 11 19.3999 11Z"
-                            fill="#181A18" />
-                    </svg>
-                </div>
-                <p class="numberGuest">1</p>
-                <div class="buttonMinus">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24"
-                        fill="none">
-                        <path
-                            d="M19.3999 13H5.3999C5.13469 13 4.88033 12.8946 4.6928 12.7071C4.50526 12.5196 4.3999 12.2652 4.3999 12C4.3999 11.7348 4.50526 11.4804 4.6928 11.2929C4.88033 11.1054 5.13469 11 5.3999 11H19.3999C19.6651 11 19.9195 11.1054 20.107 11.2929C20.2945 11.4804 20.3999 11.7348 20.3999 12C20.3999 12.2652 20.2945 12.5196 20.107 12.7071C19.9195 12.8946 19.6651 13 19.3999 13Z"
-                            fill="#181A18" />
-                    </svg>
-                </div>
+
+                <button class="svg-button" id="btnPlus">
+                    +</button>
+
+                <p class="numberGuest" id="numberGuest">0</p>
+
+                <button class="svg-button" id="btnMinus">
+                    -
+                </button>
             </div>
+
+            <script src="\Frontend\js\plus-minus-btn.js"></script>
+
         </div>
         <div class="buttonSearch">
-            <a href="">Search</a>
+            <a href="{{URL::to('/bookingPage')}}">Search</a>
         </div>
 
     </div>
@@ -227,42 +232,42 @@
         <!-- block1 -->
         <div class="location-block">
             <h4>District 1</h4>
-            <a href=""><img class="location-img" src="{{ ('/Frontend/Image/Location/Distrit1.png') }}" alt=""></a>
+            <a href="{{URL::to('/bookingPage')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/Distrit1.png') }}" alt=""></a>
         </div>
 
         <!-- block2 -->
         <div class="location-block">
             <h4>Binh Thanh District</h4>
-            <a href=""><img class="location-img" src="{{ ('/Frontend/Image/Location/Binh Thanh.png') }}" alt=""></a>
+            <a href="{{URL::to('/bookingPage')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/Binh Thanh.png') }}" alt=""></a>
         </div>
 
         <!-- block3 -->
         <div class="location-block">
             <h4>Thu Duc City</h4>
-            <a href=""><img class="location-img" src="{{ ('/Frontend/Image/Location/Thu Duc.jfif') }}" alt=""></a>
+            <a href="{{URL::to('/bookingPage')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/Thu Duc.jfif') }}" alt=""></a>
         </div>
 
         <!-- block4 -->
         <div class="location-block">
             <h4>Go Vap District</h4>
-            <a href=""><img class="location-img" src="{{ ('/Frontend/Image/Location/Go Vap.jfif') }}" alt=""></a>
+            <a href="{{URL::to('/bookingPage')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/Go Vap.jfif') }}" alt=""></a>
         </div>
 
         <!-- block5 -->
         <div class="location-block">
             <h4>District 2</h4>
-            <a href=""><img class="location-img" src="{{ ('/Frontend/Image/Location/District-2.jfif') }}" alt=""></a>
+            <a href="{{URL::to('/bookingPage')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/District-2.jfif') }}" alt=""></a>
         </div>
 
         <!-- block6 -->
         <div class="location-block">
             <h4>District 7</h4>
-            <a href=""><img class="location-img" src="{{ ('/Frontend/Image/Location/District-7.jfif') }}" alt=""></a>
+            <a href="{{URL::to('/bookingPage')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/District-7.jfif') }}" alt=""></a>
         </div>
     </div>
 
     <div>
-        <a class="location-btn" href="">View all spaces</a>
+        <a class="location-btn" href="{{URL::to('/bookingPage')}}">View all spaces</a>
     </div>
 </div>
 
@@ -617,7 +622,7 @@
 
     <div class="swiper blogSwiper">
         <div class="swiper-wrapper">
-            <a href="" class="swiper-slide">
+            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
                 <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/d51e/0114/6015144e93b4f0a379b9355fbb99cca1?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=a4RQxwm2vIpfdVF8G7Eeyn5IasYN7eZy7jljin8cv5v2CI7x8k0gTrYYsVNSflX-qozrn4a9qUcA0FllUWdkXsYvegNilEcHbOj841wlZSw-9pWXRgvmCNHIQbo8mVBcoyMT-FIglKaYSJqavo4zEFiDd4yTn1~IBTGQaxc~V-Y2K9wmUzOyHtgQL~NOE-6nVbiYeo3QfF44FrxXIB4pW537Q8uTn7C8d4PNVRee7VEqSU0iA7T8SDzGAMzSyjreMLZFy-A1wljQu0YBCw8lebOkjJLIQEiczm821zACuU7i4KUqezuUIvyduN9dOS6zPF5qb5ASOy6MJtLPCkFt6g__" alt="">
 
                 <div class="text">
@@ -634,7 +639,7 @@
                 </div>
             </a>
 
-            <a href="" class="swiper-slide">
+            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
                 <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/816a/26dc/ca23d8635be9f936f7b906928bffa8f3?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=fOwYl7AHgp~ecYqAcgKjBtuQtLhCBlgDAYJ6XGDd8jEBrL1yaHWHXM7TvUhhTwZW3koC0UUHlICyh1Ds9g4BTREM77mCYteLqixcj0ZDIpzg7t~rMiU~YFdkfjV9LXU5uV3W4-oUgHsM-Pk3M~IkL0oe7OfmwZVKZs9J6lyu18rLQcOsqWhR~-E1TepfDiavr2Ck4OKoFGQliZzjsQkSvTEA8WND4ubbL3zTRIrRmz7cCCOFZUhcavXIBVNak0gVVZspOaQqfVe0fqGm0usMudrDQMhnrhzeQS3Y2Hh95GVIv4EFw4I2sC4wtqbAYdj3KVj9p2g00WCMqrLEVGwO5Q__" alt="">
 
                 <div class="text">
@@ -651,7 +656,7 @@
                 </div>
             </a>
 
-            <a href="" class="swiper-slide">
+            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
                 <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/a210/8b5b/70676d8adf7169e0cfb368a3f5e68b8c?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=mXO9Llg78hhxoOBnTnfvOvVhsrdan8IxJHLgZvECQ-HhrQmZgsunKCKc2-cX3obdNGUYqpsSalTn1OnjnRXhR~N~N56336ExXmVdhLi4Ny3tN-cQQbohd0bqm5pPfaLuRgNGlt4VEhafyFVjdpbN8pJGLXAujl6r-kgaciPBBE82jLK-vlKciU7FntgZhhq8iXihcwdTAi9FmlQoZSVVG0RGwPNwq27bUFc8sMINSgVI3SmvOBfcoGX9qZ~FxVpjELQxjuxBBbAI8H0FkNDTMgspHVwe~~JcfjVNvaWQZtXobY~vqKYTPEg1hSEOVOZRwvrDL~52pqPLyybvTtiDew__" alt="">
 
                 <div class="text">
@@ -668,7 +673,7 @@
                 </div>
             </a>
 
-            <a href="" class="swiper-slide">
+            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
                 <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/7734/04fa/8d452f77369d5bdb11b8bac3b9352168?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lJCJqBBBlTvlxcQfzYIjaeHOG-f8Iu7sSPtyKBnxuvPG5NJtJJrOtUJw~hSyVbilbDIEPovt6Dz5W9WF6oT-pDJQU-OOqazG~IT4wVoIdv07BJ~khStjchs-ZjYNgZsk-N5vS634Q~wpXWrTe1dsumfWw~zWwXK24A9o2X~SpwO3DHzcaoWMJAyfQkuTWcx0Uv1U2fZI0XForJhp5FcwdxHLBt3yIOrqgsuFAt6ZytKx0-uY8l1CeooFJIU5Hw7yw25kRkcvamf2oQKdmwXInAcF6PaiB~Nj~sOl4KXD5lR0HkpYQFUiebJBrx9Q~fGnozN4gtMOrRBubUp4oOKU1Q__" alt="">
 
                 <div class="text">
@@ -685,7 +690,7 @@
                 </div>
             </a>
 
-            <a href="" class="swiper-slide">
+            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
                 <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/d51e/0114/6015144e93b4f0a379b9355fbb99cca1?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=a4RQxwm2vIpfdVF8G7Eeyn5IasYN7eZy7jljin8cv5v2CI7x8k0gTrYYsVNSflX-qozrn4a9qUcA0FllUWdkXsYvegNilEcHbOj841wlZSw-9pWXRgvmCNHIQbo8mVBcoyMT-FIglKaYSJqavo4zEFiDd4yTn1~IBTGQaxc~V-Y2K9wmUzOyHtgQL~NOE-6nVbiYeo3QfF44FrxXIB4pW537Q8uTn7C8d4PNVRee7VEqSU0iA7T8SDzGAMzSyjreMLZFy-A1wljQu0YBCw8lebOkjJLIQEiczm821zACuU7i4KUqezuUIvyduN9dOS6zPF5qb5ASOy6MJtLPCkFt6g__" alt="">
 
                 <div class="text">
@@ -702,7 +707,7 @@
                 </div>
             </a>
 
-            <a href="" class="swiper-slide">
+            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
                 <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/33a9/12db/06ff8628ba5031c7a86a8dcff57e3e80?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=J44uSGpohbwMUvBDuBc7SnvQmbaTxAgGSJItZ~DJ0z~YhGsPnyyb~tsgkU3XzBzCR~Q6S9zGVkJJKhlraCYB9778Wn832AEyN8APiJYXhCVlMxy~-5acSoFrOqF7SV5lvHE~ZfipsgOwPca1xPq3mUq1Qd1QRWtz~SJ65Eqd2LDlausU27TkCXEb97XEWumIijlnd8TauvTbA4oLhv9Frb-UVaMKfoR6Tb3qG6KHczL1rATKocpuvpuQ9vW4uEfM4n355YIQMzbUfrBFjTf8uB~Hvgpsit8dIzTDuVq1-tOS5WOXHbky7cwse~NTrK49Ku~TRW3yvXw-z~uNpWoSZg__" alt="">
 
                 <div class="text">
@@ -719,7 +724,7 @@
                 </div>
             </a>
 
-            <a href="" class="swiper-slide">
+            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
                 <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/d51e/0114/6015144e93b4f0a379b9355fbb99cca1?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=a4RQxwm2vIpfdVF8G7Eeyn5IasYN7eZy7jljin8cv5v2CI7x8k0gTrYYsVNSflX-qozrn4a9qUcA0FllUWdkXsYvegNilEcHbOj841wlZSw-9pWXRgvmCNHIQbo8mVBcoyMT-FIglKaYSJqavo4zEFiDd4yTn1~IBTGQaxc~V-Y2K9wmUzOyHtgQL~NOE-6nVbiYeo3QfF44FrxXIB4pW537Q8uTn7C8d4PNVRee7VEqSU0iA7T8SDzGAMzSyjreMLZFy-A1wljQu0YBCw8lebOkjJLIQEiczm821zACuU7i4KUqezuUIvyduN9dOS6zPF5qb5ASOy6MJtLPCkFt6g__" alt="">
 
                 <div class="text">
@@ -736,7 +741,7 @@
                 </div>
             </a>
 
-            <a href="" class="swiper-slide">
+            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
                 <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/816a/26dc/ca23d8635be9f936f7b906928bffa8f3?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=fOwYl7AHgp~ecYqAcgKjBtuQtLhCBlgDAYJ6XGDd8jEBrL1yaHWHXM7TvUhhTwZW3koC0UUHlICyh1Ds9g4BTREM77mCYteLqixcj0ZDIpzg7t~rMiU~YFdkfjV9LXU5uV3W4-oUgHsM-Pk3M~IkL0oe7OfmwZVKZs9J6lyu18rLQcOsqWhR~-E1TepfDiavr2Ck4OKoFGQliZzjsQkSvTEA8WND4ubbL3zTRIrRmz7cCCOFZUhcavXIBVNak0gVVZspOaQqfVe0fqGm0usMudrDQMhnrhzeQS3Y2Hh95GVIv4EFw4I2sC4wtqbAYdj3KVj9p2g00WCMqrLEVGwO5Q__" alt="">
 
                 <div class="text">
@@ -753,7 +758,7 @@
                 </div>
             </a>
 
-            <a href="" class="swiper-slide">
+            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
                 <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/a210/8b5b/70676d8adf7169e0cfb368a3f5e68b8c?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=mXO9Llg78hhxoOBnTnfvOvVhsrdan8IxJHLgZvECQ-HhrQmZgsunKCKc2-cX3obdNGUYqpsSalTn1OnjnRXhR~N~N56336ExXmVdhLi4Ny3tN-cQQbohd0bqm5pPfaLuRgNGlt4VEhafyFVjdpbN8pJGLXAujl6r-kgaciPBBE82jLK-vlKciU7FntgZhhq8iXihcwdTAi9FmlQoZSVVG0RGwPNwq27bUFc8sMINSgVI3SmvOBfcoGX9qZ~FxVpjELQxjuxBBbAI8H0FkNDTMgspHVwe~~JcfjVNvaWQZtXobY~vqKYTPEg1hSEOVOZRwvrDL~52pqPLyybvTtiDew__" alt="">
 
                 <div class="text">
@@ -772,7 +777,7 @@
 
 
 
-            <a href="" class="swiper-slide">
+            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
                 <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/d51e/0114/6015144e93b4f0a379b9355fbb99cca1?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=a4RQxwm2vIpfdVF8G7Eeyn5IasYN7eZy7jljin8cv5v2CI7x8k0gTrYYsVNSflX-qozrn4a9qUcA0FllUWdkXsYvegNilEcHbOj841wlZSw-9pWXRgvmCNHIQbo8mVBcoyMT-FIglKaYSJqavo4zEFiDd4yTn1~IBTGQaxc~V-Y2K9wmUzOyHtgQL~NOE-6nVbiYeo3QfF44FrxXIB4pW537Q8uTn7C8d4PNVRee7VEqSU0iA7T8SDzGAMzSyjreMLZFy-A1wljQu0YBCw8lebOkjJLIQEiczm821zACuU7i4KUqezuUIvyduN9dOS6zPF5qb5ASOy6MJtLPCkFt6g__" alt="">
 
                 <div class="text">
@@ -789,7 +794,7 @@
                 </div>
             </a>
 
-            <a href="" class="swiper-slide">
+            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
                 <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/33a9/12db/06ff8628ba5031c7a86a8dcff57e3e80?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=J44uSGpohbwMUvBDuBc7SnvQmbaTxAgGSJItZ~DJ0z~YhGsPnyyb~tsgkU3XzBzCR~Q6S9zGVkJJKhlraCYB9778Wn832AEyN8APiJYXhCVlMxy~-5acSoFrOqF7SV5lvHE~ZfipsgOwPca1xPq3mUq1Qd1QRWtz~SJ65Eqd2LDlausU27TkCXEb97XEWumIijlnd8TauvTbA4oLhv9Frb-UVaMKfoR6Tb3qG6KHczL1rATKocpuvpuQ9vW4uEfM4n355YIQMzbUfrBFjTf8uB~Hvgpsit8dIzTDuVq1-tOS5WOXHbky7cwse~NTrK49Ku~TRW3yvXw-z~uNpWoSZg__" alt="">
 
                 <div class="text">
@@ -816,7 +821,7 @@
     <script src="\Frontend\js\homeBlogSlider.js"></script>
 
 
-    <a class="readBtn" href="">Read more</a>
+    <a class="readBtn" href="{{URL::to('/Blog')}}">Read more</a>
 </div>
 
 
@@ -902,9 +907,9 @@
                         <path d="M10 14.1667C9.78725 14.1657 9.57742 14.1173 9.38571 14.025C9.19401 13.9328 9.02524 13.799 8.89166 13.6334L5.38333 9.38341C5.17833 9.12755 5.04932 8.81925 5.01101 8.49364C4.9727 8.16803 5.02664 7.8382 5.16666 7.54175C5.28023 7.2841 5.46556 7.06459 5.70051 6.90943C5.93547 6.75427 6.21012 6.67003 6.49166 6.66675H13.5083C13.7899 6.67003 14.0645 6.75427 14.2995 6.90943C14.5344 7.06459 14.7198 7.2841 14.8333 7.54175C14.9734 7.8382 15.0273 8.16803 14.989 8.49364C14.9507 8.81925 14.8217 9.12755 14.6167 9.38341L11.1083 13.6334C10.9747 13.799 10.806 13.9328 10.6143 14.025C10.4226 14.1173 10.2127 14.1657 10 14.1667Z" fill="white" />
                     </svg></button>
                 <div class="dropdown-content">
-                    <a href="#">City 1</a>
-                    <a href="#">City 2</a>
-                    <a href="#">City 3</a>
+                    <a href="{{URL::to('/bookingPage')}}">City 1</a>
+                    <a href="{{URL::to('/bookingPage')}}">City 2</a>
+                    <a href="{{URL::to('/bookingPage')}}">City 3</a>
                 </div>
             </div>
         </div>
