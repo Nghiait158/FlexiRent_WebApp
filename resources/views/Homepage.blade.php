@@ -62,7 +62,7 @@
     </div>
 
 
-    <div class="searchBar_booking">
+    {{-- <div class="searchBar_booking">
 
         <div class="searchPart1">
             <div class="searchCity">
@@ -72,7 +72,7 @@
                         fill="#181A18" />
                 </svg>
                 <div class="search-container">
-                    <input type="text" id="location-input" placeholder="Select a city" onkeyup="showSuggestions(this.value)">
+                    <input type="text" id="location-input" name="city" placeholder="Select a city" onkeyup="showSuggestions(this.value)">
                     <div id="suggestions" class="suggestions"></div>
                 </div>
             </div>
@@ -85,7 +85,6 @@
                     <div class="from move">
 
                         <div class="pick-date">
-
                             <input type="text" id="from" name="from" placeholder="Move in">
                         </div>
 
@@ -130,6 +129,42 @@
             <a href="{{URL::to('/bookingPage')}}">Search</a>
         </div>
 
+    </div> --}}
+    <div class="searchBar_booking">
+        <form action="{{ route('search.properties') }}" method="post">
+            {{ csrf_field() }}
+            <div class="searchPart1">
+                <div class="searchCity">
+                    <div class="search-container">
+                        <input type="text" autocomplete="off" id="location-input" name="city" placeholder="Select a city" onkeyup="showSuggestions(this.value)">
+                        <div id="suggestions" class="suggestions"></div>
+                    </div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="searchDate">
+                    <div class="moves">
+                        <div class="from move">
+                            <div class="pick-date">
+                                <input type="date" id="from" name="from" placeholder="Move in">
+                            </div>
+                        </div>
+                        <div class="to move">
+                            <div class="pick-date">
+                                <input type="date" id="to" name="to" placeholder="Move out">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="searchGuest">
+                    <p>Guest</p>
+                    <input type="number" id="guest_count" name="guest_count" min="1" value="1">
+                </div>
+            </div>
+            <div class="buttonSearch">
+                <button type="submit">Search</button>
+            </div>
+        </form>
     </div>
 </div>
 

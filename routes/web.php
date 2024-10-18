@@ -129,8 +129,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 
 
-
-
 Route::middleware(['auth','guest','admin'])->group(function () {
     // Backend---------------
     Route::get('guest/dashboard', [GuestController::class, 'index']);
@@ -185,5 +183,6 @@ Route::get('/Contact', function () {
 
 // Route::get('/map', [MapController::class, 'generateMapIframe']);
 
-Route::get('/bookingPage', [BookingPageController::class, 'sendData']);
+Route::post('/bookingPage', [BookingPageController::class, 'sendData'])->name('search.properties');
+// Route::get('/search', [PropertyController::class, 'search'])->name('search.properties');
 Route::get('/PropertyDetails', [PropertyDetailsPageController::class, 'showMap']);

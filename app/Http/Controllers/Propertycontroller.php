@@ -10,7 +10,29 @@ use Illuminate\Support\Facades\Auth;
 class Propertycontroller extends Controller
 {
     // ------------------Frontend------------
-   
+
+    public function search(Request $request)
+    {
+        // Lấy dữ liệu từ form tìm kiếm
+        $city = $request->input('city');
+        $from = $request->input('from');
+        $to = $request->input('to');
+        $guestCount = $request->input('guest_count');
+
+        // Tìm kiếm các properties dựa trên điều kiện
+        $properties = Property::where('city', 'LIKE', "%$city%")
+            ->where('available', true) // Chỉ tìm kiếm properties đang available
+            ->where('guest_capacity', '>=', $guestCount) // Kiểm tra sức chứa khách
+            ->whereDoesntHave('bookings', function($query) use ($from, $to) {
+                // Kiểm tra xem property không bị booked trong khoảng thời gian từ from -> to
+                $query->where('check_in', '<=', $to)
+                      ->where('check_out', '>=', $from);
+            })
+            ->get();
+
+        // Trả về view cùng với danh sách các properties
+        return view('bookingPage', compact('properties'));
+    }
 
     // ----------------Backend-----------------
 

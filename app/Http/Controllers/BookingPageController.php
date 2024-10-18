@@ -3,26 +3,44 @@
 namespace App\Http\Controllers;
 use App\Models\Property;
 use Illuminate\Http\Request;
-
 class BookingPageController extends Controller
 {
 
-    public function sendData() {
+    public function sendData(Request $request) {
         // Get all properties sorted by updated_at in descending order
-        $allProperty = Property::orderBy('updated_at', 'desc')->get();
+        $city = $request->input('city');
+        $from = $request->input('from');
+        $to = $request->input('to');
+        $guestCount = $request->input('guest_count');
+        $query = Property::query();
     
-        // Assuming you want to get the location of the first property in the collection:
-        $address = $allProperty->isNotEmpty() ? $allProperty->first()->location : 'No address found';
+        if ($city) {
+            $query->where('location', 'LIKE', "%$city%");
+        }
+        if ($guestCount) {
+            $query->where('guest_capacity', '>=', $guestCount);
+        }
+        if ($from) {
+            $query->where('available', '>=', $from);
+        }
+    
+        if ($to) {
+            $query->where('available', '<=', $to);
+        }
+    
+        $properties = $query->get();
+    
+        $address = $properties->isNotEmpty() ? $properties->first()->location : 'No address found';
     
         $data = [
-            'allProperty' => $allProperty,
+            'city'=>  $city,
+            'from'=> $from,
+            'to'=>$to,
+            'guestCount'=>$guestCount,
+            'properties' => $properties,
             'address' => $address,
         ];
-    
-        // Debugging the data
         // dd($data);
-    
-        // Return view with data
         return view('bookingPage', $data);
     }
     
