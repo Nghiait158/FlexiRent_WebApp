@@ -50,8 +50,8 @@ class PropertyImgController extends Controller
         if ($request->imageChoice == 'file' && $request->hasFile('PropertyImgPath')) {
             $get_image = $request->file('PropertyImgPath');
             $new_image = $data['PropertyImgPath'] . '.' . $get_image->getClientOriginalExtension();
-            $get_image->move(public_path('frontend/img'), $new_image);
-            $img->path = '/frontend/img/' . $new_image;
+            $get_image->move(public_path('Frontend/Image'), $new_image);
+            $img->path = '/Frontend/Image/' . $new_image;
         } elseif ($request->imageChoice == 'text' && !empty($data['PropertyImgUrl'])) {
             $img->path = $data['PropertyImgUrl'];
         }
@@ -60,6 +60,33 @@ class PropertyImgController extends Controller
         Session::put('message', 'Image uploaded successfully');
         return Redirect::to('manage_PropertyImg/'.$property_id);
     }
+    // public function savePropertyImg(Request $request, $property_id) {
+    //     $data = $request->all();
+    //     $img = new PropertyImg();
+    
+    //     $img->propertyImg_name = $data['propertyImg_name'];
+    //     $img->property_id = $property_id;
+    
+    //     if ($request->imageChoice == 'file' && $request->hasFile('PropertyImgPath')) {
+    //         $get_image = $request->file('PropertyImgPath');
+            
+    //         // Convert the image to base64 encoding
+    //         $image_data = base64_encode(file_get_contents($get_image->getRealPath()));
+            
+    //         // Save the base64-encoded image data directly in the path column
+    //         $img->path = $image_data;
+    //     } elseif ($request->imageChoice == 'text' && !empty($data['PropertyImgUrl'])) {
+    //         // Save the URL if it's provided
+    //         $img->path = $data['PropertyImgUrl'];
+    //     }
+    
+    //     $img->save();
+    
+    //     Session::put('message', 'Image uploaded successfully');
+    //     return Redirect::to('manage_PropertyImg/'.$property_id);
+    // }
+    
+    
     public function editPropertyImg($propertyImg_id){
         $editPropertyImg = PropertyImg::find($propertyImg_id);
         $data = [

@@ -17,8 +17,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </script>
     <!-- bootstrap-css -->
     <link rel="stylesheet" href="{{('/backend/css/bootstrap.min.css')}}">
-    <script src="https://cdn.tiny.cloud/1/1q890v2u4elq568lhuaho9gsb44mdc546lkuzh3v93gi841p/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-    <!-- //bootstrap-css -->
+    <script src="https://cdn.tiny.cloud/1/q5qffkznfml428g9gx4w4ezpga4z85vtzkbhkrv21e9ejjux/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>    <!-- //bootstrap-css -->
     <!-- Custom CSS -->
     <link href="{{('/backend/css/style.css')}}" rel='stylesheet' type='text/css' />
     <link href="{{('/backend/css/style-responsive.css')}}" rel="stylesheet" />

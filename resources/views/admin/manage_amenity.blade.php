@@ -29,7 +29,10 @@
                     <tr>
                         <td><span class="text-ellipsis">{{ $amenity->amenity_id }} </span></td>
                         <td><span class="text-ellipsis">{{ $amenity->amenity_name ?:'N/A'}}</span></td>
-                        <td><span class="text-ellipsis">{{ $amenity->icon ?:'N/A'}}</span></td>
+                        
+                        {{-- <td><span class="text-ellipsis">{{ $amenity->icon ?:'N/A'}}</span></td> --}}
+                        <td><span class="text-ellipsis"><?php echo $amenity->icon ?></span></td>
+
                         <td><span class="text-ellipsis">{{ $amenity->created_at ?:'N/A'}}</span></td>
                         <td><span class="text-ellipsis">{{ $amenity->updated_at ?:'N/A' }}</span></td>
                         <td>

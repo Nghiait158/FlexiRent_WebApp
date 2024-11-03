@@ -18,6 +18,7 @@
                     <tr>
                         <th>property_id</th>
                         <th>amenity_id</th>
+                        <th>amenity_icon</th>                        
                         <th>created_at</th>
                         <th>updated_at</th>
                         <th style="width:30px;"></th>
@@ -28,6 +29,7 @@
                     <tr>
                         <td><span class="text-ellipsis">{{ $propertyAmenity->property_id }} </span></td>
                         <td><span class="text-ellipsis">{{ $propertyAmenity->amenity_id ?:'N/A'}}</span></td>
+                        <td><span class="text-ellipsis">{{ $propertyAmenity->icon ?:'N/A'}}</span></td>
                         <td><span class="text-ellipsis">{{ $propertyAmenity->created_at ?:'N/A'}}</span></td>
                         <td><span class="text-ellipsis">{{ $propertyAmenity->updated_at ?:'N/A' }}</span></td>
                         <td>
