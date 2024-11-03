@@ -33,6 +33,7 @@ class BookingPageController extends Controller
         $address = $properties->isNotEmpty() ? $properties->first()->location : 'No address found';
     
         $data = [
+            
             'city'=>  $city,
             'from'=> $from,
             'to'=>$to,

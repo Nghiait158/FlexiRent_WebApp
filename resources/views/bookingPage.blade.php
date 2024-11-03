@@ -178,7 +178,10 @@
             @foreach ($properties ?? [] as $property)
             <div class="propertyShow">
                 <div class="img">
-                    <img src="{{ asset('/Frontend/Image/bookingPage/house1.png') }}" alt=""title="Click to see map" style="cursor: pointer;" onclick="updateMap('{{ $property->location }}')">
+                    @foreach($property->images as $image)
+                        <img src="{{ $image->path ?? '/Frontend/Image/bookingPage/house1.png' }}" alt="" title="Click to see map" style="cursor: pointer;" onclick="updateMap('{{ $property->location }}')">
+                    @endforeach                        
+                    {{-- <img src="{{ asset('/Frontend/Image/bookingPage/house1.png') }}" alt=""title="Click to see map" style="cursor: pointer;" onclick="updateMap('{{ $property->location }}')"> --}}
                 </div>                
                 <div class="propertyContent">
                     <a href="{{URL::to('/PropertyDetails')}}" style="text-decoration: none">
