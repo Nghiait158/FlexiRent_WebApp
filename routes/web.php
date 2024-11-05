@@ -185,4 +185,4 @@ Route::get('/Contact', function () {
 
 Route::post('/bookingPage', [BookingPageController::class, 'sendData'])->name('search.properties');
 // Route::get('/search', [PropertyController::class, 'search'])->name('search.properties');
-Route::get('/PropertyDetails', [PropertyDetailsPageController::class, 'showMap']);
+Route::get('/PropertyDetails/{property_id}', [PropertyDetailsPageController::class, 'showData']);

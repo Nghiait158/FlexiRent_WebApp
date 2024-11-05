@@ -186,7 +186,7 @@
                     {{-- <img src="{{ asset('/Frontend/Image/bookingPage/house1.png') }}" alt=""title="Click to see map" style="cursor: pointer;" onclick="updateMap('{{ $property->location }}')"> --}}
                 </div>                
                 <div class="propertyContent">
-                    <a href="{{URL::to('/PropertyDetails')}}" style="text-decoration: none">
+                    <a href="{{URL::to('/PropertyDetails/'.$property->property_id)}}" style="text-decoration: none">
                         <p>{{ $property->property_name ?:'N/A'}}</p>
                     </a>
 
