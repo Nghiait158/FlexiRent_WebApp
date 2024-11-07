@@ -147,6 +147,9 @@ Route::middleware(['auth','guest','admin'])->group(function () {
 
 Route::middleware(['auth', 'landlord', 'admin'])->group(function () {
     Route::get('landlord/dashboard', [LandlordController::class, 'index']);
+
+    Route::get('landlord/RegisterProperty4Landlord', [LandlordController::class, 'RegisterProperty']);
+
 });
 
 

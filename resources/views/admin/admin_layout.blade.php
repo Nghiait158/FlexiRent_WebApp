@@ -70,7 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <!--logo start-->
             <div class="brand">
                 <a target="_blank" href="{{url('/')}}" class="logo">
-                    HomePage
+                    FlexiRent
                 </a>
             </div>
             <!--logo end-->

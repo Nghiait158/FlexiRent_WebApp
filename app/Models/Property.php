@@ -27,7 +27,6 @@ class Property extends Model
         'description',
         'available',
         'guest_capacity',   
-        
     ];
 
     public function landlord()

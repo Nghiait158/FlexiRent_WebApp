@@ -16,6 +16,9 @@ class LandlordController extends Controller
         return view('landlord.dashboard');
     }
 
+    public function RegisterProperty(){
+        
+    }
 
 
 
