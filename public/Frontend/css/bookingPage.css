@@ -13,41 +13,51 @@ body {
 
 
 
-.mainBooking{
+.mainBooking {
     margin-top: 20px;
 }
-.searchBar_bookingPage{
+
+.searchBar_bookingPage {
     /* top: 10px; */
     display: flex;
     width: 1064px;
-    padding: 6px 3px 6px 40px;
-    justify-content: space-between;
+    padding: 8px 6px 6px 40px;
     align-items: center;
     border-radius: 40px;
     border: 4px solid var(--Green, #064749);
     background: var(--White, #ffffff);
     /* Center horizontally */
-    margin: 0px auto 0 auto; /* 20px space from the top, auto to center horizontally */
+    margin: 0px auto 0 auto;
+    /* 20px space from the top, auto to center horizontally */
     height: 60px;
-    
+    margin-top: 20px;
+
 }
-.searchPart1{
+
+.searchBar_bookingPage form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchPart1 {
     width: 800px;
     display: flex;
     justify-content: space-between;
 }
 
 
-.searchCity, 
+.searchCity,
 .searchDate,
-.searchGuest{
+.searchGuest {
     display: flex;
     align-items: center;
     gap: 12px;
 }
+
 .searchCity p,
 .searchDate p,
-.searchGuest p{
+.searchGuest p {
     color: var(--Text, #181A18);
 
     /* Desktop/Subtitle bold */
@@ -57,34 +67,53 @@ body {
     font-style: normal;
     font-weight: 700;
 }
-.buttonSearch{
+
+.buttonSearch button {
     display: flex;
     padding: 12px 40px;
     justify-content: center;
     align-items: flex-start;
+    border: none;
     gap: 10px;
     border-radius: 40px;
     background: var(--Green, #064749);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    user-select: none;
 }
 
-.buttonSearch p{
+.buttonSearch button:hover {
+    background: #0b6b6e;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+.buttonSearch button:active {
+    transform: scale(0.95);
+}
+
+.buttonSearch button {
     color: var(--White, #FFF);
-    /* Desktop/Subtitle bold */
     font-family: "Lato";
     font-size: 18px;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 550;
+    line-height: 24px;
+    text-decoration: none;
 }
 
-.underSearchBar{
+.underSearchBar {
     display: flex;
     width: 1090px;
     /* padding: 6px 6px 6px 40px; */
     border-radius: 40px;
     /* background: var(--White, #866e42); */
     /* Center horizontally */
-    margin: 20px auto 0 auto; /* 20px space from the top, auto to center horizontally */
+    margin: 20px auto 0 auto;
+    /* 20px space from the top, auto to center horizontally */
 }
+
 .moreFilter {
     position: fixed;
     width: 214px;
@@ -93,17 +122,20 @@ body {
     align-items: flex-start;
     border-radius: 40px;
     background: var(--Green, #064749);
-    position: relative; 
+    position: relative;
 }
 
 .moreFilter button {
     background-color: transparent;
     border: none;
     display: flex;
-    align-items: center; /* Center the icon and text */
-    gap: 10px; /* Space between text and icon */
+    align-items: center;
+    /* Center the icon and text */
+    gap: 10px;
+    /* Space between text and icon */
     padding: 0;
-    cursor: pointer; /* Pointer cursor on hover */
+    cursor: pointer;
+    /* Pointer cursor on hover */
 }
 
 .moreFilter p {
@@ -142,18 +174,19 @@ body {
 }
 
 
-.chosenOptions{ 
+.chosenOptions {
     display: flex;
     /* align-items: center; */
     /* flex-wrap: wrap; */
     /* width: 200px; */
     /* background-color: #064749; */
 }
+
 .optionDishwasher,
 .optionWashingMachine,
 .optionDisabledAccess,
 .optionParking,
-.optionElevator{
+.optionElevator {
     display: flex;
     padding: 0 20px;
     align-items: center;
@@ -161,7 +194,7 @@ body {
 
 }
 
-.chosenOptions > div p{ 
+.chosenOptions>div p {
     color: var(--Text, #181A18);
 
     /* Desktop/Subtitle */
@@ -169,26 +202,30 @@ body {
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px; /* 133.333% */
+    line-height: 24px;
+    /* 133.333% */
 }
+
 .sortBy {
-    display: flex; 
+    display: flex;
     align-items: center;
-    justify-content: flex-end; 
+    justify-content: flex-end;
     gap: 10px;
-    width: 100%; 
+    width: 100%;
 }
 
 
-.sortBy p{
+.sortBy p {
     color: var(--Text, #181A18);
     /* Desktop/Subtitle bold */
     font-family: "Lato";
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
-    line-height: 24px; /* 133.333% */
+    line-height: 24px;
+    /* 133.333% */
 }
+
 /* Nút dropdown */
 .dropdown-toggle {
     background-color: #ffffff;
@@ -204,7 +241,8 @@ body {
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
-    line-height: 24px; /* 133.333% */
+    line-height: 24px;
+    /* 133.333% */
 }
 
 /* .dropdown-toggle:hover {
@@ -213,14 +251,16 @@ body {
 
 /* Ẩn menu dropdown */
 .dropdown-menu {
-    display: none; /* Ẩn ban đầu */
+    display: none;
+    /* Ẩn ban đầu */
     list-style: none;
     background-color: #f8f9fa;
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 10px 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: absolute; /* Để hiển thị dropdown đúng vị trí */
+    position: absolute;
+    /* Để hiển thị dropdown đúng vị trí */
     margin-top: 10px;
     z-index: 5;
 }
@@ -242,7 +282,8 @@ body {
     font-size: 18px;
     font-style: normal;
     font-weight: 600;
-    line-height: 24px; /* 133.333% */
+    line-height: 24px;
+    /* 133.333% */
 }
 
 .dropdown-item:hover {
@@ -252,7 +293,8 @@ body {
 
 /* Hiển thị menu dropdown khi mở */
 .dropdown.show .dropdown-menu {
-    display: block; /* Hiển thị khi được mở */
+    display: block;
+    /* Hiển thị khi được mở */
 }
 
 
@@ -265,11 +307,12 @@ body {
 }
 
 /* ----------Réult--- */
-.showResult{
+.showResult {
     margin-left: 250px;
     width: 800px;
     height: 900px;
-    overflow-y: auto; /* Tạo cuộn cho phần showResult */
+    overflow-y: auto;
+    /* Tạo cuộn cho phần showResult */
     /* background-color: #49735A; */
 
 }
@@ -278,20 +321,25 @@ body {
 
 
 /* Map */
-.GGmap{
+.GGmap {
     margin-left: 50px;
     margin-top: 20px;
     width: 400px;
     height: 500px;
     /* background-color: #4329c7; */
     position: sticky;
-    top: 100px; /* Giữ GGmap dính cố định khi cuộn */
+    top: 100px;
+    /* Giữ GGmap dính cố định khi cuộn */
     border-radius: 10px;
 }
+
 .GGmap iframe {
-    width: 100%;  /* Make iframe take full width of the parent */
-    height: 100%; /* Make iframe take full height of the parent */
-    border: 0;    /* Remove default border */
+    width: 100%;
+    /* Make iframe take full width of the parent */
+    height: 100%;
+    /* Make iframe take full height of the parent */
+    border: 0;
+    /* Remove default border */
 }
 
 .listProperties .showResult .propertyShow {
@@ -302,24 +350,29 @@ body {
     height: 188px;
     border-radius: 60px 60px 60px 12px;
     background: var(--BG, #F2F0F2);
-    overflow: hidden; /* Ẩn phần thừa của hình ảnh nếu vượt quá khung */
+    overflow: hidden;
+    /* Ẩn phần thừa của hình ảnh nếu vượt quá khung */
 }
 
 .listProperties .showResult .propertyShow img {
-    width: 305px; /* Đặt chiều dài hình ảnh là 305px */
-    height: 188px; /* Giữ tỷ lệ chiều cao */
-    object-fit: cover; 
+    width: 305px;
+    /* Đặt chiều dài hình ảnh là 305px */
+    height: 188px;
+    /* Giữ tỷ lệ chiều cao */
+    object-fit: cover;
 }
+
 .listProperties .showResult .propertyShow .propertyContent {
     margin-left: 20px;
-    width: 417px; 
-    height: 188px; 
+    width: 417px;
+    height: 188px;
     /* background-color: #064749; */
 }
+
 .listProperties .showResult .propertyShow .propertyContent p {
     width: 353px;
     height: 48px;
-    margin: 20px  0 0;
+    margin: 20px 0 0;
     color: var(--Text, #181A18);
 
     /* Desktop/Subtitle bold */
@@ -327,29 +380,33 @@ body {
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
-    line-height: 24px; /* 133.333% */
+    line-height: 24px;
+    /* 133.333% */
 }
 
-.listProperties .showResult .propertyShow .propertyContent .utilitiesList { 
+.listProperties .showResult .propertyShow .propertyContent .utilitiesList {
     margin: 14px 0 0 0;
     display: flex;
 }
-.listProperties .showResult .propertyShow .propertyContent .utilitiesList > div { 
+
+.listProperties .showResult .propertyShow .propertyContent .utilitiesList>div {
     margin-right: 20px;
     color: var(--Text, #181A18);
 
-/* Desktop/Description */
+    /* Desktop/Description */
     font-family: "Lato";
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 16px; /* 114.286% */
+    line-height: 16px;
+    /* 114.286% */
 }
-.listProperties .showResult .propertyShow .propertyContent .utilitiesList > div:last-child { 
+
+.listProperties .showResult .propertyShow .propertyContent .utilitiesList>div:last-child {
     margin-right: 0;
 }
 
-.listProperties .showResult .propertyShow .propertyContent .advantagesProperty{
+.listProperties .showResult .propertyShow .propertyContent .advantagesProperty {
     margin-top: 12px;
     color: var(--Text, #181A18);
 
@@ -358,15 +415,19 @@ body {
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 16px; /* 114.286% */
+    line-height: 16px;
+    /* 114.286% */
 }
 
 
 .img img:hover {
-    filter: brightness(0.8); /* Hiệu ứng thay đổi độ sáng khi hover */
-    transition: 0.3s; /* Hiệu ứng chuyển đổi mượt mà */
+    filter: brightness(0.8);
+    /* Hiệu ứng thay đổi độ sáng khi hover */
+    transition: 0.3s;
+    /* Hiệu ứng chuyển đổi mượt mà */
 }
-.listProperties .showResult .propertyShow .propertyContent .AvailableIn{
+
+.listProperties .showResult .propertyShow .propertyContent .AvailableIn {
     /* margin-top: 14px; */
     margin-top: 0;
     /* width: 200px; */
@@ -389,16 +450,16 @@ body {
 
 }
 
-.propertyContent .lastLine-propertyContent{
+.propertyContent .lastLine-propertyContent {
     margin-top: 14px;
     display: flex;
     align-items: center;
-    justify-content: flex-start; 
+    justify-content: flex-start;
     /* justify-content: space-between; */
     gap: 12px;
 }
 
-.listProperties .pricePerMonth{
+.listProperties .pricePerMonth {
 
     height: auto;
     width: auto;
@@ -411,7 +472,7 @@ body {
     line-height: 20px;
 }
 
-.ShowMore{
+.ShowMore {
     width: auto;
     height: auto;
     /* display: flex; */
@@ -421,21 +482,23 @@ body {
     border-radius: 40px;
     background: var(--Green, #064749);
 
-        color: var(--White, #FFF);
+    color: var(--White, #FFF);
 
     /* Desktop/Subtitle bold */
     font-family: "Lato";
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
-    line-height: 24px; /* 133.333% */
+    line-height: 24px;
+    /* 133.333% */
 }
 
 
-.bottomContent{
-    margin:150px 0 0 250px;
+.bottomContent {
+    margin: 150px 0 0 250px;
     width: 1280px;
 }
+
 .bottomContent h3 {
     color: var(--Text, #181A18);
 
@@ -444,19 +507,23 @@ body {
     font-size: 36px;
     font-style: normal;
     font-weight: 700;
-    line-height: 44px; /* 122.222% */
+    line-height: 44px;
+    /* 122.222% */
 }
-.bottomContent .contentDropDown1 h4{
-        color: var(--Text, #181A18);
+
+.bottomContent .contentDropDown1 h4 {
+    color: var(--Text, #181A18);
 
     /* Desktop/H4 */
     font-family: "Lato";
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
-    line-height: 32px; /* 133.333% */
+    line-height: 32px;
+    /* 133.333% */
 }
-.bottomContent p{
+
+.bottomContent p {
     margin-top: 20px;
     color: var(--Text, #181A18);
 
@@ -465,7 +532,8 @@ body {
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 20px; /* 125% */
+    line-height: 20px;
+    /* 125% */
 }
 
 .bottomContent .contentDropDown1 {
@@ -480,17 +548,24 @@ body {
 
 .header-container {
     display: flex;
-    justify-content: space-between; /* Đặt không gian giữa h4 và SVG */
-    align-items: center; /* Căn chỉnh theo chiều dọc */
-    width: 100%; /* Đảm bảo chiều rộng 100% */
+    justify-content: space-between;
+    /* Đặt không gian giữa h4 và SVG */
+    align-items: center;
+    /* Căn chỉnh theo chiều dọc */
+    width: 100%;
+    /* Đảm bảo chiều rộng 100% */
 }
 
 .header-container h4 {
-    margin: 0; /* Bỏ margin để căn chỉnh tốt hơn */
-    cursor: pointer; 
+    margin: 0;
+    /* Bỏ margin để căn chỉnh tốt hơn */
+    cursor: pointer;
 }
-.svg-close, .svg-open {
-    cursor: pointer; /* Con trỏ thay đổi khi hover vào SVG */
+
+.svg-close,
+.svg-open {
+    cursor: pointer;
+    /* Con trỏ thay đổi khi hover vào SVG */
 }
 
 
@@ -531,7 +606,8 @@ body {
     width: 110px;
     background-color: #fff;
     border: none;
-    text-align: center; /* Center the text, including the placeholder */
+    text-align: center;
+    /* Center the text, including the placeholder */
     padding: 5px;
 }
 
@@ -553,4 +629,117 @@ body {
     height: 48px;
     background: #49735A;
     margin: 0 10px;
+}
+
+.numberGuest {
+    margin: 0 10px;
+    /* Adjust as needed */
+    font-size: 20px;
+    /* Increase font size for better visibility */
+    border: none;
+    /* Remove the border */
+    outline: none;
+    /* Remove outline on focus */
+}
+
+/* For Chrome, Safari, Edge, and Opera */
+.numberGuest::-webkit-outer-spin-button,
+.numberGuest::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* For Firefox */
+.numberGuest[type=number] {
+    -moz-appearance: textfield;
+}
+
+#location-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: none;
+
+}
+
+#location-input,
+#location-input::placeholder {
+    color: var(--Text, #181A18);
+
+    /* Desktop/Subtitle bold */
+    font-family: "Lato";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+
+    outline: none;
+    /* 133.333% */
+}
+
+#location-input:focus {
+    box-shadow: none;
+    border: none;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+
+}
+
+.suggestions {
+    position: absolute;
+    background-color: white;
+    border-radius: 4px;
+    max-height: 150px;
+    width: 100%;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid #eee;
+}
+
+.suggestion-item:hover {
+    background-color: #f1f1f1;
+}
+
+.svg-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    /* Center the SVG within the button */
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    /* Set a minimum width for buttons */
+    min-height: 50px;
+    /* Set a minimum height for buttons */
+    color: var(--Text, #181A18);
+
+    /* Desktop/Subtitle bold */
+    font-family: "Lato";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+
+}
+
+.svg-button:hover {
+    transform: scale(1.1) translateY(-5%);
+}
+
+.svg-button svg path {
+    pointer-events: none;
+}
+
+.svg-button:active {
+    transform: scale(0.95);
 }

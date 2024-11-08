@@ -29,44 +29,82 @@
     link.href = '/resources/demos/style.css'; // Your CSS file path
     // Append it to the head
     document.head.appendChild(link);
+
+    var script = document.createElement('script');
+    script.src = '/Frontend/js/suggestLocation.js'; // JavaScript file path
+    script.type = 'text/javascript';
+    // Append it to the head
+    document.head.appendChild(script);
+    var link = document.createElement('link');
+
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '/Frontend/css/swiper-bundle.min.home.css'; // Your CSS file path
+    // Append it to the head
+    document.head.appendChild(link);
 </script>
+<div class="searchBar_bookingPage">
+    <form action="{{ route('search.properties') }}" method="post">
+        {{ csrf_field() }}
+        <div class="searchPart1">
+            <div class="searchCity">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path
+                        d="M17.2583 16.075L14.425 13.25C15.3392 12.0854 15.8352 10.6472 15.8333 9.16667C15.8333 7.84813 15.4423 6.5592 14.7098 5.46287C13.9773 4.36654 12.9361 3.51206 11.7179 3.00747C10.4997 2.50289 9.15927 2.37087 7.86607 2.6281C6.57286 2.88534 5.38497 3.52027 4.45262 4.45262C3.52027 5.38497 2.88534 6.57286 2.6281 7.86607C2.37087 9.15927 2.50289 10.4997 3.00747 11.7179C3.51206 12.9361 4.36654 13.9773 5.46287 14.7098C6.5592 15.4423 7.84813 15.8333 9.16667 15.8333C10.6472 15.8352 12.0854 15.3392 13.25 14.425L16.075 17.2583C16.1525 17.3364 16.2446 17.3984 16.3462 17.4407C16.4477 17.4831 16.5567 17.5048 16.6667 17.5048C16.7767 17.5048 16.8856 17.4831 16.9872 17.4407C17.0887 17.3984 17.1809 17.3364 17.2583 17.2583C17.3364 17.1809 17.3984 17.0887 17.4407 16.9872C17.4831 16.8856 17.5048 16.7767 17.5048 16.6667C17.5048 16.5567 17.4831 16.4477 17.4407 16.3462C17.3984 16.2446 17.3364 16.1525 17.2583 16.075ZM4.16667 9.16667C4.16667 8.17776 4.45991 7.21106 5.00932 6.38882C5.55873 5.56657 6.33962 4.92571 7.25325 4.54727C8.16688 4.16883 9.17222 4.06982 10.1421 4.26274C11.112 4.45567 12.0029 4.93187 12.7022 5.63114C13.4015 6.3304 13.8777 7.22131 14.0706 8.19122C14.2635 9.16112 14.1645 10.1665 13.7861 11.0801C13.4076 11.9937 12.7668 12.7746 11.9445 13.324C11.1223 13.8734 10.1556 14.1667 9.16667 14.1667C7.84059 14.1667 6.56882 13.6399 5.63114 12.7022C4.69345 11.7645 4.16667 10.4928 4.16667 9.16667Z"
+                        fill="#181A18" />
+                </svg>
+                <div class="search-container">
+                    <input type="text" autocomplete="off" value="{{ $city }}" id="location-input" name="city" placeholder="Select a city" onkeyup="showSuggestions(this.value)">
+                    <div id="suggestions" class="suggestions"></div>
+                </div>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="searchDate">
+                <div class="moves">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M15 3.33317H14.1667V2.49984C14.1667 2.27882 14.0789 2.06686 13.9226 1.91058C13.7663 1.7543 13.5543 1.6665 13.3333 1.6665C13.1123 1.6665 12.9004 1.7543 12.7441 1.91058C12.5878 2.06686 12.5 2.27882 12.5 2.49984V3.33317H7.5V2.49984C7.5 2.27882 7.4122 2.06686 7.25592 1.91058C7.09964 1.7543 6.88768 1.6665 6.66667 1.6665C6.44565 1.6665 6.23369 1.7543 6.07741 1.91058C5.92113 2.06686 5.83333 2.27882 5.83333 2.49984V3.33317H5C4.33696 3.33317 3.70107 3.59656 3.23223 4.0654C2.76339 4.53424 2.5 5.17013 2.5 5.83317V15.8332C2.5 16.4962 2.76339 17.1321 3.23223 17.6009C3.70107 18.0698 4.33696 18.3332 5 18.3332H15C15.663 18.3332 16.2989 18.0698 16.7678 17.6009C17.2366 17.1321 17.5 16.4962 17.5 15.8332V5.83317C17.5 5.17013 17.2366 4.53424 16.7678 4.0654C16.2989 3.59656 15.663 3.33317 15 3.33317ZM6.66667 14.1665C6.50185 14.1665 6.34073 14.1176 6.20369 14.0261C6.06665 13.9345 5.95984 13.8043 5.89677 13.6521C5.83369 13.4998 5.81719 13.3322 5.84935 13.1706C5.8815 13.0089 5.96087 12.8605 6.07741 12.7439C6.19395 12.6274 6.34244 12.548 6.50409 12.5159C6.66574 12.4837 6.8333 12.5002 6.98557 12.5633C7.13784 12.6263 7.26799 12.7332 7.35956 12.8702C7.45113 13.0072 7.5 13.1684 7.5 13.3332C7.5 13.5542 7.4122 13.7661 7.25592 13.9224C7.09964 14.0787 6.88768 14.1665 6.66667 14.1665ZM13.3333 14.1665H10C9.77899 14.1665 9.56702 14.0787 9.41074 13.9224C9.25446 13.7661 9.16667 13.5542 9.16667 13.3332C9.16667 13.1122 9.25446 12.9002 9.41074 12.7439C9.56702 12.5876 9.77899 12.4998 10 12.4998H13.3333C13.5543 12.4998 13.7663 12.5876 13.9226 12.7439C14.0789 12.9002 14.1667 13.1122 14.1667 13.3332C14.1667 13.5542 14.0789 13.7661 13.9226 13.9224C13.7663 14.0787 13.5543 14.1665 13.3333 14.1665ZM15.8333 9.1665H4.16667V5.83317C4.16667 5.61216 4.25446 5.4002 4.41074 5.24392C4.56702 5.08764 4.77899 4.99984 5 4.99984H5.83333V5.83317C5.83333 6.05418 5.92113 6.26615 6.07741 6.42243C6.23369 6.57871 6.44565 6.6665 6.66667 6.6665C6.88768 6.6665 7.09964 6.57871 7.25592 6.42243C7.4122 6.26615 7.5 6.05418 7.5 5.83317V4.99984H12.5V5.83317C12.5 6.05418 12.5878 6.26615 12.7441 6.42243C12.9004 6.57871 13.1123 6.6665 13.3333 6.6665C13.5543 6.6665 13.7663 6.57871 13.9226 6.42243C14.0789 6.26615 14.1667 6.05418 14.1667 5.83317V4.99984H15C15.221 4.99984 15.433 5.08764 15.5893 5.24392C15.7455 5.4002 15.8333 5.61216 15.8333 5.83317V9.1665Z" fill="#181A18" />
+                    </svg>
+                    <div class="from move">
+                        <div class="pick-date">
+                            <input value="{{ $from }}" id="from" name="from" placeholder="Move in">
+                        </div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                        <path d="M4.36702 10.8332H14.2504L11.2254 14.4665C11.1553 14.5508 11.1026 14.648 11.0701 14.7527C11.0376 14.8573 11.0261 14.9673 11.0362 15.0764C11.0565 15.2968 11.1635 15.5001 11.3337 15.6415C11.5039 15.783 11.7233 15.851 11.9436 15.8307C12.164 15.8104 12.3672 15.7034 12.5087 15.5332L16.6754 10.5332C16.7034 10.4934 16.7285 10.4516 16.7504 10.4082C16.7504 10.3665 16.792 10.3415 16.8087 10.2998C16.8465 10.2043 16.8662 10.1026 16.867 9.99984C16.8662 9.8971 16.8465 9.79539 16.8087 9.69984C16.8087 9.65817 16.767 9.63317 16.7504 9.59151C16.7285 9.54806 16.7034 9.50628 16.6754 9.46651L12.5087 4.46651C12.4303 4.37244 12.3322 4.29679 12.2213 4.24494C12.1104 4.19308 11.9894 4.16631 11.867 4.16651C11.6723 4.16613 11.4836 4.23394 11.3337 4.35817C11.2493 4.42813 11.1796 4.51405 11.1284 4.611C11.0773 4.70796 11.0458 4.81405 11.0357 4.9232C11.0257 5.03234 11.0372 5.1424 11.0698 5.24707C11.1023 5.35174 11.1552 5.44897 11.2254 5.53317L14.2504 9.16651H4.36702C4.14601 9.16651 3.93405 9.2543 3.77777 9.41058C3.62149 9.56686 3.53369 9.77883 3.53369 9.99984C3.53369 10.2209 3.62149 10.4328 3.77777 10.5891C3.93405 10.7454 4.14601 10.8332 4.36702 10.8332Z" fill="#181A18" />
+                    </svg>
+                    <div class="to move">
+                        <div class="pick-date">
+                            <input value="{{ $to }}" id="to" name="to" placeholder="Move out">
+                        </div>
+                    </div>
+                </div>
+                <script src="\Frontend\js\suggestLocation.js"></script>
+                <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+                <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="searchGuest">
+                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                    <path d="M7.89974 9.16667C8.55901 9.16667 9.20348 8.97117 9.75164 8.6049C10.2998 8.23863 10.727 7.71803 10.9793 7.10895C11.2316 6.49986 11.2976 5.82964 11.169 5.18303C11.0404 4.53643 10.7229 3.94249 10.2568 3.47631C9.79059 3.01014 9.19664 2.69267 8.55004 2.56405C7.90344 2.43543 7.23322 2.50144 6.62413 2.75374C6.01504 3.00603 5.49445 3.43327 5.12817 3.98143C4.7619 4.5296 4.56641 5.17406 4.56641 5.83334C4.56641 6.71739 4.9176 7.56524 5.54272 8.19036C6.16784 8.81548 7.01568 9.16667 7.89974 9.16667ZM14.5664 10.8333C15.0609 10.8333 15.5442 10.6867 15.9553 10.412C16.3665 10.1373 16.6869 9.74686 16.8761 9.29004C17.0653 8.83323 17.1148 8.33056 17.0184 7.84561C16.9219 7.36066 16.6838 6.9152 16.3342 6.56557C15.9845 6.21594 15.5391 5.97784 15.0541 5.88137C14.5692 5.78491 14.0665 5.83442 13.6097 6.02364C13.1529 6.21286 12.7624 6.53329 12.4877 6.94441C12.213 7.35553 12.0664 7.83888 12.0664 8.33334C12.0664 8.99638 12.3298 9.63226 12.7986 10.1011C13.2675 10.5699 13.9034 10.8333 14.5664 10.8333ZM17.8997 16.6667C18.1208 16.6667 18.3327 16.5789 18.489 16.4226C18.6453 16.2663 18.7331 16.0543 18.7331 15.8333C18.7324 15.0545 18.5135 14.2914 18.1011 13.6307C17.6887 12.97 17.0994 12.4381 16.4 12.0954C15.7007 11.7527 14.9192 11.6128 14.1444 11.6917C13.3696 11.7705 12.6324 12.065 12.0164 12.5417C11.2002 11.7286 10.1615 11.1755 9.03126 10.952C7.90107 10.7285 6.73001 10.8447 5.66576 11.2859C4.60152 11.7272 3.69175 12.4736 3.05119 13.4312C2.41063 14.3888 2.06796 15.5146 2.06641 16.6667C2.06641 16.8877 2.1542 17.0996 2.31048 17.2559C2.46676 17.4122 2.67873 17.5 2.89974 17.5H12.8997C13.1208 17.5 13.3327 17.4122 13.489 17.2559C13.6453 17.0996 13.7331 16.8877 13.7331 16.6667" fill="#181A18" />
+                </svg>
+                <p>Guest</p>
+                <button class="svg-button" id="btnPlus" type="button">
+                    +
+                </button>
+                <input class="numberGuest" type="number" value="{{ $guestCount }}" id="guest_count" name="guest_count" min="1" value="1" style="width: 30px">
+                <button class="svg-button" id="btnMinus" type="button">
+                    -
+                </button>
+            </div>
+            <script src="\Frontend\js\plus-minus-btn.js"></script>
+        </div>
+        <div class="buttonSearch">
+            <button type="submit">Search</button>
+        </div>
+
+    </form>
+</div>
 <div class="mainBooking">
-    <div class="searchBar_bookingPage">
-        <form action="{{ route('search.properties') }}" method="post">
-            {{ csrf_field() }}
-            <div class="searchPart1">
-                <div class="searchCity">
-                    <div class="search-container">
-                        <input type="text" autocomplete="off" value="{{ $city }}" id="location-input" name="city" placeholder="Select a city" onkeyup="showSuggestions(this.value)">
-                        <div id="suggestions" class="suggestions"></div>
-                    </div>
-                </div>
-                <div class="vertical-line"></div>
-                <div class="searchDate">
-                    <div class="moves">
-                        <div class="from move">
-                            <div class="pick-date">
-                                <input type="date" value="{{ $from }}" id="from" name="from" placeholder="Move in">
-                            </div>
-                        </div>
-                        <div class="to move">
-                            <div class="pick-date">
-                                <input type="date" value="{{ $to }}" id="to"  name="to" placeholder="Move out">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="vertical-line"></div>
-                <div class="searchGuest">
-                    <p>Guest</p>
-                    <input type="number" value="{{ $guestCount }}" id="guest_count" name="guest_count" min="1" value="1">
-                </div>
-            </div>
-            <div class="buttonSearch">
-                <button type="submit">Search</button>
-            </div>
-        </form>
-    </div>
     <div class="underSearchBar">
         <div class="moreFilter">
             <button type="button" onclick="toggleDropdownFilter()">
@@ -179,12 +217,12 @@
             <div class="propertyShow">
                 <div class="img">
                     @if ($property->images->isNotEmpty())
-                        <img src="{{ asset($property->images->first()->path) }}" alt="loading..." title="Click to see map" style="cursor: pointer;" onclick="updateMap('{{ $property->location }}')">
+                    <img src="{{ asset($property->images->first()->path) }}" alt="loading..." title="Click to see map" style="cursor: pointer;" onclick="updateMap('{{ $property->location }}')">
                     @else
-                        <img src="{{ asset('/Frontend/Image/bookingPage/house1.png') }}" alt="" title="Click to see map" style="cursor: pointer;" onclick="updateMap('{{ $property->location }}')">
+                    <img src="{{ asset('/Frontend/Image/bookingPage/house1.png') }}" alt="" title="Click to see map" style="cursor: pointer;" onclick="updateMap('{{ $property->location }}')">
                     @endif
                     {{-- <img src="{{ asset('/Frontend/Image/bookingPage/house1.png') }}" alt=""title="Click to see map" style="cursor: pointer;" onclick="updateMap('{{ $property->location }}')"> --}}
-                </div>                
+                </div>
                 <div class="propertyContent">
                     <a href="{{URL::to('/PropertyDetails/'.$property->property_id)}}" style="text-decoration: none">
                         <p>{{ $property->property_name ?:'N/A'}}</p>
@@ -223,20 +261,20 @@
 
                     </div>
                     <div class="advantagesProperty">
-                        {{ $property->view ?: 'N/A' }} | 
+                        {{ $property->view ?: 'N/A' }} |
                         @if ($property->elevator == 1)
-                            Elevator
+                        Elevator
                         @else
-                            No elevator
+                        No elevator
                         @endif | Floor: {{ $property->floor ?:'N/A'}}
                     </div>
-                    
+
                     <div class="lastLine-propertyContent">
                         <div class="AvailableIn">
                             Available {{ $property->available ? \Carbon\Carbon::parse($property->available)->format('F j, Y') : 'Now' }}
                         </div>
-                        
-                            
+
+
                         <div class="pricePerMonth">
                             from {{ $property->price_per_month ?:'N/A'}}$ /month
                         </div>
@@ -260,7 +298,7 @@
             function updateMap(location) {
                 // Encode the location for the URL
                 let encodedLocation = encodeURIComponent(location);
-                
+
                 // Update the iframe's src attribute with the new location
                 let iframe = document.querySelector('.GGmap iframe');
                 iframe.src = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBoA17lY0Ew39efGfTQp_jOqnD_z9o41uo&q=${encodedLocation}`;

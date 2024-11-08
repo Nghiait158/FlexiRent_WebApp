@@ -566,6 +566,19 @@ body {
     /* 133.333% */
 }
 
+.pick-date input,
+.moves .move .pick-date input::placeholder {
+    color: var(--Text, #181A18);
+
+    /* Desktop/Subtitle bold */
+    font-family: "Lato";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    /* 133.333% */
+}
+
 .button {
     display: flex;
     width: 441px;
@@ -588,3 +601,73 @@ body {
     /* 114.286% */
     align-self: stretch;
 }
+
+
+.checkGuest {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* Add space between items */
+}
+
+
+.svg-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    /* Center the SVG within the button */
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    /* Set a minimum width for buttons */
+    min-height: 50px;
+    /* Set a minimum height for buttons */
+    color: var(--Text, #181A18);
+
+    /* Desktop/Subtitle bold */
+    font-family: "Lato";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+
+}
+
+.numberGuest {
+    margin: 0 10px;
+    /* Adjust as needed */
+    font-size: 20px;
+    /* Increase font size for better visibility */
+    border: none;
+    /* Remove the border */
+    outline: none;
+    /* Remove outline on focus */
+}
+
+/* For Chrome, Safari, Edge, and Opera */
+.numberGuest::-webkit-outer-spin-button,
+.numberGuest::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* For Firefox */
+.numberGuest[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+.svg-button:hover {
+    transform: scale(1.1) translateY(-5%);
+}
+
+.svg-button svg path {
+    pointer-events: none;
+}
+
+.svg-button:active {
+    transform: scale(0.95);
+}
+
+
