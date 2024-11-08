@@ -16,6 +16,8 @@ const locations = [
     "Le Marais, Paris, France",
     "Kreuzberg, Berlin, Germany",
     "Mitte, Berlin, Germany",
+    "Chinatown, Melbourne, Australia",
+    "Ho Chi Minh City",
     "District 1",
     "District 2 (Thu Duc City)",
     "District 3",

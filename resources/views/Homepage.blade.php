@@ -147,13 +147,10 @@
             </div>
             <div class="vertical-line"></div>
             <div class="searchDate">
-                <div class="moves">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M15 3.33317H14.1667V2.49984C14.1667 2.27882 14.0789 2.06686 13.9226 1.91058C13.7663 1.7543 13.5543 1.6665 13.3333 1.6665C13.1123 1.6665 12.9004 1.7543 12.7441 1.91058C12.5878 2.06686 12.5 2.27882 12.5 2.49984V3.33317H7.5V2.49984C7.5 2.27882 7.4122 2.06686 7.25592 1.91058C7.09964 1.7543 6.88768 1.6665 6.66667 1.6665C6.44565 1.6665 6.23369 1.7543 6.07741 1.91058C5.92113 2.06686 5.83333 2.27882 5.83333 2.49984V3.33317H5C4.33696 3.33317 3.70107 3.59656 3.23223 4.0654C2.76339 4.53424 2.5 5.17013 2.5 5.83317V15.8332C2.5 16.4962 2.76339 17.1321 3.23223 17.6009C3.70107 18.0698 4.33696 18.3332 5 18.3332H15C15.663 18.3332 16.2989 18.0698 16.7678 17.6009C17.2366 17.1321 17.5 16.4962 17.5 15.8332V5.83317C17.5 5.17013 17.2366 4.53424 16.7678 4.0654C16.2989 3.59656 15.663 3.33317 15 3.33317ZM6.66667 14.1665C6.50185 14.1665 6.34073 14.1176 6.20369 14.0261C6.06665 13.9345 5.95984 13.8043 5.89677 13.6521C5.83369 13.4998 5.81719 13.3322 5.84935 13.1706C5.8815 13.0089 5.96087 12.8605 6.07741 12.7439C6.19395 12.6274 6.34244 12.548 6.50409 12.5159C6.66574 12.4837 6.8333 12.5002 6.98557 12.5633C7.13784 12.6263 7.26799 12.7332 7.35956 12.8702C7.45113 13.0072 7.5 13.1684 7.5 13.3332C7.5 13.5542 7.4122 13.7661 7.25592 13.9224C7.09964 14.0787 6.88768 14.1665 6.66667 14.1665ZM13.3333 14.1665H10C9.77899 14.1665 9.56702 14.0787 9.41074 13.9224C9.25446 13.7661 9.16667 13.5542 9.16667 13.3332C9.16667 13.1122 9.25446 12.9002 9.41074 12.7439C9.56702 12.5876 9.77899 12.4998 10 12.4998H13.3333C13.5543 12.4998 13.7663 12.5876 13.9226 12.7439C14.0789 12.9002 14.1667 13.1122 14.1667 13.3332C14.1667 13.5542 14.0789 13.7661 13.9226 13.9224C13.7663 14.0787 13.5543 14.1665 13.3333 14.1665ZM15.8333 9.1665H4.16667V5.83317C4.16667 5.61216 4.25446 5.4002 4.41074 5.24392C4.56702 5.08764 4.77899 4.99984 5 4.99984H5.83333V5.83317C5.83333 6.05418 5.92113 6.26615 6.07741 6.42243C6.23369 6.57871 6.44565 6.6665 6.66667 6.6665C6.88768 6.6665 7.09964 6.57871 7.25592 6.42243C7.4122 6.26615 7.5 6.05418 7.5 5.83317V4.99984H12.5V5.83317C12.5 6.05418 12.5878 6.26615 12.7441 6.42243C12.9004 6.57871 13.1123 6.6665 13.3333 6.6665C13.5543 6.6665 13.7663 6.57871 13.9226 6.42243C14.0789 6.26615 14.1667 6.05418 14.1667 5.83317V4.99984H15C15.221 4.99984 15.433 5.08764 15.5893 5.24392C15.7455 5.4002 15.8333 5.61216 15.8333 5.83317V9.1665Z" fill="#181A18" />
-                    </svg>
+                <div class="moves">                   
                     <div class="from move">
                         <div class="pick-date">
-                            <input id="from" name="from" placeholder="Move in">
+                            <input type="date" id="from" name="from" placeholder="dd.mm.yy" onchange="calculateDays()">
                         </div>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
@@ -161,13 +158,12 @@
                     </svg>
                     <div class="to move">
                         <div class="pick-date">
-                            <input id="to" name="to" placeholder="Move out">
+                            <input type="date" id="to" name="to" placeholder="dd.mm.yy" onchange="calculateDays()">
                         </div>
                     </div>
                 </div>
                 <script src="\Frontend\js\suggestLocation.js"></script>
-                <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-                <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+                <script src="\Frontend\js\calendar.js"></script>
             </div>
             <div class="vertical-line"></div>
             <div class="searchGuest">
@@ -682,7 +678,7 @@
     <div class="swiper blogSwiper">
         <div class="swiper-wrapper">
             <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/d51e/0114/6015144e93b4f0a379b9355fbb99cca1?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=a4RQxwm2vIpfdVF8G7Eeyn5IasYN7eZy7jljin8cv5v2CI7x8k0gTrYYsVNSflX-qozrn4a9qUcA0FllUWdkXsYvegNilEcHbOj841wlZSw-9pWXRgvmCNHIQbo8mVBcoyMT-FIglKaYSJqavo4zEFiDd4yTn1~IBTGQaxc~V-Y2K9wmUzOyHtgQL~NOE-6nVbiYeo3QfF44FrxXIB4pW537Q8uTn7C8d4PNVRee7VEqSU0iA7T8SDzGAMzSyjreMLZFy-A1wljQu0YBCw8lebOkjJLIQEiczm821zACuU7i4KUqezuUIvyduN9dOS6zPF5qb5ASOy6MJtLPCkFt6g__" alt="">
+                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic1.jfif" alt="">
 
                 <div class="text">
                     <div class="slide-content">
@@ -699,7 +695,7 @@
             </a>
 
             <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/816a/26dc/ca23d8635be9f936f7b906928bffa8f3?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=fOwYl7AHgp~ecYqAcgKjBtuQtLhCBlgDAYJ6XGDd8jEBrL1yaHWHXM7TvUhhTwZW3koC0UUHlICyh1Ds9g4BTREM77mCYteLqixcj0ZDIpzg7t~rMiU~YFdkfjV9LXU5uV3W4-oUgHsM-Pk3M~IkL0oe7OfmwZVKZs9J6lyu18rLQcOsqWhR~-E1TepfDiavr2Ck4OKoFGQliZzjsQkSvTEA8WND4ubbL3zTRIrRmz7cCCOFZUhcavXIBVNak0gVVZspOaQqfVe0fqGm0usMudrDQMhnrhzeQS3Y2Hh95GVIv4EFw4I2sC4wtqbAYdj3KVj9p2g00WCMqrLEVGwO5Q__" alt="">
+                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic2.jfif" alt="">
 
                 <div class="text">
                     <div class="slide-content">
@@ -716,7 +712,7 @@
             </a>
 
             <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/a210/8b5b/70676d8adf7169e0cfb368a3f5e68b8c?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=mXO9Llg78hhxoOBnTnfvOvVhsrdan8IxJHLgZvECQ-HhrQmZgsunKCKc2-cX3obdNGUYqpsSalTn1OnjnRXhR~N~N56336ExXmVdhLi4Ny3tN-cQQbohd0bqm5pPfaLuRgNGlt4VEhafyFVjdpbN8pJGLXAujl6r-kgaciPBBE82jLK-vlKciU7FntgZhhq8iXihcwdTAi9FmlQoZSVVG0RGwPNwq27bUFc8sMINSgVI3SmvOBfcoGX9qZ~FxVpjELQxjuxBBbAI8H0FkNDTMgspHVwe~~JcfjVNvaWQZtXobY~vqKYTPEg1hSEOVOZRwvrDL~52pqPLyybvTtiDew__" alt="">
+                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic3.jfif" alt="">
 
                 <div class="text">
                     <div class="slide-content">
@@ -733,7 +729,7 @@
             </a>
 
             <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/7734/04fa/8d452f77369d5bdb11b8bac3b9352168?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lJCJqBBBlTvlxcQfzYIjaeHOG-f8Iu7sSPtyKBnxuvPG5NJtJJrOtUJw~hSyVbilbDIEPovt6Dz5W9WF6oT-pDJQU-OOqazG~IT4wVoIdv07BJ~khStjchs-ZjYNgZsk-N5vS634Q~wpXWrTe1dsumfWw~zWwXK24A9o2X~SpwO3DHzcaoWMJAyfQkuTWcx0Uv1U2fZI0XForJhp5FcwdxHLBt3yIOrqgsuFAt6ZytKx0-uY8l1CeooFJIU5Hw7yw25kRkcvamf2oQKdmwXInAcF6PaiB~Nj~sOl4KXD5lR0HkpYQFUiebJBrx9Q~fGnozN4gtMOrRBubUp4oOKU1Q__" alt="">
+                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic4.jfif" alt="">
 
                 <div class="text">
                     <div class="slide-content">
@@ -750,7 +746,7 @@
             </a>
 
             <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/d51e/0114/6015144e93b4f0a379b9355fbb99cca1?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=a4RQxwm2vIpfdVF8G7Eeyn5IasYN7eZy7jljin8cv5v2CI7x8k0gTrYYsVNSflX-qozrn4a9qUcA0FllUWdkXsYvegNilEcHbOj841wlZSw-9pWXRgvmCNHIQbo8mVBcoyMT-FIglKaYSJqavo4zEFiDd4yTn1~IBTGQaxc~V-Y2K9wmUzOyHtgQL~NOE-6nVbiYeo3QfF44FrxXIB4pW537Q8uTn7C8d4PNVRee7VEqSU0iA7T8SDzGAMzSyjreMLZFy-A1wljQu0YBCw8lebOkjJLIQEiczm821zACuU7i4KUqezuUIvyduN9dOS6zPF5qb5ASOy6MJtLPCkFt6g__" alt="">
+                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic1.jfif" alt="">
 
                 <div class="text">
                     <div class="slide-content">
@@ -767,7 +763,7 @@
             </a>
 
             <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/33a9/12db/06ff8628ba5031c7a86a8dcff57e3e80?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=J44uSGpohbwMUvBDuBc7SnvQmbaTxAgGSJItZ~DJ0z~YhGsPnyyb~tsgkU3XzBzCR~Q6S9zGVkJJKhlraCYB9778Wn832AEyN8APiJYXhCVlMxy~-5acSoFrOqF7SV5lvHE~ZfipsgOwPca1xPq3mUq1Qd1QRWtz~SJ65Eqd2LDlausU27TkCXEb97XEWumIijlnd8TauvTbA4oLhv9Frb-UVaMKfoR6Tb3qG6KHczL1rATKocpuvpuQ9vW4uEfM4n355YIQMzbUfrBFjTf8uB~Hvgpsit8dIzTDuVq1-tOS5WOXHbky7cwse~NTrK49Ku~TRW3yvXw-z~uNpWoSZg__" alt="">
+                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic5.jfif" alt="">
 
                 <div class="text">
                     <div class="slide-content">
@@ -784,7 +780,7 @@
             </a>
 
             <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/d51e/0114/6015144e93b4f0a379b9355fbb99cca1?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=a4RQxwm2vIpfdVF8G7Eeyn5IasYN7eZy7jljin8cv5v2CI7x8k0gTrYYsVNSflX-qozrn4a9qUcA0FllUWdkXsYvegNilEcHbOj841wlZSw-9pWXRgvmCNHIQbo8mVBcoyMT-FIglKaYSJqavo4zEFiDd4yTn1~IBTGQaxc~V-Y2K9wmUzOyHtgQL~NOE-6nVbiYeo3QfF44FrxXIB4pW537Q8uTn7C8d4PNVRee7VEqSU0iA7T8SDzGAMzSyjreMLZFy-A1wljQu0YBCw8lebOkjJLIQEiczm821zACuU7i4KUqezuUIvyduN9dOS6zPF5qb5ASOy6MJtLPCkFt6g__" alt="">
+                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic2.jfif" alt="">
 
                 <div class="text">
                     <div class="slide-content">
@@ -801,7 +797,7 @@
             </a>
 
             <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/816a/26dc/ca23d8635be9f936f7b906928bffa8f3?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=fOwYl7AHgp~ecYqAcgKjBtuQtLhCBlgDAYJ6XGDd8jEBrL1yaHWHXM7TvUhhTwZW3koC0UUHlICyh1Ds9g4BTREM77mCYteLqixcj0ZDIpzg7t~rMiU~YFdkfjV9LXU5uV3W4-oUgHsM-Pk3M~IkL0oe7OfmwZVKZs9J6lyu18rLQcOsqWhR~-E1TepfDiavr2Ck4OKoFGQliZzjsQkSvTEA8WND4ubbL3zTRIrRmz7cCCOFZUhcavXIBVNak0gVVZspOaQqfVe0fqGm0usMudrDQMhnrhzeQS3Y2Hh95GVIv4EFw4I2sC4wtqbAYdj3KVj9p2g00WCMqrLEVGwO5Q__" alt="">
+                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic1.jfif" alt="">
 
                 <div class="text">
                     <div class="slide-content">
@@ -818,7 +814,7 @@
             </a>
 
             <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/a210/8b5b/70676d8adf7169e0cfb368a3f5e68b8c?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=mXO9Llg78hhxoOBnTnfvOvVhsrdan8IxJHLgZvECQ-HhrQmZgsunKCKc2-cX3obdNGUYqpsSalTn1OnjnRXhR~N~N56336ExXmVdhLi4Ny3tN-cQQbohd0bqm5pPfaLuRgNGlt4VEhafyFVjdpbN8pJGLXAujl6r-kgaciPBBE82jLK-vlKciU7FntgZhhq8iXihcwdTAi9FmlQoZSVVG0RGwPNwq27bUFc8sMINSgVI3SmvOBfcoGX9qZ~FxVpjELQxjuxBBbAI8H0FkNDTMgspHVwe~~JcfjVNvaWQZtXobY~vqKYTPEg1hSEOVOZRwvrDL~52pqPLyybvTtiDew__" alt="">
+                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic2.jfif" alt="">
 
                 <div class="text">
                     <div class="slide-content">
@@ -837,7 +833,7 @@
 
 
             <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/d51e/0114/6015144e93b4f0a379b9355fbb99cca1?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=a4RQxwm2vIpfdVF8G7Eeyn5IasYN7eZy7jljin8cv5v2CI7x8k0gTrYYsVNSflX-qozrn4a9qUcA0FllUWdkXsYvegNilEcHbOj841wlZSw-9pWXRgvmCNHIQbo8mVBcoyMT-FIglKaYSJqavo4zEFiDd4yTn1~IBTGQaxc~V-Y2K9wmUzOyHtgQL~NOE-6nVbiYeo3QfF44FrxXIB4pW537Q8uTn7C8d4PNVRee7VEqSU0iA7T8SDzGAMzSyjreMLZFy-A1wljQu0YBCw8lebOkjJLIQEiczm821zACuU7i4KUqezuUIvyduN9dOS6zPF5qb5ASOy6MJtLPCkFt6g__" alt="">
+                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic3.jfif" alt="">
 
                 <div class="text">
                     <div class="slide-content">
@@ -854,7 +850,7 @@
             </a>
 
             <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="https://s3-alpha-sig.figma.com/img/33a9/12db/06ff8628ba5031c7a86a8dcff57e3e80?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=J44uSGpohbwMUvBDuBc7SnvQmbaTxAgGSJItZ~DJ0z~YhGsPnyyb~tsgkU3XzBzCR~Q6S9zGVkJJKhlraCYB9778Wn832AEyN8APiJYXhCVlMxy~-5acSoFrOqF7SV5lvHE~ZfipsgOwPca1xPq3mUq1Qd1QRWtz~SJ65Eqd2LDlausU27TkCXEb97XEWumIijlnd8TauvTbA4oLhv9Frb-UVaMKfoR6Tb3qG6KHczL1rATKocpuvpuQ9vW4uEfM4n355YIQMzbUfrBFjTf8uB~Hvgpsit8dIzTDuVq1-tOS5WOXHbky7cwse~NTrK49Ku~TRW3yvXw-z~uNpWoSZg__" alt="">
+                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic4.jfif" alt="">
 
                 <div class="text">
                     <div class="slide-content">
@@ -961,7 +957,7 @@
                 <p>Vel mattis integer pulvinar morbi quis amet eu. In nunc facilisis proin fermentum, consectetur cursus.</p>
             </div>
 
-            <div class="dropdown-city">
+            <div class="drop-down-city">
                 <button class="dropbtn">Choose city <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path d="M10 14.1667C9.78725 14.1657 9.57742 14.1173 9.38571 14.025C9.19401 13.9328 9.02524 13.799 8.89166 13.6334L5.38333 9.38341C5.17833 9.12755 5.04932 8.81925 5.01101 8.49364C4.9727 8.16803 5.02664 7.8382 5.16666 7.54175C5.28023 7.2841 5.46556 7.06459 5.70051 6.90943C5.93547 6.75427 6.21012 6.67003 6.49166 6.66675H13.5083C13.7899 6.67003 14.0645 6.75427 14.2995 6.90943C14.5344 7.06459 14.7198 7.2841 14.8333 7.54175C14.9734 7.8382 15.0273 8.16803 14.989 8.49364C14.9507 8.81925 14.8217 9.12755 14.6167 9.38341L11.1083 13.6334C10.9747 13.799 10.806 13.9328 10.6143 14.025C10.4226 14.1173 10.2127 14.1657 10 14.1667Z" fill="white" />
                     </svg></button>

@@ -1388,7 +1388,7 @@ body {
     height: 604px;
     flex-shrink: 0;
     position: relative;
-    background: url(https://s3-alpha-sig.figma.com/img/919c/2e15/ce01e43da547e4789055532ee2683c93?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=i5361alOe5gsZFGUUZM2kOmNWgoPSR4za6Zaqt3NuBm5Z4IeqM8jSnssR1FjOeawoh7N1JQKqBbvOMzZaRXxgCNtIR6PVoiht5q5pBmIyrigIOETAbG~CKyJD6ZEta-ZGLcakxOZ8emCtudtPNeLjNLVYCMwucBV9WkeRaV-OCB50sKkDfk0z~t0ePKV2QW8pj8LsjJvmaMvZ-n0GkhHHYTjDoKJrj6sMyA4uIr7JoltWKi1077y5vHvnwZdvYqdgA-brA238dlPabGX8vtUnnIckVv1Ffg4gnGH95sQImrvcHh4OrmDHDB-t1pXwnkf1GUQ75Xfp-19BBUekU95ug__) lightgray -124px -219.397px / 108.611% 172.648% no-repeat;
+    background: url('/Frontend/Image/Random/random pic.jfif') lightgray -124px -219.397px / 108.611% 172.648% no-repeat;
 }
 
 .cta-container .background .cta-content-container {
@@ -1507,7 +1507,7 @@ body {
 
 .pick-date input {
     height: 35px;
-    width: 110px;
+    width: 140px;
     background-color: #fff;
     border: none;
     text-align: center;
@@ -1588,6 +1588,7 @@ body {
 /* Example CSS styling */
 .searchGuest {
     display: flex;
+    width: 200px;
     align-items: center;
     gap: 15px;
     /* Add space between items */

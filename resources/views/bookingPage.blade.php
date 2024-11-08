@@ -66,7 +66,7 @@
                     </svg>
                     <div class="from move">
                         <div class="pick-date">
-                            <input value="{{ $from }}" id="from" name="from" placeholder="Move in">
+                            <input value="{{ $from }}" id="from" name="from" placeholder="Move in" type="date">
                         </div>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
@@ -74,13 +74,12 @@
                     </svg>
                     <div class="to move">
                         <div class="pick-date">
-                            <input value="{{ $to }}" id="to" name="to" placeholder="Move out">
+                            <input value="{{ $to }}" id="to" name="to" placeholder="Move out" type="date">
                         </div>
                     </div>
                 </div>
                 <script src="\Frontend\js\suggestLocation.js"></script>
-                <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-                <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+                <script src="\Frontend\js\calendar.js"></script>
             </div>
             <div class="vertical-line"></div>
             <div class="searchGuest">
@@ -96,6 +95,7 @@
                     -
                 </button>
             </div>
+            
             <script src="\Frontend\js\plus-minus-btn.js"></script>
         </div>
         <div class="buttonSearch">

@@ -1,68 +1,84 @@
-$(function() {
-    var dateFormat = "dd.mm.yy", // Change date format to dd.mm.yy
-        minDays = 7, // Minimum days between "from" and "to" dates
-        from = $("#from")
-            .datepicker({
-                defaultDate: "+1w",
-                changeMonth: true,
-                changeYear: true,
-                numberOfMonths: 1,
-                minDate: 0, // Prevent booking before today
-                dateFormat: dateFormat // Set the date format
-            })
-            .on("change", function() {
-                var selectedFromDate = getDate(this);
-                if (selectedFromDate) {
-                    // Add 14 days to the selected "from" date for the "to" datepicker's minDate
-                    selectedFromDate.setDate(selectedFromDate.getDate() + minDays);
-                    to.datepicker("option", "minDate", selectedFromDate);
-                }
-            }),
-        to = $("#to")
-            .datepicker({
-                defaultDate: "+1w",
-                changeMonth: true,
-                changeYear: true,
-                numberOfMonths: 1,
-                minDate: minDays, // Prevent booking before 7 days from today
-                dateFormat: dateFormat // Set the date format
-            })
-            .on("change", function() {
-                var selectedToDate = getDate(this);
-                if (selectedToDate) {
-                    // Subtract 7 days from the selected "to" date for the "from" datepicker's maxDate
-                    selectedToDate.setDate(selectedToDate.getDate() - minDays);
-                    from.datepicker("option", "maxDate", selectedToDate);
-                }
-            });
+function formatDate(date) {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${year}-${month}-${day}`;
+}
 
-    function getDate(element) {
-        var date;
-        try {
-            date = $.datepicker.parseDate(dateFormat, element.value);
-        } catch (error) {
-            date = null;
+// Helper function to parse yyyy-mm-dd format to JavaScript Date object
+function parseDate(dateString) {
+    const parts = dateString.split('-');
+    if (parts.length === 3) {
+        const year = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1; // Months are 0-based
+        const day = parseInt(parts[2], 10);
+        return new Date(year, month, day);
+    }
+    return null;
+}
+
+// Function to calculate and validate the dates
+function calculateDays() {
+    const fromDateInput = document.getElementById('from');
+    const toDateInput = document.getElementById('to');
+
+    const today = new Date();
+    const minDate = formatDate(today); // Set today's date as minimum for validation
+
+    const fromDate = parseDate(fromDateInput.value);
+    const toDate = parseDate(toDateInput.value);
+
+    // Ensure "from" date is not before today
+    if (fromDate && fromDate < today) {
+        alert("The 'from' date cannot be before today.");
+        fromDateInput.value = '';
+        return;
+    }
+
+    // Ensure "to" date is not before today
+    if (toDate && toDate < today) {
+        alert("The 'to' date cannot be before today.");
+        toDateInput.value = '';
+        return;
+    }
+
+    // Ensure "from" date is not later than "to" date
+    if (fromDate && toDate && fromDate > toDate) {
+        alert("The 'from' date cannot be later than the 'to' date.");
+        fromDateInput.value = '';
+        toDateInput.value = '';
+        return;
+    }
+
+    // Ensure "to" date is at least 7 days after "from" date
+    if (fromDate) {
+        const minToDate = new Date(fromDate);
+        minToDate.setDate(minToDate.getDate() + 7); // "to" must be at least 7 days after "from"
+        if (!toDate || toDate < minToDate) {
+            toDateInput.value = formatDate(minToDate); // Automatically set 'to' to 7 days after 'from'
         }
-        return date;
+        toDateInput.setAttribute('min', formatDate(minToDate)); // Set minimum 'to' date as 'from' + 7 days
     }
-});
 
-
-// JS for calendar
-const inputs = document.querySelectorAll('.pick-date input');
-
-// Add event listeners for focus and blur
-inputs.forEach(input => {
-  input.addEventListener('focus', () => {
-    input.placeholder = ''; // Clear placeholder on focus
-  });
-
-  input.addEventListener('blur', () => {
-    if (input.value === '') {
-      input.placeholder = input.getAttribute('data-placeholder'); // Restore placeholder if empty
+    // Ensure "from" date is at least 7 days before "to" date
+    if (toDate) {
+        const maxFromDate = new Date(toDate);
+        maxFromDate.setDate(maxFromDate.getDate() - 7); // "from" must be at least 7 days before "to"
+        if (!fromDate || fromDate > maxFromDate) {
+            fromDateInput.value = formatDate(maxFromDate); // Automatically set 'from' to 7 days before 'to'
+        }
+        fromDateInput.setAttribute('max', formatDate(maxFromDate)); // Set maximum 'from' date as 'to' - 7 days
     }
-  });
 
-  // Store the original placeholder in a data attribute
-  input.setAttribute('data-placeholder', input.placeholder);
-});
+    // Set today's date as the minimum for the 'from' field
+    fromDateInput.setAttribute('min', minDate);
+    toDateInput.setAttribute('min', minDate);
+}
+
+
+// Add event listeners to handle date changes
+document.getElementById('from').addEventListener('change', calculateDays);
+document.getElementById('to').addEventListener('change', calculateDays);
+
+// Initialize the date constraints when the page loads
+window.onload = calculateDays;
