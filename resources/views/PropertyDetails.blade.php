@@ -141,7 +141,6 @@
                 <div class="Aver">
                     <div>
                         <p>Average monthy rent</p>
-
                     </div>
                     <div>
                         <div class="price">£3700</div>
