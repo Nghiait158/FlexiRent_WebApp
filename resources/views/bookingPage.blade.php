@@ -240,8 +240,7 @@
                         <div class="pricePerMonth">
                             from {{ $property->price_per_month ?:'N/A'}}$ /month
                         </div>
-                    </div>
-                </div>
+                    </div>                </div>
             </div>
             @endforeach
 
