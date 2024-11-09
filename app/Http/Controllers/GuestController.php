@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Guest;
+use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
@@ -12,6 +13,22 @@ class GuestController extends Controller
     public function index(){
         return view('guest.dashboard');
     }
+    public function sendDatafromPropertyDetail(Request $request, $property_id){
+        $propertyDetail = Property::find($property_id);
+        $from = $request->input('from');
+        $to = $request->input('to');
+        $guestCount = $request->input('guest_count');
+        $data = [
+            'from' => $from,
+            'to' => $to,
+            'guestCount' => $guestCount,
+            // 'property_id' => $property_id,
+            'propertyDetail'=>$propertyDetail,
+        ];
+        // dd($data);
+        return view('guest.CheckoutPageA', $data);
+    }
+
 
     // ----------------Backend-----------------
 

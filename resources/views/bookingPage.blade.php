@@ -224,46 +224,41 @@
                     {{-- <img src="{{ asset('/Frontend/Image/bookingPage/house1.png') }}" alt=""title="Click to see map" style="cursor: pointer;" onclick="updateMap('{{ $property->location }}')"> --}}
                 </div>
                 <div class="propertyContent">
-                    <a onclick="redirectToProperty()" style="text-decoration: none">
-                        <p onclick="redirectToProperty()">{{ $property->property_name ?:'N/A'}}</p>
-                    
-                        <script>
-                            function redirectToProperty() {
-                                const property_id = "property_id";  // Set this to the literal string "property_id"
-                                const guestCount = document.getElementById('guest_count') ? document.getElementById('guest_count').value : 1;
-                                const from = document.getElementById('from') ? document.getElementById('from').value : '';
-                                const to = document.getElementById('to') ? document.getElementById('to').value : '';
-                    
-                                const url = `/PropertyDetails/${$property->property_id}?guestCount=${guestCount}&from=${from}&to=${to}`;
-                                window.location.href = url;
-                            }
-                        </script>
-                    
+                    <a href="#" class="property-link" data-property-id="{{ $property->property_id }}" style="text-decoration: none">
+                        <p>{{ $property->property_name ?: 'N/A' }}</p>
                     </a>
                     
+                    <script>
+                        document.querySelectorAll('.property-link').forEach(function(link) {
+                            link.addEventListener('click', function(event) {
+                                event.preventDefault();
+                                
+                                // Lấy giá trị từ các trường input
+                                var from = document.getElementById('from').value;
+                                var to = document.getElementById('to').value;
+                                var guestCount = document.getElementById('guest_count').value;
+                                var city = document.getElementById('location-input').value;
+                                var propertyId = link.getAttribute('data-property-id'); // Lấy property_id từ thuộc tính data-property-id
                     
-                    
-                    
-                    {{-- <script>
-                        function addParamsToUrl(propertyName, guestCount, fromDate, toDate) {
-                            // Get the base URL from the anchor tag
-                            const anchorTag = event.currentTarget.closest("a");
-                            const baseUrl = anchorTag.href;
-
-                            // Construct the query parameters
-                            const params = new URLSearchParams({
-                                property_name: propertyName,
-                                guests: guestCount,
-                                from: fromDate,
-                                to: toDate
+                                // Tạo URL mới với các tham số query
+                                var url = '/PropertyDetails/' + propertyId + 
+                                          '?from=' + encodeURIComponent(from) + 
+                                          '&to=' + encodeURIComponent(to) + 
+                                          '&guestCount=' + encodeURIComponent(guestCount) + 
+                                          '&city=' + encodeURIComponent(city);
+                                
+                                // Chuyển hướng đến URL mới
+                                window.location.href = url;
                             });
-
-                            // Update the href attribute with the query parameters
-                            anchorTag.href = `${baseUrl}?${params.toString()}`;
-                        }
-
-
-                    </script> --}}
+                        });
+                    </script>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     <div class="utilitiesList">
                         <div class="bedroom">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">

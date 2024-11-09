@@ -12,7 +12,7 @@ class PropertyDetailsPageController extends Controller
         // $from = $request->input('from');
         // $to = $request->input('to');
         $propertyDetail = Property::find($property_id);
-        $address = "Ton Duc Thang Ben Nghe District 1"; 
+        $address = $propertyDetail->location; 
 
         $data = [
             'address' => $address,

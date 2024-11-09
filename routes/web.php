@@ -10,6 +10,7 @@ use App\Http\Controllers\GuestController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminManageController;
 use App\Http\Controllers\Amenitycontroller;
+use App\Http\Controllers\CheckoutPageAController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\BookingController; 
 use App\Http\Controllers\PropertyImgController; 
@@ -122,22 +123,17 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/deleteBooking/{booking_id}', [BookingController::class, 'deleteBooking']);
     Route::get('/addBooking', [BookingController::class, 'addBooking']);
     Route::post('/saveBooking', [BookingController::class, 'saveBooking']);
-
-
-
     
 });
 
 
-Route::middleware(['auth','guest','admin'])->group(function () {
+Route::middleware(['auth','guest'])->group(function () {
     // Backend---------------
     Route::get('guest/dashboard', [GuestController::class, 'index']);
 
 
     // Frontend---------------
-    Route::get('/CheckoutPageA', function () {
-        return view('CheckoutPageA');
-    });
+    Route::post('/CheckoutPageA/{property_id}', [GuestController::class, 'sendDatafromPropertyDetail']);
 
     Route::get('/CheckoutPageB', function () {
         return view('CheckoutPageB');
@@ -145,11 +141,10 @@ Route::middleware(['auth','guest','admin'])->group(function () {
 });
 
 
-Route::middleware(['auth', 'landlord', 'admin'])->group(function () {
+Route::middleware(['auth','landlord'])->group(function () {
     Route::get('landlord/dashboard', [LandlordController::class, 'index']);
     // Route::get('landlord/RegisterProperty4Landlord', [LandlordController::class, 'RegisterProperty']);
     
-
 });
 
 

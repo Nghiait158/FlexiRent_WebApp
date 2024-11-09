@@ -47,7 +47,7 @@
 
     <div class="BoxformBooking">
         <div class="descriptionPropertyDetails">
-            <h1>{{ $propertyDetail->property_name ?: 'N/A'}}</h1>
+            <h1>{{ \Illuminate\Support\Str::limit($propertyDetail->property_name ?: 'N/A', 60) }}</h1>
             <h6>{{ $propertyDetail->location ?: 'N/A'}}</h6>
             <div class="infomation">
                 <div class="bedAndBath">
@@ -86,140 +86,168 @@
                 <h1>Description</h1>
                 <p>{{ $propertyDetail-> description ?: 'N/A'}}</p>
                 <h1>Location Details</h1>
-                <p>In nullam eget urna suspendisse odio nunc. Eu sodales vestibulum, donec rutrum justo, amet porttitor vitae et. Interdum consectetur dictum mattis gravida sed vulputate. Tempus sagittis cras sagittis viverra erat proin duis enim. </p>
+                <p>{{ $propertyDetail->location_details ?: 'nullam eget urna suspendisse odio nunc. Eu sodales vestibulum, donec rutrum justo, amet porttitor vitae et. Interdum consectetur dictum mattis gravida sed vulputate. Tempus sagittis cras sagittis viverra erat proin duis enim.'}} </p>
                 <h1>Education and Community</h1>
-                <p>Laoreet risus accumsan pellentesque lacus, in nulla eu elementum. Mollis enim fringilla aenean diam tellus diam morbi ipsum placerat. </p>
+                <p>{{ $propertyDetail->location_details ?: 'Laoreet risus accumsan pellentesque lacus, in nulla eu elementum. Mollis enim fringilla aenean diam tellus diam morbi ipsum placerat. '}} </p>
             </div>
 
         </div>
-        <div class="formbooking">
-            <h1>{{ $propertyDetail-> price_per_month ?: 'N/A'}}$/ month</h1>
-            <div class="checkInfo">
-                <div class="moves">
-                    <div class="from move">
-                        <label for="from">Move in:</label>
-                        <div class="pick-date">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M15 3.33317H14.1667V2.49984C14.1667 2.27882 14.0789 2.06686 13.9226 1.91058C13.7663 1.7543 13.5543 1.6665 13.3333 1.6665C13.1123 1.6665 12.9004 1.7543 12.7441 1.91058C12.5878 2.06686 12.5 2.27882 12.5 2.49984V3.33317H7.5V2.49984C7.5 2.27882 7.4122 2.06686 7.25592 1.91058C7.09964 1.7543 6.88768 1.6665 6.66667 1.6665C6.44565 1.6665 6.23369 1.7543 6.07741 1.91058C5.92113 2.06686 5.83333 2.27882 5.83333 2.49984V3.33317H5C4.33696 3.33317 3.70107 3.59656 3.23223 4.0654C2.76339 4.53424 2.5 5.17013 2.5 5.83317V15.8332C2.5 16.4962 2.76339 17.1321 3.23223 17.6009C3.70107 18.0698 4.33696 18.3332 5 18.3332H15C15.663 18.3332 16.2989 18.0698 16.7678 17.6009C17.2366 17.1321 17.5 16.4962 17.5 15.8332V5.83317C17.5 5.17013 17.2366 4.53424 16.7678 4.0654C16.2989 3.59656 15.663 3.33317 15 3.33317ZM6.66667 14.1665C6.50185 14.1665 6.34073 14.1176 6.20369 14.0261C6.06665 13.9345 5.95984 13.8043 5.89677 13.6521C5.83369 13.4998 5.81719 13.3322 5.84935 13.1706C5.8815 13.0089 5.96087 12.8605 6.07741 12.7439C6.19395 12.6274 6.34244 12.548 6.50409 12.5159C6.66574 12.4837 6.8333 12.5002 6.98557 12.5633C7.13784 12.6263 7.26799 12.7332 7.35956 12.8702C7.45113 13.0072 7.5 13.1684 7.5 13.3332C7.5 13.5542 7.4122 13.7661 7.25592 13.9224C7.09964 14.0787 6.88768 14.1665 6.66667 14.1665ZM13.3333 14.1665H10C9.77899 14.1665 9.56702 14.0787 9.41074 13.9224C9.25446 13.7661 9.16667 13.5542 9.16667 13.3332C9.16667 13.1122 9.25446 12.9002 9.41074 12.7439C9.56702 12.5876 9.77899 12.4998 10 12.4998H13.3333C13.5543 12.4998 13.7663 12.5876 13.9226 12.7439C14.0789 12.9002 14.1667 13.1122 14.1667 13.3332C14.1667 13.5542 14.0789 13.7661 13.9226 13.9224C13.7663 14.0787 13.5543 14.1665 13.3333 14.1665ZM15.8333 9.1665H4.16667V5.83317C4.16667 5.61216 4.25446 5.4002 4.41074 5.24392C4.56702 5.08764 4.77899 4.99984 5 4.99984H5.83333V5.83317C5.83333 6.05418 5.92113 6.26615 6.07741 6.42243C6.23369 6.57871 6.44565 6.6665 6.66667 6.6665C6.88768 6.6665 7.09964 6.57871 7.25592 6.42243C7.4122 6.26615 7.5 6.05418 7.5 5.83317V4.99984H12.5V5.83317C12.5 6.05418 12.5878 6.26615 12.7441 6.42243C12.9004 6.57871 13.1123 6.6665 13.3333 6.6665C13.5543 6.6665 13.7663 6.57871 13.9226 6.42243C14.0789 6.26615 14.1667 6.05418 14.1667 5.83317V4.99984H15C15.221 4.99984 15.433 5.08764 15.5893 5.24392C15.7455 5.4002 15.8333 5.61216 15.8333 5.83317V9.1665Z" fill="#181A18" />
-                            </svg>
-                            <input type="date" id="from" name="from" placeholder="dd.mm.yyyy" onchange="calculateDaysAndTotalCost()">
+        <form action="{{URL::to('/CheckoutPageA/'.$propertyDetail-> property_id)}}" method="post">
+            @csrf
+            <div class="formbooking">
+                <h1>{{ $propertyDetail-> price_per_month ?: 'N/A'}}$/ month</h1>
+                <div class="checkInfo">
+                    <div class="moves">
+                        <div class="from move">
+                            <label for="from">Move in:</label>
+                            <div class="pick-date">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M15 3.33317H14.1667V2.49984C14.1667 2.27882 14.0789 2.06686 13.9226 1.91058C13.7663 1.7543 13.5543 1.6665 13.3333 1.6665C13.1123 1.6665 12.9004 1.7543 12.7441 1.91058C12.5878 2.06686 12.5 2.27882 12.5 2.49984V3.33317H7.5V2.49984C7.5 2.27882 7.4122 2.06686 7.25592 1.91058C7.09964 1.7543 6.88768 1.6665 6.66667 1.6665C6.44565 1.6665 6.23369 1.7543 6.07741 1.91058C5.92113 2.06686 5.83333 2.27882 5.83333 2.49984V3.33317H5C4.33696 3.33317 3.70107 3.59656 3.23223 4.0654C2.76339 4.53424 2.5 5.17013 2.5 5.83317V15.8332C2.5 16.4962 2.76339 17.1321 3.23223 17.6009C3.70107 18.0698 4.33696 18.3332 5 18.3332H15C15.663 18.3332 16.2989 18.0698 16.7678 17.6009C17.2366 17.1321 17.5 16.4962 17.5 15.8332V5.83317C17.5 5.17013 17.2366 4.53424 16.7678 4.0654C16.2989 3.59656 15.663 3.33317 15 3.33317ZM6.66667 14.1665C6.50185 14.1665 6.34073 14.1176 6.20369 14.0261C6.06665 13.9345 5.95984 13.8043 5.89677 13.6521C5.83369 13.4998 5.81719 13.3322 5.84935 13.1706C5.8815 13.0089 5.96087 12.8605 6.07741 12.7439C6.19395 12.6274 6.34244 12.548 6.50409 12.5159C6.66574 12.4837 6.8333 12.5002 6.98557 12.5633C7.13784 12.6263 7.26799 12.7332 7.35956 12.8702C7.45113 13.0072 7.5 13.1684 7.5 13.3332C7.5 13.5542 7.4122 13.7661 7.25592 13.9224C7.09964 14.0787 6.88768 14.1665 6.66667 14.1665ZM13.3333 14.1665H10C9.77899 14.1665 9.56702 14.0787 9.41074 13.9224C9.25446 13.7661 9.16667 13.5542 9.16667 13.3332C9.16667 13.1122 9.25446 12.9002 9.41074 12.7439C9.56702 12.5876 9.77899 12.4998 10 12.4998H13.3333C13.5543 12.4998 13.7663 12.5876 13.9226 12.7439C14.0789 12.9002 14.1667 13.1122 14.1667 13.3332C14.1667 13.5542 14.0789 13.7661 13.9226 13.9224C13.7663 14.0787 13.5543 14.1665 13.3333 14.1665ZM15.8333 9.1665H4.16667V5.83317C4.16667 5.61216 4.25446 5.4002 4.41074 5.24392C4.56702 5.08764 4.77899 4.99984 5 4.99984H5.83333V5.83317C5.83333 6.05418 5.92113 6.26615 6.07741 6.42243C6.23369 6.57871 6.44565 6.6665 6.66667 6.6665C6.88768 6.6665 7.09964 6.57871 7.25592 6.42243C7.4122 6.26615 7.5 6.05418 7.5 5.83317V4.99984H12.5V5.83317C12.5 6.05418 12.5878 6.26615 12.7441 6.42243C12.9004 6.57871 13.1123 6.6665 13.3333 6.6665C13.5543 6.6665 13.7663 6.57871 13.9226 6.42243C14.0789 6.26615 14.1667 6.05418 14.1667 5.83317V4.99984H15C15.221 4.99984 15.433 5.08764 15.5893 5.24392C15.7455 5.4002 15.8333 5.61216 15.8333 5.83317V9.1665Z" fill="#181A18" />
+                                </svg>
+                                <input type="date" id="from" name="from" placeholder="dd.mm.yyyy" onchange="calculateDaysAndTotalCost()">
+                            </div>
+    
                         </div>
-
+                        <div class="to move">
+                            <label for="to">Move out:</label>
+                            <div class="pick-date">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M15 3.33317H14.1667V2.49984C14.1667 2.27882 14.0789 2.06686 13.9226 1.91058C13.7663 1.7543 13.5543 1.6665 13.3333 1.6665C13.1123 1.6665 12.9004 1.7543 12.7441 1.91058C12.5878 2.06686 12.5 2.27882 12.5 2.49984V3.33317H7.5V2.49984C7.5 2.27882 7.4122 2.06686 7.25592 1.91058C7.09964 1.7543 6.88768 1.6665 6.66667 1.6665C6.44565 1.6665 6.23369 1.7543 6.07741 1.91058C5.92113 2.06686 5.83333 2.27882 5.83333 2.49984V3.33317H5C4.33696 3.33317 3.70107 3.59656 3.23223 4.0654C2.76339 4.53424 2.5 5.17013 2.5 5.83317V15.8332C2.5 16.4962 2.76339 17.1321 3.23223 17.6009C3.70107 18.0698 4.33696 18.3332 5 18.3332H15C15.663 18.3332 16.2989 18.0698 16.7678 17.6009C17.2366 17.1321 17.5 16.4962 17.5 15.8332V5.83317C17.5 5.17013 17.2366 4.53424 16.7678 4.0654C16.2989 3.59656 15.663 3.33317 15 3.33317ZM6.66667 14.1665C6.50185 14.1665 6.34073 14.1176 6.20369 14.0261C6.06665 13.9345 5.95984 13.8043 5.89677 13.6521C5.83369 13.4998 5.81719 13.3322 5.84935 13.1706C5.8815 13.0089 5.96087 12.8605 6.07741 12.7439C6.19395 12.6274 6.34244 12.548 6.50409 12.5159C6.66574 12.4837 6.8333 12.5002 6.98557 12.5633C7.13784 12.6263 7.26799 12.7332 7.35956 12.8702C7.45113 13.0072 7.5 13.1684 7.5 13.3332C7.5 13.5542 7.4122 13.7661 7.25592 13.9224C7.09964 14.0787 6.88768 14.1665 6.66667 14.1665ZM13.3333 14.1665H10C9.77899 14.1665 9.56702 14.0787 9.41074 13.9224C9.25446 13.7661 9.16667 13.5542 9.16667 13.3332C9.16667 13.1122 9.25446 12.9002 9.41074 12.7439C9.56702 12.5876 9.77899 12.4998 10 12.4998H13.3333C13.5543 12.4998 13.7663 12.5876 13.9226 12.7439C14.0789 12.9002 14.1667 13.1122 14.1667 13.3332C14.1667 13.5542 14.0789 13.7661 13.9226 13.9224C13.7663 14.0787 13.5543 14.1665 13.3333 14.1665ZM15.8333 9.1665H4.16667V5.83317C4.16667 5.61216 4.25446 5.4002 4.41074 5.24392C4.56702 5.08764 4.77899 4.99984 5 4.99984H5.83333V5.83317C5.83333 6.05418 5.92113 6.26615 6.07741 6.42243C6.23369 6.57871 6.44565 6.6665 6.66667 6.6665C6.88768 6.6665 7.09964 6.57871 7.25592 6.42243C7.4122 6.26615 7.5 6.05418 7.5 5.83317V4.99984H12.5V5.83317C12.5 6.05418 12.5878 6.26615 12.7441 6.42243C12.9004 6.57871 13.1123 6.6665 13.3333 6.6665C13.5543 6.6665 13.7663 6.57871 13.9226 6.42243C14.0789 6.26615 14.1667 6.05418 14.1667 5.83317V4.99984H15C15.221 4.99984 15.433 5.08764 15.5893 5.24392C15.7455 5.4002 15.8333 5.61216 15.8333 5.83317V9.1665Z" fill="#181A18" />
+                                </svg>
+                                <input type="date" id="to" name="to" placeholder="dd.mm.yyyy" onchange="calculateDaysAndTotalCost()">
+                            </div>
+                        </div>
+    
                     </div>
-                    <div class="to move">
-                        <label for="to">Move out:</label>
-                        <div class="pick-date">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M15 3.33317H14.1667V2.49984C14.1667 2.27882 14.0789 2.06686 13.9226 1.91058C13.7663 1.7543 13.5543 1.6665 13.3333 1.6665C13.1123 1.6665 12.9004 1.7543 12.7441 1.91058C12.5878 2.06686 12.5 2.27882 12.5 2.49984V3.33317H7.5V2.49984C7.5 2.27882 7.4122 2.06686 7.25592 1.91058C7.09964 1.7543 6.88768 1.6665 6.66667 1.6665C6.44565 1.6665 6.23369 1.7543 6.07741 1.91058C5.92113 2.06686 5.83333 2.27882 5.83333 2.49984V3.33317H5C4.33696 3.33317 3.70107 3.59656 3.23223 4.0654C2.76339 4.53424 2.5 5.17013 2.5 5.83317V15.8332C2.5 16.4962 2.76339 17.1321 3.23223 17.6009C3.70107 18.0698 4.33696 18.3332 5 18.3332H15C15.663 18.3332 16.2989 18.0698 16.7678 17.6009C17.2366 17.1321 17.5 16.4962 17.5 15.8332V5.83317C17.5 5.17013 17.2366 4.53424 16.7678 4.0654C16.2989 3.59656 15.663 3.33317 15 3.33317ZM6.66667 14.1665C6.50185 14.1665 6.34073 14.1176 6.20369 14.0261C6.06665 13.9345 5.95984 13.8043 5.89677 13.6521C5.83369 13.4998 5.81719 13.3322 5.84935 13.1706C5.8815 13.0089 5.96087 12.8605 6.07741 12.7439C6.19395 12.6274 6.34244 12.548 6.50409 12.5159C6.66574 12.4837 6.8333 12.5002 6.98557 12.5633C7.13784 12.6263 7.26799 12.7332 7.35956 12.8702C7.45113 13.0072 7.5 13.1684 7.5 13.3332C7.5 13.5542 7.4122 13.7661 7.25592 13.9224C7.09964 14.0787 6.88768 14.1665 6.66667 14.1665ZM13.3333 14.1665H10C9.77899 14.1665 9.56702 14.0787 9.41074 13.9224C9.25446 13.7661 9.16667 13.5542 9.16667 13.3332C9.16667 13.1122 9.25446 12.9002 9.41074 12.7439C9.56702 12.5876 9.77899 12.4998 10 12.4998H13.3333C13.5543 12.4998 13.7663 12.5876 13.9226 12.7439C14.0789 12.9002 14.1667 13.1122 14.1667 13.3332C14.1667 13.5542 14.0789 13.7661 13.9226 13.9224C13.7663 14.0787 13.5543 14.1665 13.3333 14.1665ZM15.8333 9.1665H4.16667V5.83317C4.16667 5.61216 4.25446 5.4002 4.41074 5.24392C4.56702 5.08764 4.77899 4.99984 5 4.99984H5.83333V5.83317C5.83333 6.05418 5.92113 6.26615 6.07741 6.42243C6.23369 6.57871 6.44565 6.6665 6.66667 6.6665C6.88768 6.6665 7.09964 6.57871 7.25592 6.42243C7.4122 6.26615 7.5 6.05418 7.5 5.83317V4.99984H12.5V5.83317C12.5 6.05418 12.5878 6.26615 12.7441 6.42243C12.9004 6.57871 13.1123 6.6665 13.3333 6.6665C13.5543 6.6665 13.7663 6.57871 13.9226 6.42243C14.0789 6.26615 14.1667 6.05418 14.1667 5.83317V4.99984H15C15.221 4.99984 15.433 5.08764 15.5893 5.24392C15.7455 5.4002 15.8333 5.61216 15.8333 5.83317V9.1665Z" fill="#181A18" />
-                            </svg>
-                            <input type="date" id="to" name="to" placeholder="dd.mm.yyyy" onchange="calculateDaysAndTotalCost()">
+                    <script src="\Frontend\js\suggestLocation.js"></script>
+                    
+                   
+                    <div class="checkGuest">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.50033 9.16667C8.1596 9.16667 8.80406 8.97117 9.35223 8.6049C9.90039 8.23863 10.3276 7.71803 10.5799 7.10895C10.8322 6.49986 10.8982 5.82964 10.7696 5.18303C10.641 4.53643 10.3235 3.94249 9.85735 3.47631C9.39117 3.01014 8.79723 2.69267 8.15063 2.56405C7.50402 2.43543 6.8338 2.50144 6.22471 2.75374C5.61563 3.00603 5.09503 3.43327 4.72876 3.98143C4.36249 4.5296 4.16699 5.17406 4.16699 5.83334C4.16699 6.71739 4.51818 7.56524 5.1433 8.19036C5.76842 8.81548 6.61627 9.16667 7.50033 9.16667ZM14.167 10.8333C14.6614 10.8333 15.1448 10.6867 15.5559 10.412C15.967 10.1373 16.2875 9.74686 16.4767 9.29004C16.6659 8.83323 16.7154 8.33056 16.619 7.84561C16.5225 7.36066 16.2844 6.9152 15.9348 6.56557C15.5851 6.21594 15.1397 5.97784 14.6547 5.88137C14.1698 5.78491 13.6671 5.83442 13.2103 6.02364C12.7535 6.21286 12.363 6.53329 12.0883 6.94441C11.8136 7.35553 11.667 7.83888 11.667 8.33334C11.667 8.99638 11.9304 9.63226 12.3992 10.1011C12.8681 10.5699 13.504 10.8333 14.167 10.8333ZM17.5003 16.6667C17.7213 16.6667 17.9333 16.5789 18.0896 16.4226C18.2459 16.2663 18.3337 16.0543 18.3337 15.8333C18.333 15.0545 18.114 14.2914 17.7017 13.6307C17.2893 12.97 16.7 12.4381 16.0006 12.0954C15.3012 11.7527 14.5198 11.6128 13.745 11.6917C12.9702 11.7705 12.2329 12.065 11.617 12.5417C10.8008 11.7286 9.76204 11.1755 8.63185 10.952C7.50165 10.7285 6.33059 10.8447 5.26635 11.2859C4.2021 11.7272 3.29234 12.4736 2.65178 13.4312C2.01122 14.3888 1.66855 15.5146 1.66699 16.6667C1.66699 16.8877 1.75479 17.0996 1.91107 17.2559C2.06735 17.4122 2.27931 17.5 2.50033 17.5H12.5003C12.7213 17.5 12.9333 17.4122 13.0896 17.2559C13.2459 17.0996 13.3337 16.8877 13.3337 16.6667" fill="#181A18" />
+                        </svg>
+                        Guests
+                        <button class="svg-button" id="btnPlus" type="button">
+                            +
+                        </button>
+                        <input class="numberGuest" type="number" id="guest_count" name="guest_count" min="1" value="1" style="width: 30px; background-color:#F2F0F2">
+                        <button class="svg-button" id="btnMinus" type="button">
+                            -
+                        </button>
+    
+                    </div>
+                    <script src="\Frontend\js\plus-minus-btn.js"></script>
+                    <p class="alluliti">All utilities are included</p>
+                </div>
+                <div class="totalPrice">
+                    <div class="Aver">
+                        <div>
+                            <p>Average daily rent</p>
+                        </div>
+                        <div>
+                            <div class="price">
+                                {{ $propertyDetail->price_per_month ? round($propertyDetail->price_per_month / 30, 2) : 'N/A' }}$
+                            </div>
+                            
+                            incl. VAT
                         </div>
                     </div>
-
+                    <div class="PayBooking">
+                        <div>
+                            <p>Pay upon booking (50% of Total)</p>
+    
+                        </div>
+    
+                        <div>
+                            <div class="price">
+                                0.00$
+                            </div>
+                            incl. VAT
+                        </div>
+                    </div>
+                    <div class="totalCosts">
+                        <p>Total cost
+                        <p id="dayCount"> </p>
+                        </p>
+                        <div>
+                            <div class="price">0.00$</div>
+                            incl. VAT
+                        </div>
+                    </div>
+    
                 </div>
-                <script src="\Frontend\js\suggestLocation.js"></script>
-                
-               
-                <div class="checkGuest">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M7.50033 9.16667C8.1596 9.16667 8.80406 8.97117 9.35223 8.6049C9.90039 8.23863 10.3276 7.71803 10.5799 7.10895C10.8322 6.49986 10.8982 5.82964 10.7696 5.18303C10.641 4.53643 10.3235 3.94249 9.85735 3.47631C9.39117 3.01014 8.79723 2.69267 8.15063 2.56405C7.50402 2.43543 6.8338 2.50144 6.22471 2.75374C5.61563 3.00603 5.09503 3.43327 4.72876 3.98143C4.36249 4.5296 4.16699 5.17406 4.16699 5.83334C4.16699 6.71739 4.51818 7.56524 5.1433 8.19036C5.76842 8.81548 6.61627 9.16667 7.50033 9.16667ZM14.167 10.8333C14.6614 10.8333 15.1448 10.6867 15.5559 10.412C15.967 10.1373 16.2875 9.74686 16.4767 9.29004C16.6659 8.83323 16.7154 8.33056 16.619 7.84561C16.5225 7.36066 16.2844 6.9152 15.9348 6.56557C15.5851 6.21594 15.1397 5.97784 14.6547 5.88137C14.1698 5.78491 13.6671 5.83442 13.2103 6.02364C12.7535 6.21286 12.363 6.53329 12.0883 6.94441C11.8136 7.35553 11.667 7.83888 11.667 8.33334C11.667 8.99638 11.9304 9.63226 12.3992 10.1011C12.8681 10.5699 13.504 10.8333 14.167 10.8333ZM17.5003 16.6667C17.7213 16.6667 17.9333 16.5789 18.0896 16.4226C18.2459 16.2663 18.3337 16.0543 18.3337 15.8333C18.333 15.0545 18.114 14.2914 17.7017 13.6307C17.2893 12.97 16.7 12.4381 16.0006 12.0954C15.3012 11.7527 14.5198 11.6128 13.745 11.6917C12.9702 11.7705 12.2329 12.065 11.617 12.5417C10.8008 11.7286 9.76204 11.1755 8.63185 10.952C7.50165 10.7285 6.33059 10.8447 5.26635 11.2859C4.2021 11.7272 3.29234 12.4736 2.65178 13.4312C2.01122 14.3888 1.66855 15.5146 1.66699 16.6667C1.66699 16.8877 1.75479 17.0996 1.91107 17.2559C2.06735 17.4122 2.27931 17.5 2.50033 17.5H12.5003C12.7213 17.5 12.9333 17.4122 13.0896 17.2559C13.2459 17.0996 13.3337 16.8877 13.3337 16.6667" fill="#181A18" />
-                    </svg>
-                    Guests
-                    <button class="svg-button" id="btnPlus" type="button">
-                        +
-                    </button>
-                    <input class="numberGuest" type="number" id="guest_count" name="guest_count" min="1" value="1" style="width: 30px; background-color:#F2F0F2">
-                    <button class="svg-button" id="btnMinus" type="button">
-                        -
-                    </button>
-
+                <div class="button">
+                    <button class="ContinueBooking" type="submit">Continue booking</button>
+                    {{-- <a  class="ContinueBooking" href="{{URL::to('/CheckoutPageA')}}" style="text-decoration: none">Continue booking</a> --}}
+                    <p>When you book this apartment, your reservation will be cofirmed instantly</p>
+                   
                 </div>
-                <script src="\Frontend\js\plus-minus-btn.js"></script>
-                <p class="alluliti">All utilities are included</p>
             </div>
-            <div class="totalPrice">
-                <div class="Aver">
-                    <div>
-                        <p>Average daily rent</p>
-                    </div>
-                    <div>
-                        <div class="price">
-                            {{ $propertyDetail->price_per_month ? round($propertyDetail->price_per_month / 30, 2) : 'N/A' }}$
-                        </div>
-                        
-                        incl. VAT
-                    </div>
-                </div>
-                <div class="PayBooking">
-                    <div>
-                        <p>Pay upon booking (50% of Total)</p>
-
-                    </div>
-
-                    <div>
-                        <div class="price">
-                            0.00$
-                        </div>
-                        incl. VAT
-                    </div>
-                </div>
-                <div class="totalCosts">
-                    <p>Total cost
-                    <p id="dayCount"> </p>
-                    </p>
-                    <div>
-                        <div class="price">0.00$</div>
-                        incl. VAT
-                    </div>
-                </div>
-
-            </div>
-            <div class="button">
-                <a class="ContinueBooking" href="{{URL::to('/CheckoutPageA')}}" style="text-decoration: none">Continue booking</a>
-                <p>When you book this apartment, your reservation will be cofirmed instantly</p>
-            </div>
-        </div>
+        </form>
+       
         <script>
+            // Lấy các tham số từ URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const fromDate = urlParams.get('from');
+            const toDate = urlParams.get('to');
+            const guestCount = urlParams.get('guestCount');
+        
+            // Điền các giá trị vào form
+            document.getElementById('from').value = fromDate || ''; // Nếu không có 'from', giữ nguyên
+            document.getElementById('to').value = toDate || '';     // Nếu không có 'to', giữ nguyên
+            document.getElementById('guest_count').value = guestCount || 1; // Mặc định là 1 nếu không có 'guestCount'
+        
+            // Hàm tính số ngày và tổng chi phí
             function calculateDaysAndTotalCost() {
-                // Get the values from the date inputs
+                // Lấy giá trị từ các input ngày
                 const fromDate = document.getElementById("from").value;
                 const toDate = document.getElementById("to").value;
-
-                // Ensure both dates are selected
+        
+                // Đảm bảo cả hai ngày được chọn
                 if (fromDate && toDate) {
-                    // Convert the dates to Date objects
+                    // Chuyển đổi các giá trị ngày thành đối tượng Date
                     const startDate = new Date(fromDate);
                     const endDate = new Date(toDate);
-
-                    // Calculate the difference in time and convert it to days
+        
+                    // Tính chênh lệch thời gian và chuyển đổi thành số ngày
                     const diffTime = endDate - startDate;
                     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-                    // Display the number of days
+        
+                    // Hiển thị số ngày
                     document.getElementById("dayCount").textContent = "( " + (diffDays >= 0 ? diffDays : 0) + " days )";
-
-                    // Get the daily rent from the Aver class
+        
+                    // Lấy giá thuê hàng ngày từ class Aver (giả sử bạn đã có phần tử này trên trang)
                     const dailyRentElement = document.querySelector(".Aver .price");
-                    const dailyRent = parseFloat(dailyRentElement.textContent.replace(/[^0-9.-]+/g,"")); // Remove non-numeric characters
-
-                    // Calculate the total cost
+                    const dailyRent = parseFloat(dailyRentElement.textContent.replace(/[^0-9.-]+/g, "")); // Loại bỏ các ký tự không phải số
+        
+                    // Tính toán tổng chi phí
                     const totalCost = diffDays >= 0 ? (dailyRent * diffDays) : 0;
-
-                    // Display the total cost in the totalCosts class
+        
+                    // Hiển thị tổng chi phí trong class totalCosts
                     document.querySelector(".totalCosts .price").textContent = "$" + totalCost.toFixed(2);
-
-                    // Calculate 50% of the total cost for PayBooking
+        
+                    // Tính 50% chi phí để thanh toán khi đặt phòng
                     const payUponBooking = totalCost / 2;
-
-                    // Display the 50% cost in the PayBooking class
+        
+                    // Hiển thị 50% chi phí trong class PayBooking
                     document.querySelector(".PayBooking .price").textContent = "$" + payUponBooking.toFixed(2);
                 } else {
+                    // Nếu chưa có đủ thông tin, làm sạch các giá trị
                     document.getElementById("dayCount").textContent = "";
-                    document.querySelector(".totalCosts .price").textContent = "0.00$";
-                    document.querySelector(".PayBooking .price").textContent = "0.00$";
+                    document.querySelector(".totalCosts .price").textContent = "$0.00";
+                    document.querySelector(".PayBooking .price").textContent = "$0.00";
                 }
             }
+        
+            // Gọi hàm khi có sự thay đổi trong input ngày hoặc khách
+            document.getElementById("from").addEventListener("change", calculateDaysAndTotalCost);
+            document.getElementById("to").addEventListener("change", calculateDaysAndTotalCost);
+            document.getElementById("guest_count").addEventListener("input", calculateDaysAndTotalCost);
+        
+            // Gọi hàm tính toán ngay khi trang được tải xong
+            calculateDaysAndTotalCost();
         </script>
+        
     </div>
 </div>
 <div class="Amenities">

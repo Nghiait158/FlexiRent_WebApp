@@ -49,26 +49,26 @@ function calculateDays() {
         toDateInput.value = '';
         return;
     }
-
+    // ---------Không cần phải set 7 ngày sau to đâu Nhật ơi
     // Ensure "to" date is at least 7 days after "from" date
-    if (fromDate) {
-        const minToDate = new Date(fromDate);
-        minToDate.setDate(minToDate.getDate() + 7); // "to" must be at least 7 days after "from"
-        if (!toDate || toDate < minToDate) {
-            toDateInput.value = formatDate(minToDate); // Automatically set 'to' to 7 days after 'from'
-        }
-        toDateInput.setAttribute('min', formatDate(minToDate)); // Set minimum 'to' date as 'from' + 7 days
-    }
+    // if (fromDate) {
+    //     const minToDate = new Date(fromDate);
+    //     minToDate.setDate(minToDate.getDate() + 7); // "to" must be at least 7 days after "from"
+    //     if (!toDate || toDate < minToDate) {
+    //         toDateInput.value = formatDate(minToDate); // Automatically set 'to' to 7 days after 'from'
+    //     }
+    //     toDateInput.setAttribute('min', formatDate(minToDate)); // Set minimum 'to' date as 'from' + 7 days
+    // }
 
     // Ensure "from" date is at least 7 days before "to" date
-    if (toDate) {
-        const maxFromDate = new Date(toDate);
-        maxFromDate.setDate(maxFromDate.getDate() - 7); // "from" must be at least 7 days before "to"
-        if (!fromDate || fromDate > maxFromDate) {
-            fromDateInput.value = formatDate(maxFromDate); // Automatically set 'from' to 7 days before 'to'
-        }
-        fromDateInput.setAttribute('max', formatDate(maxFromDate)); // Set maximum 'from' date as 'to' - 7 days
-    }
+    // if (toDate) {
+    //     const maxFromDate = new Date(toDate);
+    //     maxFromDate.setDate(maxFromDate.getDate() - 7); // "from" must be at least 7 days before "to"
+    //     if (!fromDate || fromDate > maxFromDate) {
+    //         fromDateInput.value = formatDate(maxFromDate); // Automatically set 'from' to 7 days before 'to'
+    //     }
+    //     fromDateInput.setAttribute('max', formatDate(maxFromDate)); // Set maximum 'from' date as 'to' - 7 days
+    // }
 
     // Set today's date as the minimum for the 'from' field
     fromDateInput.setAttribute('min', minDate);
