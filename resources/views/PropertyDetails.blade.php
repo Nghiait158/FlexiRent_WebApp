@@ -166,7 +166,7 @@
                         </div>
                     </div>
                     <div class="totalCosts">
-                        <p>Total cost
+                        <p>Total base rent
                         <p id="dayCount"> </p>
                         </p>
                         <div>
