@@ -46,6 +46,13 @@ body {
     justify-content: space-between;
 }
 
+.searchGuest {
+    display: flex;
+    width: 200px;
+    align-items: center;
+    gap: 15px;
+    /* Add space between items */
+}
 
 .searchCity,
 .searchDate,
@@ -603,7 +610,7 @@ body {
 
 .pick-date input {
     height: 35px;
-    width: 110px;
+    width: 150px;
     background-color: #fff;
     border: none;
     text-align: center;
