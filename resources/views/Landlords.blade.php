@@ -11,57 +11,112 @@
     document.head.appendChild(link);
 </script>
 
-
 <!-- Form và image -->
 <div class="container2">
-    <img src="\Frontend\Image\Landlords\business.png" alt="Background Image" class="background-image">
-
     <!-- Form Container -->
-    <div class="form-container">
-
-        <!-- Title -->
-        <div>
-            <h1>Earn more from your property, do less</h1>
-            <p>Find out if your property meets our criteria</p>
-        </div>
-
-        <!-- Input details in here -->
-        <div class="section-2">
-            <input type="text" placeholder="Name *" required>
-            <input type="email" placeholder="Email *" required>
-            <input type="tel" placeholder="Phone number *" required>
-
+    <div>
+        <form class="was-validated" novalidate><!-- action="#" method="POST" -->
+            <!-- Title -->
             <div>
+                <h1>Earn more from your property, do less</h1>
+                <p>Find out if your property meets our criteria</p>
+            </div>
+
+            <!-- Input details -->
+            <div class="section-2">
+
+
+                <input type="text" class="form-control" id="name" placeholder="Name *" required>
+                
+
+                <input type="email" class="form-control" id="email" placeholder="Email *" required>
+                
+
+                <input type="number" class="form-control" id="phone" placeholder="Phone number *" required>
+                
+
                 <p2>Property details</p2>
                 <div class="property-details">
-                    <select required>
+
+                    <select class="form-select" id="city" required>
                         <option value="" disabled selected>City *</option>
                         <option value="city1">Ho Chi Minh city</option>
                         <option value="city2">Ha Noi</option>
                     </select>
-                    <select required>
+                    
+
+                    <select class="form-select" id="area" required>
                         <option value="" disabled selected>Area *</option>
                         <option value="area1">Thu Duc</option>
                         <option value="area2">Tan Binh</option>
                     </select>
+                    
+
                 </div>
 
-                <select required>
+                <select class="form-select" id="bedrooms" required>
                     <option value="" disabled selected># of bedrooms *</option>
                     <option value="1">1 Bedroom</option>
                     <option value="2">2 Bedrooms</option>
                     <option value="3">3 Bedrooms</option>
                 </select>
+                
+
             </div>
-        </div>
 
-        <!-- Submit button -->
-        <div class="section-3">
-            <button type="submit">Submit</button>
-        </div>
+
+            <!-- Submit button -->
+            <div class="section-3">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
     </div>
-
 </div>
+
+<!-- <script>
+    (function() {
+        'use strict'
+
+        var inputs = document.querySelectorAll('.needs-validation input, .needs-validation select');
+
+        Array.from(inputs).forEach(function(input) {
+            input.addEventListener('blur', function() {
+                validateInput(input);
+            });
+        });
+
+        var forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(function(form) {
+            form.addEventListener('submit', function(event) {
+
+                var isValid = true;
+                Array.from(form.querySelectorAll('input, select')).forEach(function(input) {
+                    if (!input.checkValidity()) {
+                        isValid = false;
+                        input.classList.add('is-invalid');
+                    } else {
+                        input.classList.remove('is-invalid');
+                    }
+                });
+
+                if (!isValid) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+            }, false);
+        });
+
+        function validateInput(input) {
+            if (input.checkValidity()) {
+                input.classList.remove('is-invalid');
+                input.classList.add('is-valid');
+            } else {
+                input.classList.remove('is-valid');
+                input.classList.add('is-invalid');
+            }
+        }
+    })();
+</script> -->
 
 <!-- Information Section -->
 <div class="boxes-container">
