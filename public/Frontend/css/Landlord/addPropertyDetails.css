@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+@font-face {
+    font-family: "Lato";
+    src: url('/Frontend/Font-family/Lato/Lato-Regular.ttf');
+}
+
+@font-face {
+    font-family: "Molle";
+    src: url('/Frontend/Font-family/Molle/Molle-Regular.ttf');
+}
+
+
+
+body {
+    font-family: "Lato", sans-serif;
+}
+
+
+.main {
+    display: grid;
+    grid-template-columns: 0.2fr 0.575fr 0.225fr;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+}
+
+
+.logo {
+    font-family: "Molle";
+    font-style: italic;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 66.67%;
+    margin-top: 40px;
+    margin-left: 15%;
+}
+
+.logo a {
+    color: #000;
+    text-decoration: none;
+}
+
+
+
+.add-details-container {
+
+    padding-top: 40px;
+    padding-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.title p {
+    color: rgb(87, 93, 100);
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-top: 60px;
+    width: 65%;
+}
+
+.input-form {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.input-form label {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.form-control,
+.form-select {
+    width: 45%;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Space between labels and switch */
+}
+
+/* Increase switch size */
+.form-check-input {
+    transform: scale(2);
+    margin: 0 10px;
+}
+
+/* Style for dynamic input container */
+.dynamic-input-container {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.foot {
+    display: flex;
+    width: 65%;
+    justify-content: space-between;
+}
+
+.prevBtn button {
+    border: none;
+    background: none;
+}
+
+.nextBtn button {
+    overflow: visible;
+    font-style: inherit;
+    font-variant: inherit;
+    font-weight: inherit;
+    font-stretch: inherit;
+    font-optical-sizing: inherit;
+    font-size-adjust: inherit;
+    font-kerning: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    -webkit-font-smoothing: inherit;
+    appearance: none;
+    border-radius: 2em;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 2px;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 14px;
+    line-height: 1;
+    border: 1px solid black;
+    padding: 0px 20px;
+    text-decoration: none;
+    white-space: nowrap;
+    text-align: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: fit-content;
+    background: black;
+    color: white;
+    min-width: 145px;
+    height: 46px;
+}
+
+.solid-line {
+    display: block;
+    height: 1px;
+    margin: 20px 0px;
+    padding: 0px;
+    border: 0px;
+    width: 100%;
+    background: rgb(226, 233, 235);
+}
+
+.picture {
+    background:
+        linear-gradient(rgba(36, 39, 46, 0.25) 40%, rgba(36, 39, 46, 0.5) 50%, rgba(36, 39, 46, 0.85) 80%),
+        url('/Frontend/Image/addPropertyPage/pic1.jpg');
+    background-size: cover;
+    background-position: center;
+
+    position: relative;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    width: 80%;
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    bottom: 18%;
+}
+
+.text h3,
+.text p {
+
+
+    text-align: center;
+    margin: 0 auto;
+}
+
+.text h3 {
+    font-size: 20px;
+    color: white;
+}
+
+.text p {
+    font-size: 16px;
+    color: #d3d3d3;
+}
+
+.picture .footer {
+    position: absolute;
+    bottom: 0;
+    height: 80px;
+    width: 100%;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.picture .footer button {
+    border: none;
+    background: none;
+    padding: 10px 20px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    gap: 10px;
+}

@@ -8,6 +8,8 @@
     link.type = 'text/css';
     link.href = '/Frontend/css/landlordDashboard.css'; 
     document.head.appendChild(link);
+
+    
 </script>
 <div class="container1 my-5">
     <div class="profile-card2 shadow p-4 rounded">
@@ -59,5 +61,9 @@
 
 
 
+<h1>dasboard</h1>
+<h1>dasboard</h1>
+{{-- @yield('content') --}}
+<a href="{{URL::to('landlord/add_property_address')}}">Go to add property</a>
 
 @endsection

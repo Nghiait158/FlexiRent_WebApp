@@ -16,11 +16,13 @@ class LandlordController extends Controller
         return view('landlord.dashboard');
     }
 
-    public function RegisterProperty(){
-        
+    public function addPropertyAddress(){
+        return view('landlord.add_property_address');
     }
 
-
+    public function addPropertyDetails(){
+        return view('landlord.add_property_details');
+    }
 
 
     // ----------------------Backend--------------
