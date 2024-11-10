@@ -26,24 +26,29 @@ main {
     var link = document.createElement('link');
     link.rel = 'stylesheet';
     link.type = 'text/css';
-    link.href = '/Frontend/css/landlordDashboard.css'; // Your CSS file path
+    link.href = '/Frontend/css/landlordpage.css'; // Your CSS file path
     document.head.appendChild(link);
 
 </script>
 <div class="sidebar">
-
+    <div class="profile-card">
+        <img src="{{ ('/Frontend/Image/landlordPage/8765781.png') }}" alt="Profile Picture" class="profile-img">
+        <h2 class="profile-name">Hello TrungNghia</h2>
+        <a href="mailto:miawhite@gmail.com" class="profile-email">trinhvantrungnghia@gmail.com</a>
+    </div>
+    
     <div class="menu">
         <div class="menu-section">
             {{-- <h4>Shop</h4> --}}
-            <a href="#" class="menu-item">
+            <a href="" class="menu-item">
                 <span class="icon">👨‍💻</span>
                 <span class="text">Dashboard</span>
             </a>
-            <a href="#" class="menu-item">
+            <a href="{{ URL::to('/landlord/myproperty') }}" class="menu-item">
                 <span class="icon">🏠</span>
                 <span class="text">My property</span>
             </a>
-            <a href="#" class="menu-item">
+            <a href="{{ URL::to('/landlord/registerProperty') }}" class="menu-item">
                 <span class="icon">📑</span>
                 <span class="text">Property rental registration</span>
             </a>
