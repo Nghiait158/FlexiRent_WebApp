@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="{{('/Frontend/Image/favicon/FlexiRent.png')}}">
-    <link rel="stylesheet" href="/Frontend/css/Landlord/addPropertyDetails.css">
+    <link rel="stylesheet" href="/Frontend/css/Landlord/addPropertyAmenities.css">
 </head>
 
 <body>
@@ -18,105 +18,318 @@
             <a href="{{URL::to('/HomePage')}}">FlexiRent</a>
         </div>
 
-        <div class="add-details-container">
+        <div class="add-info-container">
 
             <div class="title">
-                <h3>Tell us about your place</h3>
-                <p>Some basic information about your apartment</p>
+                <h3>Which of the following amenities do you offer?</h3>
+                <p>You can add more amenities after you publish your listing.</p>
             </div>
 
 
+
             <div class="input-container">
-                <form action="{{URL::to('landlord/add_property_services')}}">
+                <form action="{{URL::to('landlord/add_property_images')}}">
                     <div class="input-form">
-                        <label for=""><b>What’s the size of the apartment?</b>
+                        <label for=""><b>General</b>
                         </label>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="e.g. 50m2" required>
-                    </div>
-                    <hr class="solid-line">
+                        <div class="amenities">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Wheelchair accessibility</label>
+                            </div>
 
-                    <div class="input-form">
-                        <label for=""><b>What is the accommodation type?
-                            </b>
-                        </label>
-                        <select class="form-select" aria-label="Default select example" required>
-                            <option selected>Please select</option>
-                            <option value="1">Entire Apartment</option>
-                            <option value="2">Private Room</option>
-                            <option value="3">Shared Place</option>
-                            <option value="4">Entire House</option>
-                        </select>
-                    </div>
-                    <hr class="solid-line">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Elevator</label>
+                            </div>
 
-                    <div class="input-form">
-                        <label for=""><b>On which floor is the apartment located?</b>
-                        </label>
-                        <input min="1" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-                    </div>
-                    <hr class="solid-line">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Desk or work space</label>
+                            </div>
 
-                    <div class="input-form">
-                        <label for=""><b>What’s the maximum number of tenants?
-                            </b>
-                        </label>
-                        <input min="1" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-                    </div>
-                    <hr class="solid-line">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Door intercom system</label>
+                            </div>
 
-                    <div class="input-form">
-                        <label for=""><b>What’s the minimum booking duration? (In month)
-                            </b>
-                        </label>
-                        <input min="1" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-                    </div>
-                    <hr class="solid-line">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Balcony</label>
+                            </div>
 
-                    <div class="input-form">
-                        <label for=""><b>Do you want to set a maximum booking <br> duration?
-                            </b>
-                        </label>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                            <label class="form-check-label ms-2" for="flexSwitchCheckDefault">Yes</label>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Terrace</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">TV</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Coffee machine</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Dryer</label>
+                            </div>
                         </div>
                     </div>
+
                     <hr class="solid-line">
 
-                    <div class="dynamic-input-container" id="dynamicInputContainer"></div>
-
                     <div class="input-form">
-                        <label for=""><b>How many rooms inside your property?
-                            </b>
+                        <label for=""><b>Kitchen</b>
                         </label>
-                        <input min="1" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                        <div class="amenities">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Stove</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Oven</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Refrigerator</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Freezer</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Dish washer</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Microwave</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Kettle</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Toaster</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Cutlery</label>
+                            </div>
+                        </div>
                     </div>
 
-                    <script>
-                        document.getElementById('flexSwitchCheckDefault').addEventListener('change', function() {
-                            const dynamicContainer = document.getElementById('dynamicInputContainer');
-
-                            // Clear existing content in dynamic container
-                            dynamicContainer.innerHTML = '';
-
-                            // If switch is checked (Yes), add new input form
-                            if (this.checked) {
-                                dynamicContainer.innerHTML = `
-                    <div class="input-form">
-                        <label for=""><b>What’s the maximum booking duration?(In months)</b></label>
-                        <input min="2" type="number" class="form-control" required>
-                    </div>
                     <hr class="solid-line">
-                `;
-                            }
-                        });
-                    </script>
+
+                    <div class="input-form">
+                        <label for=""><b>Bedroom</b>
+                        </label>
+                        <div class="amenities">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Bed linens</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Blankets</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Closet or chest of drawers</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Pillows</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Bedside lamp</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="solid-line">
+
+                    <div class="input-form">
+                        <label for=""><b>Bathroom</b>
+                        </label>
+                        <div class="amenities">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Shower</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Bathtub</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Hairdryer</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Bidet</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Towels</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="solid-line">
+
+                    <div class="input-form">
+                        <label for=""><b>Additional equipment</b>
+                        </label>
+                        <div class="amenities">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Iron</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Ironing board</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Vacuum cleaner</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Broom</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Air conditioning</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Floor heating</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Floor mop</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Barbecue</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Swimming pool</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Smoke detector</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Home cinema</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Smart home technology</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Sauna</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Study rooms</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Outdoor area</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Community lounge</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="solid-line">
+
+                    <div class="input-form">
+                        <label for=""><b>Other facility services</b>
+                        </label>
+                        <div class="amenities">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Change of letterbox and doorbell labels is possible</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Broadcasting fee included in the rent</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Parking</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Cleaning service</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Fitness</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <label for="">Concierge</label>
+                            </div>
+                        </div>
+                    </div>
             </div>
 
 
             <div class="foot">
                 <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 10%;"></div>
+                    <div class="progress-bar" style="width: 50%;"></div>
                 </div>
                 <div class="button">
                     <div class="prevBtn">
@@ -136,13 +349,22 @@
                     window.history.back(); // This goes back to the previous page in the browser history
                 });
             </script>
+            <script>
+                function startProgress() {
+                    var progressBar = document.querySelector('.progress-bar');
+                    progressBar.style.animation = 'fillProgress 2s forwards'; // Animate to 50% over 2 seconds
+                }
+
+                // Start the progress animation when the page loads
+                window.onload = startProgress;
+            </script>
         </div>
 
 
         <div class="picture">
             <div class="text">
-                <h3>Good to know</h3>
-                <p>Tenants often view listings based on the <br> number of bedrooms. Make sure to include <br> the details about the sleeping arrangements, <br> and choose the option that best describes <br> your place.</p>
+                <h3>The more the merrier</h3>
+                <p>Sought-after amenities will help your property stand out and keep tenant rates stay high. Generally, the more amenities you offer, the higher the value of the apartment. Think of the tenant moving in with just a suit case.</p>
             </div>
             <div class="footer">
                 <button type="reset" onclick="toggleDeleteSection()">
@@ -257,6 +479,8 @@
             </div>
 
         </div>
+
+
         <div id="deleteSection" class="delete-section" style="display: none;">
 
             <div class="css-anjnjw e1phn11p0">
@@ -286,7 +510,11 @@
         </div>
 
         <div id="overlay" class="overlay" style="display: none;"></div>
+
     </div>
+
+
+
 </body>
 
 </html>

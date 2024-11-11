@@ -24,6 +24,17 @@ class LandlordController extends Controller
         return view('landlord.add_property_details');
     }
 
+    public function addPropertyServices(){
+        return view('landlord.add_property_services');
+    }
+
+    public function addPropertyAmenities(){
+        return view('landlord.add_property_amenities');
+    }
+
+    public function addPropertyImages(){
+        return view('landlord.add_property_images');
+    }
 
     // ----------------------Backend--------------
     public function manage_landlord(){  

@@ -15,16 +15,15 @@
     src: url('/Frontend/Font-family/Molle/Molle-Regular.ttf');
 }
 
-
+p {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+}
 
 body {
     font-family: "Lato", sans-serif;
 }
 
-p {
-    word-break: break-all;
-    overflow-wrap: anywhere;
-}
 
 .main {
     display: grid;
@@ -32,6 +31,7 @@ p {
     height: 100vh;
     width: 100%;
     margin: 0;
+
 }
 
 
@@ -52,11 +52,10 @@ p {
 
 
 
-.add-details-container {
-
+.add-services-container {
+    width: 65%;
     padding-top: 40px;
     padding-bottom: 20px;
-
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -68,16 +67,51 @@ p {
 
 }
 
-.title p {
+
+
+.alert {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin: 0;
+    border: 0.5px solid lightgray;
+    padding: 15px;
+}
+
+.CTA{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.CTA-title {
+    font-weight: 700;
+}
+
+.CTA-subtitle {
     color: rgb(87, 93, 100);
+    display: flex;
+}
+
+.CTA-subtitle ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+.CTA-subtitle ul li{
+    display: flex;
+    gap: 10px;
 }
 
 .input-container {
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding-top: 60px;
-    width: 65%;
+    
 }
 
 .input-form {
@@ -86,16 +120,18 @@ p {
 
 }
 
-.input-form label {
-    width: 50%;
-    display: flex;
-    align-items: center;
+.input-container .file-input {
+    width: 100%; 
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 .form-control,
 .form-select {
-    width: 45%;
+    width: 100%;
 }
+
 
 .form-check {
     display: flex;
@@ -110,14 +146,21 @@ p {
     margin: 0 10px;
 }
 
+
+/* Checked state - Yes */
 .form-check-input.custom-switch:checked {
     background-color: black;
     border-color: black;
 }
 
+/* Focus shadow color */
 .form-check-input.custom-switch:focus {
-    box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.5); 
-} 
+    box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.5);
+    /* Black shadow */
+}
+
+
+
 
 /* Style for dynamic input container */
 .dynamic-input-container {
@@ -125,31 +168,29 @@ p {
     width: 100%;
 }
 
+
 /* Container for the progress bar */
 .progress-bar-container {
     width: 100%;
     background-color: #e0e0e0;
-    overflow: hidden; /* Ensure no overflow beyond the container */
+    overflow: hidden;
+    /* Ensure no overflow beyond the container */
     height: 3px;
 }
 
 /* The actual progress bar */
 .progress-bar {
     height: 3px;
-    background-color: #4caf50; /* Green color */
-    width: 0; /* Initial width (0%) */
-    border-radius: 10px 0 0 10px; /* Optional: rounded left corners */
-    transition: width 0.5s ease; /* Smooth transition for width change */
+    background-color: #4caf50;
+    /* Green color */
+    width: 0;
+    /* Initial width (0%) */
+    border-radius: 10px 0 0 10px;
+    /* Optional: rounded left corners */
+    transition: width 0.5s ease;
+    /* Smooth transition for width change */
 }
 
-@keyframes fillProgress {
-    from {
-        width: 0%;
-    }
-    to {
-        width: 10%;
-    }
-}
 
 .foot {
     display: flex;
@@ -162,10 +203,11 @@ p {
     background-color: white;
 }
 
-.button{
+.button {
     display: flex;
     justify-content: space-between;
 }
+
 .prevBtn button {
     border: none;
     background: none;
@@ -231,7 +273,8 @@ p {
 .picture {
     background:
         linear-gradient(rgba(36, 39, 46, 0.25) 40%, rgba(36, 39, 46, 0.5) 50%, rgba(36, 39, 46, 0.85) 80%),
-        url('/Frontend/Image/addPropertyPage/pic1.jpg');
+        url('/Frontend/Image/Landlords/ho-chi-minh-city-vietnam-landmark-tallest-skyscraper-saigon-vietnam-vertical-photo-ho-chi-minh-city-vietnam-february-162100850.webp');
+
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -288,13 +331,25 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     gap: 10px;
 }
 
-.picture .footer button p{
+.picture .footer button p {
     margin: 0;
 }
+
+
+@keyframes fillProgress {
+    from {
+        width: 50%;
+    }
+
+    to {
+        width: 60%;
+    }
+}
+
 
 .help-section {
     position: absolute;
@@ -446,7 +501,7 @@ p {
     align-items: center;
 }
 
-.delete-section .button-container{
+.delete-section .button-container {
     display: flex;
     gap: 20px;
     justify-content: space-between;
@@ -463,6 +518,7 @@ p {
     font-size: 16px;
 
 }
+
 .deleteBtn {
     border-radius: 2em;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 3px 2px;

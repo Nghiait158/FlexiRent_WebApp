@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="{{('/Frontend/Image/favicon/FlexiRent.png')}}">
-    <link rel="stylesheet" href="/Frontend/css/Landlord/addPropertyDetails.css">
+    <link rel="stylesheet" href="/Frontend/css/Landlord/addPropertyImages.css">
 </head>
 
 <body>
@@ -18,105 +18,115 @@
             <a href="{{URL::to('/HomePage')}}">FlexiRent</a>
         </div>
 
-        <div class="add-details-container">
+        <div class="add-services-container">
 
             <div class="title">
-                <h3>Tell us about your place</h3>
-                <p>Some basic information about your apartment</p>
+                <h3>Show what your place looks like</h3>
+                <p>Upload photos of your apartment, select cover image, hold & drag to change the order. You can <br>always add more or update them later</p>
             </div>
 
+            <div data-testid="EssentialServices-sectionBanner" class="alert">
+                <div><svg height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0 0 507.425 507.425" xml:space="preserve">
+                        <path style="fill:#FFC52F;" d="M329.312,129.112l13.6,22l150.8,242.4c22.4,36,6,65.2-36.8,65.2h-406.4c-42.4,0-59.2-29.6-36.8-65.6
+	l198.8-320.8c22.4-36,58.8-36,81.2,0L329.312,129.112z" />
+                        <g>
+                            <path style="fill:#F4EFEF;" d="M253.712,343.512c-10.8,0-20-8.8-20-20v-143.2c0-10.8,9.2-20,20-20s20,8.8,20,20v143.2
+		C273.712,334.312,264.512,343.512,253.712,343.512z" />
+                            <path style="fill:#F4EFEF;" d="M253.312,407.112c-5.2,0-10.4-2-14-6c-3.6-3.6-6-8.8-6-14s2-10.4,6-14c3.6-3.6,8.8-6,14-6
+		s10.4,2,14,6c3.6,3.6,6,8.8,6,14s-2,10.4-6,14C263.712,404.712,258.512,407.112,253.312,407.112z" />
+                        </g>
+                        <path d="M456.912,465.512h-406.4c-22,0-38.4-7.6-46-21.6s-5.6-32.8,6-51.2l198.8-321.6c11.6-18.8,27.2-29.2,44.4-29.2l0,0
+	c16.8,0,32.4,10,43.6,28.4l35.2,56.4l0,0l13.6,22l150.8,243.6c11.6,18.4,13.6,37.2,6,51.2
+	C495.312,457.912,478.912,465.512,456.912,465.512z M253.312,49.912L253.312,49.912c-14,0-27.2,8.8-37.6,25.2l-198.8,321.6
+	c-10,16-12,31.6-5.6,43.2s20.4,17.6,39.2,17.6h406.4c18.8,0,32.8-6.4,39.2-17.6c6.4-11.2,4.4-27.2-5.6-43.2l-150.8-243.6l-13.6-22
+	l-35.2-56.4C280.512,58.712,267.312,49.912,253.312,49.912z" />
+                        <path d="M249.712,347.512c-13.2,0-24-10.8-24-24v-143.2c0-13.2,10.8-24,24-24s24,10.8,24,24v143.2
+	C273.712,336.712,262.912,347.512,249.712,347.512z M249.712,164.312c-8.8,0-16,7.2-16,16v143.2c0,8.8,7.2,16,16,16s16-7.2,16-16
+	v-143.2C265.712,171.512,258.512,164.312,249.712,164.312z" />
+                        <path d="M249.712,411.112L249.712,411.112c-6.4,0-12.4-2.4-16.8-6.8c-4.4-4.4-6.8-10.8-6.8-16.8c0-6.4,2.4-12.4,6.8-16.8
+	c4.4-4.4,10.8-7.2,16.8-7.2c6.4,0,12.4,2.4,16.8,7.2c4.4,4.4,7.2,10.4,7.2,16.8s-2.4,12.4-7.2,16.8
+	C262.112,408.312,256.112,411.112,249.712,411.112z M249.712,371.112c-4,0-8.4,1.6-11.2,4.8c-2.8,2.8-4.8,7.2-4.8,11.2
+	c0,4.4,1.6,8.4,4.8,11.2c2.8,2.8,7.2,4.8,11.2,4.8s8.4-1.6,11.2-4.8c2.8-2.8,4.8-7.2,4.8-11.2s-1.6-8.4-4.8-11.2
+	C258.112,372.712,253.712,371.112,249.712,371.112z" />
+                    </svg></div>
+                <div class="CTA">
+                    <div class="CTA-title">We recommend</div>
+                    <div class="CTA-subtitle">
+                        <ul>
+                            <li><img width="20px" height="20px" src="\Frontend\Image\Landlords\images.png" alt="">
+                                <p>Photo in landscape format</p>
+                            </li>
+                            <li><img width="20px" height="20px" src="\Frontend\Image\Landlords\25.png" alt="">
+                                <p>Max. size of each image is 25MB</p>
+                            </li>
+                            <li><img width="20px" height="20px" src="\Frontend\Image\Landlords\3965062-200.png" alt="">
+                                <p>The ideal image dimensions should be 1800x1200 pixels</p>
+                            </li>
+                            <li><img width="20px" height="20px" src="\Frontend\Image\Landlords\8.png" alt="">
+                                <p>Maximum 8 images</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
             <div class="input-container">
-                <form action="{{URL::to('landlord/add_property_services')}}">
+                <form action="">
                     <div class="input-form">
-                        <label for=""><b>What’s the size of the apartment?</b>
-                        </label>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="e.g. 50m2" required>
-                    </div>
-                    <hr class="solid-line">
-
-                    <div class="input-form">
-                        <label for=""><b>What is the accommodation type?
-                            </b>
-                        </label>
-                        <select class="form-select" aria-label="Default select example" required>
-                            <option selected>Please select</option>
-                            <option value="1">Entire Apartment</option>
-                            <option value="2">Private Room</option>
-                            <option value="3">Shared Place</option>
-                            <option value="4">Entire House</option>
-                        </select>
-                    </div>
-                    <hr class="solid-line">
-
-                    <div class="input-form">
-                        <label for=""><b>On which floor is the apartment located?</b>
-                        </label>
-                        <input min="1" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-                    </div>
-                    <hr class="solid-line">
-
-                    <div class="input-form">
-                        <label for=""><b>What’s the maximum number of tenants?
-                            </b>
-                        </label>
-                        <input min="1" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-                    </div>
-                    <hr class="solid-line">
-
-                    <div class="input-form">
-                        <label for=""><b>What’s the minimum booking duration? (In month)
-                            </b>
-                        </label>
-                        <input min="1" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-                    </div>
-                    <hr class="solid-line">
-
-                    <div class="input-form">
-                        <label for=""><b>Do you want to set a maximum booking <br> duration?
-                            </b>
-                        </label>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                            <label class="form-check-label ms-2" for="flexSwitchCheckDefault">Yes</label>
-                        </div>
-                    </div>
-                    <hr class="solid-line">
-
-                    <div class="dynamic-input-container" id="dynamicInputContainer"></div>
-
-                    <div class="input-form">
-                        <label for=""><b>How many rooms inside your property?
-                            </b>
-                        </label>
-                        <input min="1" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                        <input type="file" class="form-control file-input" id="fileInput" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required onchange="previewImages(event)" multiple>
                     </div>
 
-                    <script>
-                        document.getElementById('flexSwitchCheckDefault').addEventListener('change', function() {
-                            const dynamicContainer = document.getElementById('dynamicInputContainer');
-
-                            // Clear existing content in dynamic container
-                            dynamicContainer.innerHTML = '';
-
-                            // If switch is checked (Yes), add new input form
-                            if (this.checked) {
-                                dynamicContainer.innerHTML = `
-                    <div class="input-form">
-                        <label for=""><b>What’s the maximum booking duration?(In months)</b></label>
-                        <input min="2" type="number" class="form-control" required>
-                    </div>
-                    <hr class="solid-line">
-                `;
-                            }
-                        });
-                    </script>
+                    <div class="image-preview-container" id="imagePreviewContainer"></div>
             </div>
+            <script>
+                function previewImages(event) {
+                    const files = event.target.files; // Get the selected files
+                    const previewContainer = document.getElementById('imagePreviewContainer');
+                    previewContainer.innerHTML = ''; // Clear previous previews
+
+                    const maxFiles = 8;
+
+                    // Check if the number of files exceeds the max limit
+                    if (files.length > maxFiles) {
+                        alert(`You can only upload up to ${maxFiles} images.`);
+                        event.target.value = ''; // Reset the input value to prevent form submission
+                        return; // Stop the function if the number of files exceeds the limit
+                    }
+
+                    // Loop through the selected files and show the previews
+                    for (let i = 0; i < files.length; i++) {
+                        const file = files[i];
+
+                        if (file && file.type.startsWith('image/')) { // Check if the file is an image
+                            const reader = new FileReader(); // Create a FileReader object
+
+                            reader.onload = function(e) {
+                                const image = document.createElement('img'); // Create an img element
+                                image.src = e.target.result; // Set the source to the file's data URL
+                                image.style.width = '150px'; // Set a fixed size for the image
+                                image.style.height = '150px'; // Set a fixed size for the image
+                                image.style.margin = '10px'; // Add margin for spacing
+                                image.style.borderRadius = '8px'; // Optional: Add rounded corners
+                                previewContainer.appendChild(image); // Append the image to the container
+                            };
+
+                            reader.onerror = function(error) {
+                                console.error('Error reading file:', error);
+                            };
+
+                            reader.readAsDataURL(file); // Read the file as a data URL
+                        } else {
+                            console.error('Not an image file');
+                        }
+                    }
+                }
+            </script>
 
 
             <div class="foot">
                 <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 10%;"></div>
+                    <div class="progress-bar" style="width: 60%;"></div>
                 </div>
                 <div class="button">
                     <div class="prevBtn">
@@ -135,14 +145,26 @@
                     // Logic to go to the previous page
                     window.history.back(); // This goes back to the previous page in the browser history
                 });
+
+                function startProgress() {
+                    var progressBar = document.querySelector('.progress-bar');
+                    progressBar.style.animation = 'fillProgress 2s forwards'; // Animate to 50% over 2 seconds
+                }
+
+                // Start the progress animation when the page loads
+                window.onload = startProgress;
             </script>
         </div>
 
 
         <div class="picture">
             <div class="text">
-                <h3>Good to know</h3>
-                <p>Tenants often view listings based on the <br> number of bedrooms. Make sure to include <br> the details about the sleeping arrangements, <br> and choose the option that best describes <br> your place.</p>
+                <h3>Picture perfect</h3>
+                <p>We know from experience that listings with at least 10 high-quality photos generate up to 25% higher demand.
+                    Make sure to showcase every room in your apartment.
+                    You can find out more in our <br> photography guide
+                    <a href="https://www.lightroompresets.com/blogs/pretty-presets-blog/real-estate-photography-tips" style="color: #d3d3d3;">here</a>.
+                </p>
             </div>
             <div class="footer">
                 <button type="reset" onclick="toggleDeleteSection()">
@@ -255,7 +277,6 @@
                     </button>
                 </div>
             </div>
-
         </div>
         <div id="deleteSection" class="delete-section" style="display: none;">
 

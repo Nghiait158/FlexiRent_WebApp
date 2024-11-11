@@ -51,7 +51,7 @@
 
             <div class="address-input">
 
-                <input type="text" class="form-control" placeholder="Street name, number, area code">
+                <input type="text" class="form-control" placeholder="Street name, number, area code" required>
                 <div class="map">
                     add google map here
                 </div>
