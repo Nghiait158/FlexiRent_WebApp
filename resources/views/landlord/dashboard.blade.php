@@ -15,7 +15,7 @@
     <div class="profile-card2 shadow p-4 rounded">
         <!-- Header -->
         <div class="profile-header text-center mb-4">
-            <h2 class="mb-0">Landlord Profile</h2>
+            <h2 class="mb-0">Landlord Profile.</h2>
             <p class="text-muted">Manage your personal information and login settings</p>
         </div>
 
