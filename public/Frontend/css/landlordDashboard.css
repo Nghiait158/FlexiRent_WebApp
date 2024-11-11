@@ -12,9 +12,9 @@ body {
     background-color: #f9fafb;
     border-radius: 12px;
     padding: 40px;
-    max-width: 700px;
-    margin: auto;
-    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
+    max-width: 500px;
+    /* margin: auto; */
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
 }
 
 /* Header text styling */
@@ -36,13 +36,13 @@ body {
 /* Label and input field styling */
 .form-label {
     font-weight: 600;
-    color: #444444;
+    color: #000000;
 }
 
 .form-control {
     background-color: #f9f9f9;
     border: 1px solid #dcdcdc;
-    border-radius: 8px;
+    border-radius: 15px;
     padding: 10px 15px;
     margin-bottom: 20px;
     transition: box-shadow 0.2s, border-color 0.2s;
@@ -53,7 +53,33 @@ body {
     border-color: #80bdff;
 }
 
-/* Input group styling for phone number */
+/* General button styling */
+.btn-info {
+    background-color: #000000; 
+    color: #fff; 
+    border: none; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    font-weight: bold;
+    border-radius: 30px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-info:hover {
+    background-color: #138496; /* Darker teal on hover */
+}
+.btn-info:active {
+    background-color: #117a8b; /* Even darker teal */
+    transform: scale(0.98); /* Slight shrink effect */
+}
+
+.btn-info:disabled {
+    background-color: #a6c8d0; /* Lighter teal */
+    cursor: not-allowed; /* Change cursor to indicate it's disabled */
+    opacity: 0.65; /* Reduced opacity */
+}
+
 .input-group-text {
     font-family: Lato;
     background-color: #e9ecef;
@@ -66,6 +92,7 @@ body {
 
 /* Styling for login settings section */
 .login-settings h5 {
+    margin-top: 20px;
     font-family: Lato;
     font-size: 1.5rem;
     font-weight: 600;
@@ -97,8 +124,8 @@ body {
 /* Change button styling */
 .btn-change {
     font-family: Lato;
-    background-color: #f1f3f5;
-    color: #333;
+    background-color: #000000;
+    color: #ffffff;
     border: none;
     border-radius: 15px;
     padding: 5px 15px;
@@ -109,12 +136,13 @@ body {
 
 .btn-change:hover {
     background-color: #e2e6ea;
+    color: #333;
 }
 
 .btn-change-full {
     font-family: Lato;
-    background-color: #f1f3f5;
-    color: #333;
+    background-color: #000000;
+    color: #ffffff;
     border: none;
     border-radius: 20px;
     padding: 8px 20px;

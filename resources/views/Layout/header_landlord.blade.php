@@ -48,7 +48,7 @@ main {
                 <span class="icon">🏠</span>
                 <span class="text">My property</span>
             </a>
-            <a href="{{ URL::to('/landlord/registerProperty') }}" class="menu-item">
+            <a href="{{ URL::to('/landlord/add_property_address') }}" class="menu-item">
                 <span class="icon">📑</span>
                 <span class="text">Property rental registration</span>
             </a>

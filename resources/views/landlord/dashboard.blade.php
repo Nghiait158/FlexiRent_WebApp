@@ -20,25 +20,28 @@
         </div>
 
         <!-- Personal Information Section -->
-        <div class="row mb-4">
-            <div class="col-md-6">
-                <label for="lastName" class="form-label">Last Name</label>
-                <input type="text" class="form-control" id="lastName" placeholder="Enter last name" >
-            </div>
-            <div class="col-md-6">
-                <label for="firstName" class="form-label">First Name</label>
-                <input type="text" class="form-control" id="firstName" placeholder="Enter first name" >
-            </div>
-            <div class="col-md-6">
-                <label for="phone" class="form-label">Phone Number</label>           
-                <input id="phone" type="tel" class="form-control" placeholder="Enter phone number">
-            </div>
-            <div class="col-md-6">
-                <label for="nationality" class="form-label">Nationality</label>
-                <input type="tel" class="form-control" id="nationality" placeholder="Enter nationality" >
-            </div>
-        </div>
-
+        <form action="/updateinfoLandlord"> 
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" value="Trịnh Văn Trung" >
+                </div>
+                <div class="col-md-6">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="firstName" value="Nghĩa" >
+                </div>
+                <div class="col-md-6">
+                    <label for="phone" class="form-label">Phone Number</label>           
+                    <input id="phone" type="tel" class="form-control" value="0918568246">
+                </div>
+                <div class="col-md-6">
+                    <label for="nationality" class="form-label">Nationality</label>
+                    <input type="tel" class="form-control" id="nationality" value="VietNam" >
+                </div>
+            </div>    
+            <button type="submit" name="updateinfoLandlord" class="btn btn-info">Save</button>
+        </form>
+        
         <!-- Login Settings Section -->
         <div class="login-settings">
             <h5 class="mb-3">Login Settings</h5>
@@ -54,16 +57,11 @@
                 </div>
             </div>
         </div>
-        
+       
         
     </div>
 </div>
 
-
-
-<h1>dasboard</h1>
-<h1>dasboard</h1>
 {{-- @yield('content') --}}
-<a href="{{URL::to('landlord/add_property_address')}}">Go to add property</a>
 
 @endsection
