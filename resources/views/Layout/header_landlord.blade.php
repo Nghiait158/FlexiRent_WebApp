@@ -33,8 +33,8 @@ main {
 <div class="sidebar">
     <div class="profile-card">
         <img src="{{ ('/Frontend/Image/landlordPage/8765781.png') }}" alt="Profile Picture" class="profile-img">
-        <h2 class="profile-name">Hello TrungNghia</h2>
-        <a href="mailto:miawhite@gmail.com" class="profile-email">trinhvantrungnghia@gmail.com</a>
+        <h2 class="profile-name">Hello our Landlord </h2>
+        {{-- <a href="mailto:miawhite@gmail.com" class="profile-email">trinhvantrungnghia@gmail.com</a> --}}
     </div>
     
     <div class="menu">

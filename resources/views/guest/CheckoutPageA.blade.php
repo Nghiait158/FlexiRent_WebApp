@@ -60,17 +60,17 @@
                             <path d="M10.0003 1.6665C8.35215 1.6665 6.74099 2.15525 5.37058 3.07092C4.00017 3.9866 2.93206 5.28809 2.30133 6.81081C1.6706 8.33353 1.50558 10.0091 1.82712 11.6256C2.14866 13.2421 2.94234 14.727 4.10777 15.8924C5.27321 17.0578 6.75807 17.8515 8.37458 18.173C9.99109 18.4946 11.6666 18.3296 13.1894 17.6988C14.7121 17.0681 16.0136 16 16.9292 14.6296C17.8449 13.2592 18.3337 11.648 18.3337 9.99984C18.3337 8.90549 18.1181 7.82186 17.6993 6.81081C17.2805 5.79976 16.6667 4.8811 15.8929 4.10728C15.1191 3.33346 14.2004 2.71963 13.1894 2.30084C12.1783 1.88205 11.0947 1.6665 10.0003 1.6665ZM10.0003 14.1665C9.83551 14.1665 9.67439 14.1176 9.53735 14.0261C9.40031 13.9345 9.2935 13.8043 9.23043 13.6521C9.16736 13.4998 9.15085 13.3322 9.18301 13.1706C9.21516 13.0089 9.29453 12.8605 9.41107 12.7439C9.52762 12.6274 9.6761 12.548 9.83775 12.5159C9.9994 12.4837 10.167 12.5002 10.3192 12.5633C10.4715 12.6263 10.6017 12.7332 10.6932 12.8702C10.7848 13.0072 10.8337 13.1684 10.8337 13.3332C10.8337 13.5542 10.7459 13.7661 10.5896 13.9224C10.4333 14.0787 10.2213 14.1665 10.0003 14.1665ZM10.8337 10.8332C10.8337 11.0542 10.7459 11.2661 10.5896 11.4224C10.4333 11.5787 10.2213 11.6665 10.0003 11.6665C9.77932 11.6665 9.56735 11.5787 9.41107 11.4224C9.25479 11.2661 9.167 11.0542 9.167 10.8332V6.6665C9.167 6.44549 9.25479 6.23353 9.41107 6.07725C9.56735 5.92097 9.77932 5.83317 10.0003 5.83317C10.2213 5.83317 10.4333 5.92097 10.5896 6.07725C10.7459 6.23353 10.8337 6.44549 10.8337 6.6665V10.8332Z" fill="#181A18" />
                         </svg>
                     </h4>
-                    <p id="one-time-cleaning-fee">£0.00</p>
+                    <p id="one-time-cleaning-fee">0.00$</p>
                 </div>
 
                 <div class="total-charges">
                     <h4>Total charges</h4>
-                    <p id="total-charges" style="font-weight: 700">£0.00</p>
+                    <p id="total-charges" style="font-weight: 700">0.00$</p>
                 </div>
 
                 <div class="total-charges">
                     <h4 style="line-height: 32px; font-size: 24px;">Total</h4>
-                    <p id="total" style="font-weight: 700; line-height: 32px; font-size: 24px;">£0.00</p>
+                    <p id="total" style="font-weight: 700; line-height: 32px; font-size: 24px;">0.0$</p>
                 </div>
             </div>
             <div class="button-container">
@@ -170,10 +170,10 @@
         // Cập nhật phần tử HTML
         document.getElementById("Reserve").innerText = `${dueNow.toFixed(2)}$`;
         // Cập nhật các phần tử HTML
-        document.getElementById("daily-subtotal").innerText = `£${dailySubtotal.toFixed(2)}`;
-        document.getElementById("one-time-cleaning-fee").innerText = `£${cleaningFee.toFixed(2)}`;
-        document.getElementById("total-charges").innerText = `£${totalCharges.toFixed(2)}`;
-        document.getElementById("total").innerText = `£${total.toFixed(2)}`;
+        document.getElementById("daily-subtotal").innerText = `${dailySubtotal.toFixed(2)}$`;
+        document.getElementById("one-time-cleaning-fee").innerText = `${cleaningFee.toFixed(2)}$`;
+        document.getElementById("total-charges").innerText = `${totalCharges.toFixed(2)}$`;
+        document.getElementById("total").innerText = `${total.toFixed(2)}$`;
 
     </script>
 </div>

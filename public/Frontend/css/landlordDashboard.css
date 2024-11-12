@@ -3,6 +3,10 @@ body {
     font-family: "Lato";
 }
 .container1{
+    display: flex;
+    gap: 20px; 
+    flex-wrap: wrap; 
+    margin-left: 100px;
     margin-top: 50px;
     margin-bottom: 50px;
 }
@@ -15,6 +19,7 @@ body {
     max-width: 500px;
     /* margin: auto; */
     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
+    flex: 1;
 }
 
 /* Header text styling */
@@ -164,3 +169,26 @@ body {
     align-items: center;
     gap: 10px; /* Optional: controls space between elements */
 }
+.QuoteDashboardLandlord {
+    margin-left: 200px;
+    /* background-color: #8a8e8b; */
+    border-radius: 12px;
+    padding: 40px;
+    /* box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); */
+    max-width: 500px;
+    max-height: 360px;
+    flex: 1; /* Allows flexible width for the quote section */
+}
+.QuoteDashboardLandlord p{
+    font-family: Lato;
+    font-weight: 500;
+    font-size: 40px;
+    text-align: right;
+}
+
+/* Ensures proper wrapping and layout on smaller screens */
+/* @media (max-width: 768px) {
+    .container1 {
+        flex-direction: column; 
+    }
+} */

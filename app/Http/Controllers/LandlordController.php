@@ -13,9 +13,40 @@ class LandlordController extends Controller
     // ------------------ Frontend---------------
 
     public function index(){
-        
-        return view('landlord.dashboard');
+        $currentUser = Auth::user();
+        $currentLandlord = Landlord::where('id', $currentUser->id)->first();
+        if (!$currentLandlord) {
+            return redirect()->back()->with('error', 'No admin data found for this user.');
+        }
+        // dd($currentLandlord);
+        return view('landlord.dashboard', compact('currentLandlord'));
     }
+    // public function editLandlordDashboard($landlord_id){
+    //     $editLandlord = Landlord::with(relations: 'user')->find($landlord_id );
+    //     $data = [
+    //         'editLandlord' => $editLandlord,
+    //     ];
+    //     return view('landlord.dashboard', $data);
+    // }
+    public function updateLandlordDashboard(Request $request, $landlord_id ){
+        $data= $request->all();
+        $Landlord = Landlord::with('user')->find($landlord_id );
+        if (!$Landlord) {
+            return redirect()->back()->withErrors(['error' => 'Landlord not found']);
+        }
+        // $Landlord->landlord_id= $data['landlord_id'];
+        $Landlord->first_name = $data['first_name'];
+        $Landlord->last_name = $data['last_name'];
+        // $Landlord->user->email = $data['email'];
+        $Landlord->phonenumber = $data['phonenumber'];
+        $Landlord->nationality = $data['nationality'];
+        
+        $Landlord->save();
+        Session::put('message','Update your information successful');
+        return Redirect::to('landlord/dashboard');
+    }
+
+
 
     public function addPropertyAddress(){
         return view('landlord.add_property_address');
