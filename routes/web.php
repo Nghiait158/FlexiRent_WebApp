@@ -147,7 +147,7 @@ Route::middleware(['auth','guest'])->group(function () {
 });
 
 
-Route::middleware(['auth','landlord'])->group(function () {
+Route::middleware(['auth', 'landlord'])->group(function () {
     Route::get('landlord/dashboard', [LandlordController::class, 'index']);
     // Route::get('landlord/RegisterProperty4Landlord', [LandlordController::class, 'RegisterProperty']);
     Route::get('landlord/add_property_address', [LandlordController::class, 'addPropertyAddress']);
@@ -158,6 +158,8 @@ Route::middleware(['auth','landlord'])->group(function () {
 
     // Route::get('/editLandlordDashboard/{landlord_id}', [LandlordController::class, 'editLandlordDashboard']);
     Route::post('/updateLandlordDashboard/{landlord_id}', [LandlordController::class, 'updateLandlordDashboard']);
+    Route::post('/updateEmailLandlord/{landlord_id}', [LandlordController::class, 'updateEmailLandlord']);
+
 });
 
 

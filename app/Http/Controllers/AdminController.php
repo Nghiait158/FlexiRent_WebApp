@@ -57,12 +57,12 @@ class AdminController extends Controller
     }
     public function editAdmin($admin_id){
         $editAdmin = Admin::with('user')->find($admin_id);
-        $helo='Nghia'; 
+        // $helo='Nghia'; 
         $data = [
             'editAdmin' => $editAdmin,
-            'heelo'=> $helo,
+            // 'heelo'=> $helo,
         ];
-        dd($editAdmin);
+        // dd($editAdmin);
         return view('admin.edit_Admin', $data);
     }
     public function updateAdmin(Request $request, $admin_id){
@@ -72,7 +72,7 @@ class AdminController extends Controller
             return redirect()->back()->withErrors(['error' => 'Admin not found']);
         }
         
-        $admin->admin_id  = $data['admin_id'];
+        // $admin->admin_id  = $data['admin_id'];
         $admin->name = $data['name'];
         $admin->user->email = $data['email'];
         

@@ -18,10 +18,10 @@
                     <div class="position-center">
                         <form role="form" action="{{URL::to('/updateAdmin/'.$editAdmin-> admin_id)}}" method="post">
                             {{ csrf_field() }}
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="admin_id">admin_id</label>
                             <input type="text" value="{{ $editAdmin->admin_id }}" class="form-control" name="admin_id" id="admin_id">
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
                             <label for="name">(name)</label>

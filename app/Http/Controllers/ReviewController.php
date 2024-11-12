@@ -61,7 +61,7 @@ class ReviewController extends Controller
         if (!$review) {
             return redirect()->back()->withErrors(['error' => 'Review not found']);
         }
-        $review->review_id  = $data['review_id'];
+        // $review->review_id  = $data['review_id'];
         $review->property_id   = $data['property_id'];
         $review->guest_id   = $data['guest_id'];
         $review->rating = $data['rating'];

@@ -18,10 +18,10 @@
                     <div class="position-center">
                         <form role="form" action="{{URL::to('/updateReview/'.$editReview-> review_id)}}" method="post">
                             {{ csrf_field() }}
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="review_id">review_id</label>
                             <input type="text" value="{{ $editReview->review_id }}" class="form-control" name="review_id" id="review_id">
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             @csrf
                             <label for="property_id">property_id</label>

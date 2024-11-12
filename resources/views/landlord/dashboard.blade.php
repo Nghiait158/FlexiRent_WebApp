@@ -85,12 +85,20 @@
             <div class="row align-items-center mb-3">
                 <div class="col-md-6 d-flex align-items-center">
                     <label for="email" class="form-label me-2">Email</label>
-                    <span id="email">trinhvantrungnghiabusiness@gmail.com</span>
-                    <button class="btn btn-change ms-3">Change</button>
+                    
+                    <form action="{{ URL::to('/updateEmailLandlord/' . $currentLandlord->landlord_id) }}" method="POST" style="display: inline;">
+                        {{ csrf_field() }}
+                        <input id="email" name="email" class="form-control" value="{{ $currentLandlord->user->email}}">
+                        <button type="submit" class="btn btn-change ms-3" style="cursor: pointer;">Change</button>
+                    </form>
+                    
                 </div>
                 <div class="col-md-6 d-flex align-items-center">
                     <label for="password" class="form-label me-2">Password</label>
-                    <button class="btn btn-change-full">Change my password</button>
+                    <button onclick="window.location.href='{{ route('password.request') }}'" class="btn btn-change-full" style="cursor: pointer;">
+                        Change my password
+                    </button>
+                    
                 </div>
             </div>
         </div>

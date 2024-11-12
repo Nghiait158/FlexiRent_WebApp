@@ -64,7 +64,7 @@ class BookingController extends Controller
         if (!$booking) {
             return redirect()->back()->withErrors(['error' => 'Booking not found']);
         }
-        $booking->booking_id= $data['booking_id'];
+        // $booking->booking_id= $data['booking_id'];
         $booking->property_id= $data['property_id'];
         $booking->guest_id = $data['guest_id'];
         $booking->check_in = $data['check_in'];

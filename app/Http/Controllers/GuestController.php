@@ -49,7 +49,7 @@ class GuestController extends Controller
         if (!$guest) {
             return redirect()->back()->withErrors(['error' => 'Guest not found']);
         }
-        $guest->guest_id= $data['guest_id'];
+        // $guest->guest_id= $data['guest_id'];
         $guest->first_name = $data['first_name'];
         $guest->last_name = $data['last_name'];
         $guest->phone_number = $data['phone_number'];

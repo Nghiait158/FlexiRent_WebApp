@@ -21,13 +21,21 @@ class LandlordController extends Controller
         // dd($currentLandlord);
         return view('landlord.dashboard', compact('currentLandlord'));
     }
-    // public function editLandlordDashboard($landlord_id){
-    //     $editLandlord = Landlord::with(relations: 'user')->find($landlord_id );
-    //     $data = [
-    //         'editLandlord' => $editLandlord,
-    //     ];
-    //     return view('landlord.dashboard', $data);
-    // }
+    public function updateEmailLandlord(Request $request, $landlord_id ){
+        $data= $request->all();
+        $Landlord = Landlord::with('user')->find($landlord_id );
+        if (!$Landlord) {
+            return redirect()->back()->withErrors(['error' => 'Landlord not found']);
+        }
+        // $Landlord->landlord_id= $data['landlord_id'];
+       
+        $Landlord->user->email = $data['email'];
+
+        $Landlord->user->save();
+        Session::put('message','Update your email successful');
+        return Redirect::to('landlord/dashboard');
+    }
+
     public function updateLandlordDashboard(Request $request, $landlord_id ){
         $data= $request->all();
         $Landlord = Landlord::with('user')->find($landlord_id );
@@ -86,7 +94,7 @@ class LandlordController extends Controller
         if (!$Landlord) {
             return redirect()->back()->withErrors(['error' => 'Landlord not found']);
         }
-        $Landlord->landlord_id= $data['landlord_id'];
+        // $Landlord->landlord_id= $data['landlord_id'];
         $Landlord->first_name = $data['first_name'];
         $Landlord->last_name = $data['last_name'];
         $Landlord->user->email = $data['email'];

@@ -18,10 +18,10 @@
                     <div class="position-center">
                         <form role="form" action="{{URL::to('/updateAmenity/'.$editAmenity-> amenity_id)}}" method="post">
                             {{ csrf_field() }}
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="amenity_id">amenity_id</label>
                             <input type="text" value="{{ $editAmenity->amenity_id }}" class="form-control" name="amenity_id" id="amenity_id">
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
                             <label for="amenity_name">amenity_name</label>

@@ -25,20 +25,6 @@ class Amenitycontroller extends Controller
         ];
         return view('admin.edit_amenity', $data);
     }
-    // public function updateAmenity(Request $request, $amenity_id ){
-    //     $data= $request->all();
-    //     $amenity = Amenity::find($amenity_id);
-    //     if (!$amenity) {
-    //         return redirect()->back()->withErrors(['error' => 'Amenity not found']);
-    //     }
-    //     $amenity->amenity_id = $data['amenity_id'];
-    //     $amenity->amenity_name = $data['amenity_name'];
-    //     $amenity->icon = $data['icon'];
-
-    //     $amenity->save();
-    //     Session::put('message','Update amenity successful');
-    //     return Redirect::to('manage_amenity');
-    // }
     public function updateAmenity(Request $request, $amenity_id) {
         // Validate the request data
         $request->validate([
@@ -56,7 +42,7 @@ class Amenitycontroller extends Controller
         }
     
         // Update the amenity's attributes
-        $amenity->amenity_id = $request->amenity_id;
+        // $amenity->amenity_id = $request->amenity_id;
         $amenity->amenity_name = $request->amenity_name;
     
         // Check which icon type is selected and update accordingly
@@ -115,7 +101,7 @@ class Amenitycontroller extends Controller
     
         // Create a new Amenity instance
         $amenity = new Amenity();
-        $amenity->amenity_id = $request->amenity_id;
+        // $amenity->amenity_id = $request->amenity_id;
         $amenity->amenity_name = $request->amenity_name;
     
         // Check which icon type is selected and save accordingly

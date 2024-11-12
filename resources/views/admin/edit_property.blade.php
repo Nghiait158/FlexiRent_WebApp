@@ -19,10 +19,10 @@
                     <form role="form" action="{{URL::to('/updateProperty/'.$editProperty-> property_id)}}" method="post">
                         {{ csrf_field() }}
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="property_id">property_id</label>
                             <input type="text" value="{{ $editProperty->property_id }}" class="form-control" name="property_id" id="property_id">
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label for="property_name">property_name</label>
                             <input type="text" value="{{ $editProperty->property_name }}" class="form-control" name="property_name" id="property_name">
