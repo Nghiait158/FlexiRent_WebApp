@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\Landlord;
+use App\Models\Property;
+use App\Models\Booking;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
@@ -15,11 +18,28 @@ class LandlordController extends Controller
     public function index(){
         $currentUser = Auth::user();
         $currentLandlord = Landlord::where('id', $currentUser->id)->first();
+
+
         if (!$currentLandlord) {
             return redirect()->back()->with('error', 'No admin data found for this user.');
         }
-        // dd($currentLandlord);
-        return view('landlord.dashboard', compact('currentLandlord'));
+        $properties = Property::where('landlord_id', $currentLandlord->landlord_id)->get();
+        $bookings = [];
+
+        foreach ($properties as $property) {
+            // Fetch bookings for each property
+            $bookings[$property->property_id] = Booking::where('property_id', $property->property_id)
+            ->with('guest')
+            ->get();
+        }
+        
+        $data = [
+            'currentLandlord' => $currentLandlord,
+            'properties'=>$properties,
+            'bookings'=>$bookings
+        ];
+        // dd($data);
+        return view('landlord.dashboard', $data);
     }
     public function updateEmailLandlord(Request $request, $landlord_id ){
         $data= $request->all();
