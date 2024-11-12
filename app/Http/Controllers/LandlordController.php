@@ -13,6 +13,7 @@ class LandlordController extends Controller
     // ------------------ Frontend---------------
 
     public function index(){
+        
         return view('landlord.dashboard');
     }
 
@@ -42,7 +43,7 @@ class LandlordController extends Controller
         return view('admin.manage_landlord', compact('allLandlord'));
     }
     public function editLandlord($landlord_id){
-        $editLandlord = Landlord::with('user')->find($landlord_id );
+        $editLandlord = Landlord::with(relations: 'user')->find($landlord_id );
         $data = [
             'editLandlord' => $editLandlord,
         ];

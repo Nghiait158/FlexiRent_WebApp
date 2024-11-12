@@ -28,7 +28,6 @@ class Property extends Model
         'available',
         'guest_capacity',   
     ];
-
     public function landlord()
     {
         return $this->belongsTo(Landlord::class, 'landlord_id');

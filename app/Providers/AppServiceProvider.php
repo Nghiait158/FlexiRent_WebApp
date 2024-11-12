@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Providers;
-
+use App\Models\Property;
 use Illuminate\Support\ServiceProvider;
-
+use Carbon\Carbon;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -19,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $tomorrow = Carbon::tomorrow();
+
+        Property::where('available', '<', Carbon::tomorrow())
+            ->update(['available' => $tomorrow]);
     }
 }

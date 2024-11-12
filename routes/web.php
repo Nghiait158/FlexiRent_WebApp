@@ -10,7 +10,8 @@ use App\Http\Controllers\GuestController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminManageController;
 use App\Http\Controllers\Amenitycontroller;
-use App\Http\Controllers\CheckoutPageAController;
+use App\Http\Controllers\LogoutAndLoginAgain;
+
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\BookingController; 
 use App\Http\Controllers\PropertyImgController; 
@@ -40,6 +41,11 @@ use App\Http\Controllers\DashboardController;
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 });
+Route::get('logoutAndLoginAgain', [LogoutAndLoginAgain::class, 'index']);
+
+
+
+
 
 
 // Route::get('admin/dashboard',[AdminController::class,'index'])->

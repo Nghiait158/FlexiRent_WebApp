@@ -31,16 +31,16 @@ class AuthenticatedSessionController extends Controller
         if($request ->user()->role === 'admin'){
             return redirect('admin/dashboard');
         }else if ($request ->user()-> role === 'landlord') {
-            return redirect()->intended('/login');         
+            return redirect()->intended('/landlord/dashboard');         
             // return redirect('landlord/dashboard');
         }else if ($request ->user()-> role === 'guest'){
             // return redirect('guest/dashboard');   
-            return redirect()->intended('/login');         
+            return redirect()->intended('/');         
         }
 
-        return redirect('dashboard');
+        // return redirect(session()->pull('url.intended', default: '/dashboard'));
 
-        // return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended('/dashboard');
     }
 
     /**

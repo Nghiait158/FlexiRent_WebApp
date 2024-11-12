@@ -20,9 +20,9 @@ class BookingPageController extends Controller
         if ($guestCount) {
             $query->where('guest_capacity', '>=', $guestCount);
         }
-        if ($from) {
-            $query->where('available', '>=', $from);
-        }
+        // if ($from) {
+        //     $query->where('available', '>=', $from);
+        // }
     
         if ($to) {
             $query->where('available', '<=', $to);
