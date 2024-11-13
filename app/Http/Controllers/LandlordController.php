@@ -56,6 +56,20 @@ class LandlordController extends Controller
         Session::put('message','Update your email successful');
         return Redirect::to('landlord/dashboard');
     }
+    public function updatestatusBooking(Request $request, $booking_id ){
+        $data= $request->all();
+        $booking = Booking::find($booking_id );
+        if (!$booking) {
+            return redirect()->back()->withErrors(['error' => 'booking not found']);
+        }
+
+       
+        $booking->status = 'confirmed';
+
+        $booking->save();
+        Session::put('message','Update status booking successful');
+        return Redirect::to('landlord/dashboard');
+    }
 
     public function updateLandlordDashboard(Request $request, $landlord_id ){
         $data= $request->all();

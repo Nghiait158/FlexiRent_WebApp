@@ -161,6 +161,9 @@ Route::middleware(['auth', 'landlord'])->group(function () {
     Route::post('/updateLandlordDashboard/{landlord_id}', [LandlordController::class, 'updateLandlordDashboard']);
     Route::post('/updateEmailLandlord/{landlord_id}', [LandlordController::class, 'updateEmailLandlord']);
 
+// ---- update status for booking 
+    Route::post('/updatestatusBooking/{booking_id}', [LandlordController::class, 'updatestatusBooking']);
+
     Route::get('landlord/add_property_describe', [LandlordController::class, 'addPropertyDescribe']);
 });
 

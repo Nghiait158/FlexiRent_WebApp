@@ -11,6 +11,13 @@
     document.head.appendChild(link);
    
 </script>
+<?php
+    $message = Session::get('message');
+    if($message){
+        echo '<span class="text-alert">'.$message.'</span>';
+        Session::put('message',null);
+    }
+?>
 <div class="container1 my-5">
     <div class="profile-card2 shadow p-4 rounded">
         <!-- Header -->
@@ -112,6 +119,13 @@
         </p>
     </div>
 </div>
+<?php
+    $message = Session::get('message');
+    if($message){
+        echo '<span class="text-alert">'.$message.'</span>';
+        Session::put('message',null);
+    }
+?>
 <div class="container12">
     <!-- Tenant Requests Section -->
     <div class="tenant-requests">
@@ -139,8 +153,8 @@
                                         <!-- Booking Card -->
                                         <div class="booking-card">
                                             <div class="header">
-                                                <h3>Booking for {{ $booking->guest->last_name ?? 'Guest not available' }}</h3>
-                                                <p>Property ID: {{ $booking->property->property_name ?? 'Property not available' }}</p>
+                                                <h3>Booking of {{ $booking->guest->last_name ?? 'Guest not available' }}</h3>
+                                                <p>Property name: {{ $booking->property->property_name ?? 'Property not available' }}</p>
                                             </div>
                                             <div class="contentBookingcard">
                                                 <p><strong>Check-in:</strong> {{ $booking->check_in }}</p>
@@ -153,8 +167,17 @@
                                                 <p><strong>Other Name:</strong> {{ $booking->other_name ?? 'Customers book for themselves' }}</p>
                                                 <p><strong>Other Email:</strong> {{ $booking->other_email ?? 'Customers book for themselves' }}</p>
                                                 <hr>
-                                                <p><strong>Status:</strong> {{ $booking->status ?? 'N/A' }}</p>
-                                                <p><strong>Payment Method:</strong> {{ $booking->payment_method ?? 'N/A' }}</p>
+                                                <div class="status-payment-container">
+                                                    <div>
+                                                        <p><strong>Status:</strong> {{ $booking->status ?? 'N/A' }}</p>
+                                                        <p><strong>Payment Method:</strong> {{ $booking->payment_method ?? 'N/A' }}</p>    
+                                                    </div>
+                                                    
+                                                    <form action="{{ URL::to('/updatestatusBooking/' . $booking->booking_id) }}" method="POST" style="display: inline;">
+                                                        @csrf
+                                                        <button type="submit" class="confirm-button">Confirm booking</button>
+                                                    </form>
+                                                </div>                                               
                                             </div>
                                         </div>
                                     </div>
