@@ -1,6 +1,7 @@
 @extends('Layout/header_landlord')
 @section('contentLandlord')
-
+{{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> --}}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script>
     // Create a link element
     var link = document.createElement('link');
@@ -8,8 +9,7 @@
     link.type = 'text/css';
     link.href = '/Frontend/css/landlordDashboard.css'; 
     document.head.appendChild(link);
-
-    
+   
 </script>
 <div class="container1 my-5">
     <div class="profile-card2 shadow p-4 rounded">
@@ -112,8 +112,77 @@
         </p>
     </div>
 </div>
+<div class="container12">
+    <!-- Tenant Requests Section -->
+    <div class="tenant-requests">
+      <h2>Booking Request</h2>
+      @foreach ($properties as $property)
+        <h3>Property: {{ $property->property_name }}</h3>
+        @if (isset($bookings[$property->property_id]) && $bookings[$property->property_id]->isNotEmpty())
+            @foreach ($bookings[$property->property_id] as $booking)
+                <div class="tenant-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1278/1278543.png" alt="Profile" class="profile-pic">
+                    <div class="tenant-info">
+                    <p class="name"> {{ $booking->guest->last_name ?? 'Guest not available' }} </p>
+                    <p class="property-type">Checkin: {{ $booking->check_in }}</p>
+                    <p class="property-type">Checkout: {{ $booking->check_out }}</p>
+                    <p class="date">Cost: {{ $booking->total_cost }}</p>
+                    </div>
+                    <button class="view-btn" onclick="openModal()">VIEW</button>
+                    <div class="modal" id="myModal">
+                        <div class="modalcontent">
+                            <p>Modal Content Here</p>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            @else
+                <p>No bookings available for this property.</p>
+            @endif
+        @endforeach
+        <script>
+           function openModal() {
+                const modal = document.getElementById("myModal");
+                modal.style.display = "block";
+                setTimeout(() => {
+                    modal.classList.add("show");
+                }, 10);
+            }
 
-<div> </div>
+            function closeModal() {
+                const modal = document.getElementById("myModal");
+                modal.classList.remove("show");
+                setTimeout(() => {
+                    modal.style.display = "none";
+                }, 500);
+            }
+
+            window.onclick = function(event) {
+                const modal = document.getElementById("myModal");
+                if (event.target == modal) {
+                    closeModal();
+                }
+            }
+        </script>
+    </div>
+
+    <!-- Lease Status Section -->
+    <div class="lease-status">
+      <h2>Property Status</h2>
+      <div class="lease-card">
+        <img src="apartment1.jpg" alt="Apartment" class="apartment-pic">
+        <div class="lease-info">
+          <p class="property-type">5BHK Apartment</p>
+          <p>Ending: <span class="date">23 Mar 2019</span></p>
+          <p>Tenants: <span class="count">12</span></p>
+          <p>Rent: <span class="rent">KES 15,000</span></p>
+          <p>Left: <span class="days-left">1 Day</span></p>
+        </div>
+      </div>
+      <!-- Repeat .lease-card for other apartments -->
+    </div>
+  </div>
+</div>
 
 {{-- @yield('content') --}}
 

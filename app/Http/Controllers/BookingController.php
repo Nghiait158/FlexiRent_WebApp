@@ -13,6 +13,7 @@ class BookingController extends Controller
 {
     // ------------------Frontend------------
    
+    
 
     // ----------------Backend-----------------
 
