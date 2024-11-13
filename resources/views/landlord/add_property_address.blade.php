@@ -50,12 +50,11 @@
             </div>
 
             <div class="address-input">
-                <input type="text" id="address-input" class="form-control" placeholder="Please fill exactly street name, number, area" required>
-                <button type="button" onclick="updateMap()">Find</button>
+                <input type="text" id="address-input" class="form-control" placeholder="Please fill exactly street name, number, area" oninput="updateMap()" required>
             
                 <div class="map">
                     {{-- <h1>Location</h1> --}}
-                    <iframe id="google-map" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBoA17lY0Ew39efGfTQp_jOqnD_z9o41uo&q=TPHCM" style="" width="940px" height="450px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe id="google-map" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBoA17lY0Ew39efGfTQp_jOqnD_z9o41uo&q=TPHCM" style="" width="940px" height="450px" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
             
@@ -63,15 +62,13 @@
                 function updateMap() {
                     var address = document.getElementById('address-input').value;                    
                     if (!address) {
-                        alert('Please enter address');
                         return;
                     }            
                     var encodedAddress = encodeURIComponent(address);
                     var iframe = document.getElementById('google-map');
                     iframe.src = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBoA17lY0Ew39efGfTQp_jOqnD_z9o41uo&q=${encodedAddress}`;
                 }
-            </script>
-            
+            </script>            
 
             <div class="nextBtn">
                 <button type="submit">Next</button>

@@ -102,7 +102,6 @@ body {
 }
 
 
-
 .input-form {
     display: flex;
     justify-content: space-between;
@@ -243,7 +242,7 @@ body {
 .picture {
     background:
         linear-gradient(rgba(36, 39, 46, 0.25) 40%, rgba(36, 39, 46, 0.5) 50%, rgba(36, 39, 46, 0.85) 80%),
-        url('/Frontend/Image/Landlords/515019_00_N50_highresjpg-1321x1980.jpg');
+        url('/Frontend/Image/Landlords/chùa-một-cột2.jpg');
 
     background-size: cover;
     background-position: center;
@@ -315,11 +314,11 @@ body {
 
 @keyframes fillProgress {
     from {
-        width: 30%;
+        width: 60%;
     }
 
     to {
-        width: 50%;
+        width: 70%;
     }
 }
 

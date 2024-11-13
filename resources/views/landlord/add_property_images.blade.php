@@ -72,7 +72,7 @@
             </div>
 
             <div class="input-container">
-                <form action="">
+                <form action="{{URL::to('landlord/add_property_describe')}}">
                     <div class="input-form">
                         <input type="file" class="form-control file-input" id="fileInput" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required onchange="previewImages(event)" multiple>
                     </div>
@@ -160,7 +160,7 @@
         <div class="picture">
             <div class="text">
                 <h3>Picture perfect</h3>
-                <p>We know from experience that listings with at least 10 high-quality photos generate up to 25% higher demand.
+                <p>We know from experience that listings with <br> at least 3 high-quality photos generate up to 25% higher demand.
                     Make sure to showcase every room in your apartment.
                     You can find out more in our <br> photography guide
                     <a href="https://www.lightroompresets.com/blogs/pretty-presets-blog/real-estate-photography-tips" style="color: #d3d3d3;">here</a>.

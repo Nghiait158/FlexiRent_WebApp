@@ -109,12 +109,22 @@ body {
 }
 
 .input-form label {
-    width: 50%;
+    width: 40%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+
 }
 
+.input-form label p{
+    font-size: 12px;
+    color: rgb(87, 93, 100);
+}
 
+.form-control{
+    height: 40px;
+    width: 40%;
+
+}
 
 .form-check {
     display: flex;
@@ -243,7 +253,7 @@ body {
 .picture {
     background:
         linear-gradient(rgba(36, 39, 46, 0.25) 40%, rgba(36, 39, 46, 0.5) 50%, rgba(36, 39, 46, 0.85) 80%),
-        url('/Frontend/Image/Landlords/515019_00_N50_highresjpg-1321x1980.jpg');
+        url('/Frontend/Image/Landlords/e9c8682b5401c65eff3b442404a1cc48.jpg');
 
     background-size: cover;
     background-position: center;
@@ -315,11 +325,11 @@ body {
 
 @keyframes fillProgress {
     from {
-        width: 30%;
+        width: 70%;
     }
 
     to {
-        width: 50%;
+        width: 80%;
     }
 }
 
@@ -335,7 +345,7 @@ body {
 /* The actual progress bar */
 .progress-bar {
     height: 3px;
-    background-color: #4caf50;
+    background-color: #555;
     /* Green color */
     width: 0;
     /* Initial width (0%) */

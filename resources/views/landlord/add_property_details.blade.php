@@ -64,7 +64,7 @@
                     </div>
                     <hr class="solid-line">
 
-                    <div class="input-form">
+                    <!-- <div class="input-form">
                         <label for=""><b>What’s the minimum booking duration? (In month)
                             </b>
                         </label>
@@ -83,7 +83,7 @@
                     </div>
                     <hr class="solid-line">
 
-                    <div class="dynamic-input-container" id="dynamicInputContainer"></div>
+                    <div class="dynamic-input-container" id="dynamicInputContainer"></div> -->
 
                     <div class="input-form">
                         <label for=""><b>How many rooms inside your property?

@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="{{('/Frontend/Image/favicon/FlexiRent.png')}}">
-    <link rel="stylesheet" href="/Frontend/css/Landlord/addPropertyAmenities.css">
+    <link rel="stylesheet" href="/Frontend/css/Landlord/addPropertyRules.css">
 </head>
 
 <body>
@@ -21,8 +21,8 @@
         <div class="add-info-container">
 
             <div class="title">
-                <h3>Which of the following amenities do you offer?</h3>
-                <p>You can add more amenities after you publish your listing.</p>
+                <h3>Set your house rules</h3>
+                <p>Highlight any rules you’d like your tenants to follow</p>
             </div>
 
 
@@ -30,111 +30,82 @@
             <div class="input-container">
                 <form action="{{URL::to('landlord/add_property_images')}}">
                     <div class="input-form">
-                        <label for=""><b>General</b>
+                        <label for=""><b>Are pets allowed?</b>
                         </label>
-                        <div class="amenities">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">TV</label>
-                            </div>
+                        <select class="form-select" id="conditionSelect1" aria-label="Default select example" required>
+                            <option disabled selected>Please select</option>
+                            <option value="1">Allowed</option>
+                            <option value="2">Allowed under certain conditions</option>
+                            <option value="3">Not allow</option>
+                        </select>
 
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Coffee machine</label>
-                            </div>
 
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Dryer</label>
-                            </div>
-
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Phone</label>
-                            </div>
-                        </div>
                     </div>
 
+                    <div id="conditionalTextarea1" style="display: none; margin-top: 10px;justify-content: space-between;">
+                        <label for="conditions"></label>
+                        <textarea style="resize: none;" id="conditions" class="form-control" rows="3" placeholder="Enter specific conditions..."></textarea>
+                    </div>
                     <hr class="solid-line">
 
+
+
+                    <script>
+                        // JavaScript to show/hide the textarea based on selection
+                        document.getElementById("conditionSelect1").addEventListener("change", function() {
+                            const conditionalTextarea = document.getElementById("conditionalTextarea1");
+
+                            // Check if the "Allowed under certain conditions" option is selected
+                            if (this.value === "2") {
+                                conditionalTextarea.style.display = "flex"; // Show the textarea
+                            } else {
+                                conditionalTextarea.style.display = "none"; // Hide the textarea
+                            }
+                        });
+                    </script>
+
                     <div class="input-form">
-                        <label for=""><b>Kitchen</b>
+                        <label for=""><b>Is smoking allowed?</b>
                         </label>
-                        <div class="amenities">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Dish</label>
-                            </div>
-
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Fridge</label>
-                            </div>
-
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Kettle</label>
-                            </div>
-                        </div>
+                        <select id="conditionSelect2" class="form-select" aria-label="Default select example" required>
+                            <option disabled selected>Please select</option>
+                            <option value="1">Allowed</option>
+                            <option value="2">Allowed under certain conditions</option>
+                            <option value="3">Not allow</option>
+                        </select>
                     </div>
 
-                    <hr class="solid-line">
-
-                    <div class="input-form">
-                        <label for=""><b>Bedroom</b>
-                        </label>
-                        <div class="amenities">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Wardrode</label>
-                            </div>
-
-                        </div>
+                    <div id="conditionalTextarea2" style="display: none; margin-top: 10px;justify-content: space-between;">
+                        <label for="conditions"></label>
+                        <textarea style="resize: none;" id="conditions" class="form-control" rows="3" placeholder="Enter specific conditions..."></textarea>
                     </div>
-
                     <hr class="solid-line">
 
+                    <script>
+                        // JavaScript to show/hide the textarea based on selection
+                        document.getElementById("conditionSelect2").addEventListener("change", function() {
+                            const conditionalTextarea = document.getElementById("conditionalTextarea2");
+
+                            // Check if the "Allowed under certain conditions" option is selected
+                            if (this.value === "2") {
+                                conditionalTextarea.style.display = "flex"; // Show the textarea
+                            } else {
+                                conditionalTextarea.style.display = "none"; // Hide the textarea
+                            }
+                        });
+                    </script>
                     <div class="input-form">
-                        <label for=""><b>Additional equipment</b>
+                        <label for=""><b>Are there any additional rules?</b>
+                            <p>E.g. "No loud noises or disturbances past 10 pm"</p>
                         </label>
-                        <div class="amenities">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Iron</label>
-                            </div>
-
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Work desk</label>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <hr class="solid-line">
-
-                    <div class="input-form">
-                        <label for=""><b>Other facility services</b>
-                        </label>
-                        <div class="amenities">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Washing Machine</label>
-                            </div>
-
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Fireplace</label>
-                            </div>
-                           
-                        </div>
+                        <textarea required class="form-control" id="floatingTextarea2" style="width: 50%; height: 200px; resize:none"></textarea>
                     </div>
             </div>
 
 
             <div class="foot">
                 <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 50%;"></div>
+                    <div class="progress-bar" style="width: 90%;"></div>
                 </div>
                 <div class="button">
                     <div class="prevBtn">
@@ -168,8 +139,8 @@
 
         <div class="picture">
             <div class="text">
-                <h3>The more the merrier</h3>
-                <p>Sought-after amenities will help your property stand out and keep tenant rates stay high. Generally, the more amenities you offer, the higher the value of the apartment. Think of the tenant moving in with just a suit case.</p>
+                <h3>We're getting there!</h3>
+                <p>When setting an all-inclusive price, consider the number of rooms, the design and condition of the apartment, public transport options, proximity to trendy areas, and your costs like internet and water.</p>
             </div>
             <div class="footer">
                 <button type="reset" onclick="toggleDeleteSection()">

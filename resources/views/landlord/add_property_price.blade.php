@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="{{('/Frontend/Image/favicon/FlexiRent.png')}}">
-    <link rel="stylesheet" href="/Frontend/css/Landlord/addPropertyAmenities.css">
+    <link rel="stylesheet" href="/Frontend/css/Landlord/addPropertyPrice.css">
 </head>
 
 <body>
@@ -21,120 +21,45 @@
         <div class="add-info-container">
 
             <div class="title">
-                <h3>Which of the following amenities do you offer?</h3>
-                <p>You can add more amenities after you publish your listing.</p>
+                <h3>Now, let’s set the price</h3>
+                <p>Set an all-inclusive monthly rent, security deposit and cleaning fee. You can change it anytime.</p>
             </div>
 
 
 
             <div class="input-container">
-                <form action="{{URL::to('landlord/add_property_images')}}">
+                <form action="{{URL::to('landlord/add_property_rules')}}">
                     <div class="input-form">
-                        <label for=""><b>General</b>
+                        <label for=""><b>What is your monthly rent?</b>
                         </label>
-                        <div class="amenities">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">TV</label>
-                            </div>
-
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Coffee machine</label>
-                            </div>
-
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Dryer</label>
-                            </div>
-
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Phone</label>
-                            </div>
-                        </div>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="e.g. 1000$" required>
                     </div>
 
                     <hr class="solid-line">
 
                     <div class="input-form">
-                        <label for=""><b>Kitchen</b>
+                        <label for=""><b>What is the security deposit?</b>
+                            <p>The security deposit is usually equal to 1.2 to 1.3 monthly rents</p>
                         </label>
-                        <div class="amenities">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Dish</label>
-                            </div>
-
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Fridge</label>
-                            </div>
-
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Kettle</label>
-                            </div>
-                        </div>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="$0" required>
                     </div>
 
                     <hr class="solid-line">
 
                     <div class="input-form">
-                        <label for=""><b>Bedroom</b>
+                        <label for=""><b>Final cleaning fee</b>
+                            <p>The final cleaning fee is used for the basic <br> cleaning of the apartment when tenants change and is usually set as a fixed rate
+                            </p>
                         </label>
-                        <div class="amenities">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Wardrode</label>
-                            </div>
-
-                        </div>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="e.g. 150$" required>
                     </div>
 
-                    <hr class="solid-line">
-
-                    <div class="input-form">
-                        <label for=""><b>Additional equipment</b>
-                        </label>
-                        <div class="amenities">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Iron</label>
-                            </div>
-
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Work desk</label>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <hr class="solid-line">
-
-                    <div class="input-form">
-                        <label for=""><b>Other facility services</b>
-                        </label>
-                        <div class="amenities">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Washing Machine</label>
-                            </div>
-
-                            <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
-                                <label for="">Fireplace</label>
-                            </div>
-                           
-                        </div>
-                    </div>
             </div>
 
 
             <div class="foot">
                 <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 50%;"></div>
+                    <div class="progress-bar" style="width: 80%;"></div>
                 </div>
                 <div class="button">
                     <div class="prevBtn">
@@ -168,8 +93,8 @@
 
         <div class="picture">
             <div class="text">
-                <h3>The more the merrier</h3>
-                <p>Sought-after amenities will help your property stand out and keep tenant rates stay high. Generally, the more amenities you offer, the higher the value of the apartment. Think of the tenant moving in with just a suit case.</p>
+                <h3>We're getting there!</h3>
+                <p>When setting an all-inclusive price, consider the number of rooms, the design and condition of the apartment, public transport options, proximity to trendy areas, and your costs like internet and water.</p>
             </div>
             <div class="footer">
                 <button type="reset" onclick="toggleDeleteSection()">

@@ -76,6 +76,18 @@ class LandlordController extends Controller
         return view('landlord.add_property_images');
     }
 
+    public function addPropertyDescribe(){
+        return view('landlord.add_property_describe');
+    }
+
+    public function addPropertyPrice(){
+        return view('landlord.add_property_price');
+    }
+
+    public function addPropertyRules(){
+        return view('landlord.add_property_rules');
+    }
+
     // ----------------------Backend--------------
     public function manage_landlord(){  
         $allLandlord = Landlord::with('user')->get();
