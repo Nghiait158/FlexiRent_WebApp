@@ -128,15 +128,11 @@
                     <p class="property-type">Checkout: {{ $booking->check_out }}</p>
                     <p class="date">Cost: {{ $booking->total_cost }}</p>
                     </div>
-                    <button class="view-btn">VIEW</button>
-                    <div class="modal" style="height:400px;">
-                        <h1>modal work!1</h1>
-                        <h1>modal work!2</h1>
-                        <h1>modal work!3</h1>
-                        <h1>modal work!4</h1>
-                        <h1>modal work!5</h1>
-                        <h1>modal work!6</h1>
-                        <h1>modal work!7</h1>
+                    <button class="view-btn" onclick="openModal()">VIEW</button>
+                    <div class="modal" id="myModal">
+                        <div class="modalcontent">
+                            <p>Modal Content Here</p>
+                        </div>
                     </div>
                 </div>
                 @endforeach
@@ -145,29 +141,28 @@
             @endif
         @endforeach
         <script>
-           // Get button and modal elements
-            const viewBtn = document.querySelector('.view-btn');
-            const modal = document.querySelector('.modal');
-
-            // When the button is clicked
-            viewBtn.addEventListener('click', () => {
-                // Show the modal with slide and fade effect
-                modal.classList.add('show');
-                
-                // Optionally, hide the modal after some time (e.g., 5 seconds)
+           function openModal() {
+                const modal = document.getElementById("myModal");
+                modal.style.display = "block";
                 setTimeout(() => {
-                    modal.classList.remove('show');
-                }, 5000);
-            });
+                    modal.classList.add("show");
+                }, 10);
+            }
 
-            // Close modal when clicked anywhere outside the modal content
-            window.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove('show');
+            function closeModal() {
+                const modal = document.getElementById("myModal");
+                modal.classList.remove("show");
+                setTimeout(() => {
+                    modal.style.display = "none";
+                }, 500);
+            }
+
+            window.onclick = function(event) {
+                const modal = document.getElementById("myModal");
+                if (event.target == modal) {
+                    closeModal();
                 }
-            });
-
-
+            }
         </script>
     </div>
 

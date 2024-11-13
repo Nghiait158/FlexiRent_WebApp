@@ -267,7 +267,7 @@ body {
     position: fixed;
     top: -100%; /* Initially positioned off-screen (above the page) */
     left: 0;
-    width: 100%;
+    width: 200px;
     background: rgba(0, 0, 0, 0.7); /* Optional, adds a dark background */
     color: white;
     text-align: center;
@@ -275,12 +275,46 @@ body {
     box-sizing: border-box;
     transition: opacity 0.5s ease, top 0.5s ease;
 }
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  animation: fadeIn 0.5s;
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
 
-/* Show modal when active */
-.modal.show {
-    display: block;
-    opacity: 1;
-    top: 0; /* Slide down to top of the page */
+.modalcontent {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: top 0.5s ease, opacity 0.5s ease;
+}
+
+.modal.show .modalcontent {
+  top: 20%;
+  opacity: 1;
 }
   .view-btn {
      font-family: Lato;
