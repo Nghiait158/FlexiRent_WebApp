@@ -115,56 +115,85 @@
 <div class="container12">
     <!-- Tenant Requests Section -->
     <div class="tenant-requests">
-      <h2>Booking Request</h2>
-      @foreach ($properties as $property)
-        <h3>Property: {{ $property->property_name }}</h3>
-        @if (isset($bookings[$property->property_id]) && $bookings[$property->property_id]->isNotEmpty())
-            @foreach ($bookings[$property->property_id] as $booking)
-                <div class="tenant-card">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1278/1278543.png" alt="Profile" class="profile-pic">
-                    <div class="tenant-info">
-                    <p class="name"> {{ $booking->guest->last_name ?? 'Guest not available' }} </p>
-                    <p class="property-type">Checkin: {{ $booking->check_in }}</p>
-                    <p class="property-type">Checkout: {{ $booking->check_out }}</p>
-                    <p class="date">Cost: {{ $booking->total_cost }}</p>
-                    </div>
-                    <button class="view-btn" onclick="openModal()">VIEW</button>
-                    <div class="modal" id="myModal">
-                        <div class="modalcontent">
-                            <p>Modal Content Here</p>
+        <h2>Booking Request</h2>
+        @foreach ($properties as $property)
+            <h3>Property: {{ $property->property_name }}</h3>
+            @if (isset($bookings[$property->property_id]) && $bookings[$property->property_id]->isNotEmpty())
+                @foreach ($bookings[$property->property_id] as $index => $booking)
+                    @if ($booking->status == 'pending')
+                        <div class="tenant-card">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2558/2558089.png" alt="Profile" class="profile-pic">
+                            <div class="tenant-info">
+                                <p class="name">{{ $booking->guest->last_name ?? 'Guest not available' }}</p>
+                                <p class="property-type">Check-in: {{ $booking->check_in }}</p>
+                                <p class="property-type">Check-out: {{ $booking->check_out }}</p>
+                                <p class="date">Cost: {{ $booking->total_cost }}</p>
+                            </div>
+                            <!-- Unique ID using property_id and index -->
+                            <button class="view-btn" data-modal-id="modal-{{ $property->property_id }}-{{ $index }}">View</button>
+                            <div class="modal" id="modal-{{ $property->property_id }}-{{ $index }}">
+                                <div class="modal-content">
+                                    <div class="booking-container">
+                                        <span class="close" data-modal-id="modal-{{ $property->property_id }}-{{ $index }}">Close</span>
+                                        <h2>Booking Details</h2>
+                                        <!-- Booking Card -->
+                                        <div class="booking-card">
+                                            <div class="header">
+                                                <h3>Booking for {{ $booking->guest->last_name ?? 'Guest not available' }}</h3>
+                                                <p>Property ID: {{ $booking->property->property_name ?? 'Property not available' }}</p>
+                                            </div>
+                                            <div class="contentBookingcard">
+                                                <p><strong>Check-in:</strong> {{ $booking->check_in }}</p>
+                                                <p><strong>Check-out:</strong> {{ $booking->check_out }}</p>
+                                                <p><strong>Total Cost:</strong> {{ $booking->total_cost }}</p>
+                                                <p><strong>Purpose of Stay:</strong> {{ $booking->PurposeOfStay }}</p>
+                                                <p><strong>Explanation:</strong> {{ $booking->purposeExplain }}</p>
+                                                <hr>
+                                                <h4>Booking on behalf of someone else</h4>
+                                                <p><strong>Other Name:</strong> {{ $booking->other_name ?? 'Customers book for themselves' }}</p>
+                                                <p><strong>Other Email:</strong> {{ $booking->other_email ?? 'Customers book for themselves' }}</p>
+                                                <hr>
+                                                <p><strong>Status:</strong> {{ $booking->status ?? 'N/A' }}</p>
+                                                <p><strong>Payment Method:</strong> {{ $booking->payment_method ?? 'N/A' }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    @endif
                 @endforeach
             @else
                 <p>No bookings available for this property.</p>
             @endif
         @endforeach
-        <script>
-           function openModal() {
-                const modal = document.getElementById("myModal");
-                modal.style.display = "block";
-                setTimeout(() => {
-                    modal.classList.add("show");
-                }, 10);
-            }
-
-            function closeModal() {
-                const modal = document.getElementById("myModal");
-                modal.classList.remove("show");
-                setTimeout(() => {
-                    modal.style.display = "none";
-                }, 500);
-            }
-
-            window.onclick = function(event) {
-                const modal = document.getElementById("myModal");
-                if (event.target == modal) {
-                    closeModal();
-                }
-            }
-        </script>
     </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.view-btn').forEach(button => {
+                const modalId = button.dataset.modalId;
+                const modal = document.getElementById(modalId);
+                const closeButton = modal.querySelector('.close');
+    
+                // Open the modal when the button is clicked
+                button.onclick = () => modal.style.display = "block";
+    
+                // Close the modal when the close button is clicked
+                closeButton.onclick = () => modal.style.display = "none";
+    
+                // Close the modal when clicking outside of it
+                window.onclick = event => {
+                    if (event.target === modal) {
+                        modal.style.display = "none";
+                    }
+                };
+            });
+        });
+    </script>
+    
+    
+    
 
     <!-- Lease Status Section -->
     <div class="lease-status">

@@ -195,144 +195,187 @@ body {
 } */
 
 
-  
-  .container12 {
-    display: flex;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 20px;
-    gap: 250px;
-  }
-  
-  .tenant-requests, .lease-status {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    width: 100%;
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-  }
-  .tenant-requests h3{
-    margin-top: 30px;
-  }
-  h2 {
-    font-family: Lato;
-    font-size: 1.5em;
-    margin-bottom: 20px;
-  }
-  
-  .tenant-card, .lease-card {
-    margin-top: 7px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    padding: 15px;
-    border: 1px solid #eee;
-    background-color:antiquewhite;
-    border-radius: 8px;
-  }
-  
-  .profile-pic, .apartment-pic {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-right: 15px;
-    object-fit: cover;
-  }
-  
-  .tenant-info, .lease-info {
-    flex: 1;
-  }
-  
-  .name {
-    font-family: Lato;
-    font-weight: bold;
-    font-size: 1.1em;
-  }
-  
-  .property-type {
-    font-family: Lato;
-    font-size: 0.9em;
-    color: #666;
-  }
-  
-  .date {
-    font-family: Lato;
-    font-size: 0.8em;
-    color: #888;
-  }
-.modal {
-    display: none;
-    opacity: 0;
-    position: fixed;
-    top: -100%; /* Initially positioned off-screen (above the page) */
-    left: 0;
-    width: 200px;
-    background: rgba(0, 0, 0, 0.7); /* Optional, adds a dark background */
-    color: white;
-    text-align: center;
-    padding: 50px;
-    box-sizing: border-box;
-    transition: opacity 0.5s ease, top 0.5s ease;
-}
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  animation: fadeIn 0.5s;
-}
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  overflow: hidden;
+
+.container12 {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  gap: 250px;
 }
 
-.modalcontent {
-  position: absolute;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: white;
+.tenant-requests, .lease-status {
+  background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  transition: top 0.5s ease, opacity 0.5s ease;
+  width: 100%;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+.tenant-requests h3{
+  margin-top: 30px;
+}
+h2 {
+  font-family: Lato;
+  font-size: 1.5em;
+  margin-bottom: 20px;
 }
 
-.modal.show .modalcontent {
-  top: 20%;
-  opacity: 1;
+.tenant-card, .lease-card {
+  margin-top: 7px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 15px;
+  border: 1px solid #eee;
+  background-color:antiquewhite;
+  border-radius: 8px;
 }
-  .view-btn {
-     font-family: Lato;
-    background-color: #ffcc00;
-    border: none;
-    border-radius: 20px;
-    padding: 8px 16px;
-    color: #333;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .view-btn:hover {
-    background-color: #ffd633;
-  }
-  
-  .days-left {
-    color: red;
-    font-weight: bold;
-  }
-  
+
+.profile-pic, .apartment-pic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+  object-fit: cover;
+}
+
+.tenant-info, .lease-info {
+  flex: 1;
+}
+
+.name {
+  font-family: Lato;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.property-type {
+  font-family: Lato;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.date {
+  font-family: Lato;
+  font-size: 0.8em;
+  color: #888;
+}
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+.modal-content {
+  /* background-color: #fefefe; */
+  margin: 7% auto;
+  padding: 20px;
+  /* border: 1px solid #888; */
+  width: 750px; 
+  height: 500px;
+  border-radius: 20px;
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 15px;
+  /* font-weight: bold; */
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.view-btn {
+	display: inline-block;
+	font-size: 0.8rem;
+	color: #415ca0 !important;
+	background: rgb(var(--vs-primary) / 100%);
+	padding: 13px 25px;
+	border-radius: 17px;
+	transition: background-color 0.1s ease;
+	box-sizing: border-box;
+	transition: all 0.25s ease;
+	border: 0;
+	cursor: pointer;
+	box-shadow: 0 10px 20px -10px rgb(var(--vs-primary) / 50%);
+	&:hover {
+		box-shadow: 0 20px 20px -10px rgb(var(--vs-primary) / 50%);
+		transform: translateY(-5px);
+	}
+}
+
+
+.booking-container {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.booking-container h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.booking-card {
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+.booking-card .header h3 {
+  font-size: 20px;
+  color: #333;
+  margin: 0;
+}
+
+.booking-card .header p {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.booking-card .contentBookingcard p {
+  font-size: 16px;
+  color: #555;
+  margin: 8px 0;
+}
+
+.booking-card .contentBookingcard strong {
+  color: #333;
+}
+
+.booking-card hr {
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid #ddd;
+}
+
+.booking-card h4 {
+  font-size: 18px;
+  color: #333;
+  margin-top: 20px;
+}
+
+.booking-card .contentBookingcard p {
+  line-height: 1.5;
+}

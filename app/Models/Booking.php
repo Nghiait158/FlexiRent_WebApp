@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Booking extends Model
 {
     use HasFactory;
+
     protected $table = 'bookings';
     protected $primaryKey = 'booking_id';
 
@@ -20,6 +21,11 @@ class Booking extends Model
         'total_cost',
         'status',
         'payment_method',
+        'PurposeOfStay',
+        'purposeExplain',
+        'is_booking_for_other',
+        'other_name',
+        'other_email',
     ];
 
     public function property()

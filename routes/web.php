@@ -139,7 +139,6 @@ Route::middleware(['auth','guest'])->group(function () {
 
 
     // Frontend---------------
-    Route::post('/CheckoutPageA/{property_id}', [GuestController::class, 'sendDatafromPropertyDetail']);
 
     Route::get('/CheckoutPageB', function () {
         return view('CheckoutPageB');
@@ -185,6 +184,7 @@ Route::get('/Blog', function () {
 Route::get('/PropertyDetails', function () {
     return view('PropertyDetails');
 });
+Route::post('/CheckoutPageA/{property_id}', [GuestController::class, 'sendDatafromPropertyDetail']);
 
 Route::get('/Contact', function () {
     return view('contactPage');

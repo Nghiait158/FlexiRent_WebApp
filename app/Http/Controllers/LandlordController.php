@@ -30,6 +30,7 @@ class LandlordController extends Controller
             // Fetch bookings for each property
             $bookings[$property->property_id] = Booking::where('property_id', $property->property_id)
             ->with('guest')
+            ->with('property')
             ->get();
         }
         
