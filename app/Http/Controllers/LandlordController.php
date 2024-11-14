@@ -33,11 +33,17 @@ class LandlordController extends Controller
             ->with('property')
             ->get();
         }
-        
+
+        $propetyhasStatus1 = Property::where('status', '1')
+                             ->where('landlord_id', $currentLandlord->landlord_id)
+                             ->get();
+
+                             
         $data = [
             'currentLandlord' => $currentLandlord,
             'properties'=>$properties,
-            'bookings'=>$bookings
+            'bookings'=>$bookings,
+            'propetyhasStatus1'=>$propetyhasStatus1,
         ];
         // dd($data);
         return view('landlord.dashboard', $data);
@@ -62,10 +68,17 @@ class LandlordController extends Controller
         if (!$booking) {
             return redirect()->back()->withErrors(['error' => 'booking not found']);
         }
-
-       
+        // update other booking status is canncelled
+        Booking::where('property_id', $booking->property_id)
+        ->where('booking_id', '!=', $booking_id) // Exclude the current booking
+        ->update(['status' => 'cancelled']);
+        
         $booking->status = 'confirmed';
+        // dd($matchingProperties);
 
+        //update status of property 
+        $matchingProperties = Property::where('property_id', $booking->property_id)
+                              ->update(['status' => '1']);
         $booking->save();
         Session::put('message','Update status booking successful');
         return Redirect::to('landlord/dashboard');

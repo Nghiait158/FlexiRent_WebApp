@@ -28,7 +28,9 @@ class BookingPageController extends Controller
             $query->where('available', '<=', $to);
         }
     
-        $properties = $query->orderBy('updated_at', 'desc')->get();
+        $properties = $query->where('status', '0')
+                    ->orderBy('updated_at', 'desc')
+                    ->get();
     
         $address = $properties->isNotEmpty() ? $properties->first()->location : 'No address found';
     

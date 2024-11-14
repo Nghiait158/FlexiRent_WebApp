@@ -221,17 +221,18 @@
     <!-- Lease Status Section -->
     <div class="lease-status">
       <h2>Property Status</h2>
-      <div class="lease-card">
-        <img src="apartment1.jpg" alt="Apartment" class="apartment-pic">
-        <div class="lease-info">
-          <p class="property-type">5BHK Apartment</p>
-          <p>Ending: <span class="date">23 Mar 2019</span></p>
-          <p>Tenants: <span class="count">12</span></p>
-          <p>Rent: <span class="rent">KES 15,000</span></p>
-          <p>Left: <span class="days-left">1 Day</span></p>
-        </div>
-      </div>
-      <!-- Repeat .lease-card for other apartments -->
+        @foreach ($propetyhasStatus1 as $property)
+            <div class="lease-card">
+                <img src="apartment1.jpg" alt="Apartment" class="apartment-pic">
+                <div class="lease-info">
+                <p class="property-type"> {{ $property->property_name }}</p>
+                <p>Ending: <span class="date">23 Mar 2019</span></p>
+                <p>Tenants: <span class="count">12</span></p>
+                <p>Rent: <span class="rent">KES 15,000</span></p>
+                <p>Left: <span class="days-left">1 Day</span></p>
+                </div>
+            </div>
+        @endforeach
     </div>
   </div>
 </div>
