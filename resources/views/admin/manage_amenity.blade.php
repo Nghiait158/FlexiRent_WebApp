@@ -3,7 +3,7 @@
 <div class="table-agile-info">
     <div class="panel panel-default">
         <div class="panel-heading">
-            List of guest in the database
+            List of amenity in the database
         </div>
         <div class="table-responsive">
             <?php

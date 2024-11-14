@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyAmenitycontroller;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContractController;
 use App\Http\Controllers\BookingPageController;
 use App\Http\Controllers\LandlordController;
 use App\Http\Controllers\GuestController;
@@ -95,6 +95,16 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/deleteProperty/{property_id}', [Propertycontroller::class, 'deleteProperty']);
     Route::get('/addProperty', [Propertycontroller::class, 'addProperty']);
     Route::post('/saveProperty', [Propertycontroller::class, 'saveProperty']);
+
+
+    // manage Contract
+    Route::get('/manage_contract', [ContractController::class, 'manage_contract']);
+    Route::get('/editContract/{contract_id}', [ContractController::class, 'editContract']);
+    Route::post('/updateContract/{contract_id}', [ContractController::class, 'updateContract']);
+    Route::get('/deleteContract/{contract_id}', [ContractController::class, 'deleteContract']);
+    Route::get('/addContract', [ContractController::class, 'addContract']);
+    Route::post('/saveContract', [ContractController::class, 'saveContract']);
+
 
     // ---------Property Img-----------------
     Route::get('/manage_PropertyImg/{property_id}', [PropertyImgController::class, 'manage_PropertyImg']);

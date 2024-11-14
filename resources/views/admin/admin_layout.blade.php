@@ -219,11 +219,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
-                            <span>Property Amenity</span>
+                            <span> Contract</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="{{URL::to('/manage_property_amenity')}}">Manage Property Amenity</a></li>
-                            <li><a href="{{URL::to('/addPropertyAmenity')}}">Add Property Amenity</a></li>
+                            <li><a href="{{URL::to('/manage_contract')}}">Manage Contracts</a></li>
+                            <li><a href="{{URL::to('/addContract')}}">Add contract</a></li>
                         </ul>
                     </li>
 

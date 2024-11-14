@@ -34,16 +34,25 @@ class LandlordController extends Controller
             ->get();
         }
 
-        $propetyhasStatus1 = Property::where('status', '1')
-                             ->where('landlord_id', $currentLandlord->landlord_id)
-                             ->get();
+        // $bookingOfPropertyhasStatus1 = Booking::with(['property', 'guest'])
+        //     ->whereHas('property', function ($query) {
+        //         $query->where('status', 1);
+        //     })
+        //     ->get();
+        $bookingOfPropertyhasStatus1 = Booking::whereHas('property', function ($query) use ($currentLandlord) {
+            $query->where('landlord_id', $currentLandlord->landlord_id);
+        })
+        ->where('status', 1)
+        ->with('property')
+        ->get();
+
 
                              
         $data = [
             'currentLandlord' => $currentLandlord,
             'properties'=>$properties,
             'bookings'=>$bookings,
-            'propetyhasStatus1'=>$propetyhasStatus1,
+            'bookingOfPropertyhasStatus1'=>$bookingOfPropertyhasStatus1,
         ];
         // dd($data);
         return view('landlord.dashboard', $data);

@@ -221,18 +221,41 @@
     <!-- Lease Status Section -->
     <div class="lease-status">
       <h2>Property Status</h2>
-        @foreach ($propetyhasStatus1 as $property)
+      @foreach ($bookingOfPropertyhasStatus1 as $booking)
             <div class="lease-card">
                 <img src="apartment1.jpg" alt="Apartment" class="apartment-pic">
                 <div class="lease-info">
-                <p class="property-type"> {{ $property->property_name }}</p>
-                <p>Ending: <span class="date">23 Mar 2019</span></p>
-                <p>Tenants: <span class="count">12</span></p>
-                <p>Rent: <span class="rent">KES 15,000</span></p>
-                <p>Left: <span class="days-left">1 Day</span></p>
+                    <p class="property-type">{{ $booking->property->property_name }}</p>
+                    <p>Ending: <span class="date">{{ $booking->check_out }}</span></p>
+                    <p>Tenants: <span class="count">{{ $booking->nguests }}</span></p>
+                    <p>Rent: <span class="rent">{{ $booking->total_cost }}</span></p>
+                    <p>Left: <span class="days-left" data-checkout="{{ $booking->check_out }}">0 Day(s)</span></p>
+        
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            const daysLeftElement = document.querySelector('[data-checkout="{{ $booking->check_out }}"]');
+                            
+                            if (daysLeftElement) {
+                                // Ngày check_out từ server (định dạng 'YYYY-MM-DD')
+                                const checkOutDate = new Date(daysLeftElement.getAttribute('data-checkout') + "T00:00:00"); // Đảm bảo không có thời gian trong ngày checkout
+                                
+                                // Ngày hôm nay (chỉ lấy phần ngày, bỏ thời gian)
+                                const today = new Date();
+                                today.setHours(0, 0, 0, 0); // Đặt giờ, phút, giây, và mili giây về 0
+        
+                                // Tính số ngày còn lại
+                                const timeDifference = checkOutDate - today;
+                                const daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+        
+                                // Cập nhật giá trị vào phần tử HTML
+                                daysLeftElement.textContent = `${daysLeft} Day(s)`;
+                            }
+                        });
+                    </script>
                 </div>
             </div>
         @endforeach
+  
     </div>
   </div>
 </div>
