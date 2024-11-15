@@ -38,6 +38,18 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="landlord_id">Landlord</label>
+                            <br>
+                            @foreach ($amenity as $amenity)
+                                <input type="checkbox" 
+                                    id="amenity_{{ $amenity->amenity_id }}" 
+                                    name="amenities[]" 
+                                    value="{{ $amenity->amenity_id }}" 
+                                    {{ $editProperty->amenities->contains($amenity->amenity_id) ? 'checked' : '' }}>
+                                <label for="amenity_{{ $amenity->amenity_id }}">{{ $amenity->amenity_name }}</label>
+                            @endforeach
+                        </div>
 
                         <div class="form-group">
                             <label for="location">location</label>

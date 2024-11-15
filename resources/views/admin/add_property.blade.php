@@ -52,7 +52,21 @@
                                 <option value="">Select District</option>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="landlord_id">Amenity</label>
+                            {{-- <select name="landlord_id" id="landlord_id" class="form-control"> --}}
+                                <option value="">-- Select Amenity --</option>
+                                @foreach ($amenity as $amenity)
+                                <input type="checkbox" 
+                                    id="amenity_{{ $amenity->amenity_id }}" 
+                                    name="amenities[]" 
 
+                                    value="{{ $amenity->amenity_id }}" 
+                                >
+                                <label for="amenity_{{ $amenity->amenity_id }}">{{ $amenity->amenity_name }}</label>
+                                @endforeach
+                            {{-- </select> --}}
+                        </div>
 
                         <div class="form-group">
                             <label for="nbedrooms">nbedrooms (int)</label>

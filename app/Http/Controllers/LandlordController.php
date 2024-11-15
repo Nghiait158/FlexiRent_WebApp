@@ -157,11 +157,24 @@ class LandlordController extends Controller
         ]);
         session(['property_details' => $data]);
 
-        return redirect('/add_property_services');
+        return redirect('/add_property_amenities');
     }
 
     public function addPropertyAmenities(){
         return view('landlord.add_property_amenities');
+    }
+    public function storePropertyAmenities(Request $request){
+        $data = $request->validate([
+            'wifi' => 'nullable|boolean',
+            'internetSpeed' => 'nullable|integer',
+            'floor' => 'required|integer',
+            'guest_capacity' => 'required|integer',
+            'room'=> 'required|integer',
+
+        ]);
+        session(['property_details' => $data]);
+
+        return redirect('/add_property_images');
     }
 
     public function addPropertyImages(){

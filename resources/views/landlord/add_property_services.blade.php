@@ -90,7 +90,7 @@
                         });
                     </script>
 
-                    <div class="input-form">
+                    {{-- <div class="input-form">
                         <label for=""><b>Is washing machine available?
                             </b>
                         </label>
@@ -125,7 +125,7 @@
                 `;
                             }
                         });
-                    </script>
+                    </script> --}}
             </div>
 
 

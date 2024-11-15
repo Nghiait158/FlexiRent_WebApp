@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Property;
 use App\Models\Landlord;
+use App\Models\Amenity;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
@@ -37,13 +39,16 @@ class Propertycontroller extends Controller
     // ----------------Backend-----------------
 
     public function manage_property(){  
-        $allProperty = Property::all();
+        $allProperty = Property::orderBy('updated_at', 'desc')->get();
+
         return view('admin.manage_property', compact('allProperty'));
     }
     public function editProperty($property_id){
-        $editProperty = Property::find($property_id);
+        $editProperty = Property::with('amenities')->findOrFail($property_id);
         $landlords = Landlord::all();
+        $amenity = Amenity::all();
         $data = [
+            'amenity'=>$amenity,
             'editProperty' => $editProperty,
             'landlords' => $landlords,
         ];
@@ -74,6 +79,16 @@ class Propertycontroller extends Controller
         
 
         $property->save();
+        if (!empty($data['amenities'])) {
+            // Lấy danh sách các amenity hợp lệ
+            $validatedAmenities = Amenity::whereIn('amenity_id', $data['amenities'])->pluck('amenity_id')->toArray();
+    
+            // Đồng bộ danh sách amenity với property
+            $property->amenities()->sync($validatedAmenities);
+        } else {
+            // Xóa tất cả liên kết nếu không có amenities trong request
+            $property->amenities()->detach();
+        }
         Session::put('message','Update property successful');
         return Redirect::to('manage_property');
     }
@@ -91,34 +106,48 @@ class Propertycontroller extends Controller
 
     public function addProperty(){
         $landlords = Landlord::all();
-        return view('admin.add_property', compact('landlords'));
+        $amenity = Amenity::all();
+        $data = [
+            'amenity'=>$amenity,
+            // 'editProperty' => $editProperty,
+            'landlords' => $landlords,
+        ];
+        return view('admin.add_property', $data);
     }   
 
-    public function saveProperty(Request $request){
-        $data = $request->all();
-        $property = new Property();
+        public function saveProperty(Request $request){
+            $data = $request->all();
+            $property = new Property();
 
-        $property->property_name = $data['property_name'];
-        $property->landlord_id = $data['landlord_id'];
-        $property->location = $data['location'];
-        $property->district = $data['district'];
-        $property->city = $data['city'];
-        $property->nbedrooms = $data['nbedrooms'];
-        $property->nbathrooms = $data['nbathrooms'];
-        $property->area = $data['area'];
-        $property->description = $data['description'];
-        $property->available = $data['available'];
-        $property->view = $data['view'];
-        $property->floor = $data['floor'];
-        $property->elevator = $data['elevator'];
-        $property->price_per_month = $data['price_per_month'];
-        $property->guest_capacity = $data['guest_capacity'];
+            $property->property_name = $data['property_name'];
+            $property->landlord_id = $data['landlord_id'];
+            $property->location = $data['location'];
+            $property->district = $data['district'];
+            $property->city = $data['city'];
+            $property->nbedrooms = $data['nbedrooms'];
+            $property->nbathrooms = $data['nbathrooms'];
+            $property->area = $data['area'];
+            $property->description = $data['description'];
+            $property->available = $data['available'];
+            $property->view = $data['view'];
+            $property->floor = $data['floor'];
+            $property->elevator = $data['elevator'];
+            $property->price_per_month = $data['price_per_month'];
+            $property->guest_capacity = $data['guest_capacity'];
+           
         
 
-        $property ->save();
-        Session::put('message','Add property successfully!!!');
-        return Redirect::to('manage_property');
-    }
+            $property ->save();
+            if (!empty($data['amenities'])) {
+                // Đảm bảo danh sách amenity là một mảng và các giá trị hợp lệ
+                $validatedAmenities = Amenity::whereIn('amenity_id', $data['amenities'])->pluck('amenity_id')->toArray();
+        
+                // Liên kết các amenities với property
+                $property->amenities()->sync($validatedAmenities);
+            }
+            Session::put('message','Add property successfully!!!');
+            return Redirect::to('manage_property');
+        }
 
 
 }
