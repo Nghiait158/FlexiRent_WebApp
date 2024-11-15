@@ -112,17 +112,52 @@ class LandlordController extends Controller
     }
 
 
-
+    // Register Property fo Landlord
     public function addPropertyAddress(){
-        return view('landlord.add_property_address');
+        return view('landlord.add_property_address');   
     }
+    public function storePropertyAddress(Request $request){
+        $data = $request->validate([
+            'address-input' => 'required|string',
+        ]);
+        session(['property_address' => $data]);
+
+        return redirect('/add_property_details');
+    }
+
 
     public function addPropertyDetails(){
         return view('landlord.add_property_details');
     }
+    public function storePropertyDetails(Request $request){
+        $data = $request->validate([
+            'area' => 'required|numeric',
+            'accommodation_type' => 'required|string|max:255',
+            'floor' => 'required|integer',
+            'guest_capacity' => 'required|integer',
+            'room'=> 'required|integer',
+
+        ]);
+        session(['property_details' => $data]);
+
+        return redirect('/add_property_services');
+    }
 
     public function addPropertyServices(){
         return view('landlord.add_property_services');
+    }
+    public function storePropertyServices(Request $request){
+        $data = $request->validate([
+            'wifi' => 'nullable|boolean',
+            'internetSpeed' => 'nullable|integer',
+            'floor' => 'required|integer',
+            'guest_capacity' => 'required|integer',
+            'room'=> 'required|integer',
+
+        ]);
+        session(['property_details' => $data]);
+
+        return redirect('/add_property_services');
     }
 
     public function addPropertyAmenities(){

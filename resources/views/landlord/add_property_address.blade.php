@@ -44,13 +44,13 @@
                     </svg>
                     <p>Please enter the full address.
                         <br>
-                        Note: the address will not be published on the platform, we will only show the approximate location of your apartment.
+                        Note: Be as detailed as possible and add features like area and address so tenants can find your apartment.
                     </p>
                 </div>
             </div>
 
             <div class="address-input">
-                <input type="text" id="address-input" class="form-control" placeholder="Please fill exactly street name, number, area" oninput="updateMap()" required>
+                <input type="text" name="address-input" id="address-input" class="form-control" placeholder="Please fill exactly street name, number, area" oninput="updateMap()" required>
             
                 <div class="map">
                     {{-- <h1>Location</h1> --}}
@@ -70,7 +70,7 @@
                 }
             </script>            
 
-            <div class="nextBtn">
+            <div class="nextBtn" >
                 <button type="submit">Next</button>
             </div>
         </div>

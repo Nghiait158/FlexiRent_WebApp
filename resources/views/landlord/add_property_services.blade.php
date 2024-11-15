@@ -63,7 +63,7 @@
                             </b>
                         </label>
                         <div class="form-check form-switch">
-                            <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                            <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1" name="wifi" value="1">
                         </div>
                     </div>
                     <hr class="solid-line">
@@ -82,7 +82,7 @@
                                 dynamicContainer.innerHTML = `
                     <div class="input-form">
                         <label for=""><b>Internet speed? (Optional)</b><br></label>
-                        <input type="text" class="form-control small" placeholder="Mbps">
+                        <input type="text" name="internetSpeed" class="form-control small" placeholder="Mbps">
                     </div>
                     <hr class="solid-line">
                 `;

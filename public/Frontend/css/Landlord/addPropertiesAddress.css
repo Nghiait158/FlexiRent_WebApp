@@ -160,6 +160,7 @@ input:focus::placeholder {
 }
 
 .nextBtn button:hover {
+    cursor: pointer;
     background-color: #3e9126; /* Darker shade for hover */
 }
 

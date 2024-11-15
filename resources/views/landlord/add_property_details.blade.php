@@ -29,9 +29,9 @@
             <div class="input-container">
                 <form action="{{URL::to('landlord/add_property_services')}}">
                     <div class="input-form">
-                        <label for=""><b>What’s the size of the apartment?</b>
+                        <label for="area"><b>What’s the size of the apartment?</b>
                         </label>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="e.g. 50m2" required>
+                        <input type="text" name="area" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="e.g. 50m2" required>
                     </div>
                     <hr class="solid-line">
 
@@ -39,12 +39,12 @@
                         <label for=""><b>What is the accommodation type?
                             </b>
                         </label>
-                        <select class="form-select" aria-label="Default select example" required>
+                        <select class="form-select" name="accommodation_type" aria-label="Default select example" required>
                             <option selected>Please select</option>
-                            <option value="1">Entire Apartment</option>
-                            <option value="2">Private Room</option>
-                            <option value="3">Shared Place</option>
-                            <option value="4">Entire House</option>
+                            <option value="Entire Apartment">Entire Apartment</option>
+                            <option value="Private Room">Private Room</option>
+                            <option value="Shared Place">Shared Place</option>
+                            <option value="Entire House">Entire House</option>
                         </select>
                     </div>
                     <hr class="solid-line">
@@ -52,7 +52,7 @@
                     <div class="input-form">
                         <label for=""><b>On which floor is the apartment located?</b>
                         </label>
-                        <input min="1" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                        <input min="1" name="floor" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                     </div>
                     <hr class="solid-line">
 
@@ -60,7 +60,7 @@
                         <label for=""><b>What’s the maximum number of tenants?
                             </b>
                         </label>
-                        <input min="1" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                        <input min="1" max="11" name="guest_capacity" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                     </div>
                     <hr class="solid-line">
 
@@ -89,7 +89,7 @@
                         <label for=""><b>How many rooms inside your property?
                             </b>
                         </label>
-                        <input min="1" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                        <input min="1" name="room" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                     </div>
 
                     <script>
