@@ -98,7 +98,7 @@
                         <label for=""><b>Are there any additional rules?</b>
                             <p>E.g. "No loud noises or disturbances past 10 pm"</p>
                         </label>
-                        <textarea required class="form-control" id="floatingTextarea2" style="width: 50%; height: 200px; resize:none"></textarea>
+                        <textarea class="form-control" id="floatingTextarea2" style="width: 50%; height: 200px; resize:none"></textarea>
                     </div>
             </div>
 
