@@ -28,28 +28,29 @@
 
 
             <div class="input-container">
-                <form action="{{URL::to('landlord/add_property_images')}}">
+                <form action="{{URL::to('landlord/add_property_images')}}" method="POST">
+                    @csrf
                     <div class="input-form">
                         <label for=""><b>General</b>
                         </label>
                         <div class="amenities">
                             <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <input class="form-check-input custom-switch" name="TV" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
                                 <label for="">TV</label>
                             </div>
 
                             <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <input class="form-check-input custom-switch" name="Coffee machine" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
                                 <label for="">Coffee machine</label>
                             </div>
 
                             <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <input class="form-check-input custom-switch" name="Dryer" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
                                 <label for="">Dryer</label>
                             </div>
 
                             <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <input class="form-check-input custom-switch" name="Phone" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
                                 <label for="">Phone</label>
                             </div>
                         </div>
@@ -62,17 +63,17 @@
                         </label>
                         <div class="amenities">
                             <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <input class="form-check-input custom-switch" name="Dish" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
                                 <label for="">Dish</label>
                             </div>
 
                             <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <input class="form-check-input custom-switch" name="Fridge" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
                                 <label for="">Fridge</label>
                             </div>
 
                             <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <input class="form-check-input custom-switch" name="Kettle" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
                                 <label for="">Kettle</label>
                             </div>
                         </div>
@@ -85,7 +86,7 @@
                         </label>
                         <div class="amenities">
                             <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <input class="form-check-input custom-switch" name="Wardrode" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
                                 <label for="">Wardrode</label>
                             </div>
 
@@ -99,12 +100,12 @@
                         </label>
                         <div class="amenities">
                             <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <input class="form-check-input custom-switch" name="Iron" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
                                 <label for="">Iron</label>
                             </div>
 
                             <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <input class="form-check-input custom-switch" name="Work desk" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
                                 <label for="">Work desk</label>
                             </div>
 
@@ -118,12 +119,12 @@
                         </label>
                         <div class="amenities">
                             <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <input class="form-check-input custom-switch" name="Washing Machine" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
                                 <label for="">Washing Machine</label>
                             </div>
 
                             <div class="form-check form-switch">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
+                                <input class="form-check-input custom-switch" name="Fireplace" type="checkbox" role="switch" id="flexSwitchCheckDefault1">
                                 <label for="">Fireplace</label>
                             </div>
                            

@@ -159,35 +159,67 @@ Route::middleware(['auth','guest'])->group(function () {
 Route::middleware(['auth', 'landlord'])->group(function () {
     Route::get('landlord/dashboard', [LandlordController::class, 'index']);
 
-    Route::get('landlord/add_property_address', [LandlordController::class, 'addPropertyAddress']);
-    Route::post('/store_property_address', [LandlordController::class, 'storePropertyAddress']);
+    // Route::get('landlord/add_property_address', [LandlordController::class, 'addPropertyAddress']);
+    // Route::post('/store_property_address', [LandlordController::class, 'storePropertyAddress']);
 
-    Route::get('landlord/add_property_details', [LandlordController::class, 'addPropertyDetails']);
-    Route::post('/store_property_details', [LandlordController::class, 'storePropertyDetails']);
+    // Route::get('landlord/add_property_details', [LandlordController::class, 'addPropertyDetails']);
+    // Route::post('/store_property_details', [LandlordController::class, 'storePropertyDetails']);
 
-    Route::get('landlord/add_property_services', [LandlordController::class, 'addPropertyServices']);
-    Route::post('/store_property_services', [LandlordController::class, 'storePropertyServices']);
+    // Route::get('landlord/add_property_services', [LandlordController::class, 'addPropertyServices']);
+    // Route::post('/store_property_services', [LandlordController::class, 'storePropertyServices']);
 
-    Route::get('landlord/add_property_amenities', [LandlordController::class, 'addPropertyAmenities']);
-    Route::post('/store_property_amenities', [LandlordController::class, 'storePropertyAmenities']);
+    // Route::get('landlord/add_property_amenities', [LandlordController::class, 'addPropertyAmenities']);
+    // Route::post('/store_property_amenities', [LandlordController::class, 'storePropertyAmenities']);
     
-    Route::get('landlord/add_property_images', [LandlordController::class, 'addPropertyImages']);
-    Route::post('/store_property_images', [LandlordController::class, 'storePropertyImages']);
+    // Route::get('landlord/add_property_images', [LandlordController::class, 'addPropertyImages']);
+    // Route::post('/store_property_images', [LandlordController::class, 'storePropertyImages']);
 
-    Route::get('landlord/add_property_price', [LandlordController::class, 'addPropertyPrice']);
-    Route::post('/store_property_Price', [LandlordController::class, 'storePropertyPrice']);
+    // Route::get('landlord/add_property_price', [LandlordController::class, 'addPropertyPrice']);
+    // Route::post('/store_property_Price', [LandlordController::class, 'storePropertyPrice']);
 
-    Route::get('landlord/add_property_rules', [LandlordController::class, 'addPropertyRules']);
-    Route::post('/store_property_rules', [LandlordController::class, 'storePropertyRules']);
+    // Route::get('landlord/add_property_rules', [LandlordController::class, 'addPropertyRules']);
+    // Route::post('/store_property_rules', [LandlordController::class, 'storePropertyRules']);
 
-    // Route::get('/editLandlordDashboard/{landlord_id}', [LandlordController::class, 'editLandlordDashboard']);
+    // Route::get('landlord/add_property_describe', [LandlordController::class, 'addPropertyDescribe']);
+    // Route::post('/store_property_describe', [LandlordController::class, 'storePropertyDescribe']);
+    // Route::post('landlord/showAllRegisterData', [LandlordController::class, 'showalldata']);    
+
+    Route::get('landlord/add_property_address', [LandlordController::class, 'addPropertyAddress'])->name('property.add.address');
+    Route::post('/store_property_address', [LandlordController::class, 'storePropertyAddress'])->name('property.store.address');
+
+    Route::post('landlord/add_property_details', [LandlordController::class, 'addPropertyDetails'])->name('property.add.details');
+    Route::post('/store_property_details', [LandlordController::class, 'storePropertyDetails'])->name('property.store.details');
+
+    Route::post('landlord/add_property_services', [LandlordController::class, 'addPropertyServices'])->name('property.add.services');
+    Route::post('/store_property_services', [LandlordController::class, 'storePropertyServices'])->name('property.store.services');
+
+    Route::post('landlord/add_property_amenities', [LandlordController::class, 'addPropertyAmenities'])->name('property.add.amenities');
+    Route::post('/store_property_amenities', [LandlordController::class, 'storePropertyAmenities'])->name('property.store.amenities');
+
+    Route::post('landlord/add_property_images', [LandlordController::class, 'addPropertyImages'])->name('property.add.images');
+    Route::post('/store_property_images', [LandlordController::class, 'storePropertyImages'])->name('property.store.images');
+
+    Route::post('landlord/add_property_describe', [LandlordController::class, 'addPropertyDescribe'])->name('property.add.describe');
+    Route::post('/store_property_describe', [LandlordController::class, 'storePropertyDescribe'])->name('property.store.describe');
+
+    Route::post('landlord/add_property_price', [LandlordController::class, 'addPropertyPrice'])->name('property.add.price');
+    Route::post('/store_property_price', [LandlordController::class, 'storePropertyPrice'])->name('property.store.price');
+
+    Route::post('landlord/add_property_rules', [LandlordController::class, 'addPropertyRules'])->name('property.add.rules');
+    Route::post('/store_property_rules', [LandlordController::class, 'storePropertyRules'])->name('property.store.rules');
+
+    Route::post('landlord/showAllRegisterData', [LandlordController::class, 'showAllData'])->name('property.show.all');
+
+
+
     Route::post('/updateLandlordDashboard/{landlord_id}', [LandlordController::class, 'updateLandlordDashboard']);
     Route::post('/updateEmailLandlord/{landlord_id}', [LandlordController::class, 'updateEmailLandlord']);
 
 // ---- update status for booking 
     Route::post('/updatestatusBooking/{booking_id}', [LandlordController::class, 'updatestatusBooking']);
 
-    Route::get('landlord/add_property_describe', [LandlordController::class, 'addPropertyDescribe']);
+
+
 });
 
 

@@ -28,26 +28,27 @@
 
 
             <div class="input-container">
-                <form action="{{URL::to('landlord/add_property_price')}}">
+                <form action="{{URL::to('landlord/add_property_price')}}" method="POST">
+                    @csrf
                     <div class="input-form">
                         <label for=""><b>Listing title</b>
                         </label>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="e.g. Awesome & spacious studio in Binh Thanh" required>
+                    <input type="text" name="ListingTitle" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="e.g. Awesome & spacious studio in Binh Thanh" required>
                     </div>
 
                     <hr class="solid-line">
 
                     <div class="input-form">
                         <label for=""><b>Short description</b></label>
-                        <textarea required class="form-control" id="floatingTextarea2" style="width: 100%; height: 200px; resize:none" ></textarea>
+                        <textarea required name="description" class="form-control" id="floatingTextarea2" style="width: 100%; height: 200px; resize:none" placeholder="Enter a short description of the property"  ></textarea>
                           
                     </div>          
 
                     <hr class="solid-line">
 
                     <div class="input-form">
-                        <label for=""><b>Additional infomation<br><i>(Optional)</i></b></label>
-                        <textarea class="form-control" id="floatingTextarea2" style="width: 100%; height: 200px; resize:none" ></textarea>
+                        <label for=""><b>Education and Community<br><i>(Optional)</i></b></label>
+                        <textarea name="education_and_community" class="form-control" id="floatingTextarea2" style="width: 100%; height: 200px; resize:none"placeholder="Provide details about nearby schools and communities (optional)" ></textarea>
 
                     </div>    
             </div>

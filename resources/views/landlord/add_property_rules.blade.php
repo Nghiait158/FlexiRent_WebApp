@@ -28,15 +28,16 @@
 
 
             <div class="input-container">
-                <form action="{{URL::to('landlord/add_property_images')}}">
+                <form action="{{URL::to('landlord/showAllRegisterData')}}" method="POST">
+                    @csrf
                     <div class="input-form">
                         <label for=""><b>Are pets allowed?</b>
                         </label>
-                        <select class="form-select" id="conditionSelect1" aria-label="Default select example" required>
+                        <select class="form-select" name="petsAllowed" id="conditionSelect1" aria-label="Default select example" required>
                             <option disabled selected>Please select</option>
-                            <option value="1">Allowed</option>
-                            <option value="2">Allowed under certain conditions</option>
-                            <option value="3">Not allow</option>
+                            <option value="Allowed">Allowed</option>
+                            <option value="Allowed under certain conditions">Allowed under certain conditions</option>
+                            <option value="Not allow">Not allow</option>
                         </select>
 
 
@@ -67,11 +68,11 @@
                     <div class="input-form">
                         <label for=""><b>Is smoking allowed?</b>
                         </label>
-                        <select id="conditionSelect2" class="form-select" aria-label="Default select example" required>
+                        <select id="conditionSelect2" name="smokingAllowed" class="form-select" aria-label="Default select example" required>
                             <option disabled selected>Please select</option>
-                            <option value="1">Allowed</option>
-                            <option value="2">Allowed under certain conditions</option>
-                            <option value="3">Not allow</option>
+                            <option value="Allowed">Allowed</option>
+                            <option value="Allowed under certain conditions">Allowed under certain conditions</option>
+                            <option value="Not allow">Not allow</option>
                         </select>
                     </div>
 
@@ -98,7 +99,7 @@
                         <label for=""><b>Are there any additional rules?</b>
                             <p>E.g. "No loud noises or disturbances past 10 pm"</p>
                         </label>
-                        <textarea class="form-control" id="floatingTextarea2" style="width: 50%; height: 200px; resize:none"></textarea>
+                        <textarea name="rules" class="form-control" id="floatingTextarea2" style="width: 50%; height: 200px; resize:none"></textarea>
                     </div>
             </div>
 

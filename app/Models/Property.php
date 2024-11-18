@@ -34,6 +34,7 @@ class Property extends Model
         'room',
         'wifi',
         'internetSpeed',
+        'ListingTitle',
     ];
     public function landlord()
     {

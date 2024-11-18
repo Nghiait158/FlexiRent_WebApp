@@ -31,7 +31,8 @@
         </div>
     </div>
 
-    <form action="{{URL::to('landlord/add_property_details')}}">
+    <form action="{{URL::to('landlord/add_property_details')}}" method="POST">
+        @csrf
         <div class="address-container">
             <div class="address-header">
                 <h2 class="title">

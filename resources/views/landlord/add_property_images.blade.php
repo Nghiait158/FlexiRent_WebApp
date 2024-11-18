@@ -72,9 +72,27 @@
             </div>
 
             <div class="input-container">
-                <form action="{{URL::to('landlord/add_property_describe')}}">
-                    <div class="input-form">
-                        <input type="file" class="form-control file-input" id="fileInput" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required onchange="previewImages(event)" multiple>
+                <form action="{{URL::to('landlord/add_property_describe')}}" method="POST">
+                    @csrf
+                    {{-- <div class="input-form">
+                        <input type="file" name="images" class="form-control file-input" id="fileInput" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required onchange="previewImages(event)" multiple>
+                    </div> --}}
+                    <div class="form-group">
+                        <label for="imageChoice">Decide how to import pictures:</label><br>
+                        <input type="radio" id="fileOption" name="imageChoice" value="file" checked>
+                        <label for="fileOption">Upload File</label><br>
+                        <input type="radio" id="textOption" name="imageChoice" value="text">
+                        <label for="textOption">Provide URL</label>
+                    </div>
+                    <br>
+                    <div class="form-group" id="fileInput">
+                        {{-- <label for="loImgPath">Chọn Hình Ảnh</label> --}}
+                        <input type="file" class="form-control" name="loImgPath" id="loImgPath">
+                    </div>
+                    
+                    <div class="form-group" id="textInput" style="display: none;">
+                        {{-- <label for="locationImgUrl">Nhập URL hình ảnh</label> --}}
+                        <input type="text" class="form-control" name="locationImgUrl" id="locationImgUrl" placeholder="Enter URL">
                     </div>
 
                     <div class="image-preview-container" id="imagePreviewContainer"></div>
@@ -121,6 +139,25 @@
                         }
                     }
                 }
+
+
+                // import images
+                document.addEventListener('DOMContentLoaded', function () {
+                            const fileOption = document.getElementById('fileOption');
+                            const textOption = document.getElementById('textOption');
+                            const fileInput = document.getElementById('fileInput');
+                            const textInput = document.getElementById('textInput');
+
+                            fileOption.addEventListener('change', function () {
+                                fileInput.style.display = 'block';
+                                textInput.style.display = 'none';
+                            });
+
+                            textOption.addEventListener('change', function () {
+                                fileInput.style.display = 'none';
+                                textInput.style.display = 'block';
+                            });
+                        });
             </script>
 
 

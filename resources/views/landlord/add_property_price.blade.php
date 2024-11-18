@@ -28,11 +28,12 @@
 
 
             <div class="input-container">
-                <form action="{{URL::to('landlord/add_property_rules')}}">
+                <form action="{{URL::to('landlord/add_property_rules')}}" method="POST">
+                    @csrf
                     <div class="input-form">
                         <label for=""><b>What is your monthly rent?</b>
                         </label>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="e.g. 1000$" required>
+                        <input type="text" name="price_per_month" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="e.g. 1000$" required>
                     </div>
 
                     <hr class="solid-line">
@@ -41,7 +42,7 @@
                         <label for=""><b>What is the security deposit?</b>
                             <p>The security deposit is usually equal to 1.2 to 1.3 monthly rents</p>
                         </label>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="$0" required>
+                        <input type="text" name="security_deposit" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="$0" required>
                     </div>
 
                     <hr class="solid-line">
@@ -51,7 +52,7 @@
                             <p>The final cleaning fee is used for the basic <br> cleaning of the apartment when tenants change and is usually set as a fixed rate
                             </p>
                         </label>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="e.g. 150$" required>
+                        <input type="text" name="cleaning_fee" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="e.g. 150$" required>
                     </div>
 
             </div>
