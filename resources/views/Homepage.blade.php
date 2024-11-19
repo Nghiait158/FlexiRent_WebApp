@@ -147,7 +147,7 @@
             </div>
             <div class="vertical-line"></div>
             <div class="searchDate">
-                <div class="moves">                   
+                <div class="moves">
                     <div class="from move">
                         <div class="pick-date">
                             <input type="date" id="from" name="from" placeholder="dd.mm.yy" onchange="calculateDays()">
@@ -172,7 +172,7 @@
                 </svg>
                 <p>Guest</p>
                 <button class="svg-button" id="btnPlus" type="button">
-                    +    
+                    +
                 </button>
                 <input class="numberGuest" type="number" id="guest_count" name="guest_count" min="1" value="1" style="width: 30px">
                 <button class="svg-button" id="btnMinus" type="button">
@@ -390,47 +390,103 @@
 <!-- carousel -->
 <div class="carousel">
     <!-- list item -->
+
     <div class="list">
-        <div class="item">
-            <img src="\Frontend\Image\house\house2.jpeg">
-            <div class="content">
-                <div class="author">BEVERLY HILLS, CALIFORNIA, USA</div>
-                <div class="title">SUBURBS MODERN</div>
-                <div class="topic">HOUSE</div>
-                <div class="des">
-                    <!-- lorem 50 -->
-                    Known for its luxury real estate, Beverly Hills and its surrounding suburbs have many famous rental homes. These properties often feature sprawling lawns, large pools, and celebrity appeal.
-                </div>
-                <div class="buttons">
-                    <a href="{{URL::to('/CheckoutPageA')}}"><button>RENT NOW</button></a>
-                    <a href="{{URL::to('/PropertyDetails')}}"><button>SEE MORE</button></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <img src="\Frontend\Image\house\house3.jpg">
-            <div class="content">
-                <div class="author">BINH THANH, HCMC, VN</div>
-                <div class="title">CENTRAL MODERN</div>
-                <div class="topic">APARTMENT</div>
-                <div class="des">
-                    Prime location with modern apartments with swimming pools, fitness centers, and 24/7 security.Landmark 81, the tallest building in Vietnam, is also part of the development, offering high-end retail and dining options, enhancing the luxurious lifestyle available at Vinhomes Central Park.
-                </div>
-                <div class="buttons">
-                    <a href="{{URL::to('/CheckoutPageA')}}"><button>RENT NOW</button></a>
-                    <a href="{{URL::to('/PropertyDetails')}}"><button>SEE MORE</button></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <img src="\Frontend\Image\house\house4.jpg">
-            <div class="content">
-                <div class="author">MALIBU, CALIFORNIA, USA</div>
-                <div class="title">LUXURY BEACHFRONT</div>
-                <div class="topic">VILLA</div>
-                <div class="des">
+        @php
+        $availableProperties = $properties->where('status', 0);
 
-                    Malibu, California, is renowned for its luxurious beachfront rentals that offer stunning ocean views and private beach access. The area features a diverse range of properties, from modern villas to classic estates, catering to those seeking an upscale lifestyle. Residents and visitors enjoy proximity to beautiful beaches like Zuma Beach and El Matador State Beach, perfect for sunbathing and surfing. Many of these rentals boast upscale amenities, including infinity pools, outdoor entertainment spaces, and spa facilities, making Malibu an ideal destination for luxury living by the coast.
+        if ($availableProperties->isNotEmpty()) {
+        $randomProperty1 = $availableProperties->shuffle()->first();
+        $randomProperty2 = $availableProperties->shuffle()->first();
+        $randomProperty3 = $availableProperties->shuffle()->first();
+        $randomProperty4 = $availableProperties->shuffle()->first();
+
+        $randomImageProperty1 = $properties_images
+        ->where('propertyID', $randomProperty1->propertyID)
+        ->shuffle()
+        ->first();
+
+        $randomImageProperty2 = $properties_images
+        ->where('propertyID', $randomProperty2->propertyID)
+        ->shuffle()
+        ->first();
+
+        $randomImageProperty3 = $properties_images
+        ->where('propertyID', $randomProperty3->propertyID)
+        ->shuffle()
+        ->first();
+
+        $randomImageProperty4 = $properties_images
+        ->where('propertyID', $randomProperty4->propertyID)
+        ->shuffle()
+        ->first();
+        } else {
+        $randomProperty1 = $randomProperty2 = $randomProperty3 = $randomProperty4 = null;
+        $randomImageProperty1 = $randomImageProperty2 = $randomImageProperty3 = $randomImageProperty4 = null;
+        }
+        @endphp
+
+        <div class="item">
+            <img src="{{$randomImageProperty1->path}}">
+            <div class="content">
+                <div class="author">Price: ${{strtoupper($randomProperty1->price_per_month)}}</div>
+                <div class="title">{{strtoupper($randomProperty1->district)}}, {{strtoupper($randomProperty1->city)}}</div>
+                <div class="topic">{{strtoupper($randomProperty1->accommodation_type)}}</div>
+                <div class="des">
+                    {{$randomProperty1->description}}
+                </div>
+                <div class="buttons">
+
+                    <!-- Rent Now Form -->
+                    <form action="{{ URL::to('/CheckoutPageA/'.$randomProperty1->property_id) }}" method="post">
+                        @csrf
+                        <button type="submit">RENT NOW</button>
+                    </form>
+
+                    <!-- See More Button -->
+                    <button id="seeMoreBtn" onclick="redirectToPropertyDetails()">SEE MORE</button>
+
+                </div>
+            </div>
+
+            <script>
+                function redirectToPropertyDetails() {
+                    // Prepare dynamic dates
+                    var propertyId = "{{ $randomProperty1->property_id }}";
+                    var today = new Date();
+                    var oneWeekLater = new Date();
+                    today.setDate(today.getDate() + 1);
+                    oneWeekLater.setDate(today.getDate() + 7); // Add 7 days to today's date
+
+                    var from = today.toISOString().split('T')[0]; // Format as YYYY-MM-DD
+                    var to = oneWeekLater.toISOString().split('T')[0]; // Format as YYYY-MM-DD
+
+                    // Additional parameters
+                    var guestCount = 1; // Replace with actual value if needed
+                    var city = "{{$randomProperty1->city}}"; // Replace with actual value if needed
+
+                    // Build the URL with the query parameters
+                    var url = '/PropertyDetails/' + propertyId +
+                        '?from=' + encodeURIComponent(from) +
+                        '&to=' + encodeURIComponent(to) +
+                        '&guestCount=' + encodeURIComponent(guestCount) +
+                        '&city=' + encodeURIComponent(city);
+
+                    // Redirect to the constructed URL
+                    window.location.href = url;
+                }
+            </script>
+        </div>
+
+
+        <div class="item">
+            <img src="{{$randomImageProperty2 -> path}}">
+            <div class="content">
+                <div class="author">Price: ${{strtoupper($randomProperty2 -> price_per_month)}}</div>
+                <div class="title">{{strtoupper($randomProperty2 -> district) }}, {{strtoupper($randomProperty2 -> city)}}</div>
+                <div class="topic">{{strtoupper($randomProperty2 -> accommodation_type)}}</div>
+                <div class="des">
+                    {{$randomProperty2 -> description}}
                 </div>
                 <div class="buttons">
                     <a href="{{URL::to('/CheckoutPageA')}}"><button>RENT NOW</button></a>
@@ -439,14 +495,28 @@
             </div>
         </div>
         <div class="item">
-            <img src="\Frontend\Image\house\house5.webp">
+            <img src="{{$randomImageProperty3 -> path}}">
             <div class="content">
-                <div class="author">MARAIS, PARIS, FRANCE</div>
-                <div class="title">CENTRAL MODERN</div>
-                <div class="topic">HOUSE</div>
+                <div class="author">Price: ${{strtoupper($randomProperty3 -> price_per_month)}}</div>
+                <div class="title">{{strtoupper($randomProperty3 -> district) }}, {{strtoupper($randomProperty3 -> city)}}</div>
+                <div class="topic">{{strtoupper($randomProperty3 -> accommodation_type)}}</div>
                 <div class="des">
-
-                    The Marais district in Paris, France, is a famous rental location known for its historic charm and vibrant atmosphere. Characterized by narrow streets, beautiful architecture, and trendy boutiques, it is home to attractions like the Picasso Museum and Hôtel de Ville. The area features lively cafes, bistros, and the Marché des Enfants Rouges, one of the oldest covered markets in Paris. Centrally located, the Marais offers easy access to iconic landmarks such as Notre-Dame Cathedral and the Louvre Museum, making it an ideal choice for those seeking an authentic Parisian experience.
+                    {{$randomProperty3 -> description}}
+                </div>
+                <div class="buttons">
+                    <a href="{{URL::to('/CheckoutPageA')}}"><button>RENT NOW</button></a>
+                    <a href="{{URL::to('/PropertyDetails')}}"><button>SEE MORE</button></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="{{$randomImageProperty4 -> path}}">
+            <div class="content">
+                <div class="author">Price: ${{strtoupper($randomProperty4 -> price_per_month)}}</div>
+                <div class="title">{{strtoupper($randomProperty4 -> district) }}, {{strtoupper($randomProperty4 -> city)}}</div>
+                <div class="topic">{{strtoupper($randomProperty4 -> accommodation_type)}}</div>
+                <div class="des">
+                    {{$randomProperty4 -> description}}
                 </div>
                 <div class="buttons">
                     <a href="{{URL::to('/CheckoutPageA')}}"><button>RENT NOW</button></a>
@@ -458,46 +528,46 @@
     <!-- list thumnail -->
     <div class="thumbnail">
         <div class="item">
-            <img src="\Frontend\Image\house\house2.jpeg">
+            <img src="{{$randomImageProperty1 -> path}}">
             <div class="content">
                 <div class="title">
-                    Suburbs house
+                    {{ucwords($randomProperty1 -> accommodation_type)}}
                 </div>
                 <div class="description">
-                    Beverly Hills, USA
+                    {{$randomProperty1 -> district}}, {{$randomProperty1 -> city}}
                 </div>
             </div>
         </div>
         <div class="item">
-            <img src="\Frontend\Image\house\house3.jpg">
+            <img src="{{$randomImageProperty2 -> path}}">
             <div class="content">
                 <div class="title">
-                    Central apartment
+                    {{ucwords($randomProperty2 -> accommodation_type)}}
                 </div>
                 <div class="description">
-                    Binh Thanh, VN
+                    {{$randomProperty2 -> district}}, {{$randomProperty2 -> city}}
                 </div>
             </div>
         </div>
         <div class="item">
-            <img src="\Frontend\Image\house\house4.jpg">
+            <img src="{{$randomImageProperty3 -> path}}">
             <div class="content">
                 <div class="title">
-                    Luxury Villa
+                    {{ucwords($randomProperty3 -> accommodation_type)}}
                 </div>
                 <div class="description">
-                    Malibu, USA
+                    {{$randomProperty3 -> district}}, {{$randomProperty3 -> city}}
                 </div>
             </div>
         </div>
         <div class="item">
-            <img src="\Frontend\Image\house\house5.webp">
+            <img src="{{$randomImageProperty4 -> path}}">
             <div class="content">
                 <div class="title">
-                    Central House
+                    {{ucwords($randomProperty4 -> accommodation_type)}}
                 </div>
                 <div class="description">
-                    Marais, France
+                    {{$randomProperty4 -> district}}, {{$randomProperty4 -> city}}
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyAmenitycontroller;
 use Illuminate\Support\Facades\Route;
@@ -224,12 +225,17 @@ Route::middleware(['auth', 'landlord'])->group(function () {
 
 
 // ------FrontEnd------------------------
-Route::get('/', function () {
-    return view('Homepage');
-});
-Route::get('/HomePage', action: function () {
-    return view('Homepage');
-});
+// Route::get('/', function () {
+//     return view('Homepage');
+// });
+// Route::get('/HomePage', action: function () {
+//     return view('Homepage');
+// });
+
+Route::get('/HomePage', [HomepageController::class, 'showProperty']);
+
+
+Route::get('/', [HomepageController::class, 'showProperty']);
 
 Route::get('/Landlord', function () {
     return view('Landlords');
@@ -260,3 +266,4 @@ Route::get('/Contact', function () {
 Route::post('/bookingPage', [BookingPageController::class, 'sendData'])->name('search.properties');
 // Route::get('/search', [PropertyController::class, 'search'])->name('search.properties');
 Route::get('/PropertyDetails/{property_id}', [PropertyDetailsPageController::class, 'showData']);
+

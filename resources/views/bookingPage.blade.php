@@ -95,7 +95,7 @@
                     -
                 </button>
             </div>
-            
+
             <script src="\Frontend\js\plus-minus-btn.js"></script>
         </div>
         <div class="buttonSearch">
@@ -120,9 +120,6 @@
                         </svg>
                         Bedrooms:
                     </button></li>
-                <li><button class="dropdown-itemFilter" type="button" onclick="selectItemFilter(this)">Price (Low to High)</button></li>
-                <li><button class="dropdown-itemFilter" type="button" onclick="selectItemFilter(this)">Price (High to Low)</button></li>
-                <li><button class="dropdown-itemFilter" type="button" onclick="selectItemFilter(this)">Ratings (High to low)</button></li>
             </ul>
         </div>
 
@@ -195,18 +192,12 @@
         <div class="sortBy">
             <p>Sort by: </p>
             <div class="dropdown">
-                <button class="dropdown-toggle" id="dropdownButton" type="button" onclick="toggleDropdown()">
-                    Availability
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M9.99997 14.167C9.78722 14.1659 9.57739 14.1175 9.38568 14.0253C9.19398 13.933 9.02521 13.7992 8.89163 13.6337L5.3833 9.38366C5.17829 9.1278 5.04929 8.8195 5.01098 8.49388C4.97267 8.16827 5.02661 7.83844 5.16663 7.54199C5.2802 7.28435 5.46553 7.06484 5.70048 6.90968C5.93544 6.75452 6.21009 6.67027 6.49163 6.66699H13.5083C13.7898 6.67027 14.0645 6.75452 14.2995 6.90968C14.5344 7.06484 14.7197 7.28435 14.8333 7.54199C14.9733 7.83844 15.0273 8.16827 14.989 8.49388C14.9506 8.8195 14.8216 9.1278 14.6166 9.38366L11.1083 13.6337C10.9747 13.7992 10.806 13.933 10.6142 14.0253C10.4225 14.1175 10.2127 14.1659 9.99997 14.167Z" fill="#49735A" />
-                    </svg>
-                </button>
-                <ul class="dropdown-menu" id="dropdownMenu">
-                    <li><button class="dropdown-item" type="button" onclick="selectItem(this)">Availability</button></li>
-                    <li><button class="dropdown-item" type="button" onclick="selectItem(this)">Price (Low to High)</button></li>
-                    <li><button class="dropdown-item" type="button" onclick="selectItem(this)">Price (High to Low)</button></li>
-                    <li><button class="dropdown-item" type="button" onclick="selectItem(this)">Ratings (High to low)</button></li>
-                </ul>
+                <select id="sortDropdown" class="dropdown-toggle" onchange="selectSortOption(this.value)">
+                    <option value="availability">Availability</option>
+                    <option value="price-asc">Price (Low to High)</option>
+                    <option value="price-desc">Price (High to Low)</option>
+                    <option value="ratings">Ratings (High to Low)</option>
+                </select>
             </div>
         </div>
     </div>
@@ -227,38 +218,31 @@
                     <a href="#" class="property-link" data-property-id="{{ $property->property_id }}" style="text-decoration: none">
                         <p>{{ $property->property_name ?: 'N/A' }}</p>
                     </a>
-                    
+
                     <script>
                         document.querySelectorAll('.property-link').forEach(function(link) {
                             link.addEventListener('click', function(event) {
                                 event.preventDefault();
-                                
+
                                 // Lấy giá trị từ các trường input
                                 var from = document.getElementById('from').value;
                                 var to = document.getElementById('to').value;
                                 var guestCount = document.getElementById('guest_count').value;
                                 var city = document.getElementById('location-input').value;
                                 var propertyId = link.getAttribute('data-property-id'); // Lấy property_id từ thuộc tính data-property-id
-                    
+
                                 // Tạo URL mới với các tham số query
-                                var url = '/PropertyDetails/' + propertyId + 
-                                          '?from=' + encodeURIComponent(from) + 
-                                          '&to=' + encodeURIComponent(to) + 
-                                          '&guestCount=' + encodeURIComponent(guestCount) + 
-                                          '&city=' + encodeURIComponent(city);
-                                
+                                var url = '/PropertyDetails/' + propertyId +
+                                    '?from=' + encodeURIComponent(from) +
+                                    '&to=' + encodeURIComponent(to) +
+                                    '&guestCount=' + encodeURIComponent(guestCount) +
+                                    '&city=' + encodeURIComponent(city);
+
                                 // Chuyển hướng đến URL mới
                                 window.location.href = url;
                             });
                         });
                     </script>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
                     <div class="utilitiesList">
                         <div class="bedroom">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -309,7 +293,8 @@
                         <div class="pricePerMonth">
                             from {{ $property->price_per_month ?:'N/A'}}$ /month
                         </div>
-                    </div>                </div>
+                    </div>
+                </div>
             </div>
             @endforeach
 
@@ -393,9 +378,19 @@
         dropdown.classList.toggle('show');
     }
 
-    function selectItemFilter(element) {
-        console.log(element.textContent + ' selected');
-        // Add your logic here for what happens when an item is selected
+    function selectSortOption(option) {
+        var properties = document.querySelectorAll('.propertyShow');
+        var propertiesArray = Array.from(properties);
+
+        if (option === 'price-asc') {
+            propertiesArray.sort((a, b) => {
+                return parseFloat(a.getAttribute('data-price')) - parseFloat(b.getAttribute('data-price'));
+            });
+        } else if (option === 'price-desc') {
+            propertiesArray.sort((a, b) => {
+                return parseFloat(b.getAttribute('data-price')) - parseFloat(a.getAttribute('data-price'));
+            });
+        }
     }
     // -------------------- content bottom page--------------------
 
