@@ -231,7 +231,9 @@ Route::get('/Contact', function () {
 
 // Route::get('/map', [MapController::class, 'generateMapIframe']);
 
-Route::post('/bookingPage', [BookingPageController::class, 'sendData'])->name('search.properties');
+Route::match(['get', 'post'], '/bookingPage', [BookingPageController::class, 'handleRequest'])->name('bookingPage');
+
+
 // Route::get('/search', [PropertyController::class, 'search'])->name('search.properties');
 Route::get('/PropertyDetails/{property_id}', [PropertyDetailsPageController::class, 'showData']);
 

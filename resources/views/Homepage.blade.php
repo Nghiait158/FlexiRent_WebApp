@@ -131,7 +131,7 @@
 
 </div> --}}
 <div class="searchBar_booking">
-    <form action="{{ route('search.properties') }}" method="post">
+    <form action="{{ route('bookingPage') }}" method="post">
         {{ csrf_field() }}
         <div class="searchPart1">
             <div class="searchCity">
@@ -287,37 +287,37 @@
         <!-- block1 -->
         <div class="location-block">
             <h4>District 1</h4>
-            <a href="{{URL::to('/bookingPage')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/Distrit1.png') }}" alt=""></a>
+            <a href="{{URL::to('/bookingPage?city=District%201')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/Distrit1.png') }}" alt=""></a>
         </div>
 
         <!-- block2 -->
         <div class="location-block">
             <h4>Binh Thanh District</h4>
-            <a href="{{URL::to('/bookingPage')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/Binh Thanh.png') }}" alt=""></a>
+            <a href="{{URL::to('/bookingPage?city=Binh%20Thanh')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/Binh Thanh.png') }}" alt=""></a>
         </div>
 
         <!-- block3 -->
         <div class="location-block">
             <h4>Thu Duc City</h4>
-            <a href="{{URL::to('/bookingPage')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/Thu Duc.jfif') }}" alt=""></a>
+            <a href="{{URL::to('/bookingPage?city=Thu%20Duc')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/Thu Duc.jfif') }}" alt=""></a>
         </div>
 
         <!-- block4 -->
         <div class="location-block">
             <h4>Go Vap District</h4>
-            <a href="{{URL::to('/bookingPage')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/Go Vap.jfif') }}" alt=""></a>
+            <a href="{{URL::to('/bookingPage?city=Go%20Vap')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/Go Vap.jfif') }}" alt=""></a>
         </div>
 
         <!-- block5 -->
         <div class="location-block">
             <h4>District 2</h4>
-            <a href="{{URL::to('/bookingPage')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/District-2.jfif') }}" alt=""></a>
+            <a href="{{URL::to('/bookingPage?city=District%202')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/District-2.jfif') }}" alt=""></a>
         </div>
 
         <!-- block6 -->
         <div class="location-block">
             <h4>District 7</h4>
-            <a href="{{URL::to('/bookingPage')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/District-7.jfif') }}" alt=""></a>
+            <a href="{{URL::to('/bookingPage?city=District%207')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/District-7.jfif') }}" alt=""></a>
         </div>
     </div>
 
@@ -440,42 +440,14 @@
                     <!-- Rent Now Form -->
                     <form action="{{ URL::to('/CheckoutPageA/'.$randomProperty1->property_id) }}" method="post">
                         @csrf
-                        <button type="submit">RENT NOW</button>
+                        <button class="btn rent-now" type="submit">RENT NOW</button>
                     </form>
 
                     <!-- See More Button -->
-                    <button id="seeMoreBtn" onclick="redirectToPropertyDetails()">SEE MORE</button>
+                    <button class="btn see-more" id="seeMoreBtn" onclick="redirectToPropertyDetails('{{ $randomProperty1->property_id }}', '{{ $randomProperty1->city }}')">SEE MORE</button>
 
                 </div>
             </div>
-
-            <script>
-                function redirectToPropertyDetails() {
-                    // Prepare dynamic dates
-                    var propertyId = "{{ $randomProperty1->property_id }}";
-                    var today = new Date();
-                    var oneWeekLater = new Date();
-                    today.setDate(today.getDate() + 1);
-                    oneWeekLater.setDate(today.getDate() + 7); // Add 7 days to today's date
-
-                    var from = today.toISOString().split('T')[0]; // Format as YYYY-MM-DD
-                    var to = oneWeekLater.toISOString().split('T')[0]; // Format as YYYY-MM-DD
-
-                    // Additional parameters
-                    var guestCount = 1; // Replace with actual value if needed
-                    var city = "{{$randomProperty1->city}}"; // Replace with actual value if needed
-
-                    // Build the URL with the query parameters
-                    var url = '/PropertyDetails/' + propertyId +
-                        '?from=' + encodeURIComponent(from) +
-                        '&to=' + encodeURIComponent(to) +
-                        '&guestCount=' + encodeURIComponent(guestCount) +
-                        '&city=' + encodeURIComponent(city);
-
-                    // Redirect to the constructed URL
-                    window.location.href = url;
-                }
-            </script>
         </div>
 
 
@@ -489,8 +461,13 @@
                     {{$randomProperty2 -> description}}
                 </div>
                 <div class="buttons">
-                    <a href="{{URL::to('/CheckoutPageA')}}"><button>RENT NOW</button></a>
-                    <a href="{{URL::to('/PropertyDetails')}}"><button>SEE MORE</button></a>
+                    <form action="{{ URL::to('/CheckoutPageA/'.$randomProperty2->property_id) }}" method="post">
+                        @csrf
+                        <button class="btn rent-now" type="submit">RENT NOW</button>
+                    </form>
+
+                    <!-- See More Button -->
+                    <button class="btn see-more" id="seeMoreBtn" onclick="redirectToPropertyDetails('{{ $randomProperty2->property_id }}', '{{ $randomProperty2->city }}')">SEE MORE</button>
                 </div>
             </div>
         </div>
@@ -504,8 +481,13 @@
                     {{$randomProperty3 -> description}}
                 </div>
                 <div class="buttons">
-                    <a href="{{URL::to('/CheckoutPageA')}}"><button>RENT NOW</button></a>
-                    <a href="{{URL::to('/PropertyDetails')}}"><button>SEE MORE</button></a>
+                    <form action="{{ URL::to('/CheckoutPageA/'.$randomProperty3->property_id) }}" method="post">
+                        @csrf
+                        <button class="btn rent-now" type="submit">RENT NOW</button>
+                    </form>
+
+                    <!-- See More Button -->
+                    <button class="btn see-more" id="seeMoreBtn" onclick="redirectToPropertyDetails('{{ $randomProperty3->property_id }}', '{{ $randomProperty3->city }}')">SEE MORE</button>
                 </div>
             </div>
         </div>
@@ -519,8 +501,13 @@
                     {{$randomProperty4 -> description}}
                 </div>
                 <div class="buttons">
-                    <a href="{{URL::to('/CheckoutPageA')}}"><button>RENT NOW</button></a>
-                    <a href="{{URL::to('/PropertyDetails')}}"><button>SEE MORE</button></a>
+                    <form action="{{ URL::to('/CheckoutPageA/'.$randomProperty4->property_id) }}" method="post">
+                        @csrf
+                        <button class="btn rent-now" type="submit">RENT NOW</button>
+                    </form>
+
+                    <!-- See More Button -->
+                    <button class="btn see-more" id="seeMoreBtn" onclick="redirectToPropertyDetails('{{ $randomProperty4->property_id }}', '{{ $randomProperty4->city }}')">SEE MORE</button>
                 </div>
             </div>
         </div>
@@ -572,6 +559,33 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function redirectToPropertyDetails(propertyId, city) {
+            // Prepare dynamic dates
+            var today = new Date();
+            var oneWeekLater = new Date();
+            today.setDate(today.getDate() + 1);
+            oneWeekLater.setDate(today.getDate() + 7); // Add 7 days to today's date
+
+            var from = today.toISOString().split('T')[0]; // Format as YYYY-MM-DD
+            var to = oneWeekLater.toISOString().split('T')[0]; // Format as YYYY-MM-DD
+
+            // Additional parameters
+            var guestCount = 1; // Replace with actual value if needed
+
+            // Build the URL with the query parameters
+            var url = '/PropertyDetails/' + propertyId +
+                '?from=' + encodeURIComponent(from) +
+                '&to=' + encodeURIComponent(to) +
+                '&guestCount=' + encodeURIComponent(guestCount) +
+                '&city=' + encodeURIComponent(city);
+
+            // Redirect to the constructed URL
+            window.location.href = url;
+        }
+    </script>
+
     <!-- next prev -->
 
 
@@ -1027,22 +1041,22 @@
                 <p>Vel mattis integer pulvinar morbi quis amet eu. In nunc facilisis proin fermentum, consectetur cursus.</p>
             </div>
 
-            <div class="drop-down-city">
-                <button class="dropbtn">Choose city <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <div class="dropdown-city">
+                <button class="dropbtn">Choose city
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path d="M10 14.1667C9.78725 14.1657 9.57742 14.1173 9.38571 14.025C9.19401 13.9328 9.02524 13.799 8.89166 13.6334L5.38333 9.38341C5.17833 9.12755 5.04932 8.81925 5.01101 8.49364C4.9727 8.16803 5.02664 7.8382 5.16666 7.54175C5.28023 7.2841 5.46556 7.06459 5.70051 6.90943C5.93547 6.75427 6.21012 6.67003 6.49166 6.66675H13.5083C13.7899 6.67003 14.0645 6.75427 14.2995 6.90943C14.5344 7.06459 14.7198 7.2841 14.8333 7.54175C14.9734 7.8382 15.0273 8.16803 14.989 8.49364C14.9507 8.81925 14.8217 9.12755 14.6167 9.38341L11.1083 13.6334C10.9747 13.799 10.806 13.9328 10.6143 14.025C10.4226 14.1173 10.2127 14.1657 10 14.1667Z" fill="white" />
-                    </svg></button>
+                    </svg>
+                </button>
                 <div class="dropdown-content">
-                    <a href="{{URL::to('/bookingPage')}}">City 1</a>
-                    <a href="{{URL::to('/bookingPage')}}">City 2</a>
-                    <a href="{{URL::to('/bookingPage')}}">City 3</a>
+                    <a href="{{URL::to('/bookingPage?city=Ha%20Noi')}}">Ha Noi</a>
+                    <a href="{{URL::to('/bookingPage?city=Ho%20Chi%20Minh')}}">Ho Chi Minh</a>
+                    <a href="{{URL::to('/bookingPage?city=Da%20Nang')}}">Da Nang</a>
+                    <a href="{{URL::to('/bookingPage?city=Hue')}}">Hue</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
 
 
 @endsection

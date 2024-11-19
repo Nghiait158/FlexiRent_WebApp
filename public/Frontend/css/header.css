@@ -66,7 +66,6 @@ header {
     align-items: center;
 }
 
-
 .header-logo {
     text-align: center;
     font-family: "Molle";
@@ -76,11 +75,18 @@ header {
     line-height: 66.67%;
 }
 
+
 .header-logo a {
     color: #000;
     text-decoration: none;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
+.header-logo a:hover {
+    background: linear-gradient(45deg, #feb47b,var(--Green, #064749));
+    -webkit-background-clip: text; /* Clips the gradient to the text */
+    color: transparent; /* Makes the text transparent to show the gradient */
+}
 
 .header-nav ul {
     list-style-type: none;
@@ -97,22 +103,32 @@ header {
     font-weight: 400;
     line-height: 133.3%;
     padding: 10px 20px;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: color 0.3s ease, transform 0.2s ease;
     text-decoration: none;
     color: black;
     user-select: none;
 }
 
 .header-nav a:hover {
-    background-color: #f4f4f4;
-    transform: scaleX(1.2);
-    transform: translateY(-3px);
+    color: #1abc9c;
+    transform: translateY(0px);
     cursor: pointer;
 }
 
-.header-nav a:active {
-    background-color: #f4f4f4;
-    box-shadow: inset 0 -3px 0 0 #00bcd4;
+.header-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #1abc9c;
+    /* Green underline */
+    transition: width 0.3s ease;
+}
+
+.header-nav a:hover::after {
+    width: 100%;
 }
 
 /* Style for the dropdown button */
@@ -126,8 +142,10 @@ header {
     border: none;
     color: var(--Text, #181A18);
     font-family: "Lato";
-    font-size: 18px;
+    font-size: 19px;
+    font-style: normal;
     font-weight: 400;
+    line-height: 133.3%;
     padding: 10px 0;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
@@ -138,13 +156,13 @@ header {
 .header-nav .custom-dropdown-toggle a:hover {
     background-color: #ffffff;
     transform: scaleX(1.2);
-    transform: translateY(-3px);
+    transform: translateY(0px);
 }
 
 .header-nav .custom-dropdown-toggle a:active {
     background-color: #ffffff;
     transform: scaleX(0.95);
-    transform: translateY(3px);
+    transform: translateY(0px);
     box-shadow: none;
 }
 
@@ -168,24 +186,26 @@ header {
 
 .header-nav .custom-dropdown-link {
     color: var(--Text, #181A18);
-    text-decoration: none;
     font-family: "Lato";
-    font-size: 16px;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 133.3%;
+    text-decoration: none;
     transition: background-color 0.3s, transform 0.3s;
     display: block;
     padding: 5px 0;
 }
 
 .header-nav .custom-dropdown-link:hover {
-    background-color: #ffffff;
-    transform: scaleX(1.05);
-    transform: translateY(-3px);
+    background-color: #fff;
+    transform: translateY(0px);
 }
 
 .header-nav .custom-dropdown-link:active {
     background-color: #ffffff;
     transform: scaleX(0.95);
-    transform: translateY(3px);
+    transform: translateY(0px);
     box-shadow: none;
 }
 
@@ -194,7 +214,210 @@ header {
 }
 
 
-.custom-dropdown-item{
+.custom-dropdown-item {
     height: 100%;
     font-size: 300px;
+}
+
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+
+/* Basic dropdown styling */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    background-color: transparent;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.dropdown-toggle:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+.arrow.down {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-left: 5px;
+    transition: transform 0.3s;
+}
+
+.down {
+    transform: rotate(45deg);
+}
+
+/* Dropdown menu */
+
+.dropdown-account {
+    position: relative;
+    padding: 10px 20px;
+    background-color: var(--Green, #064749);
+}
+
+
+.dropdown-account-toggle {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-family: "Lato";
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 133.3%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+
+
+.dropdown-account-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 150px;
+    border-radius: 5px;
+}
+
+/* Dropdown items */
+.dropdown-account-item {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Hover effect for items */
+.dropdown-account-item:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-3px);
+}
+
+/* Active state for items */
+.dropdown-account-item:active {
+    background-color: #d0d0d0;
+    transform: translateY(1px);
+}
+
+/* Show the dropdown menu when hovering over the toggle */
+.dropdown-account:hover .dropdown-account-menu {
+    display: block;
+}
+
+
+/* Dark green animated gradient button with glow */
+.animated-dark-green-btn {
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+   
+    background: linear-gradient(
+        90deg,
+        var(--Green, #064749),
+        #0a615e,
+        #10796c,
+        #0f8b73
+    );
+    background-size: 400% 400%;
+    animation: gradientFlow 3s ease infinite, glowEffect 1.5s ease-in-out infinite;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Gradient flow animation */
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Glow effect animation */
+@keyframes glowEffect {
+    0% {
+        box-shadow: 0 0 5px rgba(15, 139, 115, 0.4),
+            0 0 10px rgba(15, 139, 115, 0.2),
+            0 0 20px rgba(15, 139, 115, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 10px rgba(15, 139, 115, 0.6),
+            0 0 20px rgba(15, 139, 115, 0.4),
+            0 0 30px rgba(15, 139, 115, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(15, 139, 115, 0.4),
+            0 0 10px rgba(15, 139, 115, 0.2),
+            0 0 20px rgba(15, 139, 115, 0.1);
+    }
+}
+
+/* Hover effect */
+.animated-dark-green-btn:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(
+        90deg,
+        #0f8b73,
+        #10796c,
+        #0a615e,
+        var(--Green, #064749)
+    );
+    animation: gradientFlowHover 2s ease infinite;
+    box-shadow: 0 8px 15px rgba(15, 139, 115, 0.6),
+        0 0 30px rgba(15, 139, 115, 0.3);
+}
+
+/* Hover gradient flow speed */
+@keyframes gradientFlowHover {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 150% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Active effect */
+.animated-dark-green-btn:active {
+    transform: scale(0.96);
+    box-shadow: 0 3px 8px rgba(15, 139, 115, 0.5);
 }

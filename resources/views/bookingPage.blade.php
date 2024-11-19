@@ -44,7 +44,7 @@
     document.head.appendChild(link);
 </script>
 <div class="searchBar_bookingPage">
-    <form action="{{ route('search.properties') }}" method="post">
+    <form action="{{ route('bookingPage') }}" method="post">
         {{ csrf_field() }}
         <div class="searchPart1">
             <div class="searchCity">
@@ -90,7 +90,7 @@
                 <button class="svg-button" id="btnPlus" type="button">
                     +
                 </button>
-                <input class="numberGuest" type="number" value="{{ $guestCount }}" id="guest_count" name="guest_count" min="1" value="1" style="width: 30px">
+                <input class="numberGuest" type="number" value="{{ $guestCount }}" id="guest_count" name="guest_count" min="1" style="width: 30px">
                 <button class="svg-button" id="btnMinus" type="button">
                     -
                 </button>
@@ -191,15 +191,21 @@
 
         <div class="sortBy">
             <p>Sort by: </p>
-            <div class="dropdown">
-                <select id="sortDropdown" class="dropdown-toggle" onchange="selectSortOption(this.value)">
-                    <option value="availability">Availability</option>
-                    <option value="price-asc">Price (Low to High)</option>
-                    <option value="price-desc">Price (High to Low)</option>
-                    <option value="ratings">Ratings (High to Low)</option>
-                </select>
-            </div>
+            <form method="GET" action="{{ route('bookingPage') }}">
+                <div class="dropdown">
+                    <input type="hidden" name="city" value="{{ $city }}">
+                    <input type="hidden" name="guest_count" value="{{ $guestCount }}">
+                    <input type="hidden" name="from" value="{{ $from }}">
+                    <input type="hidden" name="to" value="{{ $to }}">
+                    <select id="sortDropdown" name="sortOption" class="dropdown-toggle" onchange="this.form.submit()">
+                        <option value="availability" {{ request('sortOption') == 'availability' ? 'selected' : '' }}>Availability</option>
+                        <option value="price-asc" {{ request('sortOption') == 'price-asc' ? 'selected' : '' }}>Price (Low to High)</option>
+                        <option value="price-desc" {{ request('sortOption') == 'price-desc' ? 'selected' : '' }}>Price (High to Low)</option>
+                    </select>
+                </div>
+            </form>
         </div>
+
     </div>
 
     <div class="listProperties">

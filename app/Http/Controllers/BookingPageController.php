@@ -1,51 +1,67 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Property;
 use Illuminate\Http\Request;
+
 class BookingPageController extends Controller
 {
-
-    public function sendData(Request $request) {
-        // Get all properties sorted by updated_at in descending order
+    public function handleRequest(Request $request)
+    {
+        // Get input values
         $city = $request->input('city');
         $from = $request->input('from');
         $to = $request->input('to');
         $guestCount = $request->input('guest_count');
-        $query = Property::query();
-    
+        $sortOption = $request->get('sortOption', 'availability');
+
+        // Build the query with filters
+        $propertiesQuery = Property::query();
+
         if ($city) {
-            $query->where('location', 'LIKE', "%$city%");
+            $propertiesQuery->where('location', 'LIKE', "%$city%");
         }
         if ($guestCount) {
-            $query->where('guest_capacity', '>=', $guestCount);
+            $propertiesQuery->where('guest_capacity', '>=', $guestCount);
         }
-        // if ($from) {
-        //     $query->where('available', '>=', $from);
-        // }
-    
         if ($to) {
-            $query->where('available', '<=', $to);
+            $propertiesQuery->where('available', '<=', $to);
         }
-    
-        $properties = $query->where('status', '0')
-                    ->orderBy('updated_at', 'desc')
-                    ->get();
-    
+
+        // Add sorting
+        switch ($sortOption) {
+            case 'price-asc':
+                $propertiesQuery->orderBy('price_per_month', 'asc');
+                break;
+            case 'price-desc':
+                $propertiesQuery->orderBy('price_per_month', 'desc');
+                break;
+            case 'availability':
+            default:
+                $propertiesQuery->orderBy('available', 'desc');
+                break;
+        }
+
+        // Fetch properties
+        $properties = $propertiesQuery->where('status', '0')
+            ->orderBy('updated_at', 'desc')
+            ->get();
+
+        // Determine the address for the first property
         $address = $properties->isNotEmpty() ? $properties->first()->location : 'No address found';
-    
+
+        // Pass data to the view
         $data = [
-            
-            'city'=>  $city,
-            'from'=> $from,
-            'to'=>$to,
-            'guestCount'=>$guestCount,
+            'city' => $city,
+            'from' => $from,
+            'to' => $to,
+            'guestCount' => $guestCount,
             'properties' => $properties,
             'address' => $address,
+            'sortOption' => $sortOption,
         ];
-        // dd($data);
+
         return view('bookingPage', $data);
     }
-    
-    
 }
