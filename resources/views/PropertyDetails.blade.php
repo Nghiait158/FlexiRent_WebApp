@@ -31,15 +31,18 @@
 </script>
 
 <div class="headerContainerImage">
-    <img class="mainImg" src="{{ ('/Frontend/Image/PropertyDetails/main.png') }}" alt="">
+    <!-- Use the first image from the array as the main image -->
+    <img class="mainImg" src="{{ asset($firstImage) }}" alt="Main Image">
+
     <div class="VewAllPhoto">
         View all photos
     </div>
+
     <div class="fourImgNext">
-        <img src="{{ ('/Frontend/Image/PropertyDetails/5.png') }}" alt="">
-        <img src="{{ ('/Frontend/Image/PropertyDetails/2.png') }}" alt="">
-        <img src="{{ ('/Frontend/Image/PropertyDetails/3.png') }}" alt="">
-        <img src="{{ ('/Frontend/Image/PropertyDetails/4.png') }}" alt="">
+        <!-- Iterate over the rest of the images -->
+        @foreach ($imagesArray as $index => $image)
+        <img src="{{ asset($image) }}" alt="Property Image {{ $index + 1 }}">
+        @endforeach
     </div>
 </div>
 
@@ -106,7 +109,7 @@
                                 </svg>
                                 <input type="date" id="from" name="from" placeholder="dd.mm.yyyy" onchange="calculateDaysAndTotalCost()">
                             </div>
-    
+
                         </div>
                         <div class="to move">
                             <label for="to">Move out:</label>
@@ -117,11 +120,11 @@
                                 <input type="date" id="to" name="to" placeholder="dd.mm.yyyy" onchange="calculateDaysAndTotalCost()">
                             </div>
                         </div>
-    
+
                     </div>
                     <script src="\Frontend\js\suggestLocation.js"></script>
-                    
-                   
+
+
                     <div class="checkGuest">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M7.50033 9.16667C8.1596 9.16667 8.80406 8.97117 9.35223 8.6049C9.90039 8.23863 10.3276 7.71803 10.5799 7.10895C10.8322 6.49986 10.8982 5.82964 10.7696 5.18303C10.641 4.53643 10.3235 3.94249 9.85735 3.47631C9.39117 3.01014 8.79723 2.69267 8.15063 2.56405C7.50402 2.43543 6.8338 2.50144 6.22471 2.75374C5.61563 3.00603 5.09503 3.43327 4.72876 3.98143C4.36249 4.5296 4.16699 5.17406 4.16699 5.83334C4.16699 6.71739 4.51818 7.56524 5.1433 8.19036C5.76842 8.81548 6.61627 9.16667 7.50033 9.16667ZM14.167 10.8333C14.6614 10.8333 15.1448 10.6867 15.5559 10.412C15.967 10.1373 16.2875 9.74686 16.4767 9.29004C16.6659 8.83323 16.7154 8.33056 16.619 7.84561C16.5225 7.36066 16.2844 6.9152 15.9348 6.56557C15.5851 6.21594 15.1397 5.97784 14.6547 5.88137C14.1698 5.78491 13.6671 5.83442 13.2103 6.02364C12.7535 6.21286 12.363 6.53329 12.0883 6.94441C11.8136 7.35553 11.667 7.83888 11.667 8.33334C11.667 8.99638 11.9304 9.63226 12.3992 10.1011C12.8681 10.5699 13.504 10.8333 14.167 10.8333ZM17.5003 16.6667C17.7213 16.6667 17.9333 16.5789 18.0896 16.4226C18.2459 16.2663 18.3337 16.0543 18.3337 15.8333C18.333 15.0545 18.114 14.2914 17.7017 13.6307C17.2893 12.97 16.7 12.4381 16.0006 12.0954C15.3012 11.7527 14.5198 11.6128 13.745 11.6917C12.9702 11.7705 12.2329 12.065 11.617 12.5417C10.8008 11.7286 9.76204 11.1755 8.63185 10.952C7.50165 10.7285 6.33059 10.8447 5.26635 11.2859C4.2021 11.7272 3.29234 12.4736 2.65178 13.4312C2.01122 14.3888 1.66855 15.5146 1.66699 16.6667C1.66699 16.8877 1.75479 17.0996 1.91107 17.2559C2.06735 17.4122 2.27931 17.5 2.50033 17.5H12.5003C12.7213 17.5 12.9333 17.4122 13.0896 17.2559C13.2459 17.0996 13.3337 16.8877 13.3337 16.6667" fill="#181A18" />
@@ -134,7 +137,7 @@
                         <button class="svg-button" id="btnMinus" type="button">
                             -
                         </button>
-    
+
                     </div>
                     <script src="\Frontend\js\plus-minus-btn.js"></script>
                     <p class="alluliti">All utilities are included</p>
@@ -148,16 +151,16 @@
                             <div class="price">
                                 {{ $propertyDetail->price_per_month ? round($propertyDetail->price_per_month / 30, 2) : 'N/A' }}$
                             </div>
-                            
+
                             incl. VAT
                         </div>
                     </div>
                     <div class="PayBooking">
                         <div>
                             <p>Pay upon booking (50% of Total)</p>
-    
+
                         </div>
-    
+
                         <div>
                             <div class="price">
                                 0.00$
@@ -174,61 +177,61 @@
                             incl. VAT
                         </div>
                     </div>
-    
+
                 </div>
                 <div class="button">
                     <button class="ContinueBooking" type="submit">Continue booking</button>
                     {{-- <a  class="ContinueBooking" href="{{URL::to('/CheckoutPageA')}}" style="text-decoration: none">Continue booking</a> --}}
                     <p>When you book this apartment, your reservation will be cofirmed instantly</p>
-                   
+
                 </div>
             </div>
         </form>
-       
+
         <script>
             // Lấy các tham số từ URL
             const urlParams = new URLSearchParams(window.location.search);
             const fromDate = urlParams.get('from');
             const toDate = urlParams.get('to');
             const guestCount = urlParams.get('guestCount');
-        
+
             // Điền các giá trị vào form
             document.getElementById('from').value = fromDate || ''; // Nếu không có 'from', giữ nguyên
-            document.getElementById('to').value = toDate || '';     // Nếu không có 'to', giữ nguyên
+            document.getElementById('to').value = toDate || ''; // Nếu không có 'to', giữ nguyên
             document.getElementById('guest_count').value = guestCount || 1; // Mặc định là 1 nếu không có 'guestCount'
-        
+
             // Hàm tính số ngày và tổng chi phí
             function calculateDaysAndTotalCost() {
                 // Lấy giá trị từ các input ngày
                 const fromDate = document.getElementById("from").value;
                 const toDate = document.getElementById("to").value;
-        
+
                 // Đảm bảo cả hai ngày được chọn
                 if (fromDate && toDate) {
                     // Chuyển đổi các giá trị ngày thành đối tượng Date
                     const startDate = new Date(fromDate);
                     const endDate = new Date(toDate);
-        
+
                     // Tính chênh lệch thời gian và chuyển đổi thành số ngày
                     const diffTime = endDate - startDate;
                     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        
+
                     // Hiển thị số ngày
                     document.getElementById("dayCount").textContent = "( " + (diffDays >= 0 ? diffDays : 0) + " days )";
-        
+
                     // Lấy giá thuê hàng ngày từ class Aver (giả sử bạn đã có phần tử này trên trang)
                     const dailyRentElement = document.querySelector(".Aver .price");
                     const dailyRent = parseFloat(dailyRentElement.textContent.replace(/[^0-9.-]+/g, "")); // Loại bỏ các ký tự không phải số
-        
+
                     // Tính toán tổng chi phí
                     const totalCost = diffDays >= 0 ? (dailyRent * diffDays) : 0;
-        
+
                     // Hiển thị tổng chi phí trong class totalCosts
                     document.querySelector(".totalCosts .price").textContent = "$" + totalCost.toFixed(2);
-        
+
                     // Tính 50% chi phí để thanh toán khi đặt phòng
                     const payUponBooking = totalCost / 2;
-        
+
                     // Hiển thị 50% chi phí trong class PayBooking
                     document.querySelector(".PayBooking .price").textContent = "$" + payUponBooking.toFixed(2);
                 } else {
@@ -238,16 +241,16 @@
                     document.querySelector(".PayBooking .price").textContent = "$0.00";
                 }
             }
-        
+
             // Gọi hàm khi có sự thay đổi trong input ngày hoặc khách
             document.getElementById("from").addEventListener("change", calculateDaysAndTotalCost);
             document.getElementById("to").addEventListener("change", calculateDaysAndTotalCost);
             document.getElementById("guest_count").addEventListener("input", calculateDaysAndTotalCost);
-        
+
             // Gọi hàm tính toán ngay khi trang được tải xong
             calculateDaysAndTotalCost();
         </script>
-        
+
     </div>
 </div>
 <div class="Amenities">

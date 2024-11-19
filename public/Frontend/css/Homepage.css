@@ -677,7 +677,7 @@ body {
     margin-top: 20px;
 }
 
-.carousel .list .item .buttons a button {
+.carousel .list .item .buttons .rent-now {
     border: none;
     background-color: #f5f5f5;
     color: #333;
@@ -692,24 +692,25 @@ body {
     user-select: none;
 }
 
-.carousel .list .item .buttons a button:hover {
+.carousel .list .item .buttons .rent-now:hover {
     background-color: #e0e0e0;
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
 }
 
-.carousel .list .item .buttons a button:active {
+.carousel .list .item .buttons .rent-now:active {
     background-color: #ccc;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
     transform: translateY(0);
 }
 
 
-.carousel .list .item .buttons a:nth-child(2) button {
+.carousel .list .item .buttons .see-more {
     background-color: transparent;
     border: 1px solid #fff;
     color: #eee;
-    padding: 13px 20px;
+    padding: 14px 20px;
+    height: 44px;
     border-radius: 6px;
     font-family: "Lato", sans-serif;
     font-weight: 600;
@@ -718,14 +719,14 @@ body {
     cursor: pointer;
 }
 
-.carousel .list .item .buttons a:nth-child(2) button:hover {
+.carousel .list .item .buttons .see-more:hover {
     background-color: rgba(255, 255, 255, 0.2);
     color: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
 }
 
-.carousel .list .item .buttons a:nth-child(2) button:active {
+.carousel .list .item .buttons .see-more:active {
     background-color: rgba(255, 255, 255, 0.3);
     color: #ddd;
     transform: translateY(0);

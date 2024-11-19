@@ -40,9 +40,22 @@
 
                         <a href="{{URL::to('/Blog')}}">Blog</a>
                         <a href="{{URL::to('/Contact')}}">Contacts</a>
-                    </ul>
-                </nav>
+
+
+                        @if (Route::has('register'))
+                        <form action="{{ route('register') }}">
+                            
+                            <button class="animated-dark-green-btn" style="color: white">Join Us!</button>
+
+                        </form>
+                        @endif
+
+
             </div>
+
+            </ul>
+            </nav>
+        </div>
 
 
         </div>
@@ -66,31 +79,6 @@
             <!-- Logo and Contact Info -->
             <div>
                 <a href="/" target="_blank" rel="noopener noreferrer" class="footerLogo">FlexiRent</a>
-                @if (Route::has('login'))
-                <nav class="-mx-3 flex flex-1 justify-end">
-                    @auth
-                    <a
-                        href="{{ url('/dashboard') }}"
-                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                        Dashboard
-                    </a>
-                    @else
-                    <a
-                        href="{{ route('login') }}"
-                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                        Log in
-                    </a>
-
-                    @if (Route::has('register'))
-                    <a
-                        href="{{ route('register') }}"
-                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                        Register
-                    </a>
-                    @endif
-                    @endauth
-                </nav>
-                @endif
                 <p style="margin-top: 26px;">Contact number: +84 77889999</p>
 
 
