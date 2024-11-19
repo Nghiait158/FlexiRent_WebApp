@@ -295,21 +295,32 @@ class LandlordController extends Controller
         ]);
         session(['Rules' => $data]);
         
-        return redirect('/test');
+        return redirect('landlord/showAllRegisterData');
     }
     public function showAllData(){
         // dd(session()->all());
+        $rules = session('Rules', []);
+        $prices = session('Prices', []);
+        $describe = session('Describe', []);
+        $Images = session('Images', []);
+        $address= session('address', []);
+        $details= session('details', []);
+        $services= session('services', []);
+        $Amenities= session('Amenities', []);
+
+        
         $data = [
-            'address' => session('property_address', []),
-            'details' => session('property_details', []),
-            'services' => session('property_services', []),
-            'amenities' => session('property_amenities', []),
-            'images' => session('property_images', []),
-            'describe' => session('property_describe', []),
-            'rules' => session('property_rules', []), 
+            'rules' => $rules,
+            'prices' => $prices,
+            'describe' => $describe,
+            'address'=>$address,
+            'details'=>$details,
+            'services'=>$services,
+            'Amenities'=>$Amenities,
+            'Images'=>$Images,
         ];
-        dd($data);
-        return view('landlord.show_all_register_data', compact('data'));
+        // dd($data);
+        return view('landlord.showAllRegisterData', compact('data'));
     }
 
     // ----------------------Backend--------------

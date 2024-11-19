@@ -1,8 +1,13 @@
 <h1>Stored Data</h1>
 
 @if (!empty($data))
-    <p><strong>Name:</strong> {{ $data['petsAllowed'] }}</p>
-    <p><strong>Email:</strong> {{ $data['smokingAllowed'] }}</p>
+    @foreach( $data['rules'] as $rule)
+        <p><strong>Rule:</strong> {{ $rule }}</p>
+    @endforeach
+
+    <p><strong>Rule:</strong> {{ $data['rules']['petsAllowed'] }}</p>
+
+
 @else
     <p>No data found in session.</p>
 @endif
