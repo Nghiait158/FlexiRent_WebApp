@@ -209,35 +209,42 @@ class LandlordController extends Controller
         // dd($Amenities);
         return view('landlord.add_property_images');
     }
-    public function storePropertyImages(Request $request) {
-        // Validate the input
-        $data = $request->validate([
-            'imageChoice' => 'required|in:file,text',
-            // 'loImgPath' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            // 'locationImgUrl' => 'required_if:imageChoice,text|url',
-        ]);
-    
-        // $data = [];
-    
-        if ($request->imageChoice === 'file' && $request->hasFile('loImgPath')) {
-            // Handle file upload
-            $uploadedFile = $request->file('loImgPath');
-            $filename = time() . '_' . $uploadedFile->getClientOriginalName();
-            $uploadedFile->move(public_path('frontEnd/img'), $filename);
-        
-            $data['propertyImg_name'] = '/Frontend/Image/PropertyImages/' . $filename;
-            $data['path'] = $data['propertyImg_name']; // File path
-        } elseif ($request->imageChoice === 'text') {
-            // Handle URL input
-            $data['propertyImg_name'] = $request->locationImgUrl;
-            $data['path'] = $request->locationImgUrl; // URL path
-        }
-    
-        // Store only the relevant data in session
+    public function storePropertyImages(Request $request)
+    {
+        // $data = $request->validate([
+        //     'imageChoice' => 'required|in:file,text',
+        //     'loImgPath' => 'required_if:imageChoice,file|file|mimes:jpg,jpeg,png|max:2048',
+        //     'locationImgUrl' => 'required_if:imageChoice,text|url',
+        // ]);
+        $data = $request->all();
+        if ($data['imageChoice'] === 'text') {
+
+            $path = $data['locationImgUrl'];
+        } 
+        // elseif ($data['imageChoice'] === 'file') {
+
+        //     if ($request->hasFile('loImgPath') && $request->file('loImgPath')->isValid()) {
+        //         $get_image = $request->file('loImgPath');
+        //         $new_image_name = time() . '_' . $get_image->getClientOriginalName();
+        //         $get_image->move(public_path('Frontend/Image/PropertyImages'), $new_image_name);
+        //         $path = '/Frontend/Image/PropertyImages/' . $new_image_name;
+        //     } else {
+        //         $path= 'null';
+        //         return back()->withErrors(['loImgPath' => 'The uploaded file is invalid.']);
+        //     }
+        // }
+
+
+
+        $data = [
+            'imageChoice' => $data['imageChoice'],
+            'path' => $path,
+        ];
         session(['Images' => $data]);
     
         return redirect('landlord/add_property_describe');
     }
+    
     
 
 

@@ -78,7 +78,7 @@
                         <label for="imageChoice">Decide how to import pictures:</label><br>
                         <input type="radio" id="fileOption" name="imageChoice" value="file" checked>
                         <label for="fileOption">Upload File</label><br>
-                        <input type="radio" id="textOption" name="imageChoice" value="text">
+                        <input type="radio" id="textOption" name="imageChoice" value="text" checked>
                         <label for="textOption">Provide URL</label>
                     </div>
                     <br>
