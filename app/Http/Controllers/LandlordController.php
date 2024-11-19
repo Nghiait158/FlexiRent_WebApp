@@ -15,48 +15,67 @@ class LandlordController extends Controller
 
     // ------------------ Frontend---------------
 
-    public function index(){
+    public function index()
+    {
         $currentUser = Auth::user();
         $currentLandlord = Landlord::where('id', $currentUser->id)->first();
-
-
+    
         if (!$currentLandlord) {
             return redirect()->back()->with('error', 'No admin data found for this user.');
         }
+    
         $properties = Property::where('landlord_id', $currentLandlord->landlord_id)->get();
-        $bookings = [];
-
+        
         foreach ($properties as $property) {
-            // Fetch bookings for each property
-            $bookings[$property->property_id] = Booking::where('property_id', $property->property_id)
-            ->with('guest')
-            ->with('property')
-            ->get();
+            // Find and cancel expired bookings
+            $expiredBookings = Booking::where('property_id', $property->property_id)
+                ->where('status', 'confirmed')
+                ->where('check_out', '<', now())
+                ->get();
+        
+            foreach ($expiredBookings as $booking) {
+                $booking->status = 'cancelled';
+                $booking->save();
+            }
+        
+            // Check for active bookings to set property status
+            $hasActiveBookings = Booking::where('property_id', $property->property_id)
+                ->where('status', 'confirmed')
+                ->where('check_out', '>=', now())
+                ->exists();
+            
+            $property->status = $hasActiveBookings ? '1' : '0';
+            $property->save();
         }
-
-        // $bookingOfPropertyhasStatus1 = Booking::with(['property', 'guest'])
-        //     ->whereHas('property', function ($query) {
-        //         $query->where('status', 1);
-        //     })
-        //     ->get();
+    
+        $bookings = [];
+        foreach ($properties as $property) {
+            $propertyBookings = Booking::where('property_id', $property->property_id)
+                ->with('guest')
+                ->with('property')
+                ->get();
+    
+            $bookings[$property->property_id] = $propertyBookings;
+        }
+    
         $bookingOfPropertyhasStatus1 = Booking::whereHas('property', function ($query) use ($currentLandlord) {
-            $query->where('landlord_id', $currentLandlord->landlord_id);
+            $query->where('landlord_id', $currentLandlord->landlord_id)
+                  ->where('status', 1); 
         })
-        ->where('status', 1)
+        ->where('status','confirmed')
         ->with('property')
         ->get();
-
-
-                             
+    
         $data = [
             'currentLandlord' => $currentLandlord,
-            'properties'=>$properties,
-            'bookings'=>$bookings,
-            'bookingOfPropertyhasStatus1'=>$bookingOfPropertyhasStatus1,
+            'properties' => $properties,
+            'bookings' => $bookings,
+            'bookingOfPropertyhasStatus1' => $bookingOfPropertyhasStatus1,
         ];
-        // dd($data);
+    
         return view('landlord.dashboard', $data);
     }
+    
     public function updateEmailLandlord(Request $request, $landlord_id ){
         $data= $request->all();
         $Landlord = Landlord::with('user')->find($landlord_id );
