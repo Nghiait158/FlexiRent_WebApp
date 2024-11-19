@@ -27,7 +27,7 @@
 
 
             <div class="input-container">
-                <form action="{{URL::to('landlord/add_property_services')}}" method="post">
+                <form action="{{ route('property.store.details') }}" method="post">
                     @csrf
                     <div class="input-form">
                         <label for="area"><b>What’s the size of the apartment?</b>

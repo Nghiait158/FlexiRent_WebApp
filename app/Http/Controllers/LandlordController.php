@@ -120,15 +120,16 @@ class LandlordController extends Controller
         $data = $request->validate([
             'address-input' => 'required|string',
         ]);
-        session()->put('property_data.address', $data);
-
-
-        return redirect('/add_property_details');
+        session(['address' => $data]);
+        return redirect('landlord/add_property_details');
     }
 
 
     public function addPropertyDetails(){
-        return view('landlord.add_property_details');
+        $address = session('address', []);
+        // dd($Amenities);
+        return view('landlord.add_property_details', ['address' => $address]);
+        // return view('landlord.add_property_details');
     }
     public function storePropertyDetails(Request $request){
         $data = $request->validate([
@@ -139,9 +140,9 @@ class LandlordController extends Controller
             'room'=> 'required|integer',
 
         ]);
-        session()->put('property_data.details', $data);
+        session(['details' => $data]);
 
-        return redirect('/add_property_services');
+        return redirect('landlord/add_property_services');
     }
 
     public function addPropertyServices(){
@@ -151,73 +152,98 @@ class LandlordController extends Controller
         $data = $request->validate([
             'wifi' => 'nullable|boolean',
             'internetSpeed' => 'nullable|integer',
-            // 'floor' => 'required|integer',
-            // 'guest_capacity' => 'required|integer',
-            // 'room'=> 'required|integer',
-
         ]);
-        session()->put('property_data.services', $data);
+        session(['services' => $data]);
 
-        return redirect('/add_property_amenities');
+        return redirect('landlord/add_property_amenities');
     }
 
 
     public function addPropertyAmenities(){
         return view('landlord.add_property_amenities');
     }
-    public function storePropertyAmenities(Request $request){
+    public function storePropertyAmenities(Request $request) {
+        $defaultValues = [
+            'TV' => 0,
+            'Coffee_machine' => 0,
+            'Dryer' => 0,
+            'Phone' => 0,
+            'Dish' => 0,
+            'Fridge' => 0,
+            'Kettle' => 0,
+            'Wardrobe' => 0,
+            'Iron' => 0,
+            'Work_desk' => 0,
+            'Washing_Machine' => 0, 
+            'Fireplace' => 0,
+        ];
+    
+        // Validate the request data
         $data = $request->validate([
             'TV' => 'nullable|boolean',
-            'Coffee machine' => 'nullable|boolean',
+            'Coffee_machine' => 'nullable|boolean',
             'Dryer' => 'nullable|boolean',
             'Phone' => 'nullable|boolean',
             'Dish' => 'nullable|boolean',
             'Fridge' => 'nullable|boolean',
             'Kettle' => 'nullable|boolean',
-            'Wardrode' => 'nullable|boolean',
+            'Wardrobe' => 'nullable|boolean',
             'Iron' => 'nullable|boolean',
-            'Work desk' => 'nullable|boolean',
-            'Washing Machine' => 'nullable|boolean',
+            'Work_desk' => 'nullable|boolean',
+            'Washing_Machine' => 'nullable|boolean', 
             'Fireplace' => 'nullable|boolean',
         ]);
-        session()->put('property_data.amenities', $data);
-
-        return redirect('/add_property_images');
+    
+        // Merge defaults with validated data
+        $finalData = array_merge($defaultValues, $data);
+    
+        // Store merged data in session
+        session(['Amenities' => $finalData]);
+    
+        return redirect('landlord/add_property_images');
     }
+    
 
     public function addPropertyImages(){
+        // $Amenities = session('Amenities', []);
+        // dd($Amenities);
         return view('landlord.add_property_images');
     }
-    public function storePropertyImages(Request $request){
-        $request->validate([
+    public function storePropertyImages(Request $request) {
+        // Validate the input
+        $data = $request->validate([
             'imageChoice' => 'required|in:file,text',
-            'loImgPath' => 'required_if:imageChoice,file|file|mimes:jpg,jpeg,png|max:2048',
-            'locationImgUrl' => 'required_if:imageChoice,text|url',
+            // 'loImgPath' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
+            // 'locationImgUrl' => 'required_if:imageChoice,text|url',
         ]);
-
-    $data = $request->all();
-
-    if ($request->imageChoice === 'file' && $request->hasFile('loImgPath')) {
-        // Handle file upload
-        $uploadedFile = $request->file('loImgPath');
-        $filename = time() . '_' . $uploadedFile->getClientOriginalName();
-        $uploadedFile->move(public_path('frontEnd/img'), $filename);
-
-        $data['propertyImg_name'] = '/Frontend/Image/PropertyImages/' . $filename;
-    } elseif ($request->imageChoice === 'text') {
-        // Handle URL input
-        $data['propertyImg_name'] = $request->locationImgUrl;
+    
+        // $data = [];
+    
+        if ($request->imageChoice === 'file' && $request->hasFile('loImgPath')) {
+            // Handle file upload
+            $uploadedFile = $request->file('loImgPath');
+            $filename = time() . '_' . $uploadedFile->getClientOriginalName();
+            $uploadedFile->move(public_path('frontEnd/img'), $filename);
+        
+            $data['propertyImg_name'] = '/Frontend/Image/PropertyImages/' . $filename;
+            $data['path'] = $data['propertyImg_name']; // File path
+        } elseif ($request->imageChoice === 'text') {
+            // Handle URL input
+            $data['propertyImg_name'] = $request->locationImgUrl;
+            $data['path'] = $request->locationImgUrl; // URL path
+        }
+    
+        // Store only the relevant data in session
+        session(['Images' => $data]);
+    
+        return redirect('landlord/add_property_describe');
     }
-
-    // Store data in session for later use
-    session()->put('property_data.images', $data);
-
-    return redirect('/add_property_describe')->with('success', 'Image added successfully!');
-}
+    
 
 
     public function addPropertyDescribe(){
-        return view('landlord.add_property_describe');
+        $Images = session('Images', []);
+        return view('landlord.add_property_describe', ['Images' => $Images]);
     }
     public function storePropertyDescribe(Request $request){
         $data = $request->validate([
@@ -226,13 +252,15 @@ class LandlordController extends Controller
             'description' => 'required|string|max:1000', // Required, must be a string, with a length limit
 
         ]);
-        session()->put('property_data.describe', $data);
+        session(['Describe' => $data]);
 
-        return redirect('/add_property_Price');
+
+        return redirect('landlord/add_property_price');
     }
 
     public function addPropertyPrice(){
-        return view('landlord.add_property_price');
+        $Describe = session('Describe', []);
+        return view('landlord.add_property_price', ['Describe' => $Describe]);
     }
     public function storePropertyPrice(Request $request){
         $data = $request->validate([
@@ -242,13 +270,15 @@ class LandlordController extends Controller
             'cleaning_fee'=>'required|numeric|min:0',
 
         ]);
-        session()->put('property_data.price', $data);
+        session(['Prices' => $data]);
 
-        return redirect('/add_property_rules');
+        return redirect('landlord/add_property_rules');
     }
 
     public function addPropertyRules(){
-        return view('landlord.add_property_rules');
+        $prices = session('Prices', []);
+        // dd($data); 
+        return view('landlord.add_property_rules', ['prices' => $prices]);
     }
     public function storePropertyRules(Request $request){
         $data = $request->validate([
@@ -256,19 +286,23 @@ class LandlordController extends Controller
             'smokingAllowed' => 'string|required',
             'rules' => 'string|nullable', 
         ]);
-        session()->put('property_data.rules', $data);
+        session(['Rules' => $data]);
         
-        return redirect('/showAllRegisterData');
+        return redirect('/test');
     }
     public function showAllData(){
-        $propertyData = session('property_data', []);
-
-        if (empty($propertyData)) {
-            return redirect()->route('property.add.address')->with('error', 'No property data found.');
-        }
-        dd($propertyData);
-    
-        return view('landlord.showAllRegisterData', compact('propertyData'));
+        // dd(session()->all());
+        $data = [
+            'address' => session('property_address', []),
+            'details' => session('property_details', []),
+            'services' => session('property_services', []),
+            'amenities' => session('property_amenities', []),
+            'images' => session('property_images', []),
+            'describe' => session('property_describe', []),
+            'rules' => session('property_rules', []), 
+        ];
+        dd($data);
+        return view('landlord.show_all_register_data', compact('data'));
     }
 
     // ----------------------Backend--------------

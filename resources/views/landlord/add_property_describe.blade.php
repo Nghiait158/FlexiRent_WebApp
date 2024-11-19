@@ -28,7 +28,7 @@
 
 
             <div class="input-container">
-                <form action="{{URL::to('landlord/add_property_price')}}" method="POST">
+                <form action="{{ route('property.store.describe') }}" method="post">
                     @csrf
                     <div class="input-form">
                         <label for=""><b>Listing title</b>

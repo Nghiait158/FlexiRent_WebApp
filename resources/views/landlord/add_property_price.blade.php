@@ -28,7 +28,7 @@
 
 
             <div class="input-container">
-                <form action="{{URL::to('landlord/add_property_rules')}}" method="POST">
+                <form action="{{ route('property.store.price') }}" method="post">
                     @csrf
                     <div class="input-form">
                         <label for=""><b>What is your monthly rent?</b>

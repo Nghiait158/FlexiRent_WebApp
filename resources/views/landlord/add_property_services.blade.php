@@ -57,7 +57,7 @@
             </div>
 
             <div class="input-container">
-                <form action="{{URL::to('landlord/add_property_amenities')}}" method="post">
+                <form action="{{ route('property.store.services') }}" method="post">
                     @csrf
                     <div class="input-form">
                         <label for=""><b>Do you offer Wifi?

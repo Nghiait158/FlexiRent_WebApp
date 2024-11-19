@@ -28,7 +28,8 @@
 
 
             <div class="input-container">
-                <form action="{{URL::to('landlord/showAllRegisterData')}}" method="POST">
+                <form action="{{ route('property.store.rules') }}" method="post">
+
                     @csrf
                     <div class="input-form">
                         <label for=""><b>Are pets allowed?</b>

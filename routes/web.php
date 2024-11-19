@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminManageController;
 use App\Http\Controllers\Amenitycontroller;
 use App\Http\Controllers\LogoutAndLoginAgain;
+use Illuminate\Support\Facades\Session;
 
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\BookingController; 
@@ -156,6 +157,7 @@ Route::middleware(['auth','guest'])->group(function () {
     });
 });
 
+Session::start();
 
 Route::middleware(['auth', 'landlord'])->group(function () {
     Route::get('landlord/dashboard', [LandlordController::class, 'index']);
@@ -188,31 +190,30 @@ Route::middleware(['auth', 'landlord'])->group(function () {
     Route::get('landlord/add_property_address', [LandlordController::class, 'addPropertyAddress'])->name('property.add.address');
     Route::post('/store_property_address', [LandlordController::class, 'storePropertyAddress'])->name('property.store.address');
 
-    Route::post('landlord/add_property_details', [LandlordController::class, 'addPropertyDetails'])->name('property.add.details');
+    Route::get('landlord/add_property_details', [LandlordController::class, 'addPropertyDetails'])->name('property.add.details');
     Route::post('/store_property_details', [LandlordController::class, 'storePropertyDetails'])->name('property.store.details');
 
-    Route::post('landlord/add_property_services', [LandlordController::class, 'addPropertyServices'])->name('property.add.services');
+    Route::get('landlord/add_property_services', [LandlordController::class, 'addPropertyServices'])->name('property.add.services');
     Route::post('/store_property_services', [LandlordController::class, 'storePropertyServices'])->name('property.store.services');
 
-    Route::post('landlord/add_property_amenities', [LandlordController::class, 'addPropertyAmenities'])->name('property.add.amenities');
+    Route::get('landlord/add_property_amenities', [LandlordController::class, 'addPropertyAmenities'])->name('property.add.amenities');
     Route::post('/store_property_amenities', [LandlordController::class, 'storePropertyAmenities'])->name('property.store.amenities');
 
-    Route::post('landlord/add_property_images', [LandlordController::class, 'addPropertyImages'])->name('property.add.images');
+    Route::get('landlord/add_property_images', [LandlordController::class, 'addPropertyImages'])->name('property.add.images');
     Route::post('/store_property_images', [LandlordController::class, 'storePropertyImages'])->name('property.store.images');
 
-    Route::post('landlord/add_property_describe', [LandlordController::class, 'addPropertyDescribe'])->name('property.add.describe');
+    Route::get('landlord/add_property_describe', [LandlordController::class, 'addPropertyDescribe'])->name('property.add.describe');
     Route::post('/store_property_describe', [LandlordController::class, 'storePropertyDescribe'])->name('property.store.describe');
 
-    Route::post('landlord/add_property_price', [LandlordController::class, 'addPropertyPrice'])->name('property.add.price');
+    Route::get('landlord/add_property_price', [LandlordController::class, 'addPropertyPrice'])->name('property.add.price');
     Route::post('/store_property_price', [LandlordController::class, 'storePropertyPrice'])->name('property.store.price');
 
-    Route::post('landlord/add_property_rules', [LandlordController::class, 'addPropertyRules'])->name('property.add.rules');
-    Route::post('/store_property_rules', [LandlordController::class, 'storePropertyRules'])->name('property.store.rules');
-
-    Route::post('landlord/showAllRegisterData', [LandlordController::class, 'showAllData'])->name('property.show.all');
-
-
-
+    Route::get('landlord/add_property_rules', [LandlordController::class, 'addPropertyRules'])->name('property.add.rules');
+    Route::post('landlord/store_property_rules', [LandlordController::class, 'storePropertyRules'])->name('property.store.rules');
+    
+    Route::get('landlord/showAllRegisterData', [LandlordController::class, 'showAllData'])->name('property.show.all');
+   
+   
     Route::post('/updateLandlordDashboard/{landlord_id}', [LandlordController::class, 'updateLandlordDashboard']);
     Route::post('/updateEmailLandlord/{landlord_id}', [LandlordController::class, 'updateEmailLandlord']);
 
@@ -231,6 +232,9 @@ Route::middleware(['auth', 'landlord'])->group(function () {
 // Route::get('/HomePage', action: function () {
 //     return view('Homepage');
 // });
+Route::get('/test', [HomepageController::class, 'index']);
+
+
 
 Route::get('/HomePage', [HomepageController::class, 'showProperty']);
 

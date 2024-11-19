@@ -72,11 +72,8 @@
             </div>
 
             <div class="input-container">
-                <form action="{{URL::to('landlord/add_property_describe')}}" method="POST">
+                <form action="{{ route('property.store.images') }}" method="post">
                     @csrf
-                    {{-- <div class="input-form">
-                        <input type="file" name="images" class="form-control file-input" id="fileInput" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required onchange="previewImages(event)" multiple>
-                    </div> --}}
                     <div class="form-group">
                         <label for="imageChoice">Decide how to import pictures:</label><br>
                         <input type="radio" id="fileOption" name="imageChoice" value="file" checked>
@@ -86,18 +83,16 @@
                     </div>
                     <br>
                     <div class="form-group" id="fileInput">
-                        {{-- <label for="loImgPath">Chọn Hình Ảnh</label> --}}
                         <input type="file" class="form-control" name="loImgPath" id="loImgPath">
                     </div>
-                    
                     <div class="form-group" id="textInput" style="display: none;">
-                        {{-- <label for="locationImgUrl">Nhập URL hình ảnh</label> --}}
                         <input type="text" class="form-control" name="locationImgUrl" id="locationImgUrl" placeholder="Enter URL">
                     </div>
 
                     <div class="image-preview-container" id="imagePreviewContainer"></div>
             </div>
             <script>
+               
                 function previewImages(event) {
                     const files = event.target.files; // Get the selected files
                     const previewContainer = document.getElementById('imagePreviewContainer');
