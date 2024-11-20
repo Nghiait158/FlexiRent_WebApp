@@ -338,7 +338,7 @@ class LandlordController extends Controller
             'Amenities'=>$Amenities,
             'Images'=>$Images,
         ];
-        // dd($data);
+        dd($data);
         return view('landlord.showAllRegisterData', compact('data'));
     }
 

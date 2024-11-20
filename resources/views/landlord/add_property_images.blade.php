@@ -76,16 +76,16 @@
                     @csrf
                     <div class="form-group">
                         <label for="imageChoice">Decide how to import pictures:</label><br>
-                        <input type="radio" id="fileOption" name="imageChoice" value="file" checked>
+                        <input type="radio" id="fileOption" name="imageChoice" value="file" >
                         <label for="fileOption">Upload File</label><br>
                         <input type="radio" id="textOption" name="imageChoice" value="text" checked>
                         <label for="textOption">Provide URL</label>
                     </div>
                     <br>
-                    <div class="form-group" id="fileInput">
+                    <div class="form-group" id="fileInput" style="display: none;">
                         <input type="file" class="form-control" name="loImgPath" id="loImgPath">
                     </div>
-                    <div class="form-group" id="textInput" style="display: none;">
+                    <div class="form-group" id="textInput" >
                         <input type="text" class="form-control" name="locationImgUrl" id="locationImgUrl" placeholder="Enter URL">
                     </div>
 
