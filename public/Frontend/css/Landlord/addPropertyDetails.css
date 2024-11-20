@@ -1,0 +1,476 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+@font-face {
+    font-family: "Lato";
+    src: url('/Frontend/Font-family/Lato/Lato-Regular.ttf');
+}
+
+@font-face {
+    font-family: "Molle";
+    src: url('/Frontend/Font-family/Molle/Molle-Regular.ttf');
+}
+
+
+
+body {
+    font-family: "Lato", sans-serif;
+}
+
+p {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 0.2fr 0.575fr 0.225fr;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+}
+
+
+.logo {
+    font-family: "Molle";
+    font-style: italic;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 66.67%;
+    margin-top: 40px;
+    margin-left: 15%;
+}
+
+.logo a {
+    color: #000;
+    text-decoration: none;
+}
+
+
+
+.add-details-container {
+
+    padding-top: 40px;
+    padding-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.title p {
+    color: rgb(87, 93, 100);
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-top: 60px;
+    width: 65%;
+}
+
+.input-form {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.input-form label {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.form-control,
+.form-select {
+    width: 45%;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Space between labels and switch */
+}
+
+/* Increase switch size */
+.form-check-input {
+    transform: scale(2);
+    margin: 0 10px;
+}
+
+.form-check-input.custom-switch:checked {
+    background-color: black;
+    border-color: black;
+}
+
+.form-check-input.custom-switch:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.5); 
+} 
+
+/* Style for dynamic input container */
+.dynamic-input-container {
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Container for the progress bar */
+.progress-bar-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    overflow: hidden; /* Ensure no overflow beyond the container */
+    height: 3px;
+}
+
+/* The actual progress bar */
+.progress-bar {
+    height: 3px;
+    background-color: #555; /* Green color */
+    width: 0; /* Initial width (0%) */
+    border-radius: 10px 0 0 10px; /* Optional: rounded left corners */
+    transition: width 0.5s ease; /* Smooth transition for width change */
+}
+
+@keyframes fillProgress {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 10%;
+    }
+}
+
+.foot {
+    display: flex;
+    width: 40%;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 20px;
+    gap: 20px;
+    background-color: white;
+}
+
+.button{
+    display: flex;
+    justify-content: space-between;
+}
+.prevBtn button {
+    border: none;
+    background: none;
+}
+
+.nextBtn button {
+    overflow: visible;
+    font-style: inherit;
+    font-variant: inherit;
+    font-weight: inherit;
+    font-stretch: inherit;
+    font-optical-sizing: inherit;
+    font-size-adjust: inherit;
+    font-kerning: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    -webkit-font-smoothing: inherit;
+    appearance: none;
+    border-radius: 2em;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 2px;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 14px;
+    line-height: 1;
+    border: 1px solid black;
+    padding: 0px 20px;
+    text-decoration: none;
+    white-space: nowrap;
+    text-align: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: fit-content;
+    background: black;
+    color: white;
+    min-width: 145px;
+    height: 46px;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nextBtn button:hover {
+    background: #333;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 6px;
+}
+
+.nextBtn button:active {
+    background: #555;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 4px;
+    transform: scale(0.98);
+}
+
+
+.solid-line {
+    display: block;
+    height: 1px;
+    margin: 20px 0px;
+    padding: 0px;
+    border: 0px;
+    width: 100%;
+    background: rgb(106, 113, 115);
+}
+
+.picture {
+    background:
+        linear-gradient(rgba(36, 39, 46, 0.25) 40%, rgba(36, 39, 46, 0.5) 50%, rgba(36, 39, 46, 0.85) 80%),
+        url('/Frontend/Image/addPropertyPage/pic1.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    width: 80%;
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    bottom: 18%;
+}
+
+.text h3,
+.text p {
+
+
+    text-align: center;
+    margin: 0 auto;
+}
+
+.text h3 {
+    font-size: 20px;
+    color: white;
+    font-weight: 700;
+}
+
+.text p {
+    font-size: 16px;
+    color: #d3d3d3;
+}
+
+.picture .footer {
+    position: absolute;
+    bottom: 0;
+    height: 80px;
+    width: 100%;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.picture .footer button {
+    border: none;
+    background: none;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    gap: 10px;
+}
+
+.picture .footer button p{
+    margin: 0;
+}
+
+.help-section {
+    position: absolute;
+    background-color: white;
+    bottom: 20px;
+    left: 0;
+    transform: translateX(-25%);
+    width: 300px;
+    z-index: 100;
+    border: 1px solid #ccc;
+    /* Light gray border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2),
+        /* Subtle shadow for depth */
+        0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Additional lighter shadow */
+    border-radius: 5px;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.help-section .item {
+    background-color: #f1f1f1;
+    /* Light gray background for items */
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    /* Make items take the full width of container */
+    text-align: center;
+    color: #333;
+    /* Dark text for readability */
+}
+
+.help-title p,
+.help-section .info .text-info,
+.help-section .info .text-info p {
+    margin: 0;
+}
+
+.help-section .help-title .subtitle {
+    font-size: 14px;
+    color: rgb(87, 93, 100);
+}
+
+.help-section .info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.help-section .info {
+    display: flex;
+    gap: 10px;
+}
+
+.help-section .info .text-info {
+    align-items: start;
+}
+
+.help-section .info .text-info p {
+    text-align: start;
+    color: black;
+
+}
+
+.help-section .info {
+    display: flex;
+}
+
+.help-section .button-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.help-section .button-container button,
+.delete-section .button-container button {
+    overflow: visible;
+    font-style: inherit;
+    font-variant: inherit;
+    font-weight: inherit;
+    font-stretch: inherit;
+    font-optical-sizing: inherit;
+    font-size-adjust: inherit;
+    font-kerning: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    -webkit-font-smoothing: inherit;
+    appearance: none;
+
+    border-radius: 2em;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+
+    text-decoration: none;
+    white-space: nowrap;
+    text-align: center;
+
+
+
+    -webkit-box-pack: center;
+    justify-content: center;
+
+}
+
+.help-section .button-container button {
+    padding: 0px 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 2px;
+    height: 40px;
+    font-size: 16px;
+    width: 100%;
+    background: white;
+    color: black;
+    line-height: 1;
+    border: 1px solid rgb(226, 233, 235);
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Faded background */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* Ensures it sits on top of other content */
+}
+
+.delete-section {
+    background-color: white;
+    position: fixed;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 1001;
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.delete-section .button-container{
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.cancelBtn {
+    background: white;
+    border-radius: 2em;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 2px;
+    line-height: 1;
+    border: 1px solid rgb(226, 233, 235);
+    padding: 0px 20px;
+    height: 40px;
+    font-size: 16px;
+
+}
+.deleteBtn {
+    border-radius: 2em;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 3px 2px;
+    line-height: 1;
+    border: 1px solid rgb(197, 31, 61);
+    padding: 0px 20px;
+    height: 40px;
+    font-size: 16px;
+    background: rgb(197, 31, 61);
+    color: white;
+}
