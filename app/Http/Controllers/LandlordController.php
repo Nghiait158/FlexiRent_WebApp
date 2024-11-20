@@ -342,6 +342,14 @@ class LandlordController extends Controller
         return view('landlord.showAllRegisterData', compact('data'));
     }
 
+    public function editProperty(){
+        return view('landlord.edit_property');
+    }
+
+    public function myProperty(){
+        return view('landlord.myProperty');
+    }
+
     // ----------------------Backend--------------
     public function manage_landlord(){  
         $allLandlord = Landlord::with('user')->get();

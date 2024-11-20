@@ -1,0 +1,270 @@
+body {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    max-height: 80%;
+    /* Đảm bảo modal không quá lớn */
+    overflow-y: auto;
+    /* Cho phép cuộn nội dung */
+    transition: transform 0.3s ease;
+}
+
+/* Modal body with scrollable content */
+.modal-body {
+    max-height: 400px;
+    /* Chiều cao tối đa của phần nội dung */
+    overflow-y: auto;
+    /* Cho phép cuộn khi nội dung quá dài */
+    padding-right: 10px;
+    /* Để tránh nội dung bị che bởi thanh cuộn */
+}
+
+.modal .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Additional styling for the modal to ensure it is clearly visible */
+.modal-content {
+    position: relative;
+    z-index: 10000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Thêm hiệu ứng đổ bóng cho modal */
+}
+
+/* Button style */
+.cancelbtn {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.cancelbtn:hover {
+    background-color: #d32f2f;
+}
+
+.property-details {
+    margin-top: 20px;
+}
+
+.card {
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for cards */
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 20px;
+    background-color: #fafafa;
+    font-size: 1.1rem;
+}
+
+.list-group-item {
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+.toggle-columns {
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-columns:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.filter-section {
+    display: none;
+    margin-top: 10px;
+}
+
+/* Tooltip */
+th[title] {
+    position: relative;
+}
+
+th[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 0.875rem;
+}
+
+/* DataTable improvements */
+table.dataTable {
+    width: 100% !important;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+table.dataTable thead th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+table.dataTable tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Buttons */
+.btn-info,
+.btn-warning,
+.btn-danger {
+    transition: background-color 0.3s ease;
+}
+
+.btn-info:hover {
+    background-color: #17a2b8;
+}
+
+.btn-warning:hover {
+    background-color: #ffc107;
+}
+
+.btn-danger:hover {
+    background-color: #dc3545;
+}
+
+
+/* Custom styling for stats cards */
+.card-body p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Enhanced buttons */
+.btn {
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 1rem;
+}
+
+/* Filter Dropdown */
+.dropdown-menu {
+    border-radius: 8px;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+/* Pagination Style */
+.dataTables_wrapper .dataTables_paginate {
+    margin-top: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    /* Lower z-index to ensure it stays behind the modal */
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    border-radius: 50px;
+    padding: 8px 15px;
+    margin: 0 5px;
+    font-size: 0.875rem;
+    color: #007bff;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:active {
+    background-color: #0056b3;
+    color: white;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+}
+
+/* Adjust visibility and appearance of pagination */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    z-index: 5;
+    /* Ensure pagination is behind modals */
+}
+
+/* Hide ellipsis (...) */
+.dataTables_wrapper .dataTables_paginate .ellipsis {
+    display: none;
+}
+
+/* Optional: Add a subtle shadow to pagination buttons to make them less intrusive */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
