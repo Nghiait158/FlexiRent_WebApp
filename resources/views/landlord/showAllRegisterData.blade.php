@@ -28,7 +28,7 @@
 
 
             <div class="input-container">
-                <form method="POST" action="">
+                <form method="POST" action="{{ url('/savePropertyLandlord/' . $currentLandlord->landlord_id) }}">
                     @csrf
                     <div class="input-form">
                         <label class="title" for="">
@@ -321,14 +321,17 @@
                                 <label for="">WiFi</label>
 
                                 <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                    <input class="form-check-input custom-switch"
+                                    <input 
+                                        class="form-check-input custom-switch"
                                         type="checkbox"
                                         role="switch"
                                         id="wifiSwitch"
-                                        name="wifi"
-                                        value="{{ session('services.wifi') }}"
+                                        name="wifi_checkbox"
+                                        value="0"
                                         {{ session('services.wifi') == '1' ? 'checked' : '' }}
-                                        disabled>
+                                        
+                                        onchange="this.value = this.checked ? 1 : 0;">
+                            
                                 </div>
                             </div>
                             <hr class="solid-line">
@@ -346,6 +349,7 @@
                                         value="{{ session('services.internetSpeed', 0) }}"
                                         required
                                         disabled>
+                                    {{-- <input type="hidden" name="wifi" value="{{ session('services.wifi') }}"> --}}
                                 </div>
                             </div>
                             <hr class="solid-line">
@@ -358,12 +362,13 @@
                                         role="switch"
                                         id="elevatorSwitch"
                                         name="elevator"
-                                        value="{{ session('services.elevator') }}"
+                                        value=""
                                         {{ session('services.elevator') == '1' ? 'checked' : '' }}
-                                        disabled>
+                                        
+                                        onchange="this.value = this.checked ? 1 : 0;">
                                 </div>
                             </div>
-                            <hr class="solid-line">
+                            {{-- <hr class="solid-line"> --}}
                         </div>
                     </div>
 
@@ -371,10 +376,13 @@
                         document.getElementById('toggleEditButtonServices').addEventListener('click', function() {
                             const wifiCheckbox = document.getElementById('wifiSwitch');
                             const internetSpeedInput = document.getElementById('internetSpeedInput');
-
+                            const elevator =document.getElementById('elevatorSwitch')
                             // Toggle the disabled property of the WiFi checkbox and internet speed input
                             const isDisabled = wifiCheckbox.disabled;
+                            const iselvatorDisabled = elevator.disabled;
+                            
                             wifiCheckbox.disabled = !isDisabled;
+                            elevator.disabled = !iselvatorDisabled;
 
                             // Enable or disable the internet speed input based on WiFi checkbox state
                             if (wifiCheckbox.checked) {

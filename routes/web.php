@@ -161,6 +161,7 @@ Session::start();
 
 Route::middleware(['auth', 'landlord'])->group(function () {
     Route::get('landlord/dashboard', [LandlordController::class, 'index']);
+    Route::get('landlord/savedPropertylandlord', [LandlordController::class, 'index']);
     
     Route::post('/savePropertyLandlord/{landlord_id}', [LandlordController::class, 'savePropertyLandlord']);
 
