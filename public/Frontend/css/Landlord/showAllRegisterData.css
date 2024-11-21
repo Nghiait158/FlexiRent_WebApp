@@ -14,7 +14,7 @@
     src: url('/Frontend/Font-family/Molle/Molle-Regular.ttf');
 }
 
-p {
+p, span {
     word-break: break-all;
     overflow-wrap: anywhere;
 }

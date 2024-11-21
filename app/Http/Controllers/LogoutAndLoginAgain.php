@@ -9,6 +9,6 @@ class LogoutAndLoginAgain extends Controller
 {
     public function index(){
         Auth::logout();
-        return redirect()->intended('/login');      
+        return redirect()->intended('/register');      
     }
 }

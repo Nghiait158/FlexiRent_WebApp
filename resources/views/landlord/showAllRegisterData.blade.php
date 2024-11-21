@@ -29,7 +29,7 @@
 
 
             <div class="input-container">
-                <form method="POST" action="{{ route('property.store.amenities') }}">
+                <form method="POST" action="{{ URL::to('/savePropertyLandlord/'.$currentLandlord-> property_id) }}">
                     @csrf
                     <div class="input-form">
                         <label class="title" for="">
@@ -300,7 +300,14 @@
                                 <label for="">WiFi</label>
 
                                 <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                    <input class="form-check-input custom-switch" type="checkbox" role="switch" id="wifiSwitch" name="wifi" value="{{$data['services']['wifi']}}" {{ $data['services']['wifi'] == 1 ? 'checked' : '' }} disabled>
+                                    <input class="form-check-input custom-switch" 
+                                        type="checkbox" 
+                                        role="switch" 
+                                        id="wifiSwitch" 
+                                        name="wifi" 
+                                        value="{{ session('services.wifi') }}" 
+                                        {{ session('services.wifi') == '1' ? 'checked' : '' }} 
+                                        disabled>
                                 </div>
                             </div>
                             <hr class="solid-line">
@@ -315,7 +322,7 @@
                                         step="1"
                                         name="internetSpeed"
                                         type="number"
-                                        value="{{$data['services']['internetSpeed']}}"
+                                        value="{{ session('services.internetSpeed', 0) }}"
                                         required
                                         disabled>
                                 </div>
@@ -373,7 +380,15 @@
                             <div class="form-check">
                                 <label for="">TV</label>
                                 <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                    <input class="form-check-input custom-switch amenities" type="checkbox" role="switch" id="tvSwitch" name="TV" value="{{$data['Amenities']['TV']}}" {{ $data['Amenities']['TV'] == 1 ? 'checked' : '' }} disabled>
+                                    <input 
+                                    class="form-check-input custom-switch Amenities" 
+                                    type="checkbox" 
+                                    role="switch" 
+                                    id="tvSwitch" 
+                                    name="TV" 
+                                    value="1" 
+                                    {{ session('Amenities.TV', 0) == 1 ? 'checked' : '' }} 
+                                    disabled>
                                 </div>
                             </div>
                             <hr class="solid-line">
@@ -717,7 +732,7 @@
                                 <label for="">Monthly Rent</label>
                                 <div style="display: flex; align-items: center; width: 100%">
                                     <span id="rentText" class="plain-text" style="width: 100%; text-align: end">
-                                        {{$data['Prices']['price_per_month']}}
+                                        {{ $data['prices']['price_per_month'] }}
                                     </span>
                                     <input
                                         id="rentInput"
@@ -725,7 +740,7 @@
                                         name="price_per_month"
                                         type="number"
                                         step="1"
-                                        value="{{$data['Prices']['price_per_month']}}"
+                                        value="{{$data['prices']['price_per_month']}}"
                                         style="display:none;"
                                         required>
                                 </div>
@@ -737,7 +752,7 @@
                                 <label for="">Deposit</label>
                                 <div style="display: flex; align-items: center; width: 100%">
                                     <span id="depositText" class="plain-text" style="width: 100%; text-align: end">
-                                        {{$data['Prices']['security_deposit']}}
+                                        {{$data['prices']['security_deposit']}}
                                     </span>
                                     <input
                                         id="depositInput"
@@ -745,7 +760,7 @@
                                         name="security_deposit"
                                         type="number"
                                         step="1"
-                                        value="{{$data['Prices']['security_deposit']}}"
+                                        value="{{$data['prices']['security_deposit']}}"
                                         style="display:none;"
                                         required>
                                 </div>
@@ -757,7 +772,7 @@
                                 <label for="">Cleaning Fee</label>
                                 <div style="display: flex; align-items: center; width: 100%">
                                     <span id="cleaningText" class="plain-text" style="width: 100%; text-align: end">
-                                        {{$data['Prices']['cleaning_fee']}}
+                                        {{$data['prices']['cleaning_fee']}}
                                     </span>
                                     <input
                                         id="cleaningInput"
@@ -765,7 +780,7 @@
                                         name="cleaning_fee"
                                         type="number"
                                         step="1"
-                                        value="{{$data['Prices']['cleaning_fee']}}"
+                                        value="{{$data['prices']['cleaning_fee']}}"
                                         style="display:none;"
                                         required>
                                 </div>
@@ -841,7 +856,7 @@
                                 <label for="">Pets</label>
                                 <div style="display: flex; align-items: center; width: 100%;">
                                     <span id="petsText" class="plain-text" style="width: 100%; text-align: end;">
-                                        {{$data['Rules']['petsAllowed']}}
+                                        {{$data['rules']['petsAllowed']}}
                                     </span>
                                     <select id="petsInput" class="form-select" name="pets_allowed" style="display: none;" required>
                                         <option disabled selected>Please select</option>
@@ -859,7 +874,7 @@
                                 <label for="">Smoking</label>
                                 <div style="display: flex; align-items: center; width: 100%;">
                                     <span id="smokingText" class="plain-text" style="width: 100%; text-align: end;">
-                                        {{$data['Rules']['smokingAllowed']}}
+                                        {{$data['rules']['smokingAllowed']}}
                                     </span>
                                     <select id="smokingInput" class="form-select" name="smoking_allowed" style="display: none;" required>
                                         <option disabled selected>Please select</option>
@@ -877,14 +892,14 @@
                                 <label for="">Additional information</label>
                                 <div style="display: flex; align-items: center; width: 100%;">
                                     <span id="rulesText" class="plain-text" style="width: 100%; text-align: end;">
-                                        {{$data['Rules']['rules'] ? $data['Rules']['rules'] : 'Not provided'}}
+                                        {{$data['rules']['rules'] ? $data['rules']['rules'] : 'Not provided'}}
                                     </span>
                                     <textarea
                                         id="rulesInput"
                                         class="form-control"
                                         name="education_and_community"
                                         style="display: none; width: 100%; height: 200px; resize: none;"
-                                        required>{{$data['Rules']['rules']}}</textarea>
+                                        required>{{$data['rules']['rules']}}</textarea>
                                 </div>
                             </div>
                         </div>

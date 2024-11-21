@@ -164,7 +164,7 @@
         // Tính toán
         const dailySubtotal = days * rentPerDay;
         const totalCharges = dailySubtotal + cleaningFee;
-        const total = totalCharges+50;
+        const total = totalCharges;
         const dueNow = (days * rentPerDay) / 2;
 
         // Cập nhật phần tử HTML

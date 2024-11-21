@@ -25,6 +25,7 @@ class GuestController extends Controller
             // 'property_id' => $property_id,
             'propertyDetail'=>$propertyDetail,
         ];
+        $request->session()->put('checkout_data', $data);
         // dd($data);
         return view('guest.CheckoutPageA', $data);
     }
