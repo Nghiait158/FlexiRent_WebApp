@@ -86,12 +86,21 @@
 
                     <div class="dynamic-input-container" id="dynamicInputContainer"></div> -->
 
+
                     <div class="input-form">
-                        <label for=""><b>How many rooms inside your property?
-                            </b>
+                        <label for=""><b>How many bedrooms inside your property?</b>
                         </label>
-                        <input min="1" name="room" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                        <input min="1" name="bedroom" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                     </div>
+                    <hr class="solid-line">
+
+                    <div class="input-form">
+                        <label for=""><b>How many bathrooms inside your property?</b>
+                        </label>
+                        <input min="1" name="bathroom" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                    </div>
+                    <hr class="solid-line">
+
 
                     <script>
                         document.getElementById('flexSwitchCheckDefault').addEventListener('change', function() {

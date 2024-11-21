@@ -39,6 +39,14 @@
                     <hr class="solid-line">
 
                     <div class="input-form">
+                        <label for=""><b>Property view</b>
+                        </label>
+                    <input type="text" name="view" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="e.g. Awesome & spacious studio in Binh Thanh" required>
+                    </div>
+
+                    <hr class="solid-line">
+
+                    <div class="input-form">
                         <label for=""><b>Short description</b></label>
                         <textarea required name="description" class="form-control" id="floatingTextarea2" style="width: 100%; height: 200px; resize:none" placeholder="Enter a short description of the property"  ></textarea>
                           

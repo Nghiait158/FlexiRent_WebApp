@@ -156,8 +156,8 @@ class LandlordController extends Controller
             'accommodation_type' => 'required|string|max:255',
             'floor' => 'required|integer',
             'guest_capacity' => 'required|integer',
-            'room'=> 'required|integer',
-
+            'bedroom'=> 'required|integer',
+            'bathroom'=> 'required|integer',
         ]);
         session(['details' => $data]);
 
@@ -171,6 +171,7 @@ class LandlordController extends Controller
         $data = $request->validate([
             'wifi' => 'nullable|in:1,0',
             'internetSpeed' => 'nullable|integer',
+            'elevator' => 'nullable|in:1,0',
         ]);
         session(['services' => $data]);
 
@@ -274,9 +275,9 @@ class LandlordController extends Controller
     public function storePropertyDescribe(Request $request){
         $data = $request->validate([
             'ListingTitle' => 'required|string|max:255',
+            'view' => 'required|string|max:255',
             'education_and_community' => 'nullable|string|max:500', // Optional and string with a length limit
             'description' => 'required|string|max:1000', // Required, must be a string, with a length limit
-
         ]);
         session(['Describe' => $data]);
 
