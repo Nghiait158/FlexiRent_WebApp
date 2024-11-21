@@ -897,7 +897,7 @@
                                     <textarea
                                         id="rulesInput"
                                         class="form-control"
-                                        name="education_and_community"
+                                        name="rules"
                                         style="display: none; width: 100%; height: 200px; resize: none;"
                                         required>{{$data['rules']['rules']}}</textarea>
                                 </div>

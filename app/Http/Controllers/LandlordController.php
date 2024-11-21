@@ -349,21 +349,37 @@ class LandlordController extends Controller
         $data = $request->all();
         $property = new Property();
 
-        $property->property_name = $data['property_name'];
+
         $property->landlord_id = $landlord_id;
         $property->location = $data['address'];
-        // $property->district = $data['district'];
-        // $property->city = $data['city'];
-        $property->nbedrooms = $data['nbedrooms'];
-        $property->nbathrooms = $data['nbathrooms'];
         $property->area = $data['area'];
-        $property->description = $data['description'];
-        $property->available = $data['available'];
-        $property->view = $data['view'];
+        $property->accommodation_type = $data['accommodation_type'];
         $property->floor = $data['floor'];
-        $property->elevator = $data['elevator'];
-        $property->price_per_month = $data['price_per_month'];
         $property->guest_capacity = $data['guest_capacity'];
+
+        // $property->nbedrooms = $data['nbedrooms'];
+        // $property->nbathrooms = $data['nbathrooms'];
+
+        $property->wifi = $data['wifi'];
+        $property->internetSpeed = $data['internetSpeed'];
+        $property->wifi = $data['wifi'];
+
+        $property->property_name = $data['listing_title'];
+        $property->description = $data['description'];
+        $property->education_and_community = $data['education_and_community'];
+
+        $property->price_per_month = $data['price_per_month'];
+        $property->security_deposit = $data['security_deposit'];
+        $property->cleaning_fee = $data['cleaning_fee'];
+
+        $property->petsAllowed = $data['pets_allowed'];
+        $property->smokingAllowed = $data['smoking_allowed'];
+        $property->rules = $data['rules'];
+        $property->view = $data['view'];
+
+        $property->elevator = $data['elevator'];
+
+
        
     
 
