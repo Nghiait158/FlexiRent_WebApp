@@ -71,6 +71,16 @@
 
                     <div class="dynamic-input-container" id="dynamicInputContainer1"></div>
 
+                    
+
+                    <div class="input-form">
+                        <label for=""><b>Elevator</b>
+                        </label>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckDefault2" name="elevator" value="1">
+                        </div>
+                    </div>
+                    
                     <script>
                         document.getElementById('flexSwitchCheckDefault1').addEventListener('change', function() {
                             const dynamicContainer = document.getElementById('dynamicInputContainer1');

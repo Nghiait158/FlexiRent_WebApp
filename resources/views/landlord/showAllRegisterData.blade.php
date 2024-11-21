@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +28,7 @@
 
 
             <div class="input-container">
-                <form method="POST" action="{{ URL::to('/savePropertyLandlord/'.$currentLandlord-> property_id) }}">
+                <form method="POST" action="">
                     @csrf
                     <div class="input-form">
                         <label class="title" for="">
@@ -205,20 +204,42 @@
 
                             <!-- Room Field -->
                             <div class="form-check">
-                                <label for="">Room</label>
-                                <div id="roomContainer" style="display: flex; align-items: center; width: 100%">
+                                <label for="">Bedroom</label>
+                                <div id="bedroomContainer" style="display: flex; align-items: center; width: 100%">
                                     <!-- Plain text initially -->
-                                    <span id="roomText" class="plain-text" style="width: 100%; text-align: end;">
-                                        {{$data['details']['room']}}
+                                    <span id="bedroomText" class="plain-text" style="width: 100%; text-align: end;">
+                                        {{$data['details']['bedroom']}}
                                     </span>
                                     <!-- Hidden input field -->
                                     <input
-                                        id="roomInput"
+                                        id="bedroomInput"
                                         class="form-control"
                                         step="1"
-                                        name="room"
+                                        name="bedroom"
                                         type="number"
-                                        value="{{$data['details']['room']}}"
+                                        value="{{$data['details']['bedroom']}}"
+                                        style="display: none;"
+                                        required>
+                                </div>
+                            </div>
+
+                            <hr class="solid-line">
+
+                            <div class="form-check">
+                                <label for="">Bathroom</label>
+                                <div id="bathroomContainer" style="display: flex; align-items: center; width: 100%">
+                                    <!-- Plain text initially -->
+                                    <span id="bathroomText" class="plain-text" style="width: 100%; text-align: end;">
+                                        {{$data['details']['bathroom']}}
+                                    </span>
+                                    <!-- Hidden input field -->
+                                    <input
+                                        id="bathroomInput"
+                                        class="form-control"
+                                        step="1"
+                                        name="bathroom"
+                                        type="number"
+                                        value="{{$data['details']['bathroom']}}"
                                         style="display: none;"
                                         required>
                                 </div>
@@ -300,13 +321,13 @@
                                 <label for="">WiFi</label>
 
                                 <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                    <input class="form-check-input custom-switch" 
-                                        type="checkbox" 
-                                        role="switch" 
-                                        id="wifiSwitch" 
-                                        name="wifi" 
-                                        value="{{ session('services.wifi') }}" 
-                                        {{ session('services.wifi') == '1' ? 'checked' : '' }} 
+                                    <input class="form-check-input custom-switch"
+                                        type="checkbox"
+                                        role="switch"
+                                        id="wifiSwitch"
+                                        name="wifi"
+                                        value="{{ session('services.wifi') }}"
+                                        {{ session('services.wifi') == '1' ? 'checked' : '' }}
                                         disabled>
                                 </div>
                             </div>
@@ -327,6 +348,22 @@
                                         disabled>
                                 </div>
                             </div>
+                            <hr class="solid-line">
+                            <div class="form-check">
+                                <label for="">Elevator</label>
+
+                                <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
+                                    <input class="form-check-input custom-switch"
+                                        type="checkbox"
+                                        role="switch"
+                                        id="elevatorSwitch"
+                                        name="elevator"
+                                        value="{{ session('services.elevator') }}"
+                                        {{ session('services.elevator') == '1' ? 'checked' : '' }}
+                                        disabled>
+                                </div>
+                            </div>
+                            <hr class="solid-line">
                         </div>
                     </div>
 
@@ -380,15 +417,15 @@
                             <div class="form-check">
                                 <label for="">TV</label>
                                 <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                    <input 
-                                    class="form-check-input custom-switch Amenities" 
-                                    type="checkbox" 
-                                    role="switch" 
-                                    id="tvSwitch" 
-                                    name="TV" 
-                                    value="1" 
-                                    {{ session('Amenities.TV', 0) == 1 ? 'checked' : '' }} 
-                                    disabled>
+                                    <input
+                                        class="form-check-input custom-switch Amenities"
+                                        type="checkbox"
+                                        role="switch"
+                                        id="tvSwitch"
+                                        name="TV"
+                                        value="1"
+                                        {{ session('Amenities.TV', 0) == 1 ? 'checked' : '' }}
+                                        disabled>
                                 </div>
                             </div>
                             <hr class="solid-line">
@@ -627,6 +664,25 @@
                             </div>
                             <hr class="solid-line">
 
+                            <!-- View Field -->
+                            <div class="form-check">
+                                <label for="">View</label>
+                                <div style="display: flex; align-items: center; width: 100%">
+                                    <span id="viewText" class="plain-text" style="width: 100%; text-align: end">
+                                        {{$data['describe']['view']}}
+                                    </span>
+                                    <input
+                                        id="viewInput"
+                                        class="form-control"
+                                        name="listing_view"
+                                        type="text"
+                                        value="{{$data['describe']['view']}}"
+                                        style="display:none; width: 100%; height: 200px; resize:none"
+                                        required>
+                                </div>
+                            </div>
+                            <hr class="solid-line">
+
                             <!-- Description Field -->
                             <div class="form-check">
                                 <label for="">Description</label>
@@ -671,6 +727,10 @@
                                 inputElement: "titleInput"
                             },
                             {
+                                textElement: "viewText",
+                                inputElement: "viewInput"
+                            }, // Added "View" toggle
+                            {
                                 textElement: "descriptionText",
                                 inputElement: "descriptionInput"
                             },
@@ -712,6 +772,7 @@
                                 `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5l4 4L7 21H3v-4L16.5 3.5z"></path></svg>`;
                         });
                     </script>
+
 
                     <hr class="solid-thick-line">
 
