@@ -246,10 +246,36 @@
             });
 
             $('#searchMinPrice, #searchMaxPrice').on('input', function() {
-                var minPrice = $('#searchMinPrice').val();
-                var maxPrice = $('#searchMaxPrice').val();
-                table.columns(12).search(minPrice + '-' + maxPrice).draw();
-            });
+    var minPrice = parseFloat($('#searchMinPrice').val());
+    var maxPrice = parseFloat($('#searchMaxPrice').val());
+
+    // Nếu minPrice hoặc maxPrice không phải là số hợp lệ, trả về NaN
+    if (isNaN(minPrice)) minPrice = '';
+    if (isNaN(maxPrice)) maxPrice = '';
+
+    // Tạo bộ lọc tìm kiếm cho cột giá
+    table.column(12).search(function(settings, data, dataIndex) {
+        var price = parseFloat(data[12]);  // Lấy giá trị của cột price (giả sử là cột 12)
+
+        // Nếu có minPrice và maxPrice, lọc các giá trị nằm trong khoảng này
+        if (minPrice !== '' && maxPrice !== '') {
+            return price >= minPrice && price <= maxPrice;
+        }
+        // Nếu có chỉ minPrice, lọc các giá trị lớn hơn hoặc bằng minPrice
+        else if (minPrice !== '') {
+            return price >= minPrice;
+        }
+        // Nếu có chỉ maxPrice, lọc các giá trị nhỏ hơn hoặc bằng maxPrice
+        else if (maxPrice !== '') {
+            return price <= maxPrice;
+        }
+        // Nếu không có minPrice và maxPrice, không lọc gì cả
+        else {
+            return true;
+        }
+    }).draw();
+});
+
 
 
             // Toggle column visibility
@@ -368,181 +394,183 @@
 
 
         <!-- Property Table -->
-        <table id="propertyTable" class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>Property ID</th>
-                    <th>Property Name</th>
-                    <th>Landlord ID</th>
-                    <th>Location</th>
-                    <th>Location Details</th>
-                    <th>Education and Community</th>
-                    <th>Bedrooms</th>
-                    <th>Bathrooms</th>
-                    <th>Area</th>
-                    <th>View</th>
-                    <th>Floor</th>
-                    <th>Status</th>
-                    <th>Price per Month</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
-                    <th>Description</th>
-                    <th>Available Date</th>
-                    <th>Guest Capacity</th>
-                    <th>Elevator</th>
-                    <th>City</th>
-                    <th>District</th>
-                    <th>Accommodation Type</th>
-                    <th>Room</th>
-                    <th>Wifi</th>
-                    <th>Internet Speed</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><span id="propertyId">1</span></td>
-                    <td contenteditable="true"><span id="propertyName">Luxury Apartment</span></td>
-                    <td><span id="landlordId">101</span></td>
-                    <td><span id="location">Hanoi</span></td>
-                    <td><span id="locationDetails">Downtown, Hoan Kiem</span></td>
-                    <td><span id="educationAndCommunity">Great community</span></td>
-                    <td><span id="bedrooms">3</span></td>
-                    <td><span id="bathrooms">2</span></td>
-                    <td><span id="area">120 m²</span></td>
-                    <td><span id="view">Pool</span></td>
-                    <td><span id="floor">5</span></td>
-                    <td>1</td>
-                    <td><span id="pricePerMonth">3000</span></td>
-                    <td><span id="createdAt">2023-10-01</span></td>
-                    <td><span id="updatedAt">2023-10-15</span></td>
-                    <td><span id="description">Spacious and modern apartment</span></td>
-                    <td><span id="availableDate">2023-11-01</span></td>
-                    <td><span id="guestCapacity">5</span></td>
-                    <td><span id="elevator">Yes</span></td>
-                    <td><span id="city">Hanoi</span></td>
-                    <td><span id="district">Hoan Kiem</span></td>
-                    <td><span id="accommodationType">Apartment</span></td>
-                    <td><span id="room">2</span></td>
-                    <td><span id="wifi">Yes</span></td>
-                    <td><span id="internetSpeed">50</span></td>
-                    <td>
-                        <button class="btn btn-info view-btn">View</button>
-                        <a href="{{ route('property.edit') }}"><button class="btn btn-warning edit-btn">Edit</button></a>
-                        <button class="btn btn-danger delete-btn">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span id="propertyId">2</span></td>
-                    <td contenteditable="true"><span id="propertyName">Ocean View Apartment</span></td>
-                    <td><span id="landlordId">3</span></td>
-                    <td><span id="location">123 Main St, City</span></td>
-                    <td><span id="locationDetails"></span></td>
-                    <td><span id="educationAndCommunity"></span></td>
-                    <td><span id="bedrooms">3</span></td>
-                    <td><span id="bathrooms">2</span></td>
-                    <td><span id="area">1200.5 m²</span></td>
-                    <td><span id="view">Sea</span></td>
-                    <td><span id="floor">10</span></td>
-                    <td>1</td>
-                    <td><span id="pricePerMonth">2500</span></td>
-                    <td><span id="createdAt">2024-11-19 07:43:11</span></td>
-                    <td><span id="updatedAt">2024-11-20</span></td>
-                    <td><span id="description"></span></td>
-                    <td><span id="availableDate">2024-11-20</span></td>
-                    <td><span id="guestCapacity">2</span></td>
-                    <td><span id="elevator">Yes</span></td>
+        <div class="table-container">
+            <table id="propertyTable" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Property ID</th>
+                        <th>Property Name</th>
+                        <th>Landlord ID</th>
+                        <th>Location</th>
+                        <th>Location Details</th>
+                        <th>Education and Community</th>
+                        <th>Bedrooms</th>
+                        <th>Bathrooms</th>
+                        <th>Area</th>
+                        <th>View</th>
+                        <th>Floor</th>
+                        <th>Status</th>
+                        <th>Price per Month</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
+                        <th>Description</th>
+                        <th>Available Date</th>
+                        <th>Guest Capacity</th>
+                        <th>Elevator</th>
+                        <th>City</th>
+                        <th>District</th>
+                        <th>Accommodation Type</th>
+                        <th>Room</th>
+                        <th>Wifi</th>
+                        <th>Internet Speed</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span id="propertyId">1</span></td>
+                        <td contenteditable="true"><span id="propertyName">Luxury Apartment</span></td>
+                        <td><span id="landlordId">101</span></td>
+                        <td><span id="location">Hanoi</span></td>
+                        <td><span id="locationDetails">Downtown, Hoan Kiem</span></td>
+                        <td><span id="educationAndCommunity">Great community</span></td>
+                        <td><span id="bedrooms">3</span></td>
+                        <td><span id="bathrooms">2</span></td>
+                        <td><span id="area">120 m²</span></td>
+                        <td><span id="view">Pool</span></td>
+                        <td><span id="floor">5</span></td>
+                        <td>1</td>
+                        <td><span id="pricePerMonth">3000</span></td>
+                        <td><span id="createdAt">2023-10-01</span></td>
+                        <td><span id="updatedAt">2023-10-15</span></td>
+                        <td><span id="description">Spacious and modern apartment</span></td>
+                        <td><span id="availableDate">2023-11-01</span></td>
+                        <td><span id="guestCapacity">5</span></td>
+                        <td><span id="elevator">Yes</span></td>
+                        <td><span id="city">Hanoi</span></td>
+                        <td><span id="district">Hoan Kiem</span></td>
+                        <td><span id="accommodationType">Apartment</span></td>
+                        <td><span id="room">2</span></td>
+                        <td><span id="wifi">Yes</span></td>
+                        <td><span id="internetSpeed">50</span></td>
+                        <td>
+                            <button class="btn btn-info view-btn">View</button>
+                            <a href="{{ route('property.edit') }}"><button class="btn btn-warning edit-btn">Edit</button></a>
+                            <button class="btn btn-danger delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span id="propertyId">2</span></td>
+                        <td contenteditable="true"><span id="propertyName">Ocean View Apartment</span></td>
+                        <td><span id="landlordId">3</span></td>
+                        <td><span id="location">123 Main St, City</span></td>
+                        <td><span id="locationDetails"></span></td>
+                        <td><span id="educationAndCommunity"></span></td>
+                        <td><span id="bedrooms">3</span></td>
+                        <td><span id="bathrooms">2</span></td>
+                        <td><span id="area">1200.5 m²</span></td>
+                        <td><span id="view">Sea</span></td>
+                        <td><span id="floor">10</span></td>
+                        <td>1</td>
+                        <td><span id="pricePerMonth">2500</span></td>
+                        <td><span id="createdAt">2024-11-19 07:43:11</span></td>
+                        <td><span id="updatedAt">2024-11-20</span></td>
+                        <td><span id="description"></span></td>
+                        <td><span id="availableDate">2024-11-20</span></td>
+                        <td><span id="guestCapacity">2</span></td>
+                        <td><span id="elevator">Yes</span></td>
 
-                    <td><span id="city"></span></td>
-                    <td><span id="district"></span></td>
-                    <td><span id="accommodationType"></span></td>
-                    <td><span id="room"></span></td>
-                    <td><span id="wifi">No</span></td>
-                    <td><span id="internetSpeed">0</span></td>
-                    <td>
-                        <button class="btn btn-info view-btn">View</button>
-                        <a href="{{ route('property.edit') }}"><button class="btn btn-warning edit-btn">Edit</button></a>
-                        <button class="btn btn-danger delete-btn">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span id="propertyId">3</span></td>
-                    <td contenteditable="true"><span id="propertyName">Downtown Loft</span></td>
-                    <td><span id="landlordId">3</span></td>
-                    <td><span id="location">456 Market St, City</span></td>
-                    <td><span id="locationDetails"></span></td>
-                    <td><span id="educationAndCommunity"></span></td>
-                    <td><span id="bedrooms">2</span></td>
-                    <td><span id="bathrooms">1</span></td>
-                    <td><span id="area">800 m²</span></td>
-                    <td><span id="view">Cityscape</span></td>
-                    <td><span id="floor">5</span></td>
-                    <td>0</td>
+                        <td><span id="city"></span></td>
+                        <td><span id="district"></span></td>
+                        <td><span id="accommodationType"></span></td>
+                        <td><span id="room"></span></td>
+                        <td><span id="wifi">No</span></td>
+                        <td><span id="internetSpeed">0</span></td>
+                        <td>
+                            <button class="btn btn-info view-btn">View</button>
+                            <a href="{{ route('property.edit') }}"><button class="btn btn-warning edit-btn">Edit</button></a>
+                            <button class="btn btn-danger delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span id="propertyId">3</span></td>
+                        <td contenteditable="true"><span id="propertyName">Downtown Loft</span></td>
+                        <td><span id="landlordId">3</span></td>
+                        <td><span id="location">456 Market St, City</span></td>
+                        <td><span id="locationDetails"></span></td>
+                        <td><span id="educationAndCommunity"></span></td>
+                        <td><span id="bedrooms">2</span></td>
+                        <td><span id="bathrooms">1</span></td>
+                        <td><span id="area">800 m²</span></td>
+                        <td><span id="view">Cityscape</span></td>
+                        <td><span id="floor">5</span></td>
+                        <td>0</td>
 
-                    <td><span id="pricePerMonth">1800</span></td>
-                    <td><span id="createdAt">2024-11-19 07:43:11</span></td>
-                    <td><span id="updatedAt">2024-11-20</span></td>
-                    <td><span id="description"></span></td>
-                    <td><span id="availableDate">2024-11-20</span></td>
-                    <td><span id="guestCapacity">1</span></td>
-                    <td><span id="elevator">Yes</span></td>
-                    <td><span id="city">Ho Chi Minh City</span></td>
-                    <td><span id="district">District 9</span></td>
-                    <td><span id="accommodationType"></span></td>
-                    <td><span id="room"></span></td>
-                    <td><span id="wifi">No</span></td>
-                    <td><span id="internetSpeed">0</span></td>
-                    <td>
-                        <button class="btn btn-info view-btn">View</button>
-                        <a href="{{ route('property.edit') }}"><button class="btn btn-warning edit-btn">Edit</button></a>
-                        <button class="btn btn-danger delete-btn">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span id="propertyId">4</span></td>
-                    <td contenteditable="true"><span id="propertyName">Suburban House</span></td>
-                    <td><span id="landlordId">5</span></td>
-                    <td><span id="location">789 Suburb Lane, Town</span></td>
-                    <td><span id="locationDetails"></span></td>
-                    <td><span id="educationAndCommunity"></span></td>
-                    <td><span id="bedrooms">4</span></td>
-                    <td><span id="bathrooms">3</span></td>
-                    <td><span id="area">2500 m²</span></td>
-                    <td><span id="view">Garden</span></td>
-                    <td><span id="floor">1</span></td>
-                    <td>0</td>
-                    <td><span id="pricePerMonth">3200</span></td>
-                    <td><span id="createdAt">2024-10-15 10:33:27</span></td>
-                    <td><span id="updatedAt">2024-11-23</span></td>
-                    <td><span id="description"></span></td>
-                    <td><span id="availableDate">2024-11-23</span></td>
-                    <td><span id="guestCapacity"></span></td>
-                    <td><span id="elevator">No</span></td>
-                    <td><span id="city"></span></td>
-                    <td><span id="district"></span></td>
-                    <td><span id="accommodationType"></span></td>
-                    <td><span id="room"></span></td>
-                    <td><span id="wifi">No</span></td>
-                    <td><span id="internetSpeed">0</span></td>
-                    <td>
-                        <button class="btn btn-info view-btn">View</button>
-                        <a href="{{ route('property.edit') }}"><button class="btn btn-warning edit-btn">Edit</button></a>
-                        <button class="btn btn-danger delete-btn">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="12"><strong>This page</strong></td>
-                    <td><strong>Total price:</strong> <span id="totalPrice">$0.00</span></td>
-                </tr>
-                <tr>
-                    <td colspan="12"><strong>All properties</strong></td>
-                    <td><strong>Total price:</strong> <span id="totalPriceAll">$0.00</span></td>
-                </tr>
-            </tfoot>
+                        <td><span id="pricePerMonth">1800</span></td>
+                        <td><span id="createdAt">2024-11-19 07:43:11</span></td>
+                        <td><span id="updatedAt">2024-11-20</span></td>
+                        <td><span id="description"></span></td>
+                        <td><span id="availableDate">2024-11-20</span></td>
+                        <td><span id="guestCapacity">1</span></td>
+                        <td><span id="elevator">Yes</span></td>
+                        <td><span id="city">Ho Chi Minh City</span></td>
+                        <td><span id="district">District 9</span></td>
+                        <td><span id="accommodationType"></span></td>
+                        <td><span id="room"></span></td>
+                        <td><span id="wifi">No</span></td>
+                        <td><span id="internetSpeed">0</span></td>
+                        <td>
+                            <button class="btn btn-info view-btn">View</button>
+                            <a href="{{ route('property.edit') }}"><button class="btn btn-warning edit-btn">Edit</button></a>
+                            <button class="btn btn-danger delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span id="propertyId">4</span></td>
+                        <td contenteditable="true"><span id="propertyName">Suburban House</span></td>
+                        <td><span id="landlordId">5</span></td>
+                        <td><span id="location">789 Suburb Lane, Town</span></td>
+                        <td><span id="locationDetails"></span></td>
+                        <td><span id="educationAndCommunity"></span></td>
+                        <td><span id="bedrooms">4</span></td>
+                        <td><span id="bathrooms">3</span></td>
+                        <td><span id="area">2500 m²</span></td>
+                        <td><span id="view">Garden</span></td>
+                        <td><span id="floor">1</span></td>
+                        <td>0</td>
+                        <td><span id="pricePerMonth">3200</span></td>
+                        <td><span id="createdAt">2024-10-15 10:33:27</span></td>
+                        <td><span id="updatedAt">2024-11-23</span></td>
+                        <td><span id="description"></span></td>
+                        <td><span id="availableDate">2024-11-23</span></td>
+                        <td><span id="guestCapacity"></span></td>
+                        <td><span id="elevator">No</span></td>
+                        <td><span id="city"></span></td>
+                        <td><span id="district"></span></td>
+                        <td><span id="accommodationType"></span></td>
+                        <td><span id="room"></span></td>
+                        <td><span id="wifi">No</span></td>
+                        <td><span id="internetSpeed">0</span></td>
+                        <td>
+                            <button class="btn btn-info view-btn">View</button>
+                            <a href="{{ route('property.edit') }}"><button class="btn btn-warning edit-btn">Edit</button></a>
+                            <button class="btn btn-danger delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="12"><strong>This page</strong></td>
+                        <td><strong>Total price:</strong> <span id="totalPrice">$0.00</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="12"><strong>All properties</strong></td>
+                        <td><strong>Total price:</strong> <span id="totalPriceAll">$0.00</span></td>
+                    </tr>
+                </tfoot>
 
-        </table>
+            </table>
+        </div>
 
 
         <!-- Modal for Property Details -->

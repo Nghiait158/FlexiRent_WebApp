@@ -159,38 +159,95 @@ th[title]:hover::after {
 /* DataTable improvements */
 table.dataTable {
     width: 100% !important;
-    border-radius: 10px;
+    border-collapse: collapse; /* Ensure table borders collapse neatly */
+    border-radius: 8px;
     overflow: hidden;
 }
 
+/* Add horizontal scroll for large tables */
+.table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling for touch devices */
+}
+
+/* Header styling */
 table.dataTable thead th {
     background-color: #007bff;
     color: white;
     font-weight: bold;
+    text-align: left;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+/* Table rows and hover effect */
+table.dataTable tbody tr {
+    border-bottom: 1px solid #ddd; /* Add border for better separation */
 }
 
 table.dataTable tbody tr:hover {
-    background-color: #f1f1f1;
+    background-color: #f7f7f7;
 }
 
 /* Buttons */
 .btn-info,
 .btn-warning,
 .btn-danger {
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    padding: 8px 16px; /* Add padding for better button size */
+    border-radius: 4px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
 }
 
-.btn-info:hover {
+.btn-info {
     background-color: #17a2b8;
 }
 
-.btn-warning:hover {
+.btn-warning {
     background-color: #ffc107;
 }
 
-.btn-danger:hover {
+.btn-danger {
     background-color: #dc3545;
 }
+
+/* Button hover effects */
+.btn-info:hover {
+    background-color: #138496;
+    transform: scale(1.05); /* Slight scaling effect */
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    transform: scale(1.05);
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* Footer styling */
+table.dataTable tfoot td {
+    padding: 10px 15px;
+    font-weight: bold;
+    border-top: 2px solid #ddd;
+}
+
+table.dataTable tfoot td span {
+    font-weight: normal;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    table.dataTable thead th,
+    table.dataTable tbody td {
+        padding: 8px 10px; /* Adjust padding for smaller screens */
+    }
+}
+
 
 
 /* Custom styling for stats cards */
