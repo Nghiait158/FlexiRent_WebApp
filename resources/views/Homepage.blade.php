@@ -436,16 +436,10 @@
                     {{$randomProperty1->description}}
                 </div>
                 <div class="buttons">
-
-                    <!-- Rent Now Form -->
-                    <form action="{{ URL::to('/CheckoutPageA/'.$randomProperty1->property_id) }}" method="post">
-                        @csrf
-                        <button class="btn rent-now" type="submit">RENT NOW</button>
-                    </form>
-
+                    <!-- Rent Now -->
+                    <button class="btn rent-now" type="submit" onclick="redirectToPropertyDetails('{{ $randomProperty1->property_id }}', '{{ $randomProperty1->city }}')">RENT NOW</button>
                     <!-- See More Button -->
-                    <button class="btn see-more" id="seeMoreBtn" onclick="redirectToPropertyDetails('{{ $randomProperty1->property_id }}', '{{ $randomProperty1->city }}')">SEE MORE</button>
-
+                    <button class="btn see-more" id="seeMoreBtn" onclick="redirectToBookingPage('{{ $randomProperty1->city }}')">SEE MORE</button>
                 </div>
             </div>
         </div>
@@ -461,13 +455,12 @@
                     {{$randomProperty2 -> description}}
                 </div>
                 <div class="buttons">
-                    <form action="{{ URL::to('/CheckoutPageA/'.$randomProperty2->property_id) }}" method="post">
-                        @csrf
-                        <button class="btn rent-now" type="submit">RENT NOW</button>
-                    </form>
-
-                    <!-- See More Button -->
-                    <button class="btn see-more" id="seeMoreBtn" onclick="redirectToPropertyDetails('{{ $randomProperty2->property_id }}', '{{ $randomProperty2->city }}')">SEE MORE</button>
+                    <div class="buttons">
+                        <!-- Rent Now -->
+                        <button class="btn rent-now" type="submit" onclick="redirectToPropertyDetails('{{ $randomProperty2->property_id }}', '{{ $randomProperty2->city }}')">RENT NOW</button>
+                        <!-- See More Button -->
+                        <button class="btn see-more" id="seeMoreBtn" onclick="redirectToBookingPage('{{ $randomProperty2->city }}')">SEE MORE</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -481,13 +474,12 @@
                     {{$randomProperty3 -> description}}
                 </div>
                 <div class="buttons">
-                    <form action="{{ URL::to('/CheckoutPageA/'.$randomProperty3->property_id) }}" method="post">
-                        @csrf
-                        <button class="btn rent-now" type="submit">RENT NOW</button>
-                    </form>
-
-                    <!-- See More Button -->
-                    <button class="btn see-more" id="seeMoreBtn" onclick="redirectToPropertyDetails('{{ $randomProperty3->property_id }}', '{{ $randomProperty3->city }}')">SEE MORE</button>
+                    <div class="buttons">
+                        <!-- Rent Now -->
+                        <button class="btn rent-now" type="submit" onclick="redirectToPropertyDetails('{{ $randomProperty2->property_id }}', '{{ $randomProperty2->city }}')">RENT NOW</button>
+                        <!-- See More Button -->
+                        <button class="btn see-more" id="seeMoreBtn" onclick="redirectToBookingPage('{{ $randomProperty2->city }}')">SEE MORE</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -501,13 +493,12 @@
                     {{$randomProperty4 -> description}}
                 </div>
                 <div class="buttons">
-                    <form action="{{ URL::to('/CheckoutPageA/'.$randomProperty4->property_id) }}" method="post">
-                        @csrf
-                        <button class="btn rent-now" type="submit">RENT NOW</button>
-                    </form>
-
+                <div class="buttons">
+                    <!-- Rent Now -->
+                    <button class="btn rent-now" type="submit" onclick="redirectToPropertyDetails('{{ $randomProperty2->property_id }}', '{{ $randomProperty2->city }}')">RENT NOW</button>
                     <!-- See More Button -->
-                    <button class="btn see-more" id="seeMoreBtn" onclick="redirectToPropertyDetails('{{ $randomProperty4->property_id }}', '{{ $randomProperty4->city }}')">SEE MORE</button>
+                    <button class="btn see-more" id="seeMoreBtn" onclick="redirectToBookingPage('{{ $randomProperty2->city }}')">SEE MORE</button>
+                </div>
                 </div>
             </div>
         </div>
@@ -582,6 +573,11 @@
                 '&city=' + encodeURIComponent(city);
 
             // Redirect to the constructed URL
+            window.location.href = url;
+        }
+
+        function redirectToBookingPage(city) {
+            var url = `/bookingPage?&city=${encodeURIComponent(city)}`;
             window.location.href = url;
         }
     </script>

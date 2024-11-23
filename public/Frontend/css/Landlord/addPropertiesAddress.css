@@ -75,7 +75,7 @@ body{
     height: 100%;
     border-left: 1px solid #e0e0e0;
     position: relative;
-    
+    padding-bottom: 20px;
 }
 
 .address-header{

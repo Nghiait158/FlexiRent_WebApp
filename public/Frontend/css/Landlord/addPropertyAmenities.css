@@ -15,6 +15,8 @@
     src: url('/Frontend/Font-family/Molle/Molle-Regular.ttf');
 }
 
+
+
 p {
     word-break: break-all;
     overflow-wrap: anywhere;
@@ -335,7 +337,7 @@ body {
 /* The actual progress bar */
 .progress-bar {
     height: 3px;
-    background-color: #4caf50;
+    background-color: #555;
     /* Green color */
     width: 0;
     /* Initial width (0%) */
@@ -535,4 +537,189 @@ body {
     object-fit: cover; /* Ensure the image covers the designated area without distortion */
     margin: 10px;
     border-radius: 8px;
+}
+
+/* Mobile (max-width: 600px) */
+@media (max-width: 600px) {
+    /* Adjust main layout */
+    .main {
+        grid-template-columns: 1fr; /* Stack the columns */
+        height: auto; /* Let content determine height */
+    }
+
+    .logo {
+        font-size: 24px;
+        margin-left: 10%;
+    }
+
+    .add-info-container {
+        width: 100%;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .input-container {
+        padding-top: 30px;
+    }
+
+    .input-form {
+        flex-direction: column;
+    }
+
+    .input-form label {
+        width: 100%;
+    }
+
+    .amenities {
+        width: 100%;
+    }
+
+    .foot {
+        width: 100%;
+        position: relative;
+        padding: 10px;
+    }
+
+    .picture {
+        width: 100%;
+        height: 50vh; /* Reduced size for mobile */
+        position: relative;
+    }
+
+    .text {
+        margin-top: 100px;
+        width: 90%;
+    }
+
+    .nextBtn button {
+        width: 100%;
+        min-width: 100%;
+        font-size: 16px;
+    }
+
+    .help-section {
+        width: 90%;
+        left: 5%;
+        transform: translateX(0);
+    }
+
+    .delete-section {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .overlay {
+        display: flex;
+    }
+}
+
+/* Tablet (max-width: 1024px) */
+@media (max-width: 1024px) {
+    /* Adjust main layout */
+    .main {
+        grid-template-columns: 0.3fr 0.4fr 0.3fr;
+    }
+
+    .logo {
+        font-size: 28px;
+        margin-left: 12%;
+    }
+
+    .add-info-container {
+        width: 80%;
+        padding: 30px;
+        gap: 30px;
+    }
+
+    .input-form {
+        flex-direction: column;
+    }
+
+    .input-form label {
+        width: 100%;
+    }
+
+    .input-container {
+        padding-top: 40px;
+    }
+
+    .amenities {
+        width: 80%;
+    }
+
+    .foot {
+        width: 100%;
+        position: relative;
+    }
+
+    .picture {
+        width: 30%;
+        height: 60vh;
+    }
+
+    .text {
+        margin-top: 200px;
+        width: 80%;
+    }
+
+    .nextBtn button {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .help-section {
+        width: 80%;
+        left: 10%;
+    }
+
+    .delete-section {
+        width: 80%;
+        padding: 15px;
+    }
+}
+
+/* Desktop (min-width: 1025px) */
+@media (min-width: 1025px) {
+    .main {
+        grid-template-columns: 0.2fr 0.575fr 0.225fr;
+    }
+
+    .logo {
+        font-size: 36px;
+        margin-left: 15%;
+    }
+
+    .add-info-container {
+        width: 65%;
+        padding-top: 40px;
+    }
+
+    .input-container {
+        padding-top: 60px;
+    }
+
+    .amenities {
+        width: 50%;
+    }
+
+    .foot {
+        width: 40%;
+        position: fixed;
+        bottom: 0;
+    }
+
+    .picture {
+        width: 22.5%;
+        height: 100vh;
+    }
+
+    .text {
+        margin-top: 600px;
+        width: 80%;
+    }
+
+    .nextBtn button {
+        width: fit-content;
+        font-size: 14px;
+    }
 }

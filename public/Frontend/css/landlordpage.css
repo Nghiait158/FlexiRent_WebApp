@@ -1,4 +1,8 @@
-
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
 .sidebar {
     width: 250px;
     height: 100vh;
@@ -57,7 +61,7 @@
     color: var(--Text, #181A18);
 
     /* Desktop/H1 */
-    font-family: Lato;
+    font-family: "Lato";
     font-size: 22px;
     font-style: normal;
     font-weight: 400;
@@ -94,3 +98,32 @@
     margin-left: 250px;
     /* margin-bottom: 500px; */
 }
+
+.logout{
+    display: flex;
+    justify-content: center; 
+}
+
+.logout-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #333333, #000000); /* Gradient from dark gray to black */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.logout-button:hover {
+    background: linear-gradient(45deg, #444444, #222222); /* Darker gradient on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.logout-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.5); /* Adds a focus ring */
+}
+
