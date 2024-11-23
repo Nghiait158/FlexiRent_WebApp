@@ -186,17 +186,17 @@ class LandlordController extends Controller
     public function storePropertyAmenities(Request $request) {
         $defaultValues = [
             'TV' => 0,
-            'Coffee_machine' => 0,
-            'Dryer' => 0,
+            'Work_desk' => 0,
             'Phone' => 0,
             'Dish' => 0,
             'Fridge' => 0,
             'Kettle' => 0,
-            'Wardrobe' => 0,
-            'Iron' => 0,
-            'Work_desk' => 0,
             'Washing_Machine' => 0, 
+            'Dryer' => 0,
+            'Coffee_machine' => 0,
+            'Iron' => 0,
             'Fireplace' => 0,
+            'Wardrobe' => 0,
         ];
     
         // Validate the request data
@@ -385,21 +385,14 @@ class LandlordController extends Controller
         // $property->elevator = $data['elevator'];
     
         $property ->save();
-        
-        if (isset($data['Amenities'])) {
-            $amenityIds = [];
-            foreach ($data['Amenities'] as $amenityName => $isChecked) {
-                if ($isChecked == 1) {
-                    // Find the amenity by its name
-                    $amenity = Amenity::where('amenity_name', $amenityName)->first();
-                    if ($amenity) {
-                        $amenityIds[] = $amenity->amenity_id; // Use `amenity_id` as per your model
-                    }
-                }
-            }
-    
-            // Attach amenities to the property
-            $property->amenities()->sync($amenityIds);
+
+
+        if (isset($data['amenities']) && is_array($data['amenities'])) {
+            // Lấy danh sách ID các tiện nghi đã chọn
+            $selectedAmenityIds = array_map('intval', $data['amenities']); 
+            
+            // Đồng bộ tiện nghi với property
+            $property->amenities()->sync($selectedAmenityIds);
         }
 
         Session::put('message','Add property successfully!!!');
