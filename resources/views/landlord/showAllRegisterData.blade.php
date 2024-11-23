@@ -325,12 +325,11 @@
                                         class="form-check-input custom-switch"
                                         type="checkbox"
                                         role="switch"
-                                        id="wifiSwitch"
+                                        {{-- id="wifiSwitch" --}}
                                         name="wifi_checkbox"
-                                        value="0"
+                                        value="1"
                                         {{ session('services.wifi') == '1' ? 'checked' : '' }}
-                                        
-                                        onchange="this.value = this.checked ? 1 : 0;">
+                                        >
                             
                                 </div>
                             </div>
@@ -341,14 +340,14 @@
                                 <label for="">Internet Speed</label>
                                 <div id="internetSpeedContainer" style="display: flex; align-items: center; width: 100%">
                                     <input
-                                        id="internetSpeedInput"
+                                        {{-- id="internetSpeedInput" --}}
                                         class="form-control"
                                         step="1"
                                         name="internetSpeed"
                                         type="number"
                                         value="{{ session('services.internetSpeed', 0) }}"
                                         required
-                                        disabled>
+                                        >
                                     {{-- <input type="hidden" name="wifi" value="{{ session('services.wifi') }}"> --}}
                                 </div>
                             </div>
@@ -360,12 +359,12 @@
                                     <input class="form-check-input custom-switch"
                                         type="checkbox"
                                         role="switch"
-                                        id="elevatorSwitch"
+                                        {{-- id="elevatorSwitch" --}}
                                         name="elevator"
-                                        value=""
+                                        value="1"
                                         {{ session('services.elevator') == '1' ? 'checked' : '' }}
                                         
-                                        onchange="this.value = this.checked ? 1 : 0;">
+                                        >
                                 </div>
                             </div>
                             {{-- <hr class="solid-line"> --}}
@@ -666,7 +665,7 @@
                                         name="listing_title"
                                         type="text"
                                         value="{{$data['describe']['ListingTitle']}}"
-                                        style="display:none; width: 100%; height: 200px; resize:none"
+                                        style="display:none;"
                                         required>
                                 </div>
                             </div>
@@ -685,7 +684,7 @@
                                         name="listing_view"
                                         type="text"
                                         value="{{$data['describe']['view']}}"
-                                        style="display:none; width: 100%; height: 200px; resize:none"
+                                        style="display:none;"
                                         required>
                                 </div>
                             </div>
@@ -925,13 +924,13 @@
                                 <label for="">Pets</label>
                                 <div style="display: flex; align-items: center; width: 100%;">
                                     <span id="petsText" class="plain-text" style="width: 100%; text-align: end;">
-                                        {{$data['rules']['petsAllowed']}}
+                                        {{ $data['rules']['petsAllowed'] ?? 'Not provided' }}
                                     </span>
                                     <select id="petsInput" class="form-select" name="pets_allowed" style="display: none;" required>
-                                        <option disabled selected>Please select</option>
-                                        <option value="Allowed">Allowed</option>
-                                        <option value="Allowed under certain conditions">Allowed under certain conditions</option>
-                                        <option value="Not allowed">Not allowed</option>
+                                        <option disabled {{ empty($data['rules']['petsAllowed']) ? 'selected' : '' }}>Please select</option>
+                                        <option value="Allowed" {{ ($data['rules']['petsAllowed'] ?? '') == 'Allowed' ? 'selected' : '' }}>Allowed</option>
+                                        <option value="Allowed under certain conditions" {{ ($data['rules']['petsAllowed'] ?? '') == 'Allowed under certain conditions' ? 'selected' : '' }}>Allowed under certain conditions</option>
+                                        <option value="Not allowed" {{ ($data['rules']['petsAllowed'] ?? '') == 'Not allowed' ? 'selected' : '' }}>Not allowed</option>
                                     </select>
                                 </div>
                             </div>
@@ -943,13 +942,13 @@
                                 <label for="">Smoking</label>
                                 <div style="display: flex; align-items: center; width: 100%;">
                                     <span id="smokingText" class="plain-text" style="width: 100%; text-align: end;">
-                                        {{$data['rules']['smokingAllowed']}}
+                                        {{ $data['rules']['smokingAllowed'] ?? 'Not provided' }}
                                     </span>
                                     <select id="smokingInput" class="form-select" name="smoking_allowed" style="display: none;" required>
-                                        <option disabled selected>Please select</option>
-                                        <option value="Allowed">Allowed</option>
-                                        <option value="Allowed under certain conditions">Allowed under certain conditions</option>
-                                        <option value="Not allowed">Not allowed</option>
+                                        <option disabled {{ empty($data['rules']['smokingAllowed']) ? 'selected' : '' }}>Please select</option>
+                                        <option value="Allowed" {{ ($data['rules']['smokingAllowed'] ?? '') == 'Allowed' ? 'selected' : '' }}>Allowed</option>
+                                        <option value="Allowed under certain conditions" {{ ($data['rules']['smokingAllowed'] ?? '') == 'Allowed under certain conditions' ? 'selected' : '' }}>Allowed under certain conditions</option>
+                                        <option value="Not allowed" {{ ($data['rules']['smokingAllowed'] ?? '') == 'Not allowed' ? 'selected' : '' }}>Not allowed</option>
                                     </select>
                                 </div>
                             </div>
@@ -961,14 +960,14 @@
                                 <label for="">Additional information</label>
                                 <div style="display: flex; align-items: center; width: 100%;">
                                     <span id="rulesText" class="plain-text" style="width: 100%; text-align: end;">
-                                        {{$data['rules']['rules'] ? $data['rules']['rules'] : 'Not provided'}}
+                                        {{ $data['rules']['rules'] ?? 'Not provided' }}
                                     </span>
                                     <textarea
                                         id="rulesInput"
                                         class="form-control"
                                         name="rules"
                                         style="display: none; width: 100%; height: 200px; resize: none;"
-                                        required>{{$data['rules']['rules']}}</textarea>
+                                        required>{{ $data['rules']['rules'] ?? '' }}</textarea>
                                 </div>
                             </div>
                         </div>

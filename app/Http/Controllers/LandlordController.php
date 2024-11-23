@@ -364,9 +364,9 @@ class LandlordController extends Controller
         $property->nbedrooms = $data['bedroom'];
         $property->nbathrooms = $data['bathroom'];
 
-        $property->wifi = $data['wifi'];
+        $property->wifi = $data['wifi_checkbox']??null;
         $property->internetSpeed = $data['internetSpeed'] ?? null;
-        $property->elevator = $data['elevator'];
+        $property->elevator = $data['elevator']??null;
 
         $property->property_name = $data['listing_title'];
         // $property->property_name = $data['listing_view'];
