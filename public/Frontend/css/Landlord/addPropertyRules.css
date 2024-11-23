@@ -252,7 +252,7 @@ body {
 .picture {
     background:
         linear-gradient(rgba(36, 39, 46, 0.25) 40%, rgba(36, 39, 46, 0.5) 50%, rgba(36, 39, 46, 0.85) 80%),
-        url('/Frontend/Image/Landlords/e9c8682b5401c65eff3b442404a1cc48.jpg');
+        url('/Frontend/Image/Landlords/rules.webp');
 
     background-size: cover;
     background-position: center;

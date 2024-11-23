@@ -265,7 +265,7 @@ body {
 .picture {
     background:
         linear-gradient(rgba(36, 39, 46, 0.25) 40%, rgba(36, 39, 46, 0.5) 50%, rgba(36, 39, 46, 0.85) 80%),
-        url('/Frontend/Image/Landlords/515019_00_N50_highresjpg-1321x1980.jpg');
+        url('/Frontend/Image/Landlords/showAll.webp');
 
     background-size: cover;
     background-position: center;

@@ -1060,8 +1060,8 @@
 
         <div class="picture">
             <div class="text">
-                <h3>The more the merrier</h3>
-                <p>Sought-after amenities will help your property stand out and keep tenant rates stay high. Generally, the more amenities you offer, the higher the value of the apartment. Think of the tenant moving in with just a suit case.</p>
+                <h3>You’re Almost Done!</h3>
+                <p>Your listing looks great! Please give your listing a thorough review and make sure everything is in place before submitting it.</p>
             </div>
             <div class="footer">
                 <button type="reset" onclick="toggleDeleteSection()">
