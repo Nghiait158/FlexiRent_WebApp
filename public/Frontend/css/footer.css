@@ -37,6 +37,7 @@ footer .containerFooter {
     padding-bottom: 60px;
     padding-right: 80px;
     padding-top: 60px;
+   
 }
 
 /*Phần logo và icons*/
@@ -133,6 +134,7 @@ footer .social-icons {
     display: flex;
     padding: 12px 40px;
     align-items: flex-start;
+    justify-content: center;
     gap: 10px;
     border-radius: 40px;
     background: var(--Green, #064749);

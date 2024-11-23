@@ -141,8 +141,8 @@
 
         <div class="picture">
             <div class="text">
-                <h3>We're getting there!</h3>
-                <p>When setting an all-inclusive price, consider the number of rooms, the design and condition of the apartment, public transport options, proximity to trendy areas, and your costs like internet and water.</p>
+                <h3>Who needs rules? We do!</h3>
+                <p>Clear house rules make living under the same roof easier and more enjoyable for everyone. In shared apartment buildings and in private spaces, they help establish a positive environment.</p>
             </div>
             <div class="footer">
                 <button type="reset" onclick="toggleDeleteSection()">

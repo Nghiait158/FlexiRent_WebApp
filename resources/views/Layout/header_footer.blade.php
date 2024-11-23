@@ -50,7 +50,7 @@
                         </form>
                         @endif --}}
                         @if (Route::has('login'))
-                            <nav class="-mx-3 flex flex-1 justify-end">
+                            <nav class="">
                                 @auth
                                     {{-- <a
                                         href="{{ url('/dashboard') }}"
@@ -60,7 +60,7 @@
                                     </a> --}}
                                     <form action="{{ url('/dashboard') }}">
                             
-                                        <button class="animated-dark-green-btn" style="color: white">Dashboard</button>
+                                        <button class="animated-dark-green-btn" style="color: white; width: 100%;">Dashboard</button>
             
                                     </form>
                                 @else
@@ -68,7 +68,7 @@
                                     @if (Route::has('register'))
                                         <form action="{{ route('register') }}">
                                 
-                                            <button class="animated-dark-green-btn" style="color: white">Join Us!</button>
+                                            <button class="animated-dark-green-btn" style="color: white; width: 100%;">Join Us!</button>
                 
                                         </form>
                                     @endif

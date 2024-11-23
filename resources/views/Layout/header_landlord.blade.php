@@ -2,23 +2,23 @@
 @section('content')
 <style>
     * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
 
-body {
-    font-family: "Lato";
-    padding-top: 83px;
-}
+    body {
+        font-family: "Lato";
+        padding-top: 83px;
+    }
 
-main {
-    display: flex;
-    /* justify-content: center; */
-    /* padding-top: 60px; */
-    
-}
+    main {
+        display: flex;
+        /* justify-content: center; */
+        /* padding-top: 60px; */
+
+    }
 </style>
 
 <script>
@@ -28,7 +28,6 @@ main {
     link.type = 'text/css';
     link.href = '/Frontend/css/landlordpage.css'; // Your CSS file path
     document.head.appendChild(link);
-
 </script>
 <div class="sidebar">
     <div class="profile-card">
@@ -36,7 +35,7 @@ main {
         <h2 class="profile-name">Hello Landlord 👋</h2>
         {{-- <a href="mailto:miawhite@gmail.com" class="profile-email">trinhvantrungnghia@gmail.com</a> --}}
     </div>
-    
+
     <div class="menu">
         <div class="menu-section">
             {{-- <h4>Shop</h4> --}}
@@ -44,7 +43,7 @@ main {
                 <span class="icon">👨‍💻</span>
                 <span class="text">Dashboard</span>
             </a>
-            <a href="{{ URL::to('/landlord/myproperty') }}" class="menu-item {{ request()->is('landlord/myproperty') ? 'active' : '' }}">
+            <a href="{{ URL::to('/landlord/myProperty') }}" class="menu-item">
                 <span class="icon">🏠</span>
                 <span class="text">My property</span>
             </a>
@@ -53,21 +52,23 @@ main {
                 <span class="text">Property rental registration</span>
             </a>
         </div>
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
+        <div class="logout">
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
 
-            <x-responsive-nav-link :href="route('logout')"
-                    onclick="event.preventDefault();
-                                this.closest('form').submit();">
-                {{ __('Log Out') }}
-            </x-responsive-nav-link>
-        </form>
+                <x-responsive-nav-link :href="route('logout')"
+                    onclick="event.preventDefault(); this.closest('form').submit();"
+                    class="logout-button">
+                    {{ __('Log Out') }}
+                </x-responsive-nav-link>
+            </form>
+        </div>
     </div>
 </div>
 <div class="content">
-    @yield('contentLandlord') 
+    @yield('contentLandlord')
 </div>
 
-   
+
 
 @endsection

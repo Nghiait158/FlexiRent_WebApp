@@ -159,7 +159,7 @@ body {
 /* The actual progress bar */
 .progress-bar {
     height: 3px;
-    background-color: #4caf50;
+    background-color: #555;
     /* Green color */
     width: 0;
     /* Initial width (0%) */
@@ -507,4 +507,89 @@ body {
     font-size: 16px;
     background: rgb(197, 31, 61);
     color: white;
+}
+
+/* Add responsive styles here */
+@media (max-width: 1024px) {
+    .main {
+        grid-template-columns: 1fr 1fr; /* Two columns for tablets */
+    }
+
+    .logo {
+        font-size: 30px;
+        margin-left: 10%;
+    }
+
+    .add-services-container {
+        width: 90%;
+    }
+
+    .input-container {
+        padding-top: 20px;
+    }
+
+    .input-form {
+        flex-direction: column;
+    }
+
+    .form-control,
+    .form-select {
+        width: 100%;
+    }
+
+    .nextBtn button {
+        width: 100%;
+    }
+
+    .foot {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .main {
+        grid-template-columns: 1fr; /* Single column for small screens */
+    }
+
+    .logo {
+        font-size: 24px;
+        margin-left: 5%;
+    }
+
+    .add-services-container {
+        width: 100%;
+        padding-top: 20px;
+    }
+
+    .input-form {
+        flex-direction: column;
+    }
+
+    .form-control,
+    .form-select {
+        width: 100%;
+    }
+
+    .nextBtn button {
+        width: 100%;
+    }
+
+    .foot {
+        width: 100%;
+        position: relative;
+        bottom: 0;
+    }
+
+    .picture {
+        background-position: center;
+    }
+
+    .text {
+        bottom: 10%;
+        width: 90%;
+    }
+
+    .help-section {
+        width: 250px;
+    }
 }

@@ -334,7 +334,7 @@ body {
 /* The actual progress bar */
 .progress-bar {
     height: 3px;
-    background-color: #4caf50;
+    background-color: #555;
     /* Green color */
     width: 0;
     /* Initial width (0%) */
@@ -534,4 +534,79 @@ body {
     object-fit: cover; /* Ensure the image covers the designated area without distortion */
     margin: 10px;
     border-radius: 8px;
+}
+
+
+@media (max-width: 768px) {
+    .main {
+        grid-template-columns: 1fr;
+    }
+
+    .logo {
+        font-size: 28px;
+        margin-left: 5%;
+    }
+
+    .add-info-container {
+        width: 90%;
+        padding-top: 20px;
+    }
+
+    .foot {
+        width: 100%;
+        position: relative;
+    }
+
+    .picture {
+        width: 100%;
+        height: 60vh;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .text {
+        width: 100%;
+        margin-top: 50px;
+    }
+
+    .text h3 {
+        font-size: 16px;
+    }
+
+    .text p {
+        font-size: 14px;
+    }
+
+    .input-form {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .input-form label {
+        width: 100%;
+    }
+
+    .input-container {
+        padding-top: 20px;
+    }
+
+    .nextBtn button {
+        font-size: 12px;
+        padding: 12px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 24px;
+    }
+
+    .picture {
+        height: 50vh;
+    }
+
+    .nextBtn button {
+        font-size: 10px;
+        padding: 10px 18px;
+    }
 }

@@ -652,10 +652,6 @@ body {
     margin: 0;
 }
 
-/* For Firefox */
-.numberGuest[type=number] {
-    -moz-appearance: textfield;
-}
 
 
 .svg-button:hover {
