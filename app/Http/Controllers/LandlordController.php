@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Landlord;
 use App\Models\Property;
 use App\Models\Booking;
+use App\Models\Amenity;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -185,17 +186,17 @@ class LandlordController extends Controller
     public function storePropertyAmenities(Request $request) {
         $defaultValues = [
             'TV' => 0,
-            'Coffee_machine' => 0,
-            'Dryer' => 0,
+            'Work_desk' => 0,
             'Phone' => 0,
             'Dish' => 0,
             'Fridge' => 0,
             'Kettle' => 0,
-            'Wardrobe' => 0,
-            'Iron' => 0,
-            'Work_desk' => 0,
             'Washing_Machine' => 0, 
+            'Dryer' => 0,
+            'Coffee_machine' => 0,
+            'Iron' => 0,
             'Fireplace' => 0,
+            'Wardrobe' => 0,
         ];
     
         // Validate the request data
@@ -339,33 +340,36 @@ class LandlordController extends Controller
             'services'=>$services,
             'Amenities'=>$Amenities,
             'Images'=>$Images,
-            'currentLandlord' => $currentLandlord,
+            // 'currentLandlord' => $currentLandlord,
         ];
 
         // dd($data);
-        return view('landlord.showAllRegisterData', compact('data'));
+        return view('landlord.showAllRegisterData', [
+            'data' => $data,
+            'currentLandlord' => $currentLandlord,
+        ]);
     }
 
-    public function savePropertyLandlord(Request $request,$landlord_id ){
+    public function savePropertyLandlord(Request $request, $landlord_id){
         $data = $request->all();
         $property = new Property();
 
-
         $property->landlord_id = $landlord_id;
         $property->location = $data['address'];
+
         $property->area = $data['area'];
         $property->accommodation_type = $data['accommodation_type'];
         $property->floor = $data['floor'];
         $property->guest_capacity = $data['guest_capacity'];
+        $property->nbedrooms = $data['bedroom'];
+        $property->nbathrooms = $data['bathroom'];
 
-        // $property->nbedrooms = $data['nbedrooms'];
-        // $property->nbathrooms = $data['nbathrooms'];
-
-        $property->wifi = $data['wifi'];
-        $property->internetSpeed = $data['internetSpeed'];
-        $property->wifi = $data['wifi'];
+        $property->wifi = $data['wifi_checkbox']??null;
+        $property->internetSpeed = $data['internetSpeed'] ?? null;
+        $property->elevator = $data['elevator']??null;
 
         $property->property_name = $data['listing_title'];
+        // $property->property_name = $data['listing_view'];
         $property->description = $data['description'];
         $property->education_and_community = $data['education_and_community'];
 
@@ -376,24 +380,26 @@ class LandlordController extends Controller
         $property->petsAllowed = $data['pets_allowed'];
         $property->smokingAllowed = $data['smoking_allowed'];
         $property->rules = $data['rules'];
-        $property->view = $data['view'];
+        $property->view = $data['listing_view'];
 
-        $property->elevator = $data['elevator'];
-
-
-       
+        // $property->elevator = $data['elevator'];
     
-
         $property ->save();
-        if (!empty($data['amenities'])) {
-            // Đảm bảo danh sách amenity là một mảng và các giá trị hợp lệ
-            $validatedAmenities = Amenity::whereIn('amenity_id', $data['amenities'])->pluck('amenity_id')->toArray();
-    
-            // Liên kết các amenities với property
-            $property->amenities()->sync($validatedAmenities);
+
+
+        if (isset($data['amenities']) && is_array($data['amenities'])) {
+            // Lấy danh sách ID các tiện nghi đã chọn
+            $selectedAmenityIds = array_map('intval', $data['amenities']); 
+            
+            // Đồng bộ tiện nghi với property
+            $property->amenities()->sync($selectedAmenityIds);
         }
+
         Session::put('message','Add property successfully!!!');
-        return Redirect::to('manage_property');
+        return Redirect::to('savedPropertylandlord');
+    }
+    public function savedPropertylandlord(){
+        return view('landlord.savedPropertylandlord');
     }
 
     public function editProperty(){

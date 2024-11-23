@@ -28,7 +28,7 @@
 
 
             <div class="input-container">
-                <form method="POST" action="">
+                <form method="POST" action="{{ url('/savePropertyLandlord/' . $currentLandlord->landlord_id) }}">
                     @csrf
                     <div class="input-form">
                         <label class="title" for="">
@@ -321,14 +321,16 @@
                                 <label for="">WiFi</label>
 
                                 <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                    <input class="form-check-input custom-switch"
+                                    <input 
+                                        class="form-check-input custom-switch"
                                         type="checkbox"
                                         role="switch"
-                                        id="wifiSwitch"
-                                        name="wifi"
-                                        value="{{ session('services.wifi') }}"
+                                        {{-- id="wifiSwitch" --}}
+                                        name="wifi_checkbox"
+                                        value="1"
                                         {{ session('services.wifi') == '1' ? 'checked' : '' }}
-                                        disabled>
+                                        >
+                            
                                 </div>
                             </div>
                             <hr class="solid-line">
@@ -338,14 +340,15 @@
                                 <label for="">Internet Speed</label>
                                 <div id="internetSpeedContainer" style="display: flex; align-items: center; width: 100%">
                                     <input
-                                        id="internetSpeedInput"
+                                        {{-- id="internetSpeedInput" --}}
                                         class="form-control"
                                         step="1"
                                         name="internetSpeed"
                                         type="number"
                                         value="{{ session('services.internetSpeed', 0) }}"
                                         required
-                                        disabled>
+                                        >
+                                    {{-- <input type="hidden" name="wifi" value="{{ session('services.wifi') }}"> --}}
                                 </div>
                             </div>
                             <hr class="solid-line">
@@ -356,14 +359,15 @@
                                     <input class="form-check-input custom-switch"
                                         type="checkbox"
                                         role="switch"
-                                        id="elevatorSwitch"
+                                        {{-- id="elevatorSwitch" --}}
                                         name="elevator"
-                                        value="{{ session('services.elevator') }}"
+                                        value="1"
                                         {{ session('services.elevator') == '1' ? 'checked' : '' }}
-                                        disabled>
+                                        
+                                        >
                                 </div>
                             </div>
-                            <hr class="solid-line">
+                            {{-- <hr class="solid-line"> --}}
                         </div>
                     </div>
 
@@ -371,10 +375,13 @@
                         document.getElementById('toggleEditButtonServices').addEventListener('click', function() {
                             const wifiCheckbox = document.getElementById('wifiSwitch');
                             const internetSpeedInput = document.getElementById('internetSpeedInput');
-
+                            const elevator =document.getElementById('elevatorSwitch')
                             // Toggle the disabled property of the WiFi checkbox and internet speed input
                             const isDisabled = wifiCheckbox.disabled;
+                            const iselvatorDisabled = elevator.disabled;
+                            
                             wifiCheckbox.disabled = !isDisabled;
+                            elevator.disabled = !iselvatorDisabled;
 
                             // Enable or disable the internet speed input based on WiFi checkbox state
                             if (wifiCheckbox.checked) {
@@ -413,120 +420,29 @@
                         </label>
 
                         <div class="review-input">
-                            <!-- TV Checkbox -->
-                            <div class="form-check">
-                                <label for="">TV</label>
-                                <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                    <input
-                                        class="form-check-input custom-switch Amenities"
-                                        type="checkbox"
-                                        role="switch"
-                                        id="tvSwitch"
-                                        name="TV"
-                                        value="1"
-                                        {{ session('Amenities.TV', 0) == 1 ? 'checked' : '' }}
-                                        disabled>
+                            @php
+                                $amenityCounter = 1;
+                            @endphp
+                            
+                            @foreach($data['Amenities'] as $amenity => $isChecked)
+                                <div class="form-check">
+                                    <label for="">{{ ucfirst(str_replace('_', ' ', $amenity)) }}</label>
+                                    <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
+                                        <input
+                                            class="form-check-input custom-switch Amenities"
+                                            type="checkbox"
+                                            role="switch"
+                                            id="{{ $amenity }}Switch"
+                                            name="amenities[]" 
+                                            value="{{ $amenityCounter }}" 
+                                            {{ $isChecked == 1 ? 'checked' : '' }}>
+                                    </div>
                                 </div>
-                            </div>
-                            <hr class="solid-line">
-
-                            <!-- Coffee machine Checkbox -->
-                            <div class="form-check">
-                                <label for="">Coffee machine</label>
-                                <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                    <input class="form-check-input custom-switch Amenities" type="checkbox" role="switch" id="coffeeMachineSwitch" name="Coffee_machine" value="{{$data['Amenities']['Coffee_machine']}}" {{ $data['Amenities']['Coffee_machine'] == 1 ? 'checked' : '' }} disabled>
-                                </div>
-                            </div>
-                            <hr class="solid-line">
-
-                            <!-- Dryer Checkbox -->
-                            <div class="form-check">
-                                <label for="">Dryer</label>
-                                <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                    <input class="form-check-input custom-switch Amenities" type="checkbox" role="switch" id="dryerSwitch" name="Dryer" value="{{$data['Amenities']['Dryer']}}" {{ $data['Amenities']['Dryer'] == 1 ? 'checked' : '' }} disabled>
-                                </div>
-                            </div>
-                            <hr class="solid-line">
-
-                            <!-- Phone Checkbox -->
-                            <div class="form-check">
-                                <label for="">Phone</label>
-                                <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                    <input class="form-check-input custom-switch Amenities" type="checkbox" role="switch" id="phoneSwitch" name="Phone" value="{{$data['Amenities']['Phone']}}" {{ $data['Amenities']['Phone'] == 1 ? 'checked' : '' }} disabled>
-                                </div>
-                            </div>
-                            <hr class="solid-line">
-
-                            <!-- Dish Checkbox -->
-                            <div class="form-check">
-                                <label for="">Dish</label>
-                                <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                    <input class="form-check-input custom-switch Amenities" type="checkbox" role="switch" id="dishSwitch" name="Dish" value="{{$data['Amenities']['Dish']}}" {{ $data['Amenities']['Dish'] == 1 ? 'checked' : '' }} disabled>
-                                </div>
-                            </div>
-                            <hr class="solid-line">
-
-                            <!-- Fridge Checkbox -->
-                            <div class="form-check">
-                                <label for="">Fridge</label>
-                                <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                    <input class="form-check-input custom-switch Amenities" type="checkbox" role="switch" id="fridgeSwitch" name="Fridge" value="{{$data['Amenities']['Fridge']}}" {{ $data['Amenities']['Fridge'] == 1 ? 'checked' : '' }} disabled>
-                                </div>
-                            </div>
-                            <hr class="solid-line">
-
-                            <!-- Kettle Checkbox -->
-                            <div class="form-check">
-                                <label for="">Kettle</label>
-                                <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                    <input class="form-check-input custom-switch Amenities" type="checkbox" role="switch" id="kettleSwitch" name="Kettle" value="{{$data['Amenities']['Kettle']}}" {{ $data['Amenities']['Kettle'] == 1 ? 'checked' : '' }} disabled>
-                                </div>
-                            </div>
-                            <hr class="solid-line">
-
-                            <!-- Wardrobe Checkbox -->
-                            <div class="form-check">
-                                <label for="">Wardrobe</label>
-                                <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                    <input class="form-check-input custom-switch Amenities" type="checkbox" role="switch" id="wardrobeSwitch" name="Wardrobe" value="{{$data['Amenities']['Wardrobe']}}" {{ $data['Amenities']['Wardrobe'] == 1 ? 'checked' : '' }} disabled>
-                                </div>
-                            </div>
-                            <hr class="solid-line">
-
-                            <!-- Iron Checkbox -->
-                            <div class="form-check">
-                                <label for="">Iron</label>
-                                <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                    <input class="form-check-input custom-switch Amenities" type="checkbox" role="switch" id="ironSwitch" name="Iron" value="{{$data['Amenities']['Iron']}}" {{ $data['Amenities']['Iron'] == 1 ? 'checked' : '' }} disabled>
-                                </div>
-                            </div>
-                            <hr class="solid-line">
-
-                            <!-- Work desk Checkbox -->
-                            <div class="form-check">
-                                <label for="">Work desk</label>
-                                <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                    <input class="form-check-input custom-switch Amenities" type="checkbox" role="switch" id="workDeskSwitch" name="Work_desk" value="{{$data['Amenities']['Work_desk']}}" {{ $data['Amenities']['Work_desk'] == 1 ? 'checked' : '' }} disabled>
-                                </div>
-                            </div>
-                            <hr class="solid-line">
-
-                            <!-- Washing Machine Checkbox -->
-                            <div class="form-check">
-                                <label for="">Washing Machine</label>
-                                <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                    <input class="form-check-input custom-switch Amenities" type="checkbox" role="switch" id="washingMachineSwitch" name="Washing_Machine" value="{{$data['Amenities']['Washing_Machine']}}" {{ $data['Amenities']['Washing_Machine'] == 1 ? 'checked' : '' }} disabled>
-                                </div>
-                            </div>
-                            <hr class="solid-line">
-
-                            <!-- Fireplace Checkbox -->
-                            <div class="form-check">
-                                <label for="">Fireplace</label>
-                                <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                    <input class="form-check-input custom-switch Amenities" type="checkbox" role="switch" id="fireplaceSwitch" name="Fireplace" value="{{$data['Amenities']['Fireplace']}}" {{ $data['Amenities']['Fireplace'] == 1 ? 'checked' : '' }} disabled>
-                                </div>
-                            </div>
+                                <hr class="solid-line">
+                                @php
+                                    $amenityCounter++;
+                                @endphp
+                            @endforeach
                         </div>
                     </div>
 
@@ -658,7 +574,7 @@
                                         name="listing_title"
                                         type="text"
                                         value="{{$data['describe']['ListingTitle']}}"
-                                        style="display:none; width: 100%; height: 200px; resize:none"
+                                        style="display:none;"
                                         required>
                                 </div>
                             </div>
@@ -677,7 +593,7 @@
                                         name="listing_view"
                                         type="text"
                                         value="{{$data['describe']['view']}}"
-                                        style="display:none; width: 100%; height: 200px; resize:none"
+                                        style="display:none;"
                                         required>
                                 </div>
                             </div>
@@ -917,13 +833,13 @@
                                 <label for="">Pets</label>
                                 <div style="display: flex; align-items: center; width: 100%;">
                                     <span id="petsText" class="plain-text" style="width: 100%; text-align: end;">
-                                        {{$data['rules']['petsAllowed']}}
+                                        {{ $data['rules']['petsAllowed'] ?? 'Not provided' }}
                                     </span>
                                     <select id="petsInput" class="form-select" name="pets_allowed" style="display: none;" required>
-                                        <option disabled selected>Please select</option>
-                                        <option value="Allowed">Allowed</option>
-                                        <option value="Allowed under certain conditions">Allowed under certain conditions</option>
-                                        <option value="Not allowed">Not allowed</option>
+                                        <option disabled {{ empty($data['rules']['petsAllowed']) ? 'selected' : '' }}>Please select</option>
+                                        <option value="Allowed" {{ ($data['rules']['petsAllowed'] ?? '') == 'Allowed' ? 'selected' : '' }}>Allowed</option>
+                                        <option value="Allowed under certain conditions" {{ ($data['rules']['petsAllowed'] ?? '') == 'Allowed under certain conditions' ? 'selected' : '' }}>Allowed under certain conditions</option>
+                                        <option value="Not allowed" {{ ($data['rules']['petsAllowed'] ?? '') == 'Not allowed' ? 'selected' : '' }}>Not allowed</option>
                                     </select>
                                 </div>
                             </div>
@@ -935,13 +851,13 @@
                                 <label for="">Smoking</label>
                                 <div style="display: flex; align-items: center; width: 100%;">
                                     <span id="smokingText" class="plain-text" style="width: 100%; text-align: end;">
-                                        {{$data['rules']['smokingAllowed']}}
+                                        {{ $data['rules']['smokingAllowed'] ?? 'Not provided' }}
                                     </span>
                                     <select id="smokingInput" class="form-select" name="smoking_allowed" style="display: none;" required>
-                                        <option disabled selected>Please select</option>
-                                        <option value="Allowed">Allowed</option>
-                                        <option value="Allowed under certain conditions">Allowed under certain conditions</option>
-                                        <option value="Not allowed">Not allowed</option>
+                                        <option disabled {{ empty($data['rules']['smokingAllowed']) ? 'selected' : '' }}>Please select</option>
+                                        <option value="Allowed" {{ ($data['rules']['smokingAllowed'] ?? '') == 'Allowed' ? 'selected' : '' }}>Allowed</option>
+                                        <option value="Allowed under certain conditions" {{ ($data['rules']['smokingAllowed'] ?? '') == 'Allowed under certain conditions' ? 'selected' : '' }}>Allowed under certain conditions</option>
+                                        <option value="Not allowed" {{ ($data['rules']['smokingAllowed'] ?? '') == 'Not allowed' ? 'selected' : '' }}>Not allowed</option>
                                     </select>
                                 </div>
                             </div>
@@ -953,14 +869,14 @@
                                 <label for="">Additional information</label>
                                 <div style="display: flex; align-items: center; width: 100%;">
                                     <span id="rulesText" class="plain-text" style="width: 100%; text-align: end;">
-                                        {{$data['rules']['rules'] ? $data['rules']['rules'] : 'Not provided'}}
+                                        {{ $data['rules']['rules'] ?? 'Not provided' }}
                                     </span>
                                     <textarea
                                         id="rulesInput"
                                         class="form-control"
                                         name="rules"
                                         style="display: none; width: 100%; height: 200px; resize: none;"
-                                        required>{{$data['rules']['rules']}}</textarea>
+                                        required>{{ $data['rules']['rules'] ?? '' }}</textarea>
                                 </div>
                             </div>
                         </div>
