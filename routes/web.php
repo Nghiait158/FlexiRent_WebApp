@@ -164,6 +164,10 @@ Route::middleware(['auth', 'landlord'])->group(function () {
     
     Route::post('/savePropertyLandlord/{landlord_id}', [LandlordController::class, 'savePropertyLandlord']);
 
+    Route::get('landlord/edit_property', [LandlordController::class, 'editProperty'])->name('property.edit');
+    Route::get('landlord/myProperty', [LandlordController::class, 'myProperty'])->name('myProperty');
+
+
     Route::get('landlord/add_property_address', [LandlordController::class, 'addPropertyAddress'])->name('property.add.address');
     Route::post('/store_property_address', [LandlordController::class, 'storePropertyAddress'])->name('property.store.address');
 

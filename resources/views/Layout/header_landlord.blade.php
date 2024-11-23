@@ -44,7 +44,7 @@ main {
                 <span class="icon">👨‍💻</span>
                 <span class="text">Dashboard</span>
             </a>
-            <a href="{{ URL::to('/landlord/myproperty') }}" class="menu-item {{ request()->is('landlord/myproperty') ? 'active' : '' }}">
+            <a href="{{ URL::to('/landlord/myProperty') }}" class="menu-item">
                 <span class="icon">🏠</span>
                 <span class="text">My property</span>
             </a>

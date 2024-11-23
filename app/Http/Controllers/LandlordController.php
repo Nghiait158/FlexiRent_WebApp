@@ -380,6 +380,14 @@ class LandlordController extends Controller
         return Redirect::to('manage_property');
     }
 
+    public function editProperty(){
+        return view('landlord.edit_property');
+    }
+
+    public function myProperty(){
+        return view('landlord.myProperty');
+    }
+
 
     // ----------------------Backend--------------
     public function manage_landlord(){  
