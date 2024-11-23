@@ -385,13 +385,23 @@ class LandlordController extends Controller
         // $property->elevator = $data['elevator'];
     
         $property ->save();
-        if (!empty($data['amenities'])) {
-            // Đảm bảo danh sách amenity là một mảng và các giá trị hợp lệ
-            $validatedAmenities = Amenity::whereIn('amenity_id', $data['amenities'])->pluck('amenity_id')->toArray();
+        
+        if (isset($data['Amenities'])) {
+            $amenityIds = [];
+            foreach ($data['Amenities'] as $amenityName => $isChecked) {
+                if ($isChecked == 1) {
+                    // Find the amenity by its name
+                    $amenity = Amenity::where('amenity_name', $amenityName)->first();
+                    if ($amenity) {
+                        $amenityIds[] = $amenity->amenity_id; // Use `amenity_id` as per your model
+                    }
+                }
+            }
     
-            // Liên kết các amenities với property
-            $property->amenities()->sync($validatedAmenities);
+            // Attach amenities to the property
+            $property->amenities()->sync($amenityIds);
         }
+
         Session::put('message','Add property successfully!!!');
         return Redirect::to('savedPropertylandlord');
     }
