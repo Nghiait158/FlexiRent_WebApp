@@ -246,35 +246,35 @@
             });
 
             $('#searchMinPrice, #searchMaxPrice').on('input', function() {
-    var minPrice = parseFloat($('#searchMinPrice').val());
-    var maxPrice = parseFloat($('#searchMaxPrice').val());
+                var minPrice = parseFloat($('#searchMinPrice').val());
+                var maxPrice = parseFloat($('#searchMaxPrice').val());
 
-    // Nếu minPrice hoặc maxPrice không phải là số hợp lệ, trả về NaN
-    if (isNaN(minPrice)) minPrice = '';
-    if (isNaN(maxPrice)) maxPrice = '';
+                // Nếu minPrice hoặc maxPrice không phải là số hợp lệ, trả về NaN
+                if (isNaN(minPrice)) minPrice = '';
+                if (isNaN(maxPrice)) maxPrice = '';
 
-    // Tạo bộ lọc tìm kiếm cho cột giá
-    table.column(12).search(function(settings, data, dataIndex) {
-        var price = parseFloat(data[12]);  // Lấy giá trị của cột price (giả sử là cột 12)
+                // Tạo bộ lọc tìm kiếm cho cột giá
+                table.column(12).search(function(settings, data, dataIndex) {
+                    var price = parseFloat(data[12]); // Lấy giá trị của cột price (giả sử là cột 12)
 
-        // Nếu có minPrice và maxPrice, lọc các giá trị nằm trong khoảng này
-        if (minPrice !== '' && maxPrice !== '') {
-            return price >= minPrice && price <= maxPrice;
-        }
-        // Nếu có chỉ minPrice, lọc các giá trị lớn hơn hoặc bằng minPrice
-        else if (minPrice !== '') {
-            return price >= minPrice;
-        }
-        // Nếu có chỉ maxPrice, lọc các giá trị nhỏ hơn hoặc bằng maxPrice
-        else if (maxPrice !== '') {
-            return price <= maxPrice;
-        }
-        // Nếu không có minPrice và maxPrice, không lọc gì cả
-        else {
-            return true;
-        }
-    }).draw();
-});
+                    // Nếu có minPrice và maxPrice, lọc các giá trị nằm trong khoảng này
+                    if (minPrice !== '' && maxPrice !== '') {
+                        return price >= minPrice && price <= maxPrice;
+                    }
+                    // Nếu có chỉ minPrice, lọc các giá trị lớn hơn hoặc bằng minPrice
+                    else if (minPrice !== '') {
+                        return price >= minPrice;
+                    }
+                    // Nếu có chỉ maxPrice, lọc các giá trị nhỏ hơn hoặc bằng maxPrice
+                    else if (maxPrice !== '') {
+                        return price <= maxPrice;
+                    }
+                    // Nếu không có minPrice và maxPrice, không lọc gì cả
+                    else {
+                        return true;
+                    }
+                }).draw();
+            });
 
 
 
