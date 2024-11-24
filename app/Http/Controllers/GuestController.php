@@ -22,14 +22,30 @@ class GuestController extends Controller
             'from' => $from,
             'to' => $to,
             'guestCount' => $guestCount,
-            // 'property_id' => $property_id,
             'propertyDetail'=>$propertyDetail,
         ];
         $request->session()->put('checkout_data', $data);
         // dd($data);
         return view('guest.CheckoutPageA', $data);
     }
+    public function Booking(Request $request, $property_id){
+        $propertyDetail = Property::find($property_id);
+        $from = $request->input('from');
+        $to = $request->input('to');
+        $Reserve = $request->input('Reserve');
 
+        $guestCount = $request->input('guest_count');
+
+        $data = [
+            'Reserve' => $Reserve,
+            'from' => $from,
+            'to' => $to,
+            'guestCount' => $guestCount,
+            'propertyDetail'=>$propertyDetail,
+        ];
+        // dd($data);
+        return view('guest.CheckoutPageB', $data);
+    }
 
     // ----------------Backend-----------------
 

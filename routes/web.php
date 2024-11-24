@@ -151,10 +151,11 @@ Route::middleware(['auth','guest'])->group(function () {
 
 
     // Frontend---------------
+    Route::get('/CheckoutPageB/{property_id}', [GuestController::class, 'Booking']);
 
-    Route::get('/CheckoutPageB', function () {
-        return view('CheckoutPageB');
-    });
+    // Route::get('/CheckoutPageB/{property_id}',  [GuestController::class, 'index'] {
+    //     return view('CheckoutPageB');
+    // });
 });
 
 Session::start();
