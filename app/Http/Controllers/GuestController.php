@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Guest;
+use App\Models\Booking;
 use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -33,7 +34,9 @@ class GuestController extends Controller
         $from = $request->input('from');
         $to = $request->input('to');
         $Reserve = $request->input('Reserve');
-
+        $currentUser = Auth::user();
+        $currentGuest = Guest::where('id', $currentUser->id)->first();
+        
         $guestCount = $request->input('guest_count');
 
         $data = [
@@ -42,11 +45,46 @@ class GuestController extends Controller
             'to' => $to,
             'guestCount' => $guestCount,
             'propertyDetail'=>$propertyDetail,
+            'currentGuest'=>$currentGuest,
         ];
         // dd($data);
         return view('guest.CheckoutPageB', $data);
     }
 
+    public function savedBooking(Request $request, $property_id, $guest_id){
+        $data= $request->all();
+        $guest = Guest::with('user')->find($guest_id );
+        if (!$guest) {
+            return redirect()->back()->withErrors(['error' => 'Guest not found']);
+        }
+        // $guest->guest_id= $data['guest_id'];
+        $guest->first_name = $data['fName'];
+        $guest->last_name = $data['lName'];
+        $guest->phone_number = $data['phone_number'];
+        // $guest->purpose_of_stay = $data['purpose_of_stay'];
+        $guest->user->email = $data['email'];
+        
+        $guest->save();
+
+        $booking = new Booking();
+        $booking->property_id= $property_id;
+        $booking->guest_id = $guest_id;
+        $booking->check_in = $data['from'];
+        $booking->check_out = $data['to'];
+        $booking->nguests = $data['guest_count'];
+        $booking->total_cost = $data['total_cost'];
+        $booking->status = 'pending';
+        $booking->PurposeOfStay = $data['flexRadioDefault'];
+        $booking->purposeExplain = $data['purposeExplain'] ?? null;
+        $booking->is_booking_for_other = $data['is_booking_for_other'] ?? 0;
+        $booking->other_email = $data['other_email'] ?? null;
+        $booking->other_name = $data['other_name'] ?? null;
+        
+        $booking->payment_method = $data['payment_method'];
+        $booking ->save();
+        
+        return Redirect::to('');
+    }
     // ----------------Backend-----------------
 
     public function manage_guest(){  

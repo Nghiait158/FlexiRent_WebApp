@@ -33,7 +33,7 @@
 </script>
 
 <div class="page-container">
-    <form onsubmit="prepareReserveValue()" action=" {{URL::to('/CheckoutPageB/'.$propertyDetail-> property_id)}} ">
+    <form onsubmit="prepareReserveValue()" action=" {{URL::to('/CheckoutPageB/'.$propertyDetail-> property_id)}} " method="GET">
         <div class="review-container">
             <h1 class="title">Booking review</h1>
             <div class="price-button">

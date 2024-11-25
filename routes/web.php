@@ -152,6 +152,7 @@ Route::middleware(['auth','guest'])->group(function () {
 
     // Frontend---------------
     Route::get('/CheckoutPageB/{property_id}', [GuestController::class, 'Booking']);
+    Route::post('/savedBooking/{property_id}/{guest_id}', [GuestController::class, 'savedBooking']);
 
     // Route::get('/CheckoutPageB/{property_id}',  [GuestController::class, 'index'] {
     //     return view('CheckoutPageB');
