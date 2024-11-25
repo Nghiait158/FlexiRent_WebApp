@@ -85,7 +85,7 @@
                         </div>
                         <div class="row mb-3 align-items-center no-padding-margin">
                             <div class="col-sm-9">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email to receive booking information">
                             </div>
                         </div>
                         <div class="row mb-3 align-items-center no-padding-margin">
@@ -102,7 +102,7 @@
                     <h3>Purpose of stay</h3>
     
                     <div class="form-check mb-2 pl-3">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Bussiness Travel/ Work">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Business Travel/ Work">
                         <label class="form-check-label" for="flexRadioDefault1">
                             Bussiness Travel/ Work
                         </label>
@@ -329,7 +329,7 @@
                 <select class="form-select" name="payment_method" aria-label="Default select example">
                     <option selected>Select payment method</option>
                     <option class="options" value="paypal">Paypal</option>
-                    <option class="options" value="visa">Visa</option>
+                    <option class="options" value="bank_transfer">Bank Transfer</option>
                     <option class="options" value="cash">Cash</option>
                     <option class="options" value="credit_card">Credit card</option>
                     
