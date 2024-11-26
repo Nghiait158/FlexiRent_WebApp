@@ -628,7 +628,7 @@
                                         class="form-control"
                                         name="education_and_community"
                                         style="display:none; width: 100%; height: 200px; resize:none"
-                                        required>{{$data['describe']['education_and_community']}}</textarea>
+                                        required>{{$data['describe']['education_and_community'] ?? 'Not provided'}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -876,7 +876,7 @@
                                         class="form-control"
                                         name="rules"
                                         style="display: none; width: 100%; height: 200px; resize: none;"
-                                        required>{{ $data['rules']['rules'] ?? '' }}</textarea>
+                                        required>{{ $data['rules']['rules'] ?? 'Not provided' }}</textarea>
                                 </div>
                             </div>
                         </div>
