@@ -267,10 +267,15 @@
                                 input: 'guestCapacityInput'
                             },
                             {
-                                text: 'roomText',
-                                input: 'roomInput'
+                                text: 'bedroomText',
+                                input: 'bedroomInput' // Added bedroom fields
                             },
+                            {
+                                text: 'bathroomText',
+                                input: 'bathroomInput' // Added bathroom fields
+                            }
                         ];
+
 
                         toggleEditButtonGeneral.addEventListener("click", () => {
                             const isEditing = fields3.every(field => document.getElementById(field.input).style.display === "block");
@@ -319,18 +324,15 @@
                             <!-- WiFi Checkbox -->
                             <div class="form-check">
                                 <label for="">WiFi</label>
-
                                 <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                    <input 
+                                    <input
                                         class="form-check-input custom-switch"
                                         type="checkbox"
                                         role="switch"
-                                        {{-- id="wifiSwitch" --}}
+                                        id="wifiSwitch"
                                         name="wifi_checkbox"
                                         value="1"
-                                        {{ session('services.wifi') == '1' ? 'checked' : '' }}
-                                        >
-                            
+                                        {{ session('services.wifi') == '1' ? 'checked' : '' }}>
                                 </div>
                             </div>
                             <hr class="solid-line">
@@ -340,34 +342,31 @@
                                 <label for="">Internet Speed</label>
                                 <div id="internetSpeedContainer" style="display: flex; align-items: center; width: 100%">
                                     <input
-                                        {{-- id="internetSpeedInput" --}}
+                                        id="internetSpeedInput"
                                         class="form-control"
                                         step="1"
                                         name="internetSpeed"
                                         type="number"
                                         value="{{ session('services.internetSpeed', 0) }}"
-                                        required
-                                        >
-                                    {{-- <input type="hidden" name="wifi" value="{{ session('services.wifi') }}"> --}}
+                                        required>
                                 </div>
                             </div>
                             <hr class="solid-line">
+
+                            <!-- Elevator Checkbox -->
                             <div class="form-check">
                                 <label for="">Elevator</label>
-
                                 <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                    <input class="form-check-input custom-switch"
+                                    <input
+                                        class="form-check-input custom-switch"
                                         type="checkbox"
                                         role="switch"
-                                        {{-- id="elevatorSwitch" --}}
+                                        id="elevatorSwitch"
                                         name="elevator"
                                         value="1"
-                                        {{ session('services.elevator') == '1' ? 'checked' : '' }}
-                                        
-                                        >
+                                        {{ session('services.elevator') == '1' ? 'checked' : '' }}>
                                 </div>
                             </div>
-                            {{-- <hr class="solid-line"> --}}
                         </div>
                     </div>
 
@@ -375,13 +374,14 @@
                         document.getElementById('toggleEditButtonServices').addEventListener('click', function() {
                             const wifiCheckbox = document.getElementById('wifiSwitch');
                             const internetSpeedInput = document.getElementById('internetSpeedInput');
-                            const elevator =document.getElementById('elevatorSwitch')
-                            // Toggle the disabled property of the WiFi checkbox and internet speed input
+                            const elevator = document.getElementById('elevatorSwitch');
+
+                            // Toggle the disabled property of the WiFi checkbox and elevator input
                             const isDisabled = wifiCheckbox.disabled;
-                            const iselvatorDisabled = elevator.disabled;
-                            
+                            const isElevatorDisabled = elevator.disabled;
+
                             wifiCheckbox.disabled = !isDisabled;
-                            elevator.disabled = !iselvatorDisabled;
+                            elevator.disabled = !isElevatorDisabled;
 
                             // Enable or disable the internet speed input based on WiFi checkbox state
                             if (wifiCheckbox.checked) {
@@ -390,6 +390,16 @@
                                 internetSpeedInput.disabled = true;
                                 internetSpeedInput.value = 0; // Set internet speed to 0 if WiFi is unchecked
                             }
+
+                            // Change button icon
+                            const isEditing = wifiCheckbox.disabled;
+                            this.innerHTML = isEditing ?
+                                `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M12 20h9M16.5 3.5l4 4L7 21H3v-4L16.5 3.5z"></path>
+            </svg>` :
+                                `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M5 13l4 4L19 7"></path>
+            </svg>`;
                         });
 
                         // Add an event listener to the WiFi checkbox to enable/disable internet speed input dynamically
@@ -406,6 +416,8 @@
                         });
                     </script>
 
+
+
                     <hr class="solid-thick-line">
 
                     <div class="input-form">
@@ -421,27 +433,27 @@
 
                         <div class="review-input">
                             @php
-                                $amenityCounter = 1;
+                            $amenityCounter = 1;
                             @endphp
-                            
+
                             @foreach($data['Amenities'] as $amenity => $isChecked)
-                                <div class="form-check">
-                                    <label for="">{{ ucfirst(str_replace('_', ' ', $amenity)) }}</label>
-                                    <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
-                                        <input
-                                            class="form-check-input custom-switch Amenities"
-                                            type="checkbox"
-                                            role="switch"
-                                            id="{{ $amenity }}Switch"
-                                            name="amenities[]" 
-                                            value="{{ $amenityCounter }}" 
-                                            {{ $isChecked == 1 ? 'checked' : '' }}>
-                                    </div>
+                            <div class="form-check">
+                                <label for="">{{ ucfirst(str_replace('_', ' ', $amenity)) }}</label>
+                                <div class="form-check form-switch d-flex justify-content-end" style="align-items: center;">
+                                    <input
+                                        class="form-check-input custom-switch Amenities"
+                                        type="checkbox"
+                                        role="switch"
+                                        id="{{ $amenity }}Switch"
+                                        name="amenities[]"
+                                        value="{{ $amenityCounter }}"
+                                        {{ $isChecked == 1 ? 'checked' : '' }}>
                                 </div>
-                                <hr class="solid-line">
-                                @php
-                                    $amenityCounter++;
-                                @endphp
+                            </div>
+                            <hr class="solid-line">
+                            @php
+                            $amenityCounter++;
+                            @endphp
                             @endforeach
                         </div>
                     </div>
@@ -455,11 +467,23 @@
                             amenitiesCheckboxes.forEach(checkbox => {
                                 checkbox.disabled = !checkbox.disabled;
                             });
+
+                            // Change button icon based on the disabled state of checkboxes
+                            const isEditing = amenitiesCheckboxes[0].disabled;
+                            this.innerHTML = isEditing ?
+                                `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M12 20h9M16.5 3.5l4 4L7 21H3v-4L16.5 3.5z"></path>
+            </svg>` :
+                                `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M5 13l4 4L19 7"></path>
+            </svg>`;
                         });
                     </script>
 
+
                     <hr class="solid-thick-line">
 
+                    <!-- Images Section -->
                     <div class="input-form">
                         <label class="title" for="">
                             <b>Images</b>
@@ -488,33 +512,22 @@
                                         style="display:none"
                                         placeholder="Enter URL"
                                         required>
-
                                 </div>
                             </div>
-
                         </div>
                     </div>
 
                     <script>
                         const toggleEditButtonImages = document.getElementById("toggleEditButtonImages");
 
-                        // Fields to toggle
-                        const fields4 = [{
-                                textElement: "titleText",
-                                inputElement: "titleInput"
-                            },
-                            {
-                                textElement: "descriptionText",
-                                inputElement: "descriptionInput"
-                            },
-                            {
-                                textElement: "educationText",
-                                inputElement: "educationInput"
-                            }
-                        ];
+                        // Fields to toggle for "Images"
+                        const fieldsImages = [{
+                            textElement: "titleText",
+                            inputElement: "titleInput"
+                        }];
 
                         toggleEditButtonImages.addEventListener("click", () => {
-                            fields4.forEach(({
+                            fieldsImages.forEach(({
                                 textElement,
                                 inputElement
                             }) => {
@@ -536,8 +549,8 @@
                                 }
                             });
 
-                            // Toggle button icon
-                            const isEditing = fields4.some(({
+                            // Toggle button icon for "Images"
+                            const isEditing = fieldsImages.some(({
                                 inputElement
                             }) => document.getElementById(inputElement).style.display === "block");
                             toggleEditButtonImages.innerHTML = isEditing ?
@@ -548,7 +561,7 @@
 
                     <hr class="solid-thick-line">
 
-
+                    <!-- Listing Description Section -->
                     <div class="input-form">
                         <label class="title" for="">
                             <b>Listing Description</b>
@@ -637,15 +650,15 @@
                     <script>
                         const toggleEditButtonDescription = document.getElementById("toggleEditButtonDescription");
 
-                        // Fields to toggle
-                        const fields6 = [{
+                        // Fields to toggle for "Listing Description"
+                        const fieldsDescription = [{
                                 textElement: "titleText",
                                 inputElement: "titleInput"
                             },
                             {
                                 textElement: "viewText",
                                 inputElement: "viewInput"
-                            }, // Added "View" toggle
+                            },
                             {
                                 textElement: "descriptionText",
                                 inputElement: "descriptionInput"
@@ -657,7 +670,7 @@
                         ];
 
                         toggleEditButtonDescription.addEventListener("click", () => {
-                            fields6.forEach(({
+                            fieldsDescription.forEach(({
                                 textElement,
                                 inputElement
                             }) => {
@@ -679,8 +692,8 @@
                                 }
                             });
 
-                            // Toggle button icon
-                            const isEditing = fields6.some(({
+                            // Toggle button icon for "Listing Description"
+                            const isEditing = fieldsDescription.some(({
                                 inputElement
                             }) => document.getElementById(inputElement).style.display === "block");
                             toggleEditButtonDescription.innerHTML = isEditing ?
@@ -688,6 +701,7 @@
                                 `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5l4 4L7 21H3v-4L16.5 3.5z"></path></svg>`;
                         });
                     </script>
+
 
 
                     <hr class="solid-thick-line">

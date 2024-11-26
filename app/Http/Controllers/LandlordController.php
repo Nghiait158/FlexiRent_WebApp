@@ -400,7 +400,7 @@ class LandlordController extends Controller
     }
     public function savedPropertylandlord(){
         return view('landlord.savedPropertylandlord');
-    }
+    }   
 
     public function editProperty(){
         return view('landlord.edit_property');

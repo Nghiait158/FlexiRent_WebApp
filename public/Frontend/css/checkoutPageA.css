@@ -18,12 +18,16 @@ main {
 }
 
 .page-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 128px;
+    
     width: 100%;
     max-width: 1280px;
 
+}
+
+.page-container form{
+    display: flex;
+    justify-content: space-between;
+    gap: 128px;
 }
 
 .page-container .review-container {
@@ -141,7 +145,7 @@ svg {
     gap: 10px;
     text-decoration: none;
     color: var(--White, #FFF);
-
+    border: none;
     /* Font settings */
     font-family: "Lato";
     font-size: 18px;
