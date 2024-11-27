@@ -395,6 +395,9 @@ class LandlordController extends Controller
             $property->amenities()->sync($selectedAmenityIds);
         }
 
+        
+
+
         Session::put('message','Add property successfully!!!');
         return Redirect::to('landlord/savedPropertylandlord');
     }

@@ -35,7 +35,7 @@ class AuthenticatedSessionController extends Controller
             // return redirect('landlord/dashboard');
         }else if ($request ->user()-> role === 'guest'){
             // return redirect('guest/dashboard');   
-            return redirect()->intended('/');         
+            return redirect()->intended('/guest/dashboard');         
         }
 
         // return redirect(session()->pull('url.intended', default: '/dashboard'));
