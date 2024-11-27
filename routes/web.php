@@ -204,8 +204,6 @@ Route::middleware(['auth', 'landlord'])->group(function () {
 // ---- update status for booking 
     Route::post('/updatestatusBooking/{booking_id}', [LandlordController::class, 'updatestatusBooking']);
 
-
-
 });
 
 
