@@ -416,6 +416,41 @@ class LandlordController extends Controller
         return view('landlord.myProperty', compact('properties'));
     }
 
+    
+
+public function deleteLandlordProperty($property_id)
+{
+    // Fetch the property by its ID
+    $property = Property::find($property_id);
+
+    // Check if property exists
+    if (!$property) {
+        // Property not found
+        Session::flash('error', 'Property does not exist');
+        return Redirect::to('landlord/myProperty');
+    }
+
+    // Check if the current user is the owner of the property
+    if ($property->landlord_id !== Auth::id()) {
+        // User is not the owner of the property
+        Session::flash('error', 'You are not authorized to delete this property');
+        return Redirect::to('landlord/myProperty');
+    }
+
+    // Proceed with deletion
+    try {
+        $property->delete();
+        Session::flash('message', 'Property deleted successfully');
+    } catch (\Exception $e) {
+        // Handle any errors during deletion
+        Session::flash('error', 'An error occurred while deleting the property');
+    }
+
+    // Redirect back to the list of properties
+    return Redirect::to('landlord/myProperty');
+}
+
+
 
     // ----------------------Backend--------------
     public function manage_landlord(){  

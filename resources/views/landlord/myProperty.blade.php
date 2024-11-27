@@ -203,18 +203,6 @@
                 $('#propertyDetailsModal').fadeOut();
             });
 
-            // Handle Delete button - remove the row
-            $(document).on('click', '.delete-btn', function() {
-                var row = $(this).closest('tr');
-                $('#confirmDeleteModal').fadeIn();
-
-                $('#confirmDeleteBtn').on('click', function() {
-                    // Use DataTable's API to remove the row
-                    table.row(row).remove().draw();
-                    $('#confirmDeleteModal').fadeOut();
-                });
-            });
-
             // Close the confirmation modal
             $(document).on('click', '.cancelDeleteBtn', function() {
                 $('#confirmDeleteModal').fadeOut();
@@ -455,9 +443,25 @@
                         <td>{{ $property->wifi ?:'N/A'}}</td>
                         <td>{{ $property->internetSpeed ?:'N/A'}}</td>
                         <td>
-                            <button class="btn btn-info view-btn">View</button>
-                            <a href="{{ route('property.edit') }}"><button class="btn btn-warning edit-btn">Edit</button></a>
-                            <button class="btn btn-danger delete-btn">Delete</button>
+                            <button class="btn btn-info view-btn">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+
+                            <a href="{{ route('property.edit') }}">
+                                <button class="btn btn-warning edit-btn">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                            </a>
+
+                            <!-- Delete button -->
+                            <a href="{{ URL::to('/deleteLandlordProperty/'.$property->property_id) }}"
+                                onclick="return confirm('Are you sure you want to delete this property?');">
+                                <button class="btn btn-danger delete-btn">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </a>
+
+
                         </td>
                     </tr>
                     @endforeach
