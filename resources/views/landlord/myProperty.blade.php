@@ -1,164 +1,169 @@
-@extends('Layout/header_landlord')
-@section('contentLandlord')
-{{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> --}}
-{{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css"> --}}
-{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> --}}
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script>
-    // Create a link element
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = '/Frontend/css/Landlord/myProperty.css';
-    document.head.appendChild(link);
-</script>
+<!DOCTYPE html>
+<html lang="vi">
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
-<script>
-    $(document).ready(function() {
-        // Initialize DataTables
-        var table = $('#propertyTable').DataTable();
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Information Table with Bootstrap 5 & DataTables</title>
 
-        // Function to calculate total properties
-        function calculateTotalProperties() {
-            var totalProperties = table.rows().count(); // Count all rows in the table
-            $('#totalProperties').text(totalProperties);
-        }
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        // Function to calculate available properties
-        function calculateAvailableProperties() {
-            var availableProperties = 0;
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
 
-            table.rows().every(function() {
-                var rowData = this.data();
-                var status = rowData[11]; // Status column is at index 3 (0-based)
-                if (status === "1") {
-                    availableProperties++;
-                }
-            });
-            $('#availableProperties').text(availableProperties);
-        }
-        // Function to calculate rented properties
-        function calculateRentedProperties() {
-            var rentedProperties = 0;
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-            table.rows().every(function() {
-                var rowData = this.data();
-                var status = rowData[11]; // Status column is at index 3 (0-based)
-                if (status === "0") {
-                    rentedProperties++;
-                }
-            });
-            $('#rentedProperties').text(rentedProperties);
-        }
+    <link rel="stylesheet" href="/Frontend/css/Landlord/myProperty.css">
 
-        // Function to calculate average price
-        function calculateAveragePrice() {
-            var totalPrice = 0;
-            var totalCount = 0;
-            table.rows().every(function() {
-                var rowData = this.data();
-                var price = parseFloat(rowData[12].replace(/[^0-9.-]+/g, "")); // Remove any non-numeric symbols
-                if (!isNaN(price)) {
-                    totalPrice += price;
-                    totalCount++;
-                }
-            });
-            var averagePrice = totalCount > 0 ? totalPrice / totalCount : 0;
-            $('#averagePrice').text('$' + averagePrice.toFixed(2));
-        }
 
-        // Calculate statistics when the page loads
-        calculateTotalProperties();
-        calculateAvailableProperties();
-        calculateRentedProperties();
-        calculateAveragePrice();
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Initialize DataTables
+            var table = $('#propertyTable').DataTable();
 
-        // Function to filter rows by status (Available, Rented, All)
-        function filterByStatus(status) {
-            // Filter the table based on status
-            if (status === "All") {
-                table.column(11).search('').draw(); // Show all rows (clear search)
-                $('#statusFilterText').text('All');
-            } else {
-                table.column(11).search(status).draw(); // Filter by Available (1) or Rented (0)
-                $('#statusFilterText').text(status === "1" ? 'Available' : 'Rented');
+            // Function to calculate total properties
+            function calculateTotalProperties() {
+                var totalProperties = table.rows().count(); // Count all rows in the table
+                $('#totalProperties').text(totalProperties);
             }
-        }
 
-        // Status filter button click to show dropdown
-        $('#statusFilterBtn').on('click', function() {
-            $('#statusFilterDropdown').toggle();
-        });
+            // Function to calculate available properties
+            function calculateAvailableProperties() {
+                var availableProperties = 0;
 
-        // Status filter option click
-        $('#statusFilterDropdown .dropdown-item').on('click', function() {
-            var selectedStatus = $(this).data('status');
-            filterByStatus(selectedStatus);
-            $('#statusFilterDropdown').hide();
-        });
+                table.rows().every(function() {
+                    var rowData = this.data();
+                    var status = rowData[11]; // Status column is at index 3 (0-based)
+                    if (status === "1") {
+                        availableProperties++;
+                    }
+                });
+                $('#availableProperties').text(availableProperties);
+            }
+            // Function to calculate rented properties
+            function calculateRentedProperties() {
+                var rentedProperties = 0;
 
-        // Redraw stats after table is redrawn (e.g., after filtering)
-        table.on('draw', function() {
+                table.rows().every(function() {
+                    var rowData = this.data();
+                    var status = rowData[11]; // Status column is at index 3 (0-based)
+                    if (status === "0") {
+                        rentedProperties++;
+                    }
+                });
+                $('#rentedProperties').text(rentedProperties);
+            }
+
+            // Function to calculate average price
+            function calculateAveragePrice() {
+                var totalPrice = 0;
+                var totalCount = 0;
+                table.rows().every(function() {
+                    var rowData = this.data();
+                    var price = parseFloat(rowData[12].replace(/[^0-9.-]+/g, "")); // Remove any non-numeric symbols
+                    if (!isNaN(price)) {
+                        totalPrice += price;
+                        totalCount++;
+                    }
+                });
+                var averagePrice = totalCount > 0 ? totalPrice / totalCount : 0;
+                $('#averagePrice').text('$' + averagePrice.toFixed(2));
+            }
+
+            // Calculate statistics when the page loads
             calculateTotalProperties();
             calculateAvailableProperties();
             calculateRentedProperties();
             calculateAveragePrice();
-        });
 
-        // Function to calculate total price for the current page
-        function calculateTotalPrice() {
-            var totalPrice = 0;
-            // Loop through all rows in the current page
-            table.rows({
-                search: 'applied'
-            }).every(function(rowIdx, tableLoop, rowLoop) {
-                var rowData = this.data();
-                var price = parseFloat(rowData[12].replace(/[^0-9.-]+/g, "")); // Remove any currency symbols and convert to number
-                if (!isNaN(price)) {
-                    totalPrice += price;
+            // Function to filter rows by status (Available, Rented, All)
+            function filterByStatus(status) {
+                // Filter the table based on status
+                if (status === "All") {
+                    table.column(11).search('').draw(); // Show all rows (clear search)
+                    $('#statusFilterText').text('All');
+                } else {
+                    table.column(11).search(status).draw(); // Filter by Available (1) or Rented (0)
+                    $('#statusFilterText').text(status === "1" ? 'Available' : 'Rented');
                 }
+            }
+
+            // Status filter button click to show dropdown
+            $('#statusFilterBtn').on('click', function() {
+                $('#statusFilterDropdown').toggle();
             });
 
-            // Update the total price for the current page
-            $('#totalPrice').text('$' + totalPrice.toFixed(2));
-        }
-
-        // Function to calculate total price for all properties (example: sum of all rows)
-        function calculateTotalPriceAll() {
-            var totalPriceAll = 0;
-            // Loop through all rows in the table
-            table.rows().every(function(rowIdx, tableLoop, rowLoop) {
-                var rowData = this.data();
-                var price = parseFloat(rowData[12].replace(/[^0-9.-]+/g, "")); // Remove any currency symbols and convert to number
-                if (!isNaN(price)) {
-                    totalPriceAll += price;
-                }
+            // Status filter option click
+            $('#statusFilterDropdown .dropdown-item').on('click', function() {
+                var selectedStatus = $(this).data('status');
+                filterByStatus(selectedStatus);
+                $('#statusFilterDropdown').hide();
             });
 
-            // Update the total price for all properties
-            $('#totalPriceAll').text('$' + totalPriceAll.toFixed(2));
-        }
+            // Redraw stats after table is redrawn (e.g., after filtering)
+            table.on('draw', function() {
+                calculateTotalProperties();
+                calculateAvailableProperties();
+                calculateRentedProperties();
+                calculateAveragePrice();
+            });
 
-        // Calculate total price whenever the table is drawn (page change, filter, etc.)
-        table.on('draw', function() {
+            // Function to calculate total price for the current page
+            function calculateTotalPrice() {
+                var totalPrice = 0;
+                // Loop through all rows in the current page
+                table.rows({
+                    search: 'applied'
+                }).every(function(rowIdx, tableLoop, rowLoop) {
+                    var rowData = this.data();
+                    var price = parseFloat(rowData[12].replace(/[^0-9.-]+/g, "")); // Remove any currency symbols and convert to number
+                    if (!isNaN(price)) {
+                        totalPrice += price;
+                    }
+                });
+
+                // Update the total price for the current page
+                $('#totalPrice').text('$' + totalPrice.toFixed(2));
+            }
+
+            // Function to calculate total price for all properties (example: sum of all rows)
+            function calculateTotalPriceAll() {
+                var totalPriceAll = 0;
+                // Loop through all rows in the table
+                table.rows().every(function(rowIdx, tableLoop, rowLoop) {
+                    var rowData = this.data();
+                    var price = parseFloat(rowData[12].replace(/[^0-9.-]+/g, "")); // Remove any currency symbols and convert to number
+                    if (!isNaN(price)) {
+                        totalPriceAll += price;
+                    }
+                });
+
+                // Update the total price for all properties
+                $('#totalPriceAll').text('$' + totalPriceAll.toFixed(2));
+            }
+
+            // Calculate total price whenever the table is drawn (page change, filter, etc.)
+            table.on('draw', function() {
+                calculateTotalPrice();
+                calculateTotalPriceAll();
+            });
+
+            // Initial calculation after page load
             calculateTotalPrice();
             calculateTotalPriceAll();
-        });
 
-        // Initial calculation after page load
-        calculateTotalPrice();
-        calculateTotalPriceAll();
+            // Handle View button - open the modal popup
+            $(document).on('click', '.view-btn', function() {
+                var row = $(this).closest('tr');
+                var rowData = table.row(row).data(); // Use DataTable API to get row data
 
-        // Handle View button - open the modal popup
-        $(document).on('click', '.view-btn', function() {
-            var row = $(this).closest('tr');
-            var rowData = table.row(row).data(); // Use DataTable API to get row data
-
-            // Populate the modal with property details
-            $('#propertyDetailsModal .modal-body').html(`
+                // Populate the modal with property details
+                $('#propertyDetailsModal .modal-body').html(`
                         <div class="list-group">
             <div class="list-group-item"><strong>Property ID:</strong> <span id="propertyId">${rowData[0]}</span></div>
             <div class="list-group-item"><strong>Property Name:</strong> <span id="propertyName">${rowData[1]}</span></div>
@@ -189,102 +194,103 @@
         </div>
                     `);
 
-            // Show the modal
-            $('#propertyDetailsModal').fadeIn();
-        });
+                // Show the modal
+                $('#propertyDetailsModal').fadeIn();
+            });
 
-        // Close modal popup
-        $(document).on('click', '.cancelbtn, .close', function() {
-            $('#propertyDetailsModal').fadeOut();
-        });
+            // Close modal popup
+            $(document).on('click', '.cancelbtn, .close', function() {
+                $('#propertyDetailsModal').fadeOut();
+            });
 
-        // Handle Delete button - remove the row
-        $(document).on('click', '.delete-btn', function() {
-            var row = $(this).closest('tr');
-            $('#confirmDeleteModal').fadeIn();
+            // Handle Delete button - remove the row
+            $(document).on('click', '.delete-btn', function() {
+                var row = $(this).closest('tr');
+                $('#confirmDeleteModal').fadeIn();
 
-            $('#confirmDeleteBtn').on('click', function() {
-                // Use DataTable's API to remove the row
-                table.row(row).remove().draw();
+                $('#confirmDeleteBtn').on('click', function() {
+                    // Use DataTable's API to remove the row
+                    table.row(row).remove().draw();
+                    $('#confirmDeleteModal').fadeOut();
+                });
+            });
+
+            // Close the confirmation modal
+            $(document).on('click', '.cancelDeleteBtn', function() {
                 $('#confirmDeleteModal').fadeOut();
             });
+
+            // Handle Edit button - allow inline editing
+            $(document).on('blur', '.edit-property-name', function() {
+                var newPropertyName = $(this).val();
+                var row = $(this).closest('tr');
+                var rowData = table.row(row).data();
+                var propertyId = rowData[0]; // Property ID from row data
+
+                // Simulate AJAX update (can replace with real AJAX)
+                console.log('Updated Property ID:', propertyId, 'New Name:', newPropertyName);
+                // Update the property name in the table
+                rowData[1] = newPropertyName;
+                table.row(row).data(rowData).draw();
+            });
+
+            // Filter data based on search input
+            $('#filterBtn').on('click', function() {
+                $('#filterSection').toggle(); // Toggle filter section visibility
+            });
+
+            // Apply filter on property name, price, city, district, etc.
+            $('#searchPropertyName').on('input', function() {
+                var propertyName = $(this).val();
+                table.columns(1).search(propertyName).draw();
+            });
+
+            $('#searchMinPrice, #searchMaxPrice').on('input', function() {
+                var minPrice = parseFloat($('#searchMinPrice').val());
+                var maxPrice = parseFloat($('#searchMaxPrice').val());
+
+                // Nếu minPrice hoặc maxPrice không phải là số hợp lệ, trả về NaN
+                if (isNaN(minPrice)) minPrice = '';
+                if (isNaN(maxPrice)) maxPrice = '';
+
+                // Tạo bộ lọc tìm kiếm cho cột giá
+                table.column(12).search(function(settings, data, dataIndex) {
+                    var price = parseFloat(data[12]); // Lấy giá trị của cột price (giả sử là cột 12)
+
+                    // Nếu có minPrice và maxPrice, lọc các giá trị nằm trong khoảng này
+                    if (minPrice !== '' && maxPrice !== '') {
+                        return price >= minPrice && price <= maxPrice;
+                    }
+                    // Nếu có chỉ minPrice, lọc các giá trị lớn hơn hoặc bằng minPrice
+                    else if (minPrice !== '') {
+                        return price >= minPrice;
+                    }
+                    // Nếu có chỉ maxPrice, lọc các giá trị nhỏ hơn hoặc bằng maxPrice
+                    else if (maxPrice !== '') {
+                        return price <= maxPrice;
+                    }
+                    // Nếu không có minPrice và maxPrice, không lọc gì cả
+                    else {
+                        return true;
+                    }
+                }).draw();
+            });
+
+
+
+            // Toggle column visibility
+            $('#toggleColumnsBtn').on('click', function() {
+                $('#columnToggleDropdown').toggle(); // Toggle dropdown visibility
+            });
+
+            // Handle column visibility checkbox change
+            $('.toggle-column-checkbox').on('change', function() {
+                var column = table.column($(this).data('column'));
+                column.visible($(this).prop('checked'));
+            });
         });
-
-        // Close the confirmation modal
-        $(document).on('click', '.cancelDeleteBtn', function() {
-            $('#confirmDeleteModal').fadeOut();
-        });
-
-        // Handle Edit button - allow inline editing
-        $(document).on('blur', '.edit-property-name', function() {
-            var newPropertyName = $(this).val();
-            var row = $(this).closest('tr');
-            var rowData = table.row(row).data();
-            var propertyId = rowData[0]; // Property ID from row data
-
-            // Simulate AJAX update (can replace with real AJAX)
-            console.log('Updated Property ID:', propertyId, 'New Name:', newPropertyName);
-            // Update the property name in the table
-            rowData[1] = newPropertyName;
-            table.row(row).data(rowData).draw();
-        });
-
-        // Filter data based on search input
-        $('#filterBtn').on('click', function() {
-            $('#filterSection').toggle(); // Toggle filter section visibility
-        });
-
-        // Apply filter on property name, price, city, district, etc.
-        $('#searchPropertyName').on('input', function() {
-            var propertyName = $(this).val();
-            table.columns(1).search(propertyName).draw();
-        });
-
-        $('#searchMinPrice, #searchMaxPrice').on('input', function() {
-            var minPrice = parseFloat($('#searchMinPrice').val());
-            var maxPrice = parseFloat($('#searchMaxPrice').val());
-
-            // Nếu minPrice hoặc maxPrice không phải là số hợp lệ, trả về NaN
-            if (isNaN(minPrice)) minPrice = '';
-            if (isNaN(maxPrice)) maxPrice = '';
-
-            // Tạo bộ lọc tìm kiếm cho cột giá
-            table.column(12).search(function(settings, data, dataIndex) {
-                var price = parseFloat(data[12]); // Lấy giá trị của cột price (giả sử là cột 12)
-
-                // Nếu có minPrice và maxPrice, lọc các giá trị nằm trong khoảng này
-                if (minPrice !== '' && maxPrice !== '') {
-                    return price >= minPrice && price <= maxPrice;
-                }
-                // Nếu có chỉ minPrice, lọc các giá trị lớn hơn hoặc bằng minPrice
-                else if (minPrice !== '') {
-                    return price >= minPrice;
-                }
-                // Nếu có chỉ maxPrice, lọc các giá trị nhỏ hơn hoặc bằng maxPrice
-                else if (maxPrice !== '') {
-                    return price <= maxPrice;
-                }
-                // Nếu không có minPrice và maxPrice, không lọc gì cả
-                else {
-                    return true;
-                }
-            }).draw();
-        });
-
-
-
-        // Toggle column visibility
-        $('#toggleColumnsBtn').on('click', function() {
-            $('#columnToggleDropdown').toggle(); // Toggle dropdown visibility
-        });
-
-        // Handle column visibility checkbox change
-        $('.toggle-column-checkbox').on('change', function() {
-            var column = table.column($(this).data('column'));
-            column.visible($(this).prop('checked'));
-        });
-    });
-</script>
+    </script>
+</head>
 
 <body>
 
@@ -471,8 +477,6 @@
         </div>
 
 
-
-
         <!-- Modal for Property Details -->
         <div id="propertyDetailsModal" class="modal">
             <div class="modal-content">
@@ -496,5 +500,4 @@
 
 </body>
 
-
-@endsection
+</html>
