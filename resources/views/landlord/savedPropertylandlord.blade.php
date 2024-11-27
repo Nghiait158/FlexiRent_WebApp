@@ -33,7 +33,7 @@
                             </figure>
                         </div>
 
-                        <h3 class="title">Property name here
+                        <h3 class="title">{{$address}}
                         </h3>
                     </div>
 
@@ -59,7 +59,7 @@
                         </div>
                     </div>
 
-                    <div class="status button-container"><span data-testid="VerificationStartButton"><a class="css-1f5nxeo" href=""><span>Dashboard</span><span class="css-1y4naco"><svg width="18" height="18" viewBox="0 0 18 18" class="css-6su6fj">
+                    <div class="status button-container"><span data-testid="VerificationStartButton"><a class="css-1f5nxeo" href="{{ URL::to('/landlord/dashboard') }}"><span>Dashboard</span><span class="css-1y4naco"><svg width="18" height="18" viewBox="0 0 18 18" class="css-6su6fj">
                                         <path d="M10.05 15.95H7.12L13.03 10.04L1 10.04L1 7.96L13.03 7.96L7.12 2.05L10.05 2.05L17 9L10.05 15.95Z" fill="white"></path>
                                     </svg></span></a></span></div>
                 </div>
@@ -79,7 +79,7 @@
                         </div>
                     </div>
 
-                    <div class="status button-container"><span data-testid="VerificationStartButton"><a class="css-1f5nxeo" href=""><span>Add</span><span class="css-1y4naco"><svg width="18" height="18" viewBox="0 0 18 18" class="css-6su6fj">
+                    <div class="status button-container"><span data-testid="VerificationStartButton"><a class="css-1f5nxeo" href="{{ URL::to('/landlord/add_property_address') }}"><span>Add</span><span class="css-1y4naco"><svg width="18" height="18" viewBox="0 0 18 18" class="css-6su6fj">
                                         <path d="M10.05 15.95H7.12L13.03 10.04L1 10.04L1 7.96L13.03 7.96L7.12 2.05L10.05 2.05L17 9L10.05 15.95Z" fill="white"></path>
                                     </svg></span></a></span></div>
                 </div>
