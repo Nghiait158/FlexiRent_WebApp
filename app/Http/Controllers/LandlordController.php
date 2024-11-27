@@ -396,11 +396,11 @@ class LandlordController extends Controller
         }
 
         Session::put('message','Add property successfully!!!');
-        return Redirect::to('savedPropertylandlord');
+        return Redirect::to('landlord/savedPropertylandlord');
     }
     public function savedPropertylandlord(){
         return view('landlord.savedPropertylandlord');
-    }
+    }   
 
     // public function editProperty(){
     //     return view('landlord.edit_property');

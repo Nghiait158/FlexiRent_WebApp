@@ -151,17 +151,19 @@ Route::middleware(['auth','guest'])->group(function () {
 
 
     // Frontend---------------
+    Route::get('/CheckoutPageB/{property_id}', [GuestController::class, 'Booking']);
+    Route::post('/savedBooking/{property_id}/{guest_id}', [GuestController::class, 'savedBooking']);
 
-    Route::get('/CheckoutPageB', function () {
-        return view('CheckoutPageB');
-    });
+    // Route::get('/CheckoutPageB/{property_id}',  [GuestController::class, 'index'] {
+    //     return view('CheckoutPageB');
+    // });
 });
 
 Session::start();
 
 Route::middleware(['auth', 'landlord'])->group(function () {
     Route::get('landlord/dashboard', [LandlordController::class, 'index']);
-    Route::get('landlord/savedPropertylandlord', [LandlordController::class, 'index']);
+    Route::get('landlord/savedPropertylandlord', [LandlordController::class, 'savedPropertylandlord']);
     
     Route::post('/savePropertyLandlord/{landlord_id}', [LandlordController::class, 'savePropertyLandlord']);
 
