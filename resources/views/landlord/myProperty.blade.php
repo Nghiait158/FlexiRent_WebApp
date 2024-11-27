@@ -1,169 +1,164 @@
-<!DOCTYPE html>
-<html lang="vi">
+@extends('Layout/header_landlord')
+@section('contentLandlord')
+{{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> --}}
+{{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css"> --}}
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> --}}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script>
+    // Create a link element
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = '/Frontend/css/Landlord/myProperty.css';
+    document.head.appendChild(link);
+</script>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Property Information Table with Bootstrap 5 & DataTables</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Initialize DataTables
+        var table = $('#propertyTable').DataTable();
 
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        // Function to calculate total properties
+        function calculateTotalProperties() {
+            var totalProperties = table.rows().count(); // Count all rows in the table
+            $('#totalProperties').text(totalProperties);
+        }
 
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
+        // Function to calculate available properties
+        function calculateAvailableProperties() {
+            var availableProperties = 0;
 
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+            table.rows().every(function() {
+                var rowData = this.data();
+                var status = rowData[11]; // Status column is at index 3 (0-based)
+                if (status === "1") {
+                    availableProperties++;
+                }
+            });
+            $('#availableProperties').text(availableProperties);
+        }
+        // Function to calculate rented properties
+        function calculateRentedProperties() {
+            var rentedProperties = 0;
 
-    <link rel="stylesheet" href="/Frontend/css/Landlord/myProperty.css">
+            table.rows().every(function() {
+                var rowData = this.data();
+                var status = rowData[11]; // Status column is at index 3 (0-based)
+                if (status === "0") {
+                    rentedProperties++;
+                }
+            });
+            $('#rentedProperties').text(rentedProperties);
+        }
 
+        // Function to calculate average price
+        function calculateAveragePrice() {
+            var totalPrice = 0;
+            var totalCount = 0;
+            table.rows().every(function() {
+                var rowData = this.data();
+                var price = parseFloat(rowData[12].replace(/[^0-9.-]+/g, "")); // Remove any non-numeric symbols
+                if (!isNaN(price)) {
+                    totalPrice += price;
+                    totalCount++;
+                }
+            });
+            var averagePrice = totalCount > 0 ? totalPrice / totalCount : 0;
+            $('#averagePrice').text('$' + averagePrice.toFixed(2));
+        }
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Initialize DataTables
-            var table = $('#propertyTable').DataTable();
+        // Calculate statistics when the page loads
+        calculateTotalProperties();
+        calculateAvailableProperties();
+        calculateRentedProperties();
+        calculateAveragePrice();
 
-            // Function to calculate total properties
-            function calculateTotalProperties() {
-                var totalProperties = table.rows().count(); // Count all rows in the table
-                $('#totalProperties').text(totalProperties);
+        // Function to filter rows by status (Available, Rented, All)
+        function filterByStatus(status) {
+            // Filter the table based on status
+            if (status === "All") {
+                table.column(11).search('').draw(); // Show all rows (clear search)
+                $('#statusFilterText').text('All');
+            } else {
+                table.column(11).search(status).draw(); // Filter by Available (1) or Rented (0)
+                $('#statusFilterText').text(status === "1" ? 'Available' : 'Rented');
             }
+        }
 
-            // Function to calculate available properties
-            function calculateAvailableProperties() {
-                var availableProperties = 0;
+        // Status filter button click to show dropdown
+        $('#statusFilterBtn').on('click', function() {
+            $('#statusFilterDropdown').toggle();
+        });
 
-                table.rows().every(function() {
-                    var rowData = this.data();
-                    var status = rowData[11]; // Status column is at index 3 (0-based)
-                    if (status === "1") {
-                        availableProperties++;
-                    }
-                });
-                $('#availableProperties').text(availableProperties);
-            }
-            // Function to calculate rented properties
-            function calculateRentedProperties() {
-                var rentedProperties = 0;
+        // Status filter option click
+        $('#statusFilterDropdown .dropdown-item').on('click', function() {
+            var selectedStatus = $(this).data('status');
+            filterByStatus(selectedStatus);
+            $('#statusFilterDropdown').hide();
+        });
 
-                table.rows().every(function() {
-                    var rowData = this.data();
-                    var status = rowData[11]; // Status column is at index 3 (0-based)
-                    if (status === "0") {
-                        rentedProperties++;
-                    }
-                });
-                $('#rentedProperties').text(rentedProperties);
-            }
-
-            // Function to calculate average price
-            function calculateAveragePrice() {
-                var totalPrice = 0;
-                var totalCount = 0;
-                table.rows().every(function() {
-                    var rowData = this.data();
-                    var price = parseFloat(rowData[12].replace(/[^0-9.-]+/g, "")); // Remove any non-numeric symbols
-                    if (!isNaN(price)) {
-                        totalPrice += price;
-                        totalCount++;
-                    }
-                });
-                var averagePrice = totalCount > 0 ? totalPrice / totalCount : 0;
-                $('#averagePrice').text('$' + averagePrice.toFixed(2));
-            }
-
-            // Calculate statistics when the page loads
+        // Redraw stats after table is redrawn (e.g., after filtering)
+        table.on('draw', function() {
             calculateTotalProperties();
             calculateAvailableProperties();
             calculateRentedProperties();
             calculateAveragePrice();
+        });
 
-            // Function to filter rows by status (Available, Rented, All)
-            function filterByStatus(status) {
-                // Filter the table based on status
-                if (status === "All") {
-                    table.column(11).search('').draw(); // Show all rows (clear search)
-                    $('#statusFilterText').text('All');
-                } else {
-                    table.column(11).search(status).draw(); // Filter by Available (1) or Rented (0)
-                    $('#statusFilterText').text(status === "1" ? 'Available' : 'Rented');
+        // Function to calculate total price for the current page
+        function calculateTotalPrice() {
+            var totalPrice = 0;
+            // Loop through all rows in the current page
+            table.rows({
+                search: 'applied'
+            }).every(function(rowIdx, tableLoop, rowLoop) {
+                var rowData = this.data();
+                var price = parseFloat(rowData[12].replace(/[^0-9.-]+/g, "")); // Remove any currency symbols and convert to number
+                if (!isNaN(price)) {
+                    totalPrice += price;
                 }
-            }
-
-            // Status filter button click to show dropdown
-            $('#statusFilterBtn').on('click', function() {
-                $('#statusFilterDropdown').toggle();
             });
 
-            // Status filter option click
-            $('#statusFilterDropdown .dropdown-item').on('click', function() {
-                var selectedStatus = $(this).data('status');
-                filterByStatus(selectedStatus);
-                $('#statusFilterDropdown').hide();
+            // Update the total price for the current page
+            $('#totalPrice').text('$' + totalPrice.toFixed(2));
+        }
+
+        // Function to calculate total price for all properties (example: sum of all rows)
+        function calculateTotalPriceAll() {
+            var totalPriceAll = 0;
+            // Loop through all rows in the table
+            table.rows().every(function(rowIdx, tableLoop, rowLoop) {
+                var rowData = this.data();
+                var price = parseFloat(rowData[12].replace(/[^0-9.-]+/g, "")); // Remove any currency symbols and convert to number
+                if (!isNaN(price)) {
+                    totalPriceAll += price;
+                }
             });
 
-            // Redraw stats after table is redrawn (e.g., after filtering)
-            table.on('draw', function() {
-                calculateTotalProperties();
-                calculateAvailableProperties();
-                calculateRentedProperties();
-                calculateAveragePrice();
-            });
+            // Update the total price for all properties
+            $('#totalPriceAll').text('$' + totalPriceAll.toFixed(2));
+        }
 
-            // Function to calculate total price for the current page
-            function calculateTotalPrice() {
-                var totalPrice = 0;
-                // Loop through all rows in the current page
-                table.rows({
-                    search: 'applied'
-                }).every(function(rowIdx, tableLoop, rowLoop) {
-                    var rowData = this.data();
-                    var price = parseFloat(rowData[12].replace(/[^0-9.-]+/g, "")); // Remove any currency symbols and convert to number
-                    if (!isNaN(price)) {
-                        totalPrice += price;
-                    }
-                });
-
-                // Update the total price for the current page
-                $('#totalPrice').text('$' + totalPrice.toFixed(2));
-            }
-
-            // Function to calculate total price for all properties (example: sum of all rows)
-            function calculateTotalPriceAll() {
-                var totalPriceAll = 0;
-                // Loop through all rows in the table
-                table.rows().every(function(rowIdx, tableLoop, rowLoop) {
-                    var rowData = this.data();
-                    var price = parseFloat(rowData[12].replace(/[^0-9.-]+/g, "")); // Remove any currency symbols and convert to number
-                    if (!isNaN(price)) {
-                        totalPriceAll += price;
-                    }
-                });
-
-                // Update the total price for all properties
-                $('#totalPriceAll').text('$' + totalPriceAll.toFixed(2));
-            }
-
-            // Calculate total price whenever the table is drawn (page change, filter, etc.)
-            table.on('draw', function() {
-                calculateTotalPrice();
-                calculateTotalPriceAll();
-            });
-
-            // Initial calculation after page load
+        // Calculate total price whenever the table is drawn (page change, filter, etc.)
+        table.on('draw', function() {
             calculateTotalPrice();
             calculateTotalPriceAll();
+        });
 
-            // Handle View button - open the modal popup
-            $(document).on('click', '.view-btn', function() {
-                var row = $(this).closest('tr');
-                var rowData = table.row(row).data(); // Use DataTable API to get row data
+        // Initial calculation after page load
+        calculateTotalPrice();
+        calculateTotalPriceAll();
 
-                // Populate the modal with property details
-                $('#propertyDetailsModal .modal-body').html(`
+        // Handle View button - open the modal popup
+        $(document).on('click', '.view-btn', function() {
+            var row = $(this).closest('tr');
+            var rowData = table.row(row).data(); // Use DataTable API to get row data
+
+            // Populate the modal with property details
+            $('#propertyDetailsModal .modal-body').html(`
                         <div class="list-group">
             <div class="list-group-item"><strong>Property ID:</strong> <span id="propertyId">${rowData[0]}</span></div>
             <div class="list-group-item"><strong>Property Name:</strong> <span id="propertyName">${rowData[1]}</span></div>
@@ -194,103 +189,102 @@
         </div>
                     `);
 
-                // Show the modal
-                $('#propertyDetailsModal').fadeIn();
-            });
+            // Show the modal
+            $('#propertyDetailsModal').fadeIn();
+        });
 
-            // Close modal popup
-            $(document).on('click', '.cancelbtn, .close', function() {
-                $('#propertyDetailsModal').fadeOut();
-            });
+        // Close modal popup
+        $(document).on('click', '.cancelbtn, .close', function() {
+            $('#propertyDetailsModal').fadeOut();
+        });
 
-            // Handle Delete button - remove the row
-            $(document).on('click', '.delete-btn', function() {
-                var row = $(this).closest('tr');
-                $('#confirmDeleteModal').fadeIn();
+        // Handle Delete button - remove the row
+        $(document).on('click', '.delete-btn', function() {
+            var row = $(this).closest('tr');
+            $('#confirmDeleteModal').fadeIn();
 
-                $('#confirmDeleteBtn').on('click', function() {
-                    // Use DataTable's API to remove the row
-                    table.row(row).remove().draw();
-                    $('#confirmDeleteModal').fadeOut();
-                });
-            });
-
-            // Close the confirmation modal
-            $(document).on('click', '.cancelDeleteBtn', function() {
+            $('#confirmDeleteBtn').on('click', function() {
+                // Use DataTable's API to remove the row
+                table.row(row).remove().draw();
                 $('#confirmDeleteModal').fadeOut();
             });
-
-            // Handle Edit button - allow inline editing
-            $(document).on('blur', '.edit-property-name', function() {
-                var newPropertyName = $(this).val();
-                var row = $(this).closest('tr');
-                var rowData = table.row(row).data();
-                var propertyId = rowData[0]; // Property ID from row data
-
-                // Simulate AJAX update (can replace with real AJAX)
-                console.log('Updated Property ID:', propertyId, 'New Name:', newPropertyName);
-                // Update the property name in the table
-                rowData[1] = newPropertyName;
-                table.row(row).data(rowData).draw();
-            });
-
-            // Filter data based on search input
-            $('#filterBtn').on('click', function() {
-                $('#filterSection').toggle(); // Toggle filter section visibility
-            });
-
-            // Apply filter on property name, price, city, district, etc.
-            $('#searchPropertyName').on('input', function() {
-                var propertyName = $(this).val();
-                table.columns(1).search(propertyName).draw();
-            });
-
-            $('#searchMinPrice, #searchMaxPrice').on('input', function() {
-                var minPrice = parseFloat($('#searchMinPrice').val());
-                var maxPrice = parseFloat($('#searchMaxPrice').val());
-
-                // Nếu minPrice hoặc maxPrice không phải là số hợp lệ, trả về NaN
-                if (isNaN(minPrice)) minPrice = '';
-                if (isNaN(maxPrice)) maxPrice = '';
-
-                // Tạo bộ lọc tìm kiếm cho cột giá
-                table.column(12).search(function(settings, data, dataIndex) {
-                    var price = parseFloat(data[12]); // Lấy giá trị của cột price (giả sử là cột 12)
-
-                    // Nếu có minPrice và maxPrice, lọc các giá trị nằm trong khoảng này
-                    if (minPrice !== '' && maxPrice !== '') {
-                        return price >= minPrice && price <= maxPrice;
-                    }
-                    // Nếu có chỉ minPrice, lọc các giá trị lớn hơn hoặc bằng minPrice
-                    else if (minPrice !== '') {
-                        return price >= minPrice;
-                    }
-                    // Nếu có chỉ maxPrice, lọc các giá trị nhỏ hơn hoặc bằng maxPrice
-                    else if (maxPrice !== '') {
-                        return price <= maxPrice;
-                    }
-                    // Nếu không có minPrice và maxPrice, không lọc gì cả
-                    else {
-                        return true;
-                    }
-                }).draw();
-            });
-
-
-
-            // Toggle column visibility
-            $('#toggleColumnsBtn').on('click', function() {
-                $('#columnToggleDropdown').toggle(); // Toggle dropdown visibility
-            });
-
-            // Handle column visibility checkbox change
-            $('.toggle-column-checkbox').on('change', function() {
-                var column = table.column($(this).data('column'));
-                column.visible($(this).prop('checked'));
-            });
         });
-    </script>
-</head>
+
+        // Close the confirmation modal
+        $(document).on('click', '.cancelDeleteBtn', function() {
+            $('#confirmDeleteModal').fadeOut();
+        });
+
+        // Handle Edit button - allow inline editing
+        $(document).on('blur', '.edit-property-name', function() {
+            var newPropertyName = $(this).val();
+            var row = $(this).closest('tr');
+            var rowData = table.row(row).data();
+            var propertyId = rowData[0]; // Property ID from row data
+
+            // Simulate AJAX update (can replace with real AJAX)
+            console.log('Updated Property ID:', propertyId, 'New Name:', newPropertyName);
+            // Update the property name in the table
+            rowData[1] = newPropertyName;
+            table.row(row).data(rowData).draw();
+        });
+
+        // Filter data based on search input
+        $('#filterBtn').on('click', function() {
+            $('#filterSection').toggle(); // Toggle filter section visibility
+        });
+
+        // Apply filter on property name, price, city, district, etc.
+        $('#searchPropertyName').on('input', function() {
+            var propertyName = $(this).val();
+            table.columns(1).search(propertyName).draw();
+        });
+
+        $('#searchMinPrice, #searchMaxPrice').on('input', function() {
+            var minPrice = parseFloat($('#searchMinPrice').val());
+            var maxPrice = parseFloat($('#searchMaxPrice').val());
+
+            // Nếu minPrice hoặc maxPrice không phải là số hợp lệ, trả về NaN
+            if (isNaN(minPrice)) minPrice = '';
+            if (isNaN(maxPrice)) maxPrice = '';
+
+            // Tạo bộ lọc tìm kiếm cho cột giá
+            table.column(12).search(function(settings, data, dataIndex) {
+                var price = parseFloat(data[12]); // Lấy giá trị của cột price (giả sử là cột 12)
+
+                // Nếu có minPrice và maxPrice, lọc các giá trị nằm trong khoảng này
+                if (minPrice !== '' && maxPrice !== '') {
+                    return price >= minPrice && price <= maxPrice;
+                }
+                // Nếu có chỉ minPrice, lọc các giá trị lớn hơn hoặc bằng minPrice
+                else if (minPrice !== '') {
+                    return price >= minPrice;
+                }
+                // Nếu có chỉ maxPrice, lọc các giá trị nhỏ hơn hoặc bằng maxPrice
+                else if (maxPrice !== '') {
+                    return price <= maxPrice;
+                }
+                // Nếu không có minPrice và maxPrice, không lọc gì cả
+                else {
+                    return true;
+                }
+            }).draw();
+        });
+
+
+
+        // Toggle column visibility
+        $('#toggleColumnsBtn').on('click', function() {
+            $('#columnToggleDropdown').toggle(); // Toggle dropdown visibility
+        });
+
+        // Handle column visibility checkbox change
+        $('.toggle-column-checkbox').on('change', function() {
+            var column = table.column($(this).data('column'));
+            column.visible($(this).prop('checked'));
+        });
+    });
+</script>
 
 <body>
 
@@ -427,136 +421,40 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($properties ?? [] as $property)
                     <tr>
-                        <td><span id="propertyId">1</span></td>
-                        <td contenteditable="true"><span id="propertyName">Luxury Apartment</span></td>
-                        <td><span id="landlordId">101</span></td>
-                        <td><span id="location">Hanoi</span></td>
-                        <td><span id="locationDetails">Downtown, Hoan Kiem</span></td>
-                        <td><span id="educationAndCommunity">Great community</span></td>
-                        <td><span id="bedrooms">3</span></td>
-                        <td><span id="bathrooms">2</span></td>
-                        <td><span id="area">120 m²</span></td>
-                        <td><span id="view">Pool</span></td>
-                        <td><span id="floor">5</span></td>
-                        <td>1</td>
-                        <td><span id="pricePerMonth">3000</span></td>
-                        <td><span id="createdAt">2023-10-01</span></td>
-                        <td><span id="updatedAt">2023-10-15</span></td>
-                        <td><span id="description">Spacious and modern apartment</span></td>
-                        <td><span id="availableDate">2023-11-01</span></td>
-                        <td><span id="guestCapacity">5</span></td>
-                        <td><span id="elevator">Yes</span></td>
-                        <td><span id="city">Hanoi</span></td>
-                        <td><span id="district">Hoan Kiem</span></td>
-                        <td><span id="accommodationType">Apartment</span></td>
-                        <td><span id="room">2</span></td>
-                        <td><span id="wifi">Yes</span></td>
-                        <td><span id="internetSpeed">50</span></td>
+                        <td>{{ $property->property_id ?:'N/A'}}</td>
+                        <td contenteditable="true">{{ $property->property_name ?:'N/A'}}</td>
+                        <td>{{ $property->landlord_id ?:'N/A'}}</td>
+                        <td>{{ $property->location ?:'N/A'}}</td>
+                        <td>{{ $property->location_details ?:'N/A'}}</td>
+                        <td>{{ $property->education_and_community ?:'N/A'}}</td>
+                        <td>{{ $property->nbedrooms ?:'N/A'}}</td>
+                        <td>{{ $property->nbathrooms ?:'N/A'}}</td>
+                        <td>{{ $property->area ?:'N/A'}} m²</td>
+                        <td>{{ $property->view ?:'N/A'}}</td>
+                        <td>{{ $property->floor ?:'N/A'}}</td>
+                        <td>{{ $property->status ?:'N/A'}}</td>
+                        <td>{{ $property->price_per_month ?:'N/A'}}</td>
+                        <td>{{ optional($property->created_at)->format('Y-m-d') ?? 'N/A' }}</td>
+                        <td>{{ optional($property->updated_at)->format('Y-m-d') ?? 'N/A' }}</td>
+                        <td>{{ $property->description ?:'N/A'}}</td>
+                        <td>{{ $property->available ?:'N/A'}}</td>
+                        <td>{{ $property->guest_capacity ?:'N/A'}}</td>
+                        <td>{{ $property->elevator ?:'N/A'}}</td>
+                        <td>{{ $property->city ?:'N/A'}}</td>
+                        <td>{{ $property->district ?:'N/A'}}</td>
+                        <td>{{ $property->accommodation_type ?:'N/A'}}</td>
+                        <td>{{ $property->room ?:'N/A'}}</td>
+                        <td>{{ $property->wifi ?:'N/A'}}</td>
+                        <td>{{ $property->internetSpeed ?:'N/A'}}</td>
                         <td>
                             <button class="btn btn-info view-btn">View</button>
                             <a href="{{ route('property.edit') }}"><button class="btn btn-warning edit-btn">Edit</button></a>
                             <button class="btn btn-danger delete-btn">Delete</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td><span id="propertyId">2</span></td>
-                        <td contenteditable="true"><span id="propertyName">Ocean View Apartment</span></td>
-                        <td><span id="landlordId">3</span></td>
-                        <td><span id="location">123 Main St, City</span></td>
-                        <td><span id="locationDetails"></span></td>
-                        <td><span id="educationAndCommunity"></span></td>
-                        <td><span id="bedrooms">3</span></td>
-                        <td><span id="bathrooms">2</span></td>
-                        <td><span id="area">1200.5 m²</span></td>
-                        <td><span id="view">Sea</span></td>
-                        <td><span id="floor">10</span></td>
-                        <td>1</td>
-                        <td><span id="pricePerMonth">2500</span></td>
-                        <td><span id="createdAt">2024-11-19 07:43:11</span></td>
-                        <td><span id="updatedAt">2024-11-20</span></td>
-                        <td><span id="description"></span></td>
-                        <td><span id="availableDate">2024-11-20</span></td>
-                        <td><span id="guestCapacity">2</span></td>
-                        <td><span id="elevator">Yes</span></td>
-
-                        <td><span id="city"></span></td>
-                        <td><span id="district"></span></td>
-                        <td><span id="accommodationType"></span></td>
-                        <td><span id="room"></span></td>
-                        <td><span id="wifi">No</span></td>
-                        <td><span id="internetSpeed">0</span></td>
-                        <td>
-                            <button class="btn btn-info view-btn">View</button>
-                            <a href="{{ route('property.edit') }}"><button class="btn btn-warning edit-btn">Edit</button></a>
-                            <button class="btn btn-danger delete-btn">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span id="propertyId">3</span></td>
-                        <td contenteditable="true"><span id="propertyName">Downtown Loft</span></td>
-                        <td><span id="landlordId">3</span></td>
-                        <td><span id="location">456 Market St, City</span></td>
-                        <td><span id="locationDetails"></span></td>
-                        <td><span id="educationAndCommunity"></span></td>
-                        <td><span id="bedrooms">2</span></td>
-                        <td><span id="bathrooms">1</span></td>
-                        <td><span id="area">800 m²</span></td>
-                        <td><span id="view">Cityscape</span></td>
-                        <td><span id="floor">5</span></td>
-                        <td>0</td>
-
-                        <td><span id="pricePerMonth">1800</span></td>
-                        <td><span id="createdAt">2024-11-19 07:43:11</span></td>
-                        <td><span id="updatedAt">2024-11-20</span></td>
-                        <td><span id="description"></span></td>
-                        <td><span id="availableDate">2024-11-20</span></td>
-                        <td><span id="guestCapacity">1</span></td>
-                        <td><span id="elevator">Yes</span></td>
-                        <td><span id="city">Ho Chi Minh City</span></td>
-                        <td><span id="district">District 9</span></td>
-                        <td><span id="accommodationType"></span></td>
-                        <td><span id="room"></span></td>
-                        <td><span id="wifi">No</span></td>
-                        <td><span id="internetSpeed">0</span></td>
-                        <td>
-                            <button class="btn btn-info view-btn">View</button>
-                            <a href="{{ route('property.edit') }}"><button class="btn btn-warning edit-btn">Edit</button></a>
-                            <button class="btn btn-danger delete-btn">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span id="propertyId">4</span></td>
-                        <td contenteditable="true"><span id="propertyName">Suburban House</span></td>
-                        <td><span id="landlordId">5</span></td>
-                        <td><span id="location">789 Suburb Lane, Town</span></td>
-                        <td><span id="locationDetails"></span></td>
-                        <td><span id="educationAndCommunity"></span></td>
-                        <td><span id="bedrooms">4</span></td>
-                        <td><span id="bathrooms">3</span></td>
-                        <td><span id="area">2500 m²</span></td>
-                        <td><span id="view">Garden</span></td>
-                        <td><span id="floor">1</span></td>
-                        <td>0</td>
-                        <td><span id="pricePerMonth">3200</span></td>
-                        <td><span id="createdAt">2024-10-15 10:33:27</span></td>
-                        <td><span id="updatedAt">2024-11-23</span></td>
-                        <td><span id="description"></span></td>
-                        <td><span id="availableDate">2024-11-23</span></td>
-                        <td><span id="guestCapacity"></span></td>
-                        <td><span id="elevator">No</span></td>
-                        <td><span id="city"></span></td>
-                        <td><span id="district"></span></td>
-                        <td><span id="accommodationType"></span></td>
-                        <td><span id="room"></span></td>
-                        <td><span id="wifi">No</span></td>
-                        <td><span id="internetSpeed">0</span></td>
-                        <td>
-                            <button class="btn btn-info view-btn">View</button>
-                            <a href="{{ route('property.edit') }}"><button class="btn btn-warning edit-btn">Edit</button></a>
-                            <button class="btn btn-danger delete-btn">Delete</button>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
@@ -571,6 +469,8 @@
 
             </table>
         </div>
+
+
 
 
         <!-- Modal for Property Details -->
@@ -596,4 +496,5 @@
 
 </body>
 
-</html>
+
+@endsection
