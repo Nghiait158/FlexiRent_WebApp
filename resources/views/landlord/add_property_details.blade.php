@@ -37,24 +37,170 @@
                     <hr class="solid-line">
 
                     <div class="input-form">
-                        <label for=""><b>What is the accommodation type?
-                            </b>
-                        </label>
-                        <select class="form-select" name="accommodation_type" aria-label="Default select example" required>
-                            <option selected>Please select</option>
-                            <option value="Entire Apartment">Entire Apartment</option>
-                            <option value="Private Room">Private Room</option>
-                            <option value="Shared Place">Shared Place</option>
-                            <option value="Entire House">Entire House</option>
+                        <label for=""><b>What is the accommodation type?</b></label>
+                        <select class="form-select" id="accommodation_type" aria-label="Accommodation type" onchange="updateOptions()" required>
+                            <option value="" selected>Please select</option>
+                            <option value="House">House</option>
+                            <option value="Apartment">Apartment</option>
                         </select>
                     </div>
-                    <hr class="solid-line">
 
-                    <div class="input-form">
-                        <label for=""><b>On which floor is the apartment located?</b>
-                        </label>
-                        <input min="1" name="floor" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                    <hr class="solid-line" id="accommodation-hr" style="display: none;">
+
+                    <div class="input-form" id="type-options-container" style="display: none;">
+                        <label for="" id="type-label"><b>What type of accommodation is this?</b></label>
+                        <div id="type-options" class="" style="width: 30%;"></div>
                     </div>
+
+                    <hr class="solid-line" id="type-hr" style="display: none;">
+
+                    <div class="input-form" id="floor-section" style="display: none;">
+                        <label for="" id="floor-label"><b>How many floors does the house have?</b></label>
+                        <input min="1" name="floor" type="number" class="form-control" id="floor-input" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+
+                    <script>
+                        function updateOptions() {
+                            var accommodationType = document.getElementById('accommodation_type').value;
+                            var typeOptions = document.getElementById('type-options');
+                            var floorLabel = document.getElementById('floor-label');
+                            var floorInput = document.getElementById('floor-input');
+                            var floorSection = document.getElementById('floor-section');
+                            var typeOptionsContainer = document.getElementById('type-options-container');
+                            var typeLabel = document.getElementById('type-label');
+                            var accommodationHr = document.getElementById('accommodation-hr');
+                            var typeHr = document.getElementById('type-hr');
+
+                            // Clear previous options
+                            typeOptions.innerHTML = '';
+
+                            // Hide the floor section, options section, and <hr> lines by default
+                            floorSection.style.display = 'none';
+                            typeOptionsContainer.style.display = 'none';
+                            accommodationHr.style.display = 'none';
+                            typeHr.style.display = 'none';
+
+                            if (accommodationType === 'House') {
+                                // Show <hr> line for type selection
+                                accommodationHr.style.display = 'block';
+
+                                // Create options for House
+                                var houseSelect = document.createElement('select');
+                                houseSelect.name = "accommodation_type";
+                                houseSelect.classList.add('form-select');
+                                houseSelect.setAttribute('aria-label', 'House Type');
+                                houseSelect.style.width = '100%'; // Set width to 100%
+
+                                var options = [{
+                                        value: 'Entire House',
+                                        text: 'Entire House'
+                                    },
+                                    {
+                                        value: 'Private Room - House',
+                                        text: 'Private Room'
+                                    },
+                                    {
+                                        value: 'Shared House',
+                                        text: 'Shared House'
+                                    },
+                                    {
+                                        value: 'Mansion',
+                                        text: 'Mansion'
+                                    },
+                                    {
+                                        value: 'Duplex',
+                                        text: 'Duplex'
+                                    },
+                                    {
+                                        value: 'Townhouse',
+                                        text: 'Townhouse'
+                                    },
+                                    {
+                                        value: 'Villa',
+                                        text: 'Villa'
+                                    }
+                                ];
+
+                                options.forEach(function(option) {
+                                    var opt = document.createElement('option');
+                                    opt.value = option.value;
+                                    opt.textContent = option.text;
+                                    houseSelect.appendChild(opt);
+                                });
+
+                                typeOptions.appendChild(houseSelect);
+                                typeOptionsContainer.style.display = 'flex'; // Show the options section as flex
+                                typeLabel.innerHTML = '<b>What type of house is it?</b>';
+                                floorLabel.innerHTML = '<b>How many floors does the house have?</b>';
+                                floorInput.setAttribute('min', '1');
+                                floorInput.removeAttribute('max');
+
+                                // Show the floor input section
+                                floorSection.style.display = 'flex'; // Show the floor input section as flex
+
+                                // Show <hr> line for floor selection
+                                typeHr.style.display = 'block';
+                            } else if (accommodationType === 'Apartment') {
+                                // Show <hr> line for type selection
+                                accommodationHr.style.display = 'block';
+
+                                // Create options for Apartment
+                                var apartmentSelect = document.createElement('select');
+                                apartmentSelect.name = "accommodation_type";
+                                apartmentSelect.classList.add('form-select');
+                                apartmentSelect.setAttribute('aria-label', 'Apartment Type');
+                                apartmentSelect.style.width = '100%'; // Set width to 100%
+
+                                var options = [{
+                                        value: 'Entire Apartment',
+                                        text: 'Entire Apartment'
+                                    },
+                                    {
+                                        value: 'Private Room - Apartment',
+                                        text: 'Private Room'
+                                    },
+                                    {
+                                        value: 'Shared Place',
+                                        text: 'Shared Place'
+                                    },
+                                    {
+                                        value: 'Studio Apartment',
+                                        text: 'Studio Apartment'
+                                    },
+                                    {
+                                        value: 'Penthouse',
+                                        text: 'Penthouse'
+                                    },
+                                    {
+                                        value: 'Duplex apartment',
+                                        text: 'Duplex apartment'
+                                    }
+                                ];
+
+                                options.forEach(function(option) {
+                                    var opt = document.createElement('option');
+                                    opt.value = option.value;
+                                    opt.textContent = option.text;
+                                    apartmentSelect.appendChild(opt);
+                                });
+
+                                typeOptions.appendChild(apartmentSelect);
+                                typeOptionsContainer.style.display = 'flex'; // Show the options section as flex
+                                typeLabel.innerHTML = '<b>What type of apartment is it?</b>';
+
+                                floorLabel.innerHTML = '<b>On which floor is the apartment located?</b>';
+                                floorInput.setAttribute('min', '1');
+                                floorInput.setAttribute('max', '100'); // Maximum possible floors for apartment
+
+                                // Show the floor input section
+                                floorSection.style.display = 'flex'; // Show the floor input section as flex
+
+                                // Show <hr> line for floor selection
+                                typeHr.style.display = 'block';
+                            }
+                        }
+                    </script>
+
                     <hr class="solid-line">
 
                     <div class="input-form">

@@ -146,10 +146,20 @@
                                     </span>
                                     <!-- Hidden select field -->
                                     <select id="accommodationInput" class="form-select" name="accommodation_type" aria-label="Default select example" style="display: none;" required>
+                                        <option value="{{$data['details']['accommodation_type']}}" selected>{{$data['details']['accommodation_type']}}</option>
+                                        <option value="Mansion">Mansion</option>
                                         <option value="Entire Apartment">Entire Apartment</option>
                                         <option value="Private Room">Private Room</option>
                                         <option value="Shared Place">Shared Place</option>
                                         <option value="Entire House">Entire House</option>
+                                        <option value="Private Room - House">Private Room</option>
+                                        <option value="Shared House">Shared House</option>
+                                        <option value="Duplex">Duplex</option>
+                                        <option value="Townhouse">Townhouse</option>
+                                        <option value="Villa">Villa</option>
+                                        <option value="Studio Apartment">Studio Apartment</option>
+                                        <option value="Penthouse">Penthouse</option>
+                                        <option value="Duplex apartment">Duplex apartment</option>
                                     </select>
                                 </div>
                             </div>
