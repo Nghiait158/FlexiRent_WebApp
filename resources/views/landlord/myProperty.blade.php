@@ -447,7 +447,7 @@
                                 <i class="fas fa-eye"></i> View
                             </button>
 
-                            <a href="{{ route('property.edit') }}">
+                            <a href="{{URL::to('/editLandlordProperty/'.$property->property_id)}}">
                                 <button class="btn btn-warning edit-btn">
                                     <i class="fas fa-edit"></i> Edit
                                 </button>
