@@ -38,7 +38,7 @@
 
                     <div class="input-form">
                         <label for=""><b>What is the accommodation type?</b></label>
-                        <select class="form-select" name="accommodation_type" id="accommodation_type" aria-label="Accommodation type" onchange="updateOptions()" required>
+                        <select class="form-select" id="accommodation_type" aria-label="Accommodation type" onchange="updateOptions()" required>
                             <option value="" selected>Please select</option>
                             <option value="House">House</option>
                             <option value="Apartment">Apartment</option>
