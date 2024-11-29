@@ -189,6 +189,36 @@
         </form>
 
         <script>
+            document.querySelector('.ContinueBooking').addEventListener('click', function (e) {
+                // Lấy giá trị của các input
+                const guestCount = document.getElementById('guest_count').value;
+                const fromDate = document.getElementById('from').value;
+                const toDate = document.getElementById('to').value;
+
+                // Kiểm tra guest_count
+                if (!guestCount || guestCount < 1 || !Number.isInteger(Number(guestCount))) {
+                    alert("Please enter a valid number of guests (minimum 1).");
+                    e.preventDefault(); 
+                    return;
+                }
+
+                // Kiểm tra fromDate và toDate
+                if (!fromDate || !toDate) {
+                    alert("Please select both 'From' and 'To' dates.");
+                    e.preventDefault();
+                    return;
+                }
+
+                if (new Date(fromDate) >= new Date(toDate)) {
+                    alert("'To' date must be after the 'From' date.");
+                    e.preventDefault();
+                    return;
+                }
+
+                // Nếu tất cả hợp lệ
+                // alert("Validation passed. Proceeding with booking.");
+            });
+
             // Lấy các tham số từ URL
             const urlParams = new URLSearchParams(window.location.search);
             const fromDate = urlParams.get('from');

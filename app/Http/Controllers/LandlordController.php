@@ -26,13 +26,15 @@ class LandlordController extends Controller
             return redirect()->back()->with('error', 'No admin data found for this user.');
         }
 
-        $properties = Property::where('landlord_id', $currentLandlord->landlord_id)->get();
+        $propertiesIsVerify = Property::where('landlord_id', $currentLandlord->landlord_id)
+        ->where('is_verified', true)
+        ->get();
 
-        foreach ($properties as $property) {
+        foreach ($propertiesIsVerify as $property) {
             // Find and cancel expired bookings
             $expiredBookings = Booking::where('property_id', $property->property_id)
                 ->where('status', 'confirmed')
-                ->where('check_out', '<', now())
+                ->where('check_out', '<=', now())
                 ->get();
 
             foreach ($expiredBookings as $booking) {
@@ -51,7 +53,7 @@ class LandlordController extends Controller
         }
 
         $bookings = [];
-        foreach ($properties as $property) {
+        foreach ($propertiesIsVerify as $property) {
             $propertyBookings = Booking::where('property_id', $property->property_id)
                 ->with('guest')
                 ->with('property')
@@ -70,7 +72,7 @@ class LandlordController extends Controller
 
         $data = [
             'currentLandlord' => $currentLandlord,
-            'properties' => $properties,
+            'propertiesIsVerify' => $propertiesIsVerify,
             'bookings' => $bookings,
             'bookingOfPropertyhasStatus1' => $bookingOfPropertyhasStatus1,
         ];

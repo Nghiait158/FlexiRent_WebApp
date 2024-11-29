@@ -63,6 +63,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', action: [AdminManageController::class, 'index']);
     Route::post('/updatecurrentAdmin/{adminID}', [AdminController::class, 'updatecurrentAdmin']);
 
+    Route::get('/admin/unverified-properties', action: [AdminController::class, 'unverifiedProperties'])->name('admin.unverified-properties');
+    Route::post('/admin/properties/{propertyId}/verify', [AdminController::class, 'verifyProperty'])->name('admin.properties.verify');
 
     // -------------- Manage admin-----------
     Route::get('/manage_admin', [AdminController::class, 'manage_admin']);

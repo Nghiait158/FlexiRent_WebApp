@@ -36,6 +36,7 @@
     <form onsubmit="prepareReserveValue()" action=" {{URL::to('/CheckoutPageB/'.$propertyDetail-> property_id)}} " method="GET">
         <div class="review-container">
             <h1 class="title">Booking review</h1>
+            {{-- <h2></h2> --}}
             <div class="price-button">
                 <div class="prices">
                     <div class="monthly-rent">
@@ -76,7 +77,7 @@
                 </div>
                 <div class="button-container">
                     <div class="button-text">
-                        <button type="submit">Confirm and pay </button>
+                        <button type="submit">Confirm</button>
                         {{-- <a href="{{URL::to('/CheckoutPageB')}}"></a> --}}
                         <p>You won’t be charged yet</p>
                     </div>

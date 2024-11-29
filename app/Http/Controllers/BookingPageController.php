@@ -45,6 +45,7 @@ class BookingPageController extends Controller
 
         // Fetch properties
         $properties = $propertiesQuery->where('status', '0')
+            ->where('is_verified', true)
             ->orderBy('updated_at', 'desc')
             ->get();
 

@@ -12,8 +12,8 @@
         <li>Check in: {{ $emailsContent['check_in'] }}</li>
         <li>Check out: {{ $emailsContent['check_out'] }}</li>
         <li>Number of Guests:  {{ $emailsContent['nguests'] }}</li>
-        <li>Total Cost:  {{ $emailsContent['total_cost'] }}</li>
+        <li>Total Cost:  {{ $emailsContent['total_cost'] }} (Payment method will be sent to you soon.)</li>
     </ul>
-    <p>We will contact you shortly to confirm your booking.</p>
+    <p>We will contact you shortly to confirm your booking from our Landlord.</p>
 </body>
 </html>
