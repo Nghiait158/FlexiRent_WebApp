@@ -1,3 +1,7 @@
+@extends('Layout/header_landlord')
+
+@section('contentLandlord')
+
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -227,8 +231,7 @@
         </div>
 
 
-        <!-- Cảnh báo -->
-        <div id="confirmationDialog" class="dialog">
+        <div id="confirmationDialog" class="dialog" style="display: none;">
             <div class="dialog-content">
                 <i class="fas fa-exclamation-triangle fa-3x mb-3 text-warning"></i>
                 <p><strong>Are you sure you want to make changes?</strong></p>
@@ -237,8 +240,7 @@
             </div>
         </div>
 
-        <!-- Thông báo thành công -->
-        <div id="successAlert" class="alert alert-success mt-4">
+        <div id="successAlert" class="alert alert-success mt-4" style="display: none;">
             <i class="fas fa-check-circle"></i> Your changes have been successfully saved!
         </div>
     </div>
@@ -280,40 +282,31 @@
             }
         }
 
-        $(document).ready(function() {
-            // Bắt sự kiện khi nhấn Submit
-            $('#submitBtn').on('click', function(event) {
-                event.preventDefault(); // Ngừng hành động submit mặc định
+        const form = document.getElementById('editPropertyForm');
+        const confirmBtn = document.getElementById('confirmBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const confirmationDialog = document.getElementById('confirmationDialog');
+        const successAlert = document.getElementById('successAlert');
 
-                // Hiển thị bảng cảnh báo
-                $('#confirmationDialog').fadeIn();
-            });
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            confirmationDialog.style.display = 'block'; 
+        });
 
-            // Khi nhấn Confirm
-            $('#confirmBtn').on('click', function() {
-                // Ẩn cảnh báo
-                $('#confirmationDialog').fadeOut();
+        confirmBtn.addEventListener('click', function() {
+            confirmationDialog.style.display = 'none'; 
+            form.submit(); 
+        });
 
-                // Thực hiện submit form thực sự
-                $('#editPropertyForm').submit();
-
-                // Hiển thị thông báo thành công
-                $('#successAlert').fadeIn();
-
-                // Tạm thời ẩn thông báo thành công sau 3 giây
-                setTimeout(function() {
-                    $('#successAlert').fadeOut();
-                }, 3000);
-            });
-
-            // Khi nhấn Cancel
-            $('#cancelBtn').on('click', function() {
-                // Ẩn bảng cảnh báo
-                $('#confirmationDialog').fadeOut();
-            });
+        cancelBtn.addEventListener('click', function() {
+            confirmationDialog.style.display = 'none'; 
         });
     </script>
 
 </body>
 
 </html>
+
+{{-- @yield('content') --}}
+
+@endsection

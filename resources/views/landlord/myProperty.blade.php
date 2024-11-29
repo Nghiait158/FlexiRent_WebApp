@@ -1,3 +1,7 @@
+@extends('Layout/header_landlord')
+
+@section('contentLandlord')
+
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -52,7 +56,7 @@
                 table.rows().every(function() {
                     var rowData = this.data();
                     var status = rowData[11]; // Status column is at index 3 (0-based)
-                    if (status === "0") {
+                    if (status === "0" || status === "N/A") {
                         rentedProperties++;
                     }
                 });
@@ -183,8 +187,7 @@
             <div class="list-group-item"><strong>Description:</strong> <span id="description">${rowData[15]}</span></div>
             <div class="list-group-item"><strong>Available Date:</strong> <span id="availableDate">${rowData[16]}</span></div>
             <div class="list-group-item"><strong>Guest Capacity:</strong> <span id="guestCapacity">${rowData[17]}</span></div>
-<div class="list-group-item"><strong>Elevator:</strong> <span id="elevator">${rowData[18]}</span></div>
-            
+            <div class="list-group-item"><strong>Elevator:</strong> <span id="elevator">${rowData[18]}</span></div>
             <div class="list-group-item"><strong>City:</strong> <span id="city">${rowData[19]}</span></div>
             <div class="list-group-item"><strong>District:</strong> <span id="district">${rowData[20]}</span></div>
             <div class="list-group-item"><strong>Accommodation Type:</strong> <span id="accommodationType">${rowData[21]}</span></div>
@@ -233,35 +236,31 @@
                 table.columns(1).search(propertyName).draw();
             });
 
+
             $('#searchMinPrice, #searchMaxPrice').on('input', function() {
                 var minPrice = parseFloat($('#searchMinPrice').val());
                 var maxPrice = parseFloat($('#searchMaxPrice').val());
 
-                // Nếu minPrice hoặc maxPrice không phải là số hợp lệ, trả về NaN
+                // If minPrice or maxPrice is not a valid number, set it to an empty string
                 if (isNaN(minPrice)) minPrice = '';
                 if (isNaN(maxPrice)) maxPrice = '';
 
-                // Tạo bộ lọc tìm kiếm cho cột giá
-                table.column(12).search(function(settings, data, dataIndex) {
-                    var price = parseFloat(data[12]); // Lấy giá trị của cột price (giả sử là cột 12)
+                // Remove any existing custom search function
+                $.fn.dataTable.ext.search.pop();
 
-                    // Nếu có minPrice và maxPrice, lọc các giá trị nằm trong khoảng này
-                    if (minPrice !== '' && maxPrice !== '') {
-                        return price >= minPrice && price <= maxPrice;
+                // Add a custom search function for the price column
+                $.fn.dataTable.ext.search.push(
+                    function(settings, data, dataIndex) {
+                        var price = parseFloat(data[12]) || 0; // Assuming price is in the 13th column (index 12)
+
+                        if ((minPrice === '' || price >= minPrice) && (maxPrice === '' || price <= maxPrice)) {
+                            return true;
+                        }
+                        return false;
                     }
-                    // Nếu có chỉ minPrice, lọc các giá trị lớn hơn hoặc bằng minPrice
-                    else if (minPrice !== '') {
-                        return price >= minPrice;
-                    }
-                    // Nếu có chỉ maxPrice, lọc các giá trị nhỏ hơn hoặc bằng maxPrice
-                    else if (maxPrice !== '') {
-                        return price <= maxPrice;
-                    }
-                    // Nếu không có minPrice và maxPrice, không lọc gì cả
-                    else {
-                        return true;
-                    }
-                }).draw();
+                );
+
+                table.draw();
             });
 
 
@@ -505,3 +504,7 @@
 </body>
 
 </html>
+
+{{-- @yield('content') --}}
+
+@endsection

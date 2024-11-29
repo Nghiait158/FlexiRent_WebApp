@@ -18,7 +18,7 @@ body {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 1050;
     left: 0;
     top: 0;
     width: 100%;
@@ -26,6 +26,8 @@ body {
     background-color: rgba(0, 0, 0, 0.4);
     padding-top: 60px;
     transition: opacity 0.3s ease;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-content {
@@ -36,20 +38,24 @@ body {
     width: 80%;
     max-width: 600px;
     max-height: 80%;
-    /* Đảm bảo modal không quá lớn */
+    /* Ensure modal is not too large */
     overflow-y: auto;
-    /* Cho phép cuộn nội dung */
+    /* Allow scrolling content */
     transition: transform 0.3s ease;
+    position: relative;
+    z-index: 10000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Add shadow effect */
+    top: 10%; /* Lower the modal to avoid header overlap */
 }
 
-/* Modal body with scrollable content */
 .modal-body {
     max-height: 400px;
-    /* Chiều cao tối đa của phần nội dung */
+    /* Maximum height of content */
     overflow-y: auto;
-    /* Cho phép cuộn khi nội dung quá dài */
+    /* Allow scrolling when content is too long */
     padding-right: 10px;
-    /* Để tránh nội dung bị che bởi thanh cuộn */
+    /* Avoid content being hidden by scrollbar */
 }
 
 .modal .close {
@@ -66,7 +72,29 @@ body {
     position: relative;
     z-index: 10000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Thêm hiệu ứng đổ bóng cho modal */
+    /* Add shadow effect */
+}
+
+/* Modal header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.modal-header h4 {
+    margin: 0;
+}
+
+/* Modal footer */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1rem;
+    border-top: 1px solid #dee2e6;
 }
 
 /* Button style */
