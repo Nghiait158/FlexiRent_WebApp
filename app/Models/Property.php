@@ -35,6 +35,7 @@ class Property extends Model
         'wifi',
         'internetSpeed',
         'ListingTitle',
+        'is_verified',
     ];
     public function landlord()
     {

@@ -130,7 +130,7 @@
     <!-- Tenant Requests Section -->
     <div class="tenant-requests">
         <h2>Booking Request</h2>
-        @foreach ($properties as $property)
+        @foreach ($propertiesIsVerify as $property)
             <h3>Property: {{ $property->property_name }}</h3>
             @if (isset($bookings[$property->property_id]) && $bookings[$property->property_id]->isNotEmpty())
                 @foreach ($bookings[$property->property_id] as $index => $booking)
@@ -229,28 +229,30 @@
                     <p>Ending: <span class="date">{{ $booking->check_out }}</span></p>
                     <p>Tenants: <span class="count">{{ $booking->nguests }}</span></p>
                     <p>Rent: <span class="rent">{{ $booking->total_cost }}</span></p>
-                    <p>Left: <span class="days-left" data-checkout="{{ $booking->check_out }}">0 Day(s)</span></p>
+                    <p>Left: <span class="days-left" data-checkout="{{ $booking->check_out }}">- Day(s)</span></p>
         
                     <script>
-                        document.addEventListener("DOMContentLoaded", function () {
-                            const daysLeftElement = document.querySelector('[data-checkout="{{ $booking->check_out }}"]');
+                       document.addEventListener("DOMContentLoaded", function () {
+                            const daysLeftElements = document.querySelectorAll('.days-left[data-checkout]');
                             
-                            if (daysLeftElement) {
-                                // Ngày check_out từ server (định dạng 'YYYY-MM-DD')
-                                const checkOutDate = new Date(daysLeftElement.getAttribute('data-checkout') + "T00:00:00"); // Đảm bảo không có thời gian trong ngày checkout
-                                
-                                // Ngày hôm nay (chỉ lấy phần ngày, bỏ thời gian)
+                            daysLeftElements.forEach(element => {
+                                const checkOutDate = new Date(element.getAttribute('data-checkout') + "T00:00:00");
                                 const today = new Date();
-                                today.setHours(0, 0, 0, 0); // Đặt giờ, phút, giây, và mili giây về 0
-        
-                                // Tính số ngày còn lại
+                                today.setHours(0, 0, 0, 0);
+                                
                                 const timeDifference = checkOutDate - today;
                                 const daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
-        
-                                // Cập nhật giá trị vào phần tử HTML
-                                daysLeftElement.textContent = `${daysLeft} Day(s)`;
-                            }
+                                
+                                if (daysLeft > 0) {
+                                    element.textContent = `${daysLeft} Day(s)`;
+                                } else if (daysLeft === 0) {
+                                    element.textContent = "Today";
+                                } else {
+                                    element.textContent = "Expired";
+                                }
+                            });
                         });
+
                     </script>
                 </div>
             </div>

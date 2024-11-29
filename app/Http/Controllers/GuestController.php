@@ -68,6 +68,15 @@ class GuestController extends Controller
         
         $guest->save();
 
+        $property = Property::find($property_id);
+        if (!$property) {
+            return redirect()->back()->withErrors(['error' => 'Property not found']);
+        }
+    
+        if ($property->status != 0 || !$property->is_verified) {
+            return redirect()->back()->withErrors(['error' => 'Property is not available for booking']);
+        }
+        
         $booking = new Booking();
         $booking->property_id= $property_id;
         $booking->guest_id = $guest_id;

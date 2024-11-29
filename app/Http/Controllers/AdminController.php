@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 use App\Models\Admin;
+use App\Models\Property;
+
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
@@ -11,14 +13,37 @@ class AdminController extends Controller
 
     public function currentAdmin(){
         $currentUser = Auth::user();
-        $currentAdmin = Admin::where('id', $currentUser->id)->first();
+        $currentAdmin = Admin::where('id', $currentUser->id)->first();  
 
+        $properties = Property::where('is_verified', false)->get();
 
         if (!$currentAdmin) {
             return redirect()->back()->with('error', 'No admin data found for this user.');
         }
-        // dd($currentAdmin);
-        return view('admin.dashboard', compact('currentAdmin'));
+
+        $data = [
+            'currentAdmin' => $currentAdmin,
+            'properties'=> $properties,
+        ];
+        // dd($properties);
+        // return view('admin.dashboard', $data);
+        return view('admin.dashboard', $data);
+
+    }
+    public function unverifiedProperties()
+    {
+        $properties = Property::where('is_verified', false)->orderBy('updated_at', 'desc')->get();
+
+        return view('admin.dashboard', compact('properties'));
+    }
+
+    public function verifyProperty($propertyId)
+    {
+        $property = Property::findOrFail($propertyId);
+        $property->is_verified = true;
+        $property->save();
+
+        return redirect()->to('admin/dashboard')->with('success', 'Property has been verified successfully.');
     }
     
     public function updatecurrentAdmin(Request $request, $admin_id) {

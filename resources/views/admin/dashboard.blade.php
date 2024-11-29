@@ -41,4 +41,42 @@
         </a>
     </form>
 
+
+    <div class="container">
+        <h1>List of undefined properties</h1>
+        
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+    
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Property Name</th>
+                    <th>Location</th>
+                    <th>Price per month</th>
+                    <th>action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($properties as $property)
+                    <tr>
+                        <td>{{ $property->property_id }}</td>
+                        <td>{{ $property->property_name }}</td>
+                        <td>{{ $property->location }}</td>
+                        <td>{{ number_format($property->price_per_month) }}</td>
+                        <td>
+                            <form action="{{ route('admin.properties.verify', $property->property_id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-success">Confirm</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 @endsection
