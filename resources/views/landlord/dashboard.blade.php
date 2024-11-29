@@ -227,7 +227,7 @@
                 <div class="lease-info">
                     <p class="property-type">{{ $booking->property->property_name }}</p>
                     <p>Ending: <span class="date">{{ $booking->check_out }}</span></p>
-                    <p>Tenants: <span class="count">{{ $booking->nguests }}</span></p>
+                    <p>Tenants: <span class="count">{{ $booking->guest->first_name }}</span></p>
                     <p>Rent: <span class="rent">{{ $booking->total_cost }}</span></p>
                     <p>Left: <span class="days-left" data-checkout="{{ $booking->check_out }}">- Day(s)</span></p>
         

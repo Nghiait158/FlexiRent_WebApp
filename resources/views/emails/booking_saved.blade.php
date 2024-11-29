@@ -66,6 +66,8 @@
             <p>Thank you for your booking. Below are your details:</p>
             <ul>
                 <li>Property: <span class="highlight">{{ $emailsContent['propertyName'] }}</span></li>
+                <li>Status: <span class="highlight">Pending</span></li>
+                
                 <li>Phone: <span class="highlight">{{ $emailsContent['guestPhone'] }}</span></li>
                 <li>Check-in: <span class="highlight">{{ $emailsContent['check_in'] }}</span></li>
                 <li>Check-out: <span class="highlight">{{ $emailsContent['check_out'] }}</span></li>
