@@ -28,8 +28,8 @@ class LandlordController extends Controller
         }
 
         $propertiesIsVerify = Property::where('landlord_id', $currentLandlord->landlord_id)
-        ->where('is_verified', true)
-        ->get();
+            ->where('is_verified', true)
+            ->get();
 
         foreach ($propertiesIsVerify as $property) {
             // Find and cancel expired bookings
@@ -453,15 +453,13 @@ class LandlordController extends Controller
         return view('landlord.edit_property');
     }
 
-    public function myProperty()
-    {
-        return view('landlord.myProperty');
-    }
+
 
     public function listProperty()
     {
-        $landlordId = Auth::id();
-        $properties = Property::where('landlord_id', $landlordId)->get();
+        $currentUser = Auth::user();
+        $currentLandlord = Landlord::where('id', $currentUser->id)->first();
+        $properties = Property::where('landlord_id', $currentLandlord->landlord_id)->get();
         return view('landlord.myProperty', compact('properties'));
     }
 
@@ -499,12 +497,13 @@ class LandlordController extends Controller
         return Redirect::to('landlord/myProperty');
     }
 
-    public function editLandlordProperty($property_id){
+    public function editLandlordProperty($property_id)
+    {
         $editProperty = Property::with('amenities')->findOrFail($property_id);
         $landlords = Landlord::all();
         $amenity = Amenity::all();
         $data = [
-            'amenity'=>$amenity,
+            'amenity' => $amenity,
             'editProperty' => $editProperty,
             'landlords' => $landlords,
         ];
@@ -512,76 +511,76 @@ class LandlordController extends Controller
     }
 
     public function updateLandlordProperty(Request $request, $property_id)
-{
-    $data = $request->all();
-    
-    // Find the property by ID
-    $property = Property::find($property_id);
-    if (!$property) {
-        return redirect()->back()->withErrors(['error' => 'Property not found']);
-    }
-    
-    // Update existing fields
-    $property->property_name = $data['property_name'];
-    $property->landlord_id = $data['landlord_id'];
-    $property->location = $data['location'];
-    $property->district = $data['district'];
-    $property->city = $data['city'];
-    $property->nbedrooms = $data['nbedrooms'];
-    $property->nbathrooms = $data['nbathrooms'];
-    $property->area = $data['area'];
-    $property->description = $data['description'];
-    $property->available = $data['available'];
-    $property->view = $data['view'];
-    $property->floor = $data['floor'];
-    $property->elevator = $data['elevator'];
-    $property->price_per_month = $data['price_per_month'];
-    $property->guest_capacity = $data['guest_capacity'];
-    
-    // Update missing fields if they are present in the request
-    if (isset($data['location_details'])) {
-        $property->location_details = $data['location_details'];
-    }
-    if (isset($data['education_and_community'])) {
-        $property->education_and_community = $data['education_and_community'];
-    }
-    if (isset($data['status'])) {
-        $property->status = $data['status']; // Ensure this is either '1' or '0'
-    }
-    if (isset($data['accommodation_type'])) {
-        $property->accommodation_type = $data['accommodation_type'];
-    }
-    if (isset($data['room'])) {
-        $property->room = $data['room'];
-    }
-    if (isset($data['wifi'])) {
-        $property->wifi = $data['wifi']; // Ensure this is either '1' or '0'
-    }
-    if (isset($data['internetSpeed'])) {
-        $property->internetSpeed = $data['internetSpeed'];
-    }
+    {
+        $data = $request->all();
 
-    // Save the updated property
-    $property->save();
-    
-    // Handle amenities if they are present in the request
-    if (!empty($data['amenities'])) {
-        // Get valid amenities from the database
-        $validatedAmenities = Amenity::whereIn('amenity_id', $data['amenities'])->pluck('amenity_id')->toArray();
-        
-        // Sync amenities with the property
-        $property->amenities()->sync($validatedAmenities);
-    } else {
-        // Detach amenities if none are provided
-        $property->amenities()->detach();
-    }
+        // Find the property by ID
+        $property = Property::find($property_id);
+        if (!$property) {
+            return redirect()->back()->withErrors(['error' => 'Property not found']);
+        }
 
-    // Set success message in session
-    Session::put('message', 'Update property successful');
-    
-    // Redirect to the property management page
-    return Redirect::to('landlord/myProperty');
-}
+        // Update existing fields
+        $property->property_name = $data['property_name'];
+        $property->landlord_id = $data['landlord_id'];
+        $property->location = $data['location'];
+        $property->district = $data['district'];
+        $property->city = $data['city'];
+        $property->nbedrooms = $data['nbedrooms'];
+        $property->nbathrooms = $data['nbathrooms'];
+        $property->area = $data['area'];
+        $property->description = $data['description'];
+        $property->available = $data['available'];
+        $property->view = $data['view'];
+        $property->floor = $data['floor'];
+        $property->elevator = $data['elevator'];
+        $property->price_per_month = $data['price_per_month'];
+        $property->guest_capacity = $data['guest_capacity'];
+
+        // Update missing fields if they are present in the request
+        if (isset($data['location_details'])) {
+            $property->location_details = $data['location_details'];
+        }
+        if (isset($data['education_and_community'])) {
+            $property->education_and_community = $data['education_and_community'];
+        }
+        if (isset($data['status'])) {
+            $property->status = $data['status']; // Ensure this is either '1' or '0'
+        }
+        if (isset($data['accommodation_type'])) {
+            $property->accommodation_type = $data['accommodation_type'];
+        }
+        if (isset($data['room'])) {
+            $property->room = $data['room'];
+        }
+        if (isset($data['wifi'])) {
+            $property->wifi = $data['wifi']; // Ensure this is either '1' or '0'
+        }
+        if (isset($data['internetSpeed'])) {
+            $property->internetSpeed = $data['internetSpeed'];
+        }
+
+        // Save the updated property
+        $property->save();
+
+        // Handle amenities if they are present in the request
+        if (!empty($data['amenities'])) {
+            // Get valid amenities from the database
+            $validatedAmenities = Amenity::whereIn('amenity_id', $data['amenities'])->pluck('amenity_id')->toArray();
+
+            // Sync amenities with the property
+            $property->amenities()->sync($validatedAmenities);
+        } else {
+            // Detach amenities if none are provided
+            $property->amenities()->detach();
+        }
+
+        // Set success message in session
+        Session::put('message', 'Update property successful');
+
+        // Redirect to the property management page
+        return Redirect::to('landlord/myProperty');
+    }
 
 
 
