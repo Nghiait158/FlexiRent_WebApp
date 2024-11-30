@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Landlord;
 use App\Models\Property;
+use App\Models\PropertyImg;
+use App\Models\PropertyAmenity;
 use App\Models\Booking;
 use App\Models\Amenity;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
@@ -466,36 +470,49 @@ class LandlordController extends Controller
 
 
     public function deleteLandlordProperty($property_id)
-    {
+{
+    try {
+        Log::info('Attempting to delete property: ' . $property_id); // Debug log
+        
         // Fetch the property by its ID
-        $property = Property::find($property_id);
+        $property = Property::findOrFail($property_id);
+        
+        Log::info('Found property: ' . $property->property_id); // Debug log
 
-        // Check if property exists
-        if (!$property) {
-            // Property not found
-            Session::flash('error', 'Property does not exist');
-            return Redirect::to('landlord/myProperty');
+        // Get current landlord
+        $currentUser = Auth::user();
+        $currentLandlord = Landlord::where('id', $currentUser->id)->first();
+
+        // Check authorization
+        if ($property->landlord_id != $currentLandlord->landlord_id) {
+            Log::warning('Unauthorized deletion attempt'); // Debug log
+            return redirect()->back()->with('error', 'You are not authorized to delete this property');
         }
 
-        // Check if the current user is the owner of the property
-        if ($property->landlord_id !== Auth::id()) {
-            // User is not the owner of the property
-            Session::flash('error', 'You are not authorized to delete this property');
-            return Redirect::to('landlord/myProperty');
-        }
-
-        // Proceed with deletion
+        // Begin transaction
+        DB::beginTransaction();
         try {
+            // Delete related records
+            PropertyImg::where('property_id', $property_id)->delete();
+            PropertyAmenity::where('property_id', $property_id)->delete();
+            
+            // Delete the property
             $property->delete();
-            Session::flash('message', 'Property deleted successfully');
+            
+            DB::commit();
+            Log::info('Property deleted successfully'); // Debug log
+            
+            return redirect()->back()->with('success', 'Property deleted successfully');
         } catch (\Exception $e) {
-            // Handle any errors during deletion
-            Session::flash('error', 'An error occurred while deleting the property');
+            DB::rollBack();
+            Log::error('Error in transaction: ' . $e->getMessage()); // Debug log
+            throw $e;
         }
-
-        // Redirect back to the list of properties
-        return Redirect::to('landlord/myProperty');
+    } catch (\Exception $e) {
+        Log::error('Error deleting property: ' . $e->getMessage()); // Debug log
+        return redirect()->back()->with('error', 'Error deleting property: ' . $e->getMessage());
     }
+}
 
     public function editLandlordProperty($property_id)
     {

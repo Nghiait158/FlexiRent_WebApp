@@ -171,7 +171,7 @@ Route::middleware(['auth', 'landlord'])->group(function () {
 
     Route::get('landlord/edit_property', [LandlordController::class, 'editProperty'])->name('property.edit');
     Route::get('landlord/myProperty', [LandlordController::class, 'listProperty']);
-    Route::get('/deleteLandlordProperty/{property_id}', [LandlordController::class, 'deleteLandlordProperty'])->name('property.delete');
+    Route::delete('/deleteLandlordProperty/{property_id}', [LandlordController::class, 'deleteLandlordProperty']);
     Route::get('/editLandlordProperty/{property_id}', [LandlordController::class, 'editLandlordProperty']);
     Route::post('/updateLandlordProperty/{property_id}', [LandlordController::class, 'updateLandlordProperty']);
 

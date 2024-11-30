@@ -42,7 +42,7 @@
 
                 table.rows().every(function() {
                     var rowData = this.data();
-                    var status = rowData[11]; // Status column is at index 3 (0-based)
+                    var status = rowData[12]; // Status column is at index 3 (0-based)
                     if (status === "1") {
                         availableProperties++;
                     }
@@ -55,7 +55,7 @@
 
                 table.rows().every(function() {
                     var rowData = this.data();
-                    var status = rowData[11]; // Status column is at index 3 (0-based)
+                    var status = rowData[12]; // Status column is at index 3 (0-based)
                     if (status === "0" || status === "N/A") {
                         rentedProperties++;
                     }
@@ -69,7 +69,7 @@
                 var totalCount = 0;
                 table.rows().every(function() {
                     var rowData = this.data();
-                    var price = parseFloat(rowData[12].replace(/[^0-9.-]+/g, "")); // Remove any non-numeric symbols
+                    var price = parseFloat(rowData[13].replace(/[^0-9.-]+/g, "")); // Remove any non-numeric symbols
                     if (!isNaN(price)) {
                         totalPrice += price;
                         totalCount++;
@@ -89,10 +89,10 @@
             function filterByStatus(status) {
                 // Filter the table based on status
                 if (status === "All") {
-                    table.column(11).search('').draw(); // Show all rows (clear search)
+                    table.column(12).search('').draw(); // Show all rows (clear search)
                     $('#statusFilterText').text('All');
                 } else {
-                    table.column(11).search(status).draw(); // Filter by Available (1) or Rented (0)
+                    table.column(12).search(status).draw(); // Filter by Available (1) or Rented (0)
                     $('#statusFilterText').text(status === "1" ? 'Available' : 'Rented');
                 }
             }
@@ -125,7 +125,7 @@
                     search: 'applied'
                 }).every(function(rowIdx, tableLoop, rowLoop) {
                     var rowData = this.data();
-                    var price = parseFloat(rowData[12].replace(/[^0-9.-]+/g, "")); // Remove any currency symbols and convert to number
+                    var price = parseFloat(rowData[13].replace(/[^0-9.-]+/g, "")); // Remove any currency symbols and convert to number
                     if (!isNaN(price)) {
                         totalPrice += price;
                     }
@@ -141,7 +141,7 @@
                 // Loop through all rows in the table
                 table.rows().every(function(rowIdx, tableLoop, rowLoop) {
                     var rowData = this.data();
-                    var price = parseFloat(rowData[12].replace(/[^0-9.-]+/g, "")); // Remove any currency symbols and convert to number
+                    var price = parseFloat(rowData[13].replace(/[^0-9.-]+/g, "")); // Remove any currency symbols and convert to number
                     if (!isNaN(price)) {
                         totalPriceAll += price;
                     }
@@ -169,32 +169,33 @@
                 // Populate the modal with property details
                 $('#propertyDetailsModal .modal-body').html(`
                         <div class="list-group">
-            <div class="list-group-item"><strong>Property ID:</strong> <span id="propertyId">${rowData[0]}</span></div>
-            <div class="list-group-item"><strong>Property Name:</strong> <span id="propertyName">${rowData[1]}</span></div>
-            <div class="list-group-item"><strong>Landlord ID:</strong> <span id="landlordId">${rowData[2]}</span></div>
-            <div class="list-group-item"><strong>Location:</strong> <span id="location">${rowData[3]}</span></div>
-            <div class="list-group-item"><strong>Location Details:</strong> <span id="locationDetails">${rowData[4]}</span></div>
-            <div class="list-group-item"><strong>Education and Community:</strong> <span id="educationAndCommunity">${rowData[5]}</span></div>
-            <div class="list-group-item"><strong>Bedrooms:</strong> <span id="bedrooms">${rowData[6]}</span></div>
-            <div class="list-group-item"><strong>Bathrooms:</strong> <span id="bathrooms">${rowData[7]}</span></div>
-            <div class="list-group-item"><strong>Area:</strong> <span id="area">${rowData[8]}</span></div>
-            <div class="list-group-item"><strong>View:</strong> <span id="view">${rowData[9]}</span></div>
-            <div class="list-group-item"><strong>Floor:</strong> <span id="floor">${rowData[10]}</span></div>
-            <div class="list-group-item"><strong>Status:</strong><span id="status">${rowData[11] === '1' ? 'Available' : 'Rented'}</span></div>
-            <div class="list-group-item"><strong>Price per Month:</strong> <span id="pricePerMonth">${rowData[12]}</span></div>
-            <div class="list-group-item"><strong>Created At:</strong> <span id="createdAt">${rowData[13]}</span></div>
-            <div class="list-group-item"><strong>Updated At:</strong> <span id="updatedAt">${rowData[14]}</span></div>
-            <div class="list-group-item"><strong>Description:</strong> <span id="description">${rowData[15]}</span></div>
-            <div class="list-group-item"><strong>Available Date:</strong> <span id="availableDate">${rowData[16]}</span></div>
-            <div class="list-group-item"><strong>Guest Capacity:</strong> <span id="guestCapacity">${rowData[17]}</span></div>
-            <div class="list-group-item"><strong>Elevator:</strong> <span id="elevator">${rowData[18]}</span></div>
-            <div class="list-group-item"><strong>City:</strong> <span id="city">${rowData[19]}</span></div>
-            <div class="list-group-item"><strong>District:</strong> <span id="district">${rowData[20]}</span></div>
-            <div class="list-group-item"><strong>Accommodation Type:</strong> <span id="accommodationType">${rowData[21]}</span></div>
-            <div class="list-group-item"><strong>Room:</strong> <span id="room">${rowData[22]}</span></div>
-            <div class="list-group-item"><strong>Wifi:</strong> <span id="wifi">${rowData[23]}</span></div>
-            <div class="list-group-item"><strong>Internet Speed:</strong> <span id="internetSpeed">${rowData[24]}</span></div>
-        </div>
+            <div class="list-group-item"><strong>Property ID:</strong> <span id="propertyId">${rowData[1]}</span></div>
+            <div class="list-group-item"><strong>Property Name:</strong> <span id="propertyName">${rowData[2]}</span></div>
+            <div class="list-group-item"><strong>Landlord ID:</strong> <span id="landlordId">${rowData[3]}</span></div>
+            <div class="list-group-item"><strong>Location:</strong> <span id="location">${rowData[4]}</span></div>
+            <div class="list-group-item"><strong>Location Details:</strong> <span id="locationDetails">${rowData[5]}</span></div>
+            <div class="list-group-item"><strong>Education and Community:</strong> <span id="educationAndCommunity">${rowData[6]}</span></div>
+            <div class="list-group-item"><strong>Bedrooms:</strong> <span id="bedrooms">${rowData[7]}</span></div>
+            <div class="list-group-item"><strong>Bathrooms:</strong> <span id="bathrooms">${rowData[8]}</span></div>
+            <div class="list-group-item"><strong>Area:</strong> <span id="area">${rowData[9]}</span></div>
+            <div class="list-group-item"><strong>View:</strong> <span id="view">${rowData[10]}</span></div>
+            <div class="list-group-item"><strong>Floor:</strong> <span id="floor">${rowData[11]}</span></div>
+            <div class="list-group-item"><strong>Status:</strong><span id="status">${rowData[12] === '1' ? 'Available' : 'Rented'}</span></div>
+            <div class="list-group-item"><strong>Price per Month:</strong> <span id="pricePerMonth">${rowData[13]}</span></div>
+            <div class="list-group-item"><strong>Created At:</strong> <span id="createdAt">${rowData[14]}</span></div>
+            <div class="list-group-item"><strong>Updated At:</strong> <span id="updatedAt">${rowData[15]}</span></div>
+            <div class="list-group-item"><strong>Description:</strong> <span id="description">${rowData[16]}</span></div>
+            <div class="list-group-item"><strong>Available Date:</strong> <span id="availableDate">${rowData[17]}</span></div>
+            <div class="list-group-item"><strong>Guest Capacity:</strong> <span id="guestCapacity">${rowData[18]}</span></div>
+            <div class="list-group-item"><strong>Elevator:</strong> <span id="elevator">${rowData[19]}</span></div>
+            <div class="list-group-item"><strong>City:</strong> <span id="city">${rowData[20]}</span></div>
+            <div class="list-group-item"><strong>District:</strong> <span id="district">${rowData[21]}</span></div>
+            <div class="list-group-item"><strong>Accommodation Type:</strong> <span id="accommodationType">${rowData[22]}</span></div>
+            <div class="list-group-item"><strong>Room:</strong> <span id="room">${rowData[23]}</span></div>
+            <div class="list-group-item"><strong>Wifi:</strong> <span id="wifi">${rowData[24]}</span></div>
+            <div class="list-group-item"><strong>Internet Speed:</strong> <span id="internetSpeed">${rowData[25]}</span></div>
+
+                        </div>
                     `);
 
                 // Show the modal
@@ -221,7 +222,7 @@
                 // Simulate AJAX update (can replace with real AJAX)
                 console.log('Updated Property ID:', propertyId, 'New Name:', newPropertyName);
                 // Update the property name in the table
-                rowData[1] = newPropertyName;
+                rowData[2] = newPropertyName;
                 table.row(row).data(rowData).draw();
             });
 
@@ -233,7 +234,7 @@
             // Apply filter on property name, price, city, district, etc.
             $('#searchPropertyName').on('input', function() {
                 var propertyName = $(this).val();
-                table.columns(1).search(propertyName).draw();
+                table.columns(2).search(propertyName).draw();
             });
 
 
@@ -251,7 +252,7 @@
                 // Add a custom search function for the price column
                 $.fn.dataTable.ext.search.push(
                     function(settings, data, dataIndex) {
-                        var price = parseFloat(data[12]) || 0; // Assuming price is in the 13th column (index 12)
+                        var price = parseFloat(data[13]) || 0; // Assuming price is in the 14th column (index 13)
 
                         if ((minPrice === '' || price >= minPrice) && (maxPrice === '' || price <= maxPrice)) {
                             return true;
@@ -333,7 +334,7 @@
             <div id="statusFilterDropdown" class="dropdown-menu" style="display: none;">
                 <a class="dropdown-item" href="#" data-status="All">All</a>
                 <a class="dropdown-item" href="#" data-status="1">Available</a>
-                <a class="dropdown-item" href="#" data-status="0">Rented</a>
+                <a class="dropdown-item" href="#" data-status="N/A">Rented</a>
             </div>
         </div>
 
@@ -342,31 +343,32 @@
             <i class="fas fa-columns"></i> Toggle Columns
         </button>
         <div id="columnToggleDropdown" class="dropdown-menu" style="display: none;">
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="0" checked> Property ID</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="1" checked> Property Name</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="2" checked> Landlord ID</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="3" checked> Location</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="4" checked> Location Details</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="5" checked> Education and Community</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="6" checked> Bedrooms</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="7" checked> Bathrooms</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="8" checked> Area</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="9" checked> View</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="10" checked> Floor</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="11" checked> Status</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="12" checked> Price per Month</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="13" checked> Created At</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="14" checked> Updated At</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="15" checked> Description</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="16" checked> Available Date</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="17" checked> Guest Capacity</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="18" checked> Elevator</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="19" checked> City</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="20" checked> District</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="21" checked> Accommodation Type</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="22" checked> Room</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="23" checked> Wifi</label><br>
-            <label><input type="checkbox" class="toggle-column-checkbox" data-column="24" checked> Internet Speed</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="1" checked> Property ID</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="2" checked> Property Name</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="3" checked> Landlord ID</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="4" checked> Location</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="5" checked> Location Details</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="6" checked> Education and Community</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="7" checked> Bedrooms</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="8" checked> Bathrooms</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="9" checked> Area</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="10" checked> View</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="11" checked> Floor</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="12" checked> Status</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="13" checked> Price per Month</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="14" checked> Created At</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="15" checked> Updated At</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="16" checked> Description</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="17" checked> Available Date</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="18" checked> Guest Capacity</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="19" checked> Elevator</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="20" checked> City</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="21" checked> District</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="22" checked> Accommodation Type</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="23" checked> Room</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="24" checked> Wifi</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="25" checked> Internet Speed</label><br>
+
         </div>
 
         <!-- Filter Section -->
@@ -385,6 +387,7 @@
             <table id="propertyTable" class="table table-striped table-bordered">
                 <thead>
                     <tr>
+                        <th>Actions</th>
                         <th>Property ID</th>
                         <th>Property Name</th>
                         <th>Landlord ID</th>
@@ -410,12 +413,33 @@
                         <th>Room</th>
                         <th>Wifi</th>
                         <th>Internet Speed</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($properties ?? [] as $property)
                     <tr>
+                        <td>
+                            <button class="btn btn-info view-btn">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+
+                            <a href="{{URL::to('/editLandlordProperty/'.$property->property_id)}}">
+                                <button class="btn btn-warning edit-btn">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                            </a>
+
+                            <!-- Delete button -->
+                            <form action="{{ URL::to('/deleteLandlordProperty/'.$property->property_id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger delete-btn" onclick="return confirm('Are you sure you want to delete this property?');">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </form>
+
+
+                        </td>
                         <td>{{ $property->property_id ?:'N/A'}}</td>
                         <td contenteditable="true">{{ $property->property_name ?:'N/A'}}</td>
                         <td>{{ $property->landlord_id ?:'N/A'}}</td>
@@ -441,27 +465,7 @@
                         <td>{{ $property->room ?:'N/A'}}</td>
                         <td>{{ $property->wifi ?:'N/A'}}</td>
                         <td>{{ $property->internetSpeed ?:'N/A'}}</td>
-                        <td>
-                            <button class="btn btn-info view-btn">
-                                <i class="fas fa-eye"></i> View
-                            </button>
 
-                            <a href="{{URL::to('/editLandlordProperty/'.$property->property_id)}}">
-                                <button class="btn btn-warning edit-btn">
-                                    <i class="fas fa-edit"></i> Edit
-                                </button>
-                            </a>
-
-                            <!-- Delete button -->
-                            <a href="{{ URL::to('/deleteLandlordProperty/'.$property->property_id) }}"
-                                onclick="return confirm('Are you sure you want to delete this property?');">
-                                <button class="btn btn-danger delete-btn">
-                                    <i class="fas fa-trash-alt"></i> Delete
-                                </button>
-                            </a>
-
-
-                        </td>
                     </tr>
                     @endforeach
                 </tbody>
