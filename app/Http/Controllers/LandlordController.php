@@ -11,7 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
-
+use App\Mail\LandlordConfimBooking;
+use Illuminate\Support\Facades\Mail;
 class LandlordController extends Controller
 {
 
@@ -113,7 +114,25 @@ class LandlordController extends Controller
         //update status of property 
         $matchingProperties = Property::where('property_id', $booking->property_id)
             ->update(['status' => '1']);
+
+
         $booking->save();
+
+
+
+        $guest = $booking->guest; 
+        
+        if ($guest && $guest->user) {
+            $email = $guest->user->email; 
+        } else {
+            return redirect()->back()->withErrors(['error' => 'Guest or user email not found']);
+        }
+        // dd($email);
+        // $emailsContent = [
+        //     'message' => 'Your booking has been confirmed.',
+        // ];
+
+        Mail::to($guest->user->email)->send(new LandlordConfimBooking($booking));
         Session::put('message', 'Update status booking successful');
         return Redirect::to('landlord/dashboard');
     }

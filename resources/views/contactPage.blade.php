@@ -38,55 +38,56 @@
 
 <div class="page-container">
     <div class="contact-container">
-        <h1>Please tell us a little about you</h1>
-
+        <h1>We Value Your Feedback</h1>
         <div class="blocks">
-            <div class="left-block">
-                <div class="purpose">
-                    <h4>What would you like to contact us about?</h4>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                            I'm a Customer
-                        </label>
+            <form role="form" action="{{URL::to('/saveFeedback')}}" method="post">
+                <div class="left-block">
+                    <div class="purpose">
+                        <h4>How can we assist you today?</h4>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="role" id="flexRadioDefault1" value="customer">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                I'm a Customer
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="role" id="flexRadioDefault2" value="landlord">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                I'm a Landlord
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="role" id="flexRadioDefault3" value="other">
+                            <label class="form-check-label" for="flexRadioDefault3">
+                                Something else
+                            </label>
+                        </div>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                        <label class="form-check-label" for="flexRadioDefault2">
-                            I'm a Landlord
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-                        <label class="form-check-label" for="flexRadioDefault3">
-                            Something else
-                        </label>
-                    </div>
+    
+                    <form class="row g-3 input">
+                        <div class="row align-items-center no-padding-margin">
+                            <div class="col-sm-9 ps-2">
+                                <input type="text" class="form-control" id="Name" name="Name" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="row align-items-center no-padding-margin">
+                            <div class="col-sm-9 ps-2">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="row align-items-center no-padding-margin">
+                            <div class="col-sm-9 ps-2">
+                                <input id="phone" type="tel" name="phonenumber" class="form-control" placeholder="Enter phone number">
+                            </div>
+                        </div>
+                        <div class="form-group textarea-input" id="textareaInput">
+                            <textarea class="form-control" id="otherDetails" rows="3" placeholder="Write your feedback here, including any suggestions or issues you have encountered."></textarea>
+                        </div>
+                    </form>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
                 </div>
+            </form>
 
-                <form class="row g-3 input">
-
-                    <div class="row align-items-center no-padding-margin">
-                        <div class="col-sm-9 ps-2">
-                            <input type="text" class="form-control" id="Name" name="Name" placeholder="Name">
-                        </div>
-                    </div>
-                    <div class="row align-items-center no-padding-margin">
-                        <div class="col-sm-9 ps-2">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="row align-items-center no-padding-margin">
-                        <div class="col-sm-9 ps-2">
-                            <input id="phone" type="tel" class="form-control" placeholder="Enter phone number">
-                        </div>
-                    </div>
-                    <div class="form-group textarea-input" id="textareaInput">
-                        <textarea class="form-control" id="otherDetails" rows="3" placeholder="Message"></textarea>
-                    </div>
-                </form>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-            </div>
 
             <div class="contacts">
                 <div class="headlines">
@@ -96,11 +97,11 @@
                 </div>
 
                 <div class="mail-phone">
-                    <p>reservations@theflexliving.com<br>
+                    <p>reservations@FlexiRent.com<br>
                         0203 307 4477</p>
-                    <p>supply@theflexliving.com<br>
+                    <p>supply@FlexiRent.com<br>
                         0203 307 4477</p>
-                    <p>maintenance@theflexliving.com<br>
+                    <p>maintenance@FlexiRent.com<br>
                         0203 307 4477</p>
                 </div>
             </div>

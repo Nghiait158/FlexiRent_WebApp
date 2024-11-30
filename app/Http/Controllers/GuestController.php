@@ -55,7 +55,7 @@ class GuestController extends Controller
 
     public function savedBooking(Request $request, $property_id, $guest_id){
         $data= $request->all();
-        $guest = Guest::with('user')->find($guest_id );
+        $guest = Guest::with('user')->find($guest_id);
         if (!$guest) {
             return redirect()->back()->withErrors(['error' => 'Guest not found']);
         }
@@ -63,11 +63,14 @@ class GuestController extends Controller
         $guest->first_name = $data['fName'];
         $guest->last_name = $data['lName'];
         $guest->phone_number = $data['phone_number'];
-        // $guest->purpose_of_stay = $data['purpose_of_stay'];
+        $guest->purpose_of_stay = $data['purpose_of_stay']??null;
         $guest->user->email = $data['email'];
         
         $guest->save();
-
+        if ($guest->user) { // Ensure the Guest has an associated User
+            $guest->user->email = $data['email'];
+            $guest->user->save(); // Save the User changes
+        }
         $property = Property::find($property_id);
         if (!$property) {
             return redirect()->back()->withErrors(['error' => 'Property not found']);

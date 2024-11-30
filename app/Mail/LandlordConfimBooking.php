@@ -9,20 +9,20 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class UserNotificationMail extends Mailable
+class LandlordConfimBooking extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $emailsContent;
+    public $booking; // Biến chứa thông tin booking
 
     /**
      * Create a new message instance.
      *
-     * @return void
+     * @param $booking
      */
-    public function __construct($emailsContent)
+    public function __construct($booking)
     {
-        $this->emailsContent = $emailsContent;
+        $this->booking = $booking;
     }
 
     /**
@@ -32,7 +32,7 @@ class UserNotificationMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Booking Information')
-                    ->view('emails.booking_saved');
+        return $this->subject('Booking Confirmation - Your Booking is Confirmed')
+                    ->view('emails.booking_confirmation');
     }
 }
