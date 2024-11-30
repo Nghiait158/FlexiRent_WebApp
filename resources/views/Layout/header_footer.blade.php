@@ -39,7 +39,7 @@
                         </div>
 
                         <a href="{{URL::to('/Blog')}}">Blog</a>
-                        <a href="{{URL::to('/Contact')}}">Contacts</a>
+                        <a href="{{URL::to('/Contact')}}">Feedback</a>
 
 
                         {{-- @if (Route::has('register'))

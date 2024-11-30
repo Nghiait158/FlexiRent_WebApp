@@ -127,7 +127,7 @@ class LandlordController extends Controller
         } else {
             return redirect()->back()->withErrors(['error' => 'Guest or user email not found']);
         }
-        dd($email);
+        // dd($email);
         // $emailsContent = [
         //     'message' => 'Your booking has been confirmed.',
         // ];
