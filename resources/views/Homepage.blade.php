@@ -605,142 +605,25 @@
     </div>
     <div class="swiper partnerSwiper">
         <div class="swiper-wrapper">
+            @foreach ($feedbacks as $feedback)
             <div class="swiper-slide">
                 <div class="profile">
 
                     <img class="profile-picture" src="\Frontend\Image\Homepage Profile\profile1.jpg" alt="">
 
                     <div class="profile-content">
-                        <h4>Annie</h4>
-                        <p>Landlord in SE1</p>
+                        <h4>{{ $feedback-> name ?: 'User'}}</h4>
+                        <p>Role: {{ $feedback-> role ?: 'Other'}}</p>
                     </div>
                 </div>
 
                 <div class="comment">
-                    Nascetur urna, fusce consectetur massa nulla viverra aenean semper. Dignissim nibh sed condimentum
-                    eget ac suspendisse eget amet integer. Mattis etiam sagittis fermentum fames habitasse. Vulputate
-                    volutpat sit est, elementum. Accumsan nunc nunc arcu faucibus aliquam.
+                    {{ $feedback-> message ?: 'N/A'}}
                 </div>
             </div>
-            <div class="swiper-slide">
-                <div class="profile">
-
-                    <img class="profile-picture" src="\Frontend\Image\Homepage Profile\profile1.jpg" alt="">
-
-                    <div class="profile-content">
-                        <h4>Annie</h4>
-                        <p>Landlord in SE1</p>
-                    </div>
-                </div>
-
-                <div class="comment">
-                    Nascetur urna, fusce consectetur massa nulla viverra aenean semper. Dignissim nibh sed condimentum
-                    eget ac suspendisse eget amet integer. Mattis etiam sagittis fermentum fames habitasse. Vulputate
-                    volutpat sit est, elementum. Accumsan nunc nunc arcu faucibus aliquam.
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="profile">
-
-                    <img class="profile-picture" src="\Frontend\Image\Homepage Profile\profile1.jpg" alt="">
-
-                    <div class="profile-content">
-                        <h4>Annie</h4>
-                        <p>Landlord in SE1</p>
-                    </div>
-                </div>
-
-                <div class="comment">
-                    Nascetur urna, fusce consectetur massa nulla viverra aenean semper. Dignissim nibh sed condimentum
-                    eget ac suspendisse eget amet integer. Mattis etiam sagittis fermentum fames habitasse. Vulputate
-                    volutpat sit est, elementum. Accumsan nunc nunc arcu faucibus aliquam.
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="profile">
-
-                    <img class="profile-picture" src="\Frontend\Image\Homepage Profile\profile1.jpg" alt="">
-
-                    <div class="profile-content">
-                        <h4>Annie</h4>
-                        <p>Landlord in SE1</p>
-                    </div>
-                </div>
-
-                <div class="comment">
-                    Nascetur urna, fusce consectetur massa nulla viverra aenean semper. Dignissim nibh sed condimentum
-                    eget ac suspendisse eget amet integer. Mattis etiam sagittis fermentum fames habitasse. Vulputate
-                    volutpat sit est, elementum. Accumsan nunc nunc arcu faucibus aliquam.
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="profile">
-
-                    <img class="profile-picture" src="\Frontend\Image\Homepage Profile\profile1.jpg" alt="">
-
-                    <div class="profile-content">
-                        <h4>Annie</h4>
-                        <p>Landlord in SE1</p>
-                    </div>
-                </div>
-
-                <div class="comment">
-                    Nascetur urna, fusce consectetur massa nulla viverra aenean semper. Dignissim nibh sed condimentum
-                    eget ac suspendisse eget amet integer. Mattis etiam sagittis fermentum fames habitasse. Vulputate
-                    volutpat sit est, elementum. Accumsan nunc nunc arcu faucibus aliquam.
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="profile">
-
-                    <img class="profile-picture" src="\Frontend\Image\Homepage Profile\profile1.jpg" alt="">
-
-                    <div class="profile-content">
-                        <h4>Annie</h4>
-                        <p>Landlord in SE1</p>
-                    </div>
-                </div>
-
-                <div class="comment">
-                    Nascetur urna, fusce consectetur massa nulla viverra aenean semper. Dignissim nibh sed condimentum
-                    eget ac suspendisse eget amet integer. Mattis etiam sagittis fermentum fames habitasse. Vulputate
-                    volutpat sit est, elementum. Accumsan nunc nunc arcu faucibus aliquam.
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="profile">
-
-                    <img class="profile-picture" src="\Frontend\Image\Homepage Profile\profile1.jpg" alt="">
-
-                    <div class="profile-content">
-                        <h4>Annie</h4>
-                        <p>Landlord in SE1</p>
-                    </div>
-                </div>
-
-                <div class="comment">
-                    Nascetur urna, fusce consectetur massa nulla viverra aenean semper. Dignissim nibh sed condimentum
-                    eget ac suspendisse eget amet integer. Mattis etiam sagittis fermentum fames habitasse. Vulputate
-                    volutpat sit est, elementum. Accumsan nunc nunc arcu faucibus aliquam.
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="profile">
-
-                    <img class="profile-picture" src="\Frontend\Image\Homepage Profile\profile1.jpg" alt="">
-
-                    <div class="profile-content">
-                        <h4>Annie</h4>
-                        <p>Landlord in SE1</p>
-                    </div>
-                </div>
-
-                <div class="comment">
-                    Nascetur urna, fusce consectetur massa nulla viverra aenean semper. Dignissim nibh sed condimentum
-                    eget ac suspendisse eget amet integer. Mattis etiam sagittis fermentum fames habitasse. Vulputate
-                    volutpat sit est, elementum. Accumsan nunc nunc arcu faucibus aliquam.
-                </div>
-            </div>
+            @endforeach
+            
+            
         </div>
 
     </div>
@@ -752,7 +635,7 @@
     <!-- Initialize Swiper -->
 </div>
 
-<div class="blog-container">
+{{-- <div class="blog-container">
     <h2>Read our blog</h2>
 
     <div class="swiper blogSwiper">
@@ -957,7 +840,7 @@
 
 
     <a class="readBtn" href="{{URL::to('/Blog')}}">Read more</a>
-</div>
+</div> --}}
 
 
 <div class="link-container">

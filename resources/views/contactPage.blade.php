@@ -41,6 +41,7 @@
         <h1>We Value Your Feedback</h1>
         <div class="blocks">
             <form role="form" action="{{URL::to('/saveFeedback')}}" method="post">
+                {{ csrf_field() }}
                 <div class="left-block">
                     <div class="purpose">
                         <h4>How can we assist you today?</h4>
@@ -67,7 +68,7 @@
                     <form class="row g-3 input">
                         <div class="row align-items-center no-padding-margin">
                             <div class="col-sm-9 ps-2">
-                                <input type="text" class="form-control" id="Name" name="Name" placeholder="Name">
+                                <input type="text" class="form-control" id="Name" name="name" placeholder="Name">
                             </div>
                         </div>
                         <div class="row align-items-center no-padding-margin">

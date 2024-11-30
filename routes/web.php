@@ -245,6 +245,10 @@ Route::post('/CheckoutPageA/{property_id}', [GuestController::class, 'sendDatafr
 Route::get('/Contact', function () {
     return view('contactPage');
 });
+
+Route::get('/thankFeedback', function () {
+    return view('thankFeedback');
+});
 // Route::get('/CheckoutPageA', function () {
 //     return view('CheckoutPageA');
 // });
