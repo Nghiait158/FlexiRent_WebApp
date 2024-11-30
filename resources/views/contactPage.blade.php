@@ -45,19 +45,19 @@
                     <div class="purpose">
                         <h4>How can we assist you today?</h4>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="role" id="flexRadioDefault1" value="customer">
+                            <input class="form-check-input" type="radio" name="role" id="flexRadioDefault1" value="Guest">
                             <label class="form-check-label" for="flexRadioDefault1">
                                 I'm a Customer
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="role" id="flexRadioDefault2" value="landlord">
+                            <input class="form-check-input" type="radio" name="role" id="flexRadioDefault2" value="Landlord">
                             <label class="form-check-label" for="flexRadioDefault2">
                                 I'm a Landlord
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="role" id="flexRadioDefault3" value="other">
+                            <input class="form-check-input" type="radio" name="role" id="flexRadioDefault3" value="Other">
                             <label class="form-check-label" for="flexRadioDefault3">
                                 Something else
                             </label>
@@ -77,12 +77,13 @@
                         </div>
                         <div class="row align-items-center no-padding-margin">
                             <div class="col-sm-9 ps-2">
-                                <input id="phone" type="tel" name="phonenumber" class="form-control" placeholder="Enter phone number">
+                                <input id="phone" type="tel" name="phone_number" class="form-control" placeholder="Enter phone number">
                             </div>
                         </div>
                         <div class="form-group textarea-input" id="textareaInput">
-                            <textarea class="form-control" id="otherDetails" rows="3" placeholder="Write your feedback here, including any suggestions or issues you have encountered."></textarea>
+                            <textarea class="form-control" id="otherDetails" name="message" rows="3" placeholder="Write your feedback here, including any suggestions or issues you have encountered."></textarea>
                         </div>
+                        <button type="submit" class="Send-btn">Send</button>
                     </form>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
                 </div>

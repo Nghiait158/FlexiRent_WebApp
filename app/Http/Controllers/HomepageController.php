@@ -46,4 +46,8 @@ class HomepageController extends Controller
         return view('seesion', ['data' => $data]);
 
     }
+
+    public function saveFeedback(){
+        
+    }
 }

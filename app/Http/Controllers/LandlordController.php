@@ -458,8 +458,7 @@ class LandlordController extends Controller
         return view('landlord.myProperty');
     }
 
-    public function listProperty()
-    {
+    public function listProperty() {
         $landlordId = Auth::id();
         $properties = Property::where('landlord_id', $landlordId)->get();
         return view('landlord.myProperty', compact('properties'));

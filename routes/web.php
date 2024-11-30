@@ -256,6 +256,7 @@ Route::get('/Contact', function () {
 // Route::get('/map', [MapController::class, 'generateMapIframe']);
 
 Route::match(['get', 'post'], '/bookingPage', [BookingPageController::class, 'handleRequest'])->name('bookingPage');
+Route::post('/saveFeedback', [HomepageController::class, 'saveFeedback']);
 
 
 // Route::get('/search', [PropertyController::class, 'search'])->name('search.properties');
