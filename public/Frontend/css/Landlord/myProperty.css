@@ -233,6 +233,9 @@ table.dataTable tbody tr:hover {
     font-size: 14px;
     border: none;
     cursor: pointer;
+    width: 100px; 
+    height: 50px; 
+    
 }
 
 .btn-info {
@@ -262,6 +265,7 @@ table.dataTable tbody tr:hover {
     background-color: #c82333;
     transform: scale(1.05);
 }
+
 
 /* Footer styling */
 table.dataTable tfoot td {
