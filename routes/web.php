@@ -15,8 +15,8 @@ use App\Http\Controllers\LogoutAndLoginAgain;
 use Illuminate\Support\Facades\Session;
 
 use App\Http\Controllers\ReviewController;
-use App\Http\Controllers\BookingController; 
-use App\Http\Controllers\PropertyImgController; 
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\PropertyImgController;
 use App\Http\Controllers\Propertycontroller;
 use App\Http\Controllers\PropertyDetailsPageController;
 
@@ -143,14 +143,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/deleteBooking/{booking_id}', [BookingController::class, 'deleteBooking']);
     Route::get('/addBooking', [BookingController::class, 'addBooking']);
     Route::post('/saveBooking', [BookingController::class, 'saveBooking']);
-    
 });
 
 
-Route::middleware(['auth','guest'])->group(function () {
+Route::middleware(['auth', 'guest'])->group(function () {
     // Backend---------------
     Route::get('guest/dashboard', [GuestController::class, 'index']);
     Route::get('guest/myBookingPage', [GuestController::class, 'listMyBooking']);
+    Route::delete('/deleteGuestBooking/{booking_id}', [GuestController::class, 'deleteGuestBooking']);
 
     Route::post('/updateGuestDashboard/{guest_id}', [GuestController::class, 'updateGuestDashboard']);
     Route::post('/updateEmailGuest/{guest_id}', [GuestController::class, 'updateEmailGuest']);
@@ -169,7 +169,7 @@ Session::start();
 Route::middleware(['auth', 'landlord'])->group(function () {
     Route::get('landlord/dashboard', [LandlordController::class, 'index']);
     Route::get('landlord/savedPropertylandlord', [LandlordController::class, 'savedPropertylandlord']);
-    
+
     Route::post('/savePropertyLandlord/{landlord_id}', [LandlordController::class, 'savePropertyLandlord']);
 
     Route::get('landlord/edit_property', [LandlordController::class, 'editProperty'])->name('property.edit');
@@ -202,16 +202,15 @@ Route::middleware(['auth', 'landlord'])->group(function () {
 
     Route::get('landlord/add_property_rules', [LandlordController::class, 'addPropertyRules'])->name('property.add.rules');
     Route::post('landlord/store_property_rules', [LandlordController::class, 'storePropertyRules'])->name('property.store.rules');
-    
+
     Route::get('landlord/showAllRegisterData', [LandlordController::class, 'showAllData'])->name('property.show.all');
-   
-   
+
+
     Route::post('/updateLandlordDashboard/{landlord_id}', [LandlordController::class, 'updateLandlordDashboard']);
     Route::post('/updateEmailLandlord/{landlord_id}', [LandlordController::class, 'updateEmailLandlord']);
 
-// ---- update status for booking 
+    // ---- update status for booking 
     Route::post('/updatestatusBooking/{booking_id}', [LandlordController::class, 'updatestatusBooking']);
-
 });
 
 
@@ -267,4 +266,3 @@ Route::post('/saveFeedback', [HomepageController::class, 'saveFeedback']);
 
 // Route::get('/search', [PropertyController::class, 'search'])->name('search.properties');
 Route::get('/PropertyDetails/{property_id}', [PropertyDetailsPageController::class, 'showData']);
-

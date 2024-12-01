@@ -227,9 +227,6 @@ svg {
 }
 
 
-
-
-
 .page-container .detail-container {
     display: flex;
     width: 522px;
@@ -237,7 +234,7 @@ svg {
     align-items: center;
     gap: 40px;
     border-radius: 30px;
-    height: 718px;
+    height: 100%;
     background: var(--BG, #F2F0F2);
 }
 
@@ -336,10 +333,6 @@ svg {
     align-self: stretch;
 }
 
-.page-container .detail-container .payment-timeline .steps .timeline svg {
-    width: 12px;
-    height: 64px;
-}
 
 .page-container .detail-container .payment-timeline .steps .point {
     display: flex;

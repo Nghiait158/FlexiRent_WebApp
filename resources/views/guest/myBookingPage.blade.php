@@ -44,6 +44,7 @@ if ($message) {
                         <th>Booking for Others</th>
                         <th>Other Name</th>
                         <th>Other Email</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,12 +64,22 @@ if ($message) {
                         <td>{{ $booking->is_booking_for_other ? 'Yes' : 'No' }}</td>
                         <td>{{ $booking->other_name }}</td>
                         <td>{{ $booking->other_email }}</td>
+                        <td>
+                            <form action="{{ URL::to('/deleteGuestBooking/'.$booking->booking_id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger delete-btn" onclick="return confirm('Are you sure you want to delete this booking?');">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
+
 
     <footer>
         <div class="footer-container">
