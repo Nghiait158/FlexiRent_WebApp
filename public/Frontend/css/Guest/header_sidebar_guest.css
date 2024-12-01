@@ -107,6 +107,9 @@
     padding: 20px;
     margin-left: 250px;
     /* margin-bottom: 500px; */
+    min-width: 0; 
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 

@@ -117,24 +117,34 @@
 
 .table-container {
     max-width: 100%;
-    height: 500px;
+    height: calc(100vh - 200px);
     background-color: #ffffff;
     border: 1px solid #ddd;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    white-space: nowrap;
+    /* white-space: nowrap; */
     padding: 10px;
+    overflow: auto;
+    
 }
 
 table {
     border-collapse: collapse;
     width: 100%;
-    min-width: 1200px;
     table-layout: auto;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-
-
+    
 }
+
+thead {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 1;
+}
+
+tbody {
+    height: 100%;
+}
+
 
 th,
 td {
