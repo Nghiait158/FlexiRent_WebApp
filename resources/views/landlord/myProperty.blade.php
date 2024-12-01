@@ -437,8 +437,6 @@
                                     <i class="fas fa-trash-alt"></i> Delete
                                 </button>
                             </form>
-
-
                         </td>
                         <td>{{ $property->property_id ?:'N/A'}}</td>
                         <td contenteditable="true">{{ $property->property_name ?:'N/A'}}</td>

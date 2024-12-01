@@ -1,0 +1,160 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.btn-update {
+    display: inline-block;
+    padding: 20px 60px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-update:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.btn-update:active {
+    background-color: #004494;
+    transform: scale(1);
+}
+
+.btn-update:disabled {
+    background-color: #cce5ff;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.input-form {
+    position: relative;
+    width: 100%;
+}
+
+.input-field {
+    width: 100%;
+    font-size: 16px;
+    padding: 8px 0 8px 0;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    background: transparent;
+    transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+    border-bottom-color: #007BFF;
+}
+
+.label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #aaa;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.input-field:focus+.label,
+.input-field:not(:placeholder-shown)+.label {
+    top: -10px;
+    font-size: 12px;
+    color: #007BFF;
+}
+
+.underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #007BFF;
+    transition: width 0.3s ease;
+}
+
+.underline-button {
+    height: 2px;
+    background-color: #ccc;
+    margin-top: 50px;
+}
+
+.input-field:focus~.underline {
+    width: 100%;
+}
+
+.content {
+    background-color: #f0f0f0;
+    margin-left: 300px;
+}
+
+.main-container {
+    margin: 40px 40px;
+}
+
+.main-container .title {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 50px;
+}
+
+
+.content-container {
+    width: 100%;
+    display: flex;
+    gap: 25px;
+}
+
+.table-container {
+    max-width: 100%;
+    height: 500px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    padding: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 1200px;
+    table-layout: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+
+
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}

@@ -50,4 +50,9 @@ class Property extends Model
     {
         return $this->hasMany(PropertyImg::class, 'property_id', 'property_id');
     }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'property_id');
+    }
 }

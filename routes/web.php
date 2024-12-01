@@ -150,7 +150,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::middleware(['auth','guest'])->group(function () {
     // Backend---------------
     Route::get('guest/dashboard', [GuestController::class, 'index']);
+    Route::get('guest/myBookingPage', [GuestController::class, 'listMyBooking']);
 
+    Route::post('/updateGuestDashboard/{guest_id}', [GuestController::class, 'updateGuestDashboard']);
+    Route::post('/updateEmailGuest/{guest_id}', [GuestController::class, 'updateEmailGuest']);
 
     // Frontend---------------
     Route::get('/CheckoutPageB/{property_id}', [GuestController::class, 'Booking']);
