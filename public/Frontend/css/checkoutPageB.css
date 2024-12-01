@@ -36,7 +36,7 @@ h4 {
     /* 133.333% */
 }
 
-.page-container,
+
 .payment-method-container {
     display: flex;
     flex-direction: row;
@@ -50,11 +50,28 @@ h4 {
     /* Add some padding for small screens */
 }
 
-.guest-container,
-.detail-container {
+.page-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    gap: 128px;
+    margin-top: 60px;
+    /* Changed to center for proper alignment */
+    padding: 16px;
+    /* Add some padding for small screens */
+}
+
+.guest-container {
     display: flex;
     flex-direction: column;
     height: 914px;
+}
+
+.detail-container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 
@@ -293,11 +310,6 @@ h4 {
     align-items: flex-start;
     gap: 20px;
     align-self: stretch;
-}
-
-.page-container .detail-container .payment-timeline .steps .timeline svg {
-    width: 12px;
-    height: 64px;
 }
 
 .page-container .detail-container .payment-timeline .steps .point {

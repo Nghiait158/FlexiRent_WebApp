@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\UserNotificationMail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class GuestController extends Controller
 {
@@ -235,5 +237,42 @@ class GuestController extends Controller
 
         return view('guest.myBookingPage', compact('bookings'));
     }
-    
+
+    public function deleteGuestBooking($booking_id)
+    {
+        try {
+            Log::info('Attempting to delete booking: ' . $booking_id);
+
+            // Fetch the booking by its ID
+            $booking = Booking::findOrFail($booking_id);
+
+            // Get current guest
+            $currentUser = Auth::user();
+            $currentGuest = $currentUser->guest; // Assuming your User has a related Guest model
+
+            // Check authorization
+            if ($booking->guest_id != $currentGuest->guest_id) {
+                Log::warning('Unauthorized deletion attempt');
+                return redirect()->back()->with('error', 'You are not authorized to delete this booking');
+            }
+
+            // Begin transaction
+            DB::beginTransaction();
+            try {
+                // Delete the booking
+                $booking->delete();
+
+                DB::commit();
+                Log::info('Booking deleted successfully');
+                return redirect()->back()->with('success', 'Booking deleted successfully');
+            } catch (\Exception $e) {
+                DB::rollBack();
+                Log::error('Error in transaction: ' . $e->getMessage());
+                throw $e;
+            }
+        } catch (\Exception $e) {
+            Log::error('Error deleting booking: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Error deleting booking: ' . $e->getMessage());
+        }
+    }
 }
