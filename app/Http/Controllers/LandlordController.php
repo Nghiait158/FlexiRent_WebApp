@@ -477,8 +477,7 @@ class LandlordController extends Controller
         
         Log::info('Found property: ' . $property->property_id); // Debug log
 
-        // Get current landlord
-        $currentUser = Auth::user();
+        // Get current landlordphp 
         $currentLandlord = Landlord::where('id', $currentUser->id)->first();
 
         // Check authorization
