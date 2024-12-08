@@ -67,7 +67,7 @@
             </ul>
             <p>Please ensure to complete the payment by the due date to secure your booking.</p>
             <div class="button">
-                <a href="{{ url('/guest/bookings') }}">View Booking Details</a>
+                <a href="{{ url('/guest/myBookingPage') }}">View Booking Status</a>
             </div>
             <p>Thank you for choosing our service!</p>
         </div>

@@ -204,16 +204,9 @@
         </div>
         <script>
             // Giá thuê theo ngày
-            const rentPerDay = {
-                {
-                    $propertyDetail - > price_per_month ? round($propertyDetail - > price_per_month / 30, 2) : 0
-                }
-            };
-            const cleaningFee = {
-                {
-                    $propertyDetail - > cleaning_fee ?? 20
-                }
-            };
+            const rentPerDay = {{ $propertyDetail->price_per_month ? round($propertyDetail->price_per_month / 30, 2) : 0 }};
+            const cleaningFee = {{ $propertyDetail->cleaning_fee ?? 20 }};
+
 
             // Lấy ngày từ và ngày đến từ biến có sẵn
             const fromDate = new Date("{{ $from }}");
@@ -246,6 +239,7 @@
                 reserveInput.value = numericValue;
             }
         </script>
+       
     </form>
 
 </div>

@@ -232,8 +232,17 @@ class GuestController extends Controller
         $currentGuest = Guest::where('id', $currentUser->id)->first();
 
         $bookings = Booking::with(['property', 'guest'])
-            ->where('guest_id', $currentGuest->guest_id)
-            ->get();
+        ->where('guest_id', $currentGuest->guest_id)
+        ->orderByRaw(
+            "CASE 
+                WHEN status = 'confirmed' THEN 1
+                WHEN status = 'pending' THEN 2
+                WHEN status = 'cancelled' THEN 3
+                ELSE 4
+            END"
+        )
+        ->orderBy('updated_at', 'desc') // Sắp xếp theo updated_at sau khi sắp xếp theo trạng thái
+        ->get();
 
         return view('guest.myBookingPage', compact('bookings'));
     }
