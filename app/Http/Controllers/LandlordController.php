@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\LandlordConfimBooking;
 use Illuminate\Support\Facades\Mail;
+
 class LandlordController extends Controller
 {
 
@@ -124,10 +125,10 @@ class LandlordController extends Controller
 
 
 
-        $guest = $booking->guest; 
-        
+        $guest = $booking->guest;
+
         if ($guest && $guest->user) {
-            $email = $guest->user->email; 
+            $email = $guest->user->email;
         } else {
             return redirect()->back()->withErrors(['error' => 'Guest or user email not found']);
         }
@@ -415,7 +416,6 @@ class LandlordController extends Controller
         $property->elevator = $data['elevator'] ?? null;
 
         $property->property_name = $data['listing_title'];
-        // $property->property_name = $data['listing_view'];
         $property->description = $data['description'];
         $property->education_and_community = $data['education_and_community'];
 
@@ -428,24 +428,32 @@ class LandlordController extends Controller
         $property->rules = $data['rules'];
         $property->view = $data['listing_view'];
 
-        // $property->elevator = $data['elevator'];
-
         $property->save();
 
+        // Handle image uploads
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $imagePath = $image->store('property_images', 'public');
 
-        if (isset($data['amenities']) && is_array($data['amenities'])) {
-            // Lấy danh sách ID các tiện nghi đã chọn
-            $selectedAmenityIds = array_map('intval', $data['amenities']);
+                $propertyImage = new PropertyImg([
+                    'propertyImg_name' => $image->getClientOriginalName(),
+                    'path' => $imagePath,
+                ]);
 
-            // Đồng bộ tiện nghi với property
-            $property->amenities()->sync($selectedAmenityIds);
+                $property->images()->save($propertyImage);
+            }
         }
 
+        if (isset($data['amenities']) && is_array($data['amenities'])) {
+            $selectedAmenityIds = array_map('intval', $data['amenities']);
+            $property->amenities()->sync($selectedAmenityIds);
+        }
 
         Session::put('message', 'Add property successfully!!!');
         Session::put('address', $data['address']);
         return Redirect::to('landlord/savedPropertylandlord');
     }
+
     public function savedPropertylandlord()
     {
         $address = Session::get('address', 'No address provided');
@@ -468,48 +476,48 @@ class LandlordController extends Controller
 
 
     public function deleteLandlordProperty($property_id)
-{
-    try {
-        Log::info('Attempting to delete property: ' . $property_id); // Debug log
-        
-        // Fetch the property by its ID
-        $property = Property::findOrFail($property_id);
-        
-        Log::info('Found property: ' . $property->property_id); // Debug log
-
-        // Get current landlordphp 
-        $currentLandlord = Landlord::where('id', $currentUser->id)->first();
-
-        // Check authorization
-        if ($property->landlord_id != $currentLandlord->landlord_id) {
-            Log::warning('Unauthorized deletion attempt'); // Debug log
-            return redirect()->back()->with('error', 'You are not authorized to delete this property');
-        }
-
-        // Begin transaction
-        DB::beginTransaction();
+    {
         try {
-            // Delete related records
-            PropertyImg::where('property_id', $property_id)->delete();
-            PropertyAmenity::where('property_id', $property_id)->delete();
-            
-            // Delete the property
-            $property->delete();
-            
-            DB::commit();
-            Log::info('Property deleted successfully'); // Debug log
-            
-            return redirect()->back()->with('success', 'Property deleted successfully');
+            Log::info('Attempting to delete property: ' . $property_id); // Debug log
+
+            // Fetch the property by its ID
+            $property = Property::findOrFail($property_id);
+
+            Log::info('Found property: ' . $property->property_id); // Debug log
+
+            // Get current landlordphp 
+            $currentLandlord = Landlord::where('id', $currentUser->id)->first();
+
+            // Check authorization
+            if ($property->landlord_id != $currentLandlord->landlord_id) {
+                Log::warning('Unauthorized deletion attempt'); // Debug log
+                return redirect()->back()->with('error', 'You are not authorized to delete this property');
+            }
+
+            // Begin transaction
+            DB::beginTransaction();
+            try {
+                // Delete related records
+                PropertyImg::where('property_id', $property_id)->delete();
+                PropertyAmenity::where('property_id', $property_id)->delete();
+
+                // Delete the property
+                $property->delete();
+
+                DB::commit();
+                Log::info('Property deleted successfully'); // Debug log
+
+                return redirect()->back()->with('success', 'Property deleted successfully');
+            } catch (\Exception $e) {
+                DB::rollBack();
+                Log::error('Error in transaction: ' . $e->getMessage()); // Debug log
+                throw $e;
+            }
         } catch (\Exception $e) {
-            DB::rollBack();
-            Log::error('Error in transaction: ' . $e->getMessage()); // Debug log
-            throw $e;
+            Log::error('Error deleting property: ' . $e->getMessage()); // Debug log
+            return redirect()->back()->with('error', 'Error deleting property: ' . $e->getMessage());
         }
-    } catch (\Exception $e) {
-        Log::error('Error deleting property: ' . $e->getMessage()); // Debug log
-        return redirect()->back()->with('error', 'Error deleting property: ' . $e->getMessage());
     }
-}
 
     public function editLandlordProperty($property_id)
     {

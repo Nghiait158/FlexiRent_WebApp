@@ -30,7 +30,7 @@
                 <form action="{{ route('property.store.details') }}" method="post">
                     @csrf
                     <div class="input-form">
-                        <label for="area"><b>What’s the size of the apartment?</b>
+                        <label for="area"><b>What’s the size of the property?</b>
                         </label>
                         <input type="text" name="area" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="e.g. 50m2" required>
                     </div>
@@ -207,7 +207,7 @@
                         <label for=""><b>What’s the maximum number of tenants?
                             </b>
                         </label>
-                        <input min="1" max="11" name="guest_capacity" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                        <input min="1" max="100000" name="guest_capacity" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                     </div>
                     <hr class="solid-line">
 
@@ -236,14 +236,14 @@
                     <div class="input-form">
                         <label for=""><b>How many bedrooms inside your property?</b>
                         </label>
-                        <input min="1" name="bedroom" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                        <input min="0" name="bedroom" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                     </div>
                     <hr class="solid-line">
 
                     <div class="input-form">
                         <label for=""><b>How many bathrooms inside your property?</b>
                         </label>
-                        <input min="1" name="bathroom" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                        <input min="0" name="bathroom" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                     </div>
                     <hr class="solid-line">
 
