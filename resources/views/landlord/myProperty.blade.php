@@ -43,7 +43,7 @@
                 table.rows().every(function() {
                     var rowData = this.data();
                     var status = rowData[12]; // Status column is at index 3 (0-based)
-                    if (status === "1") {
+                    if (status === "Available") {
                         availableProperties++;
                     }
                 });
@@ -56,7 +56,7 @@
                 table.rows().every(function() {
                     var rowData = this.data();
                     var status = rowData[12]; // Status column is at index 3 (0-based)
-                    if (status === "0" || status === "N/A") {
+                    if (status === "0" || status === "N/A" || status === "Rented") {
                         rentedProperties++;
                     }
                 });
@@ -93,7 +93,7 @@
                     $('#statusFilterText').text('All');
                 } else {
                     table.column(12).search(status).draw(); // Filter by Available (1) or Rented (0)
-                    $('#statusFilterText').text(status === "1" ? 'Available' : 'Rented');
+                    $('#statusFilterText').text(status !== "0" && status !== "Rented" ? 'Available' : 'Rented');
                 }
             }
 
@@ -194,6 +194,7 @@
             <div class="list-group-item"><strong>Room:</strong> <span id="room">${rowData[23]}</span></div>
             <div class="list-group-item"><strong>Wifi:</strong> <span id="wifi">${rowData[24]}</span></div>
             <div class="list-group-item"><strong>Internet Speed:</strong> <span id="internetSpeed">${rowData[25]}</span></div>
+            <div class="list-group-item"><strong>Is Verified:</strong> <span id="isVerified">${rowData[26]}</span></div>
 
                         </div>
                     `);
@@ -333,8 +334,8 @@
             <button class="btn btn-primary " id="statusFilterBtn"> <i class="fas fa-filter"></i> Filter by Status: <span id="statusFilterText">All</span></button>
             <div id="statusFilterDropdown" class="dropdown-menu" style="display: none;">
                 <a class="dropdown-item" href="#" data-status="All">All</a>
-                <a class="dropdown-item" href="#" data-status="1">Available</a>
-                <a class="dropdown-item" href="#" data-status="N/A">Rented</a>
+                <a class="dropdown-item" href="#" data-status="Available">Available</a>
+                <a class="dropdown-item" href="#" data-status="Rented">Rented</a>
             </div>
         </div>
 
@@ -368,6 +369,7 @@
             <label><input type="checkbox" class="toggle-column-checkbox" data-column="23" checked> Room</label><br>
             <label><input type="checkbox" class="toggle-column-checkbox" data-column="24" checked> Wifi</label><br>
             <label><input type="checkbox" class="toggle-column-checkbox" data-column="25" checked> Internet Speed</label><br>
+            <label><input type="checkbox" class="toggle-column-checkbox" data-column="26" checked> Is Verified</label><br>
 
         </div>
 
@@ -413,6 +415,7 @@
                         <th>Room</th>
                         <th>Wifi</th>
                         <th>Internet Speed</th>
+                        <th>Is Verified</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -449,7 +452,7 @@
                         <td>{{ $property->area ?:'N/A'}} m²</td>
                         <td>{{ $property->view ?:'N/A'}}</td>
                         <td>{{ $property->floor ?:'N/A'}}</td>
-                        <td>{{ $property->status ?:'N/A'}}</td>
+                        <td>{{ $property->status == 1 ? 'Available' : 'Rented' }}</td>
                         <td>{{ $property->price_per_month ?:'N/A'}}</td>
                         <td>{{ optional($property->created_at)->format('Y-m-d') ?? 'N/A' }}</td>
                         <td>{{ optional($property->updated_at)->format('Y-m-d') ?? 'N/A' }}</td>
@@ -463,17 +466,21 @@
                         <td>{{ $property->room ?:'N/A'}}</td>
                         <td>{{ $property->wifi ?:'N/A'}}</td>
                         <td>{{ $property->internetSpeed ?:'N/A'}}</td>
+                        <td class="{{ $property->is_verified == 1 ? 'verified' : 'not-verified' }}">
+                            {{ $property->is_verified == 1 ? 'Verified' : 'Not Verified' }}
+                        </td>
+
 
                     </tr>
                     @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="12"><strong>This page</strong></td>
+                        <td colspan="13"><strong>This status properties</strong></td>
                         <td><strong>Total price:</strong> <span id="totalPrice">$0.00</span></td>
                     </tr>
                     <tr>
-                        <td colspan="12"><strong>All properties</strong></td>
+                        <td colspan="13"><strong>All properties</strong></td>
                         <td><strong>Total price:</strong> <span id="totalPriceAll">$0.00</span></td>
                     </tr>
                 </tfoot>

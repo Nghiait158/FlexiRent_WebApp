@@ -289,17 +289,17 @@
         const successAlert = document.getElementById('successAlert');
 
         form.addEventListener('submit', function(event) {
-            event.preventDefault(); 
-            confirmationDialog.style.display = 'block'; 
+            event.preventDefault();
+            confirmationDialog.style.display = 'block';
         });
 
         confirmBtn.addEventListener('click', function() {
-            confirmationDialog.style.display = 'none'; 
-            form.submit(); 
+            confirmationDialog.style.display = 'none';
+            form.submit();
         });
 
         cancelBtn.addEventListener('click', function() {
-            confirmationDialog.style.display = 'none'; 
+            confirmationDialog.style.display = 'none';
         });
     </script>
 

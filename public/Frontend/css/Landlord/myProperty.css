@@ -266,6 +266,23 @@ table.dataTable tbody tr:hover {
     transform: scale(1.05);
 }
 
+/* DataTables Buttons Styling */
+/* DataTables Buttons Styling */
+.dt-buttons .btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.dt-buttons .btn:hover {
+    background-color: #0056b3;
+}
+
 
 /* Footer styling */
 table.dataTable tfoot td {
@@ -361,5 +378,27 @@ table.dataTable tfoot td span {
 /* Optional: Add a subtle shadow to pagination buttons to make them less intrusive */
 .dataTables_wrapper .dataTables_paginate .paginate_button {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the Is Verified column */
+#propertyTable td:nth-child(27),
+#propertyTable th:nth-child(27)
+
+#propertyTable td:nth-child(27).verified {
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #218838;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+}
+
+#propertyTable td:nth-child(27).not-verified {
+    background-color: #dc3545;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #c82333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
 }
 
