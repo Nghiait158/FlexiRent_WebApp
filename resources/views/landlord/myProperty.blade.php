@@ -180,7 +180,7 @@
             <div class="list-group-item"><strong>Area:</strong> <span id="area">${rowData[9]}</span></div>
             <div class="list-group-item"><strong>View:</strong> <span id="view">${rowData[10]}</span></div>
             <div class="list-group-item"><strong>Floor:</strong> <span id="floor">${rowData[11]}</span></div>
-            <div class="list-group-item"><strong>Status:</strong><span id="status">${rowData[12] === '1' ? 'Available' : 'Rented'}</span></div>
+            <div class="list-group-item"><strong>Status:</strong><span id="status">${rowData[12] === 'Available' ? 'Available' : 'Rented'}</span></div>
             <div class="list-group-item"><strong>Price per Month:</strong> <span id="pricePerMonth">${rowData[13]}</span></div>
             <div class="list-group-item"><strong>Created At:</strong> <span id="createdAt">${rowData[14]}</span></div>
             <div class="list-group-item"><strong>Updated At:</strong> <span id="updatedAt">${rowData[15]}</span></div>
@@ -452,7 +452,7 @@
                         <td>{{ $property->area ?:'N/A'}} m²</td>
                         <td>{{ $property->view ?:'N/A'}}</td>
                         <td>{{ $property->floor ?:'N/A'}}</td>
-                        <td>{{ $property->status == 1 ? 'Available' : 'Rented' }}</td>
+                        <td>{{ $property->status == 1 ? 'Rented' : 'Available' }}</td>
                         <td>{{ $property->price_per_month ?:'N/A'}}</td>
                         <td>{{ optional($property->created_at)->format('Y-m-d') ?? 'N/A' }}</td>
                         <td>{{ optional($property->updated_at)->format('Y-m-d') ?? 'N/A' }}</td>

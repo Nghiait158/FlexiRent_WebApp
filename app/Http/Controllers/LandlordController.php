@@ -465,13 +465,24 @@ class LandlordController extends Controller
         return view('landlord.edit_property');
     }
     public function listProperty()
-    {
-        $currentUser = Auth::user();
-        $currentLandlord = Landlord::where('id', $currentUser->id)->first();
-        $properties = Property::where('landlord_id', $currentLandlord->landlord_id)->get();
+{
+    $currentUser = Auth::user();
+    $currentLandlord = Landlord::where('id', $currentUser->id)->first();
+    $properties = Property::where('landlord_id', $currentLandlord->landlord_id)->get();
 
-        return view('landlord.myProperty', compact('properties'));
+    foreach ($properties as $property) {
+        // Check for active bookings to set property status
+        $hasActiveBookings = Booking::where('property_id', $property->property_id)
+            ->where('status', 'confirmed')
+            ->where('check_out', '>=', now())
+            ->exists();
+
+        $property->status = $hasActiveBookings ? '1' : '0';
+        $property->save();
     }
+
+    return view('landlord.myProperty', compact('properties'));
+}
 
 
 
@@ -485,7 +496,8 @@ class LandlordController extends Controller
 
             Log::info('Found property: ' . $property->property_id); // Debug log
 
-            // Get current landlordphp 
+            // Get current landlord
+            $currentUser = Auth::user();
             $currentLandlord = Landlord::where('id', $currentUser->id)->first();
 
             // Check authorization
@@ -558,6 +570,7 @@ class LandlordController extends Controller
     $property->elevator = $data['elevator'];
     $property->price_per_month = $data['price_per_month'];
     $property->guest_capacity = $data['guest_capacity'];
+    
 
     // Update missing fields if they are present in the request
     if (isset($data['location_details'])) {

@@ -175,8 +175,8 @@
                     <div class="form-group">
                         <label for="status">Status</label>
                         <select name="status" id="status" class="form-control">
-                            <option value="1" {{ $editProperty->status == 1 ? 'selected' : '' }}>Available</option>
-                            <option value="0" {{ $editProperty->status == 0 ? 'selected' : '' }}>Rented</option>
+                            <option value="0" {{ $editProperty->status == 0 ? 'selected' : '' }}>Available</option>
+                            <option value="1" {{ $editProperty->status == 1 ? 'selected' : '' }}>Rented</option>
                         </select>
                     </div>
 
