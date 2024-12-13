@@ -41,7 +41,7 @@
                     <div class="input-form">
                         <label for=""><b>Property view</b>
                         </label>
-                    <input type="text" name="view" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="e.g. Awesome & spacious studio in Binh Thanh" required>
+                    <input type="text" name="view" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="e.g. Lakeview/ river" required>
                     </div>
 
                     <hr class="solid-line">
