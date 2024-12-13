@@ -76,85 +76,117 @@
                     @csrf
                     <div class="form-group">
                         <label for="imageChoice">Decide how to import pictures:</label><br>
-                        <input type="radio" id="fileOption" name="imageChoice" value="file" >
+                        <input type="radio" id="fileOption" name="imageChoice" value="file">
                         <label for="fileOption">Upload File</label><br>
                         <input type="radio" id="textOption" name="imageChoice" value="text" checked>
                         <label for="textOption">Provide URL</label>
                     </div>
                     <br>
                     <div class="form-group" id="fileInput" style="display: none;">
-                        <input type="file" class="form-control" name="loImgPath" id="loImgPath">
+                        <input type="file" class="form-control" name="loImgPath" id="loImgPath" multiple>
                     </div>
-                    <div class="form-group" id="textInput" >
-                        <input type="text" class="form-control" name="locationImgUrl" id="locationImgUrl" placeholder="Enter URL">
+                    <div class="form-group" id="textInput">
+                        <div id="urlInputsContainer">
+                            <div class="url-input-group" style="margin-top: 10px; display: flex; align-items: center;">
+                                <input type="text" class="form-control url-input" name="locationImgUrl[]" placeholder="Enter URL">
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px; display: flex; align-items: center;">
+                            <button type="button" id="addUrlInput" class="btn btn-secondary">Add Another URL</button>
+                            <button type="button" id="deleteAllUrls" class="btn btn-danger" style="margin-left: 10px;">Delete All</button>
+                        </div>
                     </div>
 
                     <div class="image-preview-container" id="imagePreviewContainer"></div>
+                </form>
             </div>
+
             <script>
-               
-                function previewImages(event) {
-                    const files = event.target.files; // Get the selected files
-                    const previewContainer = document.getElementById('imagePreviewContainer');
-                    previewContainer.innerHTML = ''; // Clear previous previews
+                document.addEventListener('DOMContentLoaded', function() {
+                    const fileOption = document.getElementById('fileOption');
+                    const textOption = document.getElementById('textOption');
+                    const fileInput = document.getElementById('fileInput');
+                    const textInput = document.getElementById('textInput');
+                    const urlInputsContainer = document.getElementById('urlInputsContainer');
+                    const addUrlInputButton = document.getElementById('addUrlInput');
+                    const deleteAllUrlsButton = document.getElementById('deleteAllUrls');
 
-                    const maxFiles = 8;
+                    let urlInputCount = 1; // Initialize the count with the first input
+                    const maxUrlInputs = 5; // Allow 4 more inputs in addition to the first
 
-                    // Check if the number of files exceeds the max limit
-                    if (files.length > maxFiles) {
-                        alert(`You can only upload up to ${maxFiles} images.`);
-                        event.target.value = ''; // Reset the input value to prevent form submission
-                        return; // Stop the function if the number of files exceeds the limit
-                    }
+                    // Toggle between file and URL inputs
+                    fileOption.addEventListener('change', function() {
+                        fileInput.style.display = 'block';
+                        textInput.style.display = 'none';
+                    });
 
-                    // Loop through the selected files and show the previews
-                    for (let i = 0; i < files.length; i++) {
-                        const file = files[i];
+                    textOption.addEventListener('change', function() {
+                        fileInput.style.display = 'none';
+                        textInput.style.display = 'block';
+                    });
 
-                        if (file && file.type.startsWith('image/')) { // Check if the file is an image
-                            const reader = new FileReader(); // Create a FileReader object
+                    // Add new URL input field
+                    addUrlInputButton.addEventListener('click', function() {
+                        if (urlInputCount < maxUrlInputs) {
+                            const newGroup = document.createElement('div');
+                            newGroup.className = 'url-input-group';
+                            newGroup.style.marginTop = '10px';
+                            newGroup.style.display = 'flex';
+                            newGroup.style.alignItems = 'center';
 
-                            reader.onload = function(e) {
-                                const image = document.createElement('img'); // Create an img element
-                                image.src = e.target.result; // Set the source to the file's data URL
-                                image.style.width = '150px'; // Set a fixed size for the image
-                                image.style.height = '150px'; // Set a fixed size for the image
-                                image.style.margin = '10px'; // Add margin for spacing
-                                image.style.borderRadius = '8px'; // Optional: Add rounded corners
-                                previewContainer.appendChild(image); // Append the image to the container
-                            };
+                            const newInput = document.createElement('input');
+                            newInput.type = 'text';
+                            newInput.className = 'form-control url-input';
+                            newInput.name = 'locationImgUrl[]';
+                            newInput.placeholder = 'Enter another URL';
 
-                            reader.onerror = function(error) {
-                                console.error('Error reading file:', error);
-                            };
+                            const deleteButton = document.createElement('button');
+                            deleteButton.type = 'button';
+                            deleteButton.className = 'btn btn-danger btn-sm';
+                            deleteButton.textContent = 'Delete';
+                            deleteButton.style.marginLeft = '10px';
 
-                            reader.readAsDataURL(file); // Read the file as a data URL
-                        } else {
-                            console.error('Not an image file');
+                            deleteButton.addEventListener('click', function() {
+                                newGroup.remove();
+                                urlInputCount--;
+                                addUrlInputButton.disabled = false; // Re-enable the button if within limit
+                            });
+
+                            newGroup.appendChild(newInput);
+                            newGroup.appendChild(deleteButton);
+                            urlInputsContainer.appendChild(newGroup);
+
+                            urlInputCount++;
+
+                            if (urlInputCount === maxUrlInputs) {
+                                addUrlInputButton.disabled = true; // Disable the button when max inputs are reached
+                            }
                         }
-                    }
-                }
+                    });
 
+                    // Delete all URL inputs
+                    deleteAllUrlsButton.addEventListener('click', function() {
+                        urlInputsContainer.innerHTML = '';
+                        const firstInputGroup = document.createElement('div');
+                        firstInputGroup.className = 'url-input-group';
+                        firstInputGroup.style.marginTop = '10px';
+                        firstInputGroup.style.display = 'flex';
+                        firstInputGroup.style.alignItems = 'center';
 
-                // import images
-                document.addEventListener('DOMContentLoaded', function () {
-                            const fileOption = document.getElementById('fileOption');
-                            const textOption = document.getElementById('textOption');
-                            const fileInput = document.getElementById('fileInput');
-                            const textInput = document.getElementById('textInput');
+                        const firstInput = document.createElement('input');
+                        firstInput.type = 'text';
+                        firstInput.className = 'form-control url-input';
+                        firstInput.name = 'locationImgUrl[]';
+                        firstInput.placeholder = 'Enter URL';
 
-                            fileOption.addEventListener('change', function () {
-                                fileInput.style.display = 'block';
-                                textInput.style.display = 'none';
-                            });
+                        firstInputGroup.appendChild(firstInput);
+                        urlInputsContainer.appendChild(firstInputGroup);
 
-                            textOption.addEventListener('change', function () {
-                                fileInput.style.display = 'none';
-                                textInput.style.display = 'block';
-                            });
-                        });
+                        urlInputCount = 1;
+                        addUrlInputButton.disabled = false;
+                    });
+                });
             </script>
-
 
             <div class="foot">
                 <div class="progress-bar-container">
