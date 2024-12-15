@@ -271,39 +271,36 @@ class LandlordController extends Controller
     }
     public function storePropertyImages(Request $request)
     {
-        // $data = $request->validate([
-        //     'imageChoice' => 'required|in:file,text',
-        //     'loImgPath' => 'required_if:imageChoice,file|file|mimes:jpg,jpeg,png|max:2048',
-        //     'locationImgUrl' => 'required_if:imageChoice,text|url',
-        // ]);
-        $data = $request->all();
-        if ($data['imageChoice'] === 'text') {
-
-            $path = $data['locationImgUrl'];
+        // Xác thực dữ liệu
+        $validatedData = $request->validate([
+            'imageChoice' => 'required|in:file,text',
+            'loImgPath.*' => 'required_if:imageChoice,file|file|mimes:jpg,jpeg,png|max:2048',
+            'locationImgUrl.*' => 'required_if:imageChoice,text|url',
+        ]);
+    
+        $paths = [];
+    
+        if ($validatedData['imageChoice'] === 'file' && $request->hasFile('loImgPath')) {
+            foreach ($request->file('loImgPath') as $file) {
+                if ($file->isValid()) {
+                    $newImageName = time() . '_' . $file->getClientOriginalName();
+                    $file->move(public_path('Frontend/Image/PropertyImages'), $newImageName);
+                    $paths[] = '/Frontend/Image/PropertyImages/' . $newImageName;
+                }
+            }
+        } elseif ($validatedData['imageChoice'] === 'text') {
+            $paths = $validatedData['locationImgUrl'];
         }
-        // elseif ($data['imageChoice'] === 'file') {
-
-        //     if ($request->hasFile('loImgPath') && $request->file('loImgPath')->isValid()) {
-        //         $get_image = $request->file('loImgPath');
-        //         $new_image_name = time() . '_' . $get_image->getClientOriginalName();
-        //         $get_image->move(public_path('Frontend/Image/PropertyImages'), $new_image_name);
-        //         $path = '/Frontend/Image/PropertyImages/' . $new_image_name;
-        //     } else {
-        //         $path= 'null';
-        //         return back()->withErrors(['loImgPath' => 'The uploaded file is invalid.']);
-        //     }
-        // }
-
-
-
-        $data = [
-            'imageChoice' => $data['imageChoice'],
-            'path' => $path,
-        ];
-        session(['Images' => $data]);
-
+    
+        // Lưu thông tin hình ảnh vào session
+        session(['Images' => [
+            'imageChoice' => $validatedData['imageChoice'],
+            'paths' => $paths,
+        ]]);
+    
         return redirect('landlord/add_property_describe');
     }
+    
 
 
 
@@ -365,7 +362,6 @@ class LandlordController extends Controller
     }
     public function showAllData()
     {
-        // dd(session()->all());
         $rules = session('Rules', []);
         $prices = session('Prices', []);
         $describe = session('Describe', []);
@@ -385,44 +381,37 @@ class LandlordController extends Controller
             'details' => $details,
             'services' => $services,
             'Amenities' => $Amenities,
-            'Images' => $Images,
-            // 'currentLandlord' => $currentLandlord,
+            'Images' => $Images, // Gồm cả danh sách các hình ảnh
         ];
 
-        // dd($data);
         return view('landlord.showAllRegisterData', [
             'data' => $data,
             'currentLandlord' => $currentLandlord,
         ]);
     }
 
-    public function savePropertyLandlord(Request $request, $landlord_id)
-    {
+
+    public function savePropertyLandlord(Request $request, $landlord_id){
         $data = $request->all();
         $property = new Property();
 
         $property->landlord_id = $landlord_id;
         $property->location = $data['address'];
-
         $property->area = $data['area'];
         $property->accommodation_type = $data['accommodation_type'];
         $property->floor = $data['floor'];
         $property->guest_capacity = $data['guest_capacity'];
         $property->nbedrooms = $data['bedroom'];
         $property->nbathrooms = $data['bathroom'];
-
         $property->wifi = $data['wifi_checkbox'] ?? null;
         $property->internetSpeed = $data['internetSpeed'] ?? null;
         $property->elevator = $data['elevator'] ?? null;
-
         $property->property_name = $data['listing_title'];
         $property->description = $data['description'];
         $property->education_and_community = $data['education_and_community'];
-
         $property->price_per_month = $data['price_per_month'];
         $property->security_deposit = $data['security_deposit'];
         $property->cleaning_fee = $data['cleaning_fee'];
-
         $property->petsAllowed = $data['pets_allowed'];
         $property->smokingAllowed = $data['smoking_allowed'];
         $property->rules = $data['rules'];
@@ -430,20 +419,20 @@ class LandlordController extends Controller
 
         $property->save();
 
-        // Handle image uploads
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $imagePath = $image->store('property_images', 'public');
-
+        // Lưu các hình ảnh từ session
+        $images = session('Images', []);
+        if (!empty($images['paths'])) {
+            foreach ($images['paths'] as $path) {
                 $propertyImage = new PropertyImg([
-                    'propertyImg_name' => $image->getClientOriginalName(),
-                    'path' => $imagePath,
+                    'propertyImg_name' => basename($path),
+                    'path' => $path,
                 ]);
 
                 $property->images()->save($propertyImage);
             }
         }
 
+        // Lưu amenities
         if (isset($data['amenities']) && is_array($data['amenities'])) {
             $selectedAmenityIds = array_map('intval', $data['amenities']);
             $property->amenities()->sync($selectedAmenityIds);
@@ -453,6 +442,7 @@ class LandlordController extends Controller
         Session::put('address', $data['address']);
         return Redirect::to('landlord/savedPropertylandlord');
     }
+
 
     public function savedPropertylandlord()
     {

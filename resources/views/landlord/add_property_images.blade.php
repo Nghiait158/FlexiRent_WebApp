@@ -72,7 +72,7 @@
             </div>
 
             <div class="input-container">
-                <form action="{{ route('property.store.images') }}" method="post">
+                <form action="{{ route('property.store.images') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="imageChoice">Decide how to import pictures:</label><br>
@@ -82,71 +82,86 @@
                         <label for="textOption">Provide URL</label>
                     </div>
                     <br>
+            
+                    <!-- File Input Section -->
                     <div class="form-group" id="fileInput" style="display: none;">
-                        <input type="file" class="form-control" name="loImgPath" id="loImgPath">
+                        <div class="input-group mb-2">
+                            <input type="file" class="form-control" name="loImgPath[]">
+                            <button type="button" class="btn btn-secondary add-file-input">Add More Files</button>
+                        </div>
                     </div>
+            
+                    <!-- URL Input Section -->
                     <div class="form-group" id="textInput">
-                        <input type="text" class="form-control" name="locationImgUrl" id="locationImgUrl" placeholder="Enter URL">
+                        <div class="input-group mb-2">
+                            <input type="text" class="form-control" name="locationImgUrl[]" placeholder="Enter URL">
+                            <button type="button" class="btn btn-secondary add-url-input">Add More URLs</button>
+                        </div>
                     </div>
-
-                    <div class="image-preview-container" id="imagePreviewContainer"></div>
+            
+                    {{-- <button type="submit" class="btn btn-primary">Upload Images</button>
+                </form> --}}
             </div>
             <script>
-                function previewImages(event) {
-                    const files = event.target.files; // Get the selected files
-                    const previewContainer = document.getElementById('imagePreviewContainer');
-                    previewContainer.innerHTML = ''; // Clear previous previews
+                document.addEventListener('DOMContentLoaded', function () {
+    const fileOption = document.getElementById('fileOption');
+    const textOption = document.getElementById('textOption');
+    const fileInputContainer = document.getElementById('fileInput');
+    const textInputContainer = document.getElementById('textInput');
 
-                    const maxFiles = 8;
+    // Toggle between file and URL input
+    fileOption.addEventListener('change', function () {
+        fileInputContainer.style.display = 'block';
+        textInputContainer.style.display = 'none';
+    });
 
-                   
+    textOption.addEventListener('change', function () {
+        fileInputContainer.style.display = 'none';
+        textInputContainer.style.display = 'block';
+    });
 
-                    // Loop through the selected files and show the previews
-                    for (let i = 0; i < files.length; i++) {
-                        const file = files[i];
+    // Add event listener for adding more file input fields
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('add-file-input')) {
+            const container = document.getElementById('fileInput');
+            const newInputGroup = document.createElement('div');
+            newInputGroup.className = 'input-group mb-2';
+            newInputGroup.innerHTML = `
+                <input type="file" class="form-control" name="loImgPath[]">
+                <button type="button" class="btn btn-danger remove-input">Remove</button>
+            `;
+            container.appendChild(newInputGroup);
 
-                        if (file && file.type.startsWith('image/')) { // Check if the file is an image
-                            const reader = new FileReader(); // Create a FileReader object
+            // Add event listener to the "Remove" button
+            attachRemoveListener(newInputGroup.querySelector('.remove-input'));
+        }
+    });
 
-                            reader.onload = function(e) {
-                                const image = document.createElement('img'); // Create an img element
-                                image.src = e.target.result; // Set the source to the file's data URL
-                                image.style.width = '150px'; // Set a fixed size for the image
-                                image.style.height = '150px'; // Set a fixed size for the image
-                                image.style.margin = '10px'; // Add margin for spacing
-                                image.style.borderRadius = '8px'; // Optional: Add rounded corners
-                                previewContainer.appendChild(image); // Append the image to the container
-                            };
+    // Add event listener for adding more URL input fields
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('add-url-input')) {
+            const container = document.getElementById('textInput');
+            const newInputGroup = document.createElement('div');
+            newInputGroup.className = 'input-group mb-2';
+            newInputGroup.innerHTML = `
+                <input type="text" class="form-control" name="locationImgUrl[]" placeholder="Enter URL">
+                <button type="button" class="btn btn-danger remove-input">Remove</button>
+            `;
+            container.appendChild(newInputGroup);
 
-                            reader.onerror = function(error) {
-                                console.error('Error reading file:', error);
-                            };
+            // Add event listener to the "Remove" button
+            attachRemoveListener(newInputGroup.querySelector('.remove-input'));
+        }
+    });
 
-                            reader.readAsDataURL(file); // Read the file as a data URL
-                        } else {
-                            console.error('Not an image file');
-                        }
-                    }
-                }
+    // Function to handle removing input fields
+    function attachRemoveListener(button) {
+        button.addEventListener('click', function () {
+            this.parentElement.remove();
+        });
+    }
+});
 
-
-                // import images
-                document.addEventListener('DOMContentLoaded', function() {
-                    const fileOption = document.getElementById('fileOption');
-                    const textOption = document.getElementById('textOption');
-                    const fileInput = document.getElementById('fileInput');
-                    const textInput = document.getElementById('textInput');
-
-                    fileOption.addEventListener('change', function() {
-                        fileInput.style.display = 'block';
-                        textInput.style.display = 'none';
-                    });
-
-                    textOption.addEventListener('change', function() {
-                        fileInput.style.display = 'none';
-                        textInput.style.display = 'block';
-                    });
-                });
             </script>
             <div class="foot">
                 <div class="progress-bar-container">
