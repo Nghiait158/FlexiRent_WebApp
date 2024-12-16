@@ -88,10 +88,8 @@
             <div class="description">
                 <h1>Description</h1>
                 <p>{{ $propertyDetail-> description ?: 'N/A'}}</p>
-                <h1>Location Details</h1>
-                <p>{{ $propertyDetail->location_details ?: 'nullam eget urna suspendisse odio nunc. Eu sodales vestibulum, donec rutrum justo, amet porttitor vitae et. Interdum consectetur dictum mattis gravida sed vulputate. Tempus sagittis cras sagittis viverra erat proin duis enim.'}} </p>
                 <h1>Education and Community</h1>
-                <p>{{ $propertyDetail->location_details ?: 'Laoreet risus accumsan pellentesque lacus, in nulla eu elementum. Mollis enim fringilla aenean diam tellus diam morbi ipsum placerat. '}} </p>
+                <p>{{ $propertyDetail->education_and_community ?: 'Laoreet risus accumsan pellentesque lacus, in nulla eu elementum. Mollis enim fringilla aenean diam tellus diam morbi ipsum placerat. '}} </p>
             </div>
 
         </div>

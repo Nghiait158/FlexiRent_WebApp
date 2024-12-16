@@ -39,6 +39,11 @@ header {
     src: url('/Frontend/Font-family/Molle/Molle-Regular.ttf');
 }
 
+@font-face {
+    font-family: "Roboto";
+    src: url('/Frontend/Font-family/Roboto/Roboto-Regular.ttf');
+}
+
 header {
     display: flex;
     width: 100%;
@@ -83,9 +88,11 @@ header {
 }
 
 .header-logo a:hover {
-    background: linear-gradient(45deg, #feb47b,var(--Green, #064749));
-    -webkit-background-clip: text; /* Clips the gradient to the text */
-    color: transparent; /* Makes the text transparent to show the gradient */
+    background: linear-gradient(45deg, #feb47b, var(--Green, #064749));
+    -webkit-background-clip: text;
+    /* Clips the gradient to the text */
+    color: transparent;
+    /* Makes the text transparent to show the gradient */
 }
 
 .header-nav ul {
@@ -342,14 +349,12 @@ header {
     border: none;
     cursor: pointer;
     border-radius: 50px;
-   
-    background: linear-gradient(
-        90deg,
-        var(--Green, #064749),
-        #0a615e,
-        #10796c,
-        #0f8b73
-    );
+
+    background: linear-gradient(90deg,
+            var(--Green, #064749),
+            #0a615e,
+            #10796c,
+            #0f8b73);
     background-size: 400% 400%;
     animation: gradientFlow 3s ease infinite, glowEffect 1.5s ease-in-out infinite;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -361,9 +366,11 @@ header {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
@@ -376,11 +383,13 @@ header {
             0 0 10px rgba(15, 139, 115, 0.2),
             0 0 20px rgba(15, 139, 115, 0.1);
     }
+
     50% {
         box-shadow: 0 0 10px rgba(15, 139, 115, 0.6),
             0 0 20px rgba(15, 139, 115, 0.4),
             0 0 30px rgba(15, 139, 115, 0.2);
     }
+
     100% {
         box-shadow: 0 0 5px rgba(15, 139, 115, 0.4),
             0 0 10px rgba(15, 139, 115, 0.2),
@@ -391,13 +400,11 @@ header {
 /* Hover effect */
 .animated-dark-green-btn:hover {
     transform: translateY(-3px);
-    background: linear-gradient(
-        90deg,
-        #0f8b73,
-        #10796c,
-        #0a615e,
-        var(--Green, #064749)
-    );
+    background: linear-gradient(90deg,
+            #0f8b73,
+            #10796c,
+            #0a615e,
+            var(--Green, #064749));
     animation: gradientFlowHover 2s ease infinite;
     box-shadow: 0 8px 15px rgba(15, 139, 115, 0.6),
         0 0 30px rgba(15, 139, 115, 0.3);
@@ -408,9 +415,11 @@ header {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 150% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }

@@ -19,13 +19,13 @@
         </div>
 
         <div class="add-info-container">
-
+ 
             <div class="header">
-                <p>Thanks for join with us! <br>Your property is onboard.</p>
+                <p>Thank you for your feedback! <br>Your insights help us grow and improve.</p>
             </div>
 
             <div class="navigation">
-                <div class="property item">
+                {{-- <div class="property item">
                     <div class="info">
                         <div class="figure-container">
                             <figure class="figure">
@@ -34,7 +34,7 @@
                         </div>
 
                         {{-- <h3 class="title">{{$address}} --}}
-                        </h3>
+                        {{-- </h3>
                     </div>
 
                     <div class="status button-container" style="display:flex; gap:5px;"><span>Done</span><svg width="26" height="26" viewBox="0 0 26 26" class="css-6su6fj">
@@ -42,7 +42,7 @@
                             <path d="M11.5929 1.41021C12.3734 0.632461 13.6359 0.632461 14.4163 1.41021L16.4156 3.40245C16.7348 3.72057 17.1521 3.92154 17.5999 3.97279L20.404 4.29372C21.4987 4.419 22.2859 5.40607 22.1644 6.50119L21.8533 9.30641C21.8036 9.75434 21.9067 10.2059 22.1458 10.5879L23.6432 12.9804C24.2278 13.9144 23.9469 15.1452 23.015 15.7331L20.6278 17.2389C20.2466 17.4793 19.9578 17.8414 19.8082 18.2666L18.8714 20.929C18.5056 21.9683 17.3682 22.5161 16.3275 22.154L13.6619 21.2265C13.2362 21.0784 12.773 21.0784 12.3474 21.2265L9.6817 22.154C8.64107 22.5161 7.50359 21.9683 7.13785 20.929L6.201 18.2666C6.0514 17.8414 5.7626 17.4793 5.38142 17.2389L2.99425 15.7331C2.06234 15.1452 1.7814 13.9144 2.36597 12.9804L3.8634 10.5879C4.1025 10.2059 4.20557 9.75434 4.1559 9.30641L3.84481 6.50119C3.72336 5.40607 4.51052 4.419 5.60521 4.29372L8.40932 3.97279C8.85707 3.92154 9.2744 3.72057 9.59363 3.40245L11.5929 1.41021Z" fill="#47a82d"></path>
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M18.6129 8.60906L11.4668 15.6808L8.16406 11.8069L8.72018 11.1555L11.5222 12.9922L18.0855 8.03369L18.6129 8.60906Z" fill="#f7f9fa"></path>
                         </svg></div>
-                </div>
+                </div>  --}}
 
                 <div class="item">
                     <div class="info">
@@ -53,36 +53,18 @@
                         </div>
 
                         <div>
-                            <h3 class="title">Go back to dashboard
+                            <h3 class="title">Go back to Home Page
                             </h3>
-                            <span class="text">Click here to return to the main page where you can control your account and properties.</span>
+                            <span class="text">Click here to return to the main page where you can find your property.</span>
                         </div>
                     </div>
 
-                    <div class="status button-container"><span data-testid="VerificationStartButton"><a class="css-1f5nxeo" href="{{ URL::to('/landlord/dashboard') }}"><span>Dashboard</span><span class="css-1y4naco"><svg width="18" height="18" viewBox="0 0 18 18" class="css-6su6fj">
+                    <div class="status button-container"><span data-testid="VerificationStartButton"><a class="css-1f5nxeo" href="{{ URL::to('/') }}"><span>Dashboard</span><span class="css-1y4naco"><svg width="18" height="18" viewBox="0 0 18 18" class="css-6su6fj">
                                         <path d="M10.05 15.95H7.12L13.03 10.04L1 10.04L1 7.96L13.03 7.96L7.12 2.05L10.05 2.05L17 9L10.05 15.95Z" fill="white"></path>
                                     </svg></span></a></span></div>
                 </div>
 
-                <div class="item">
-                    <div class="info">
-                        <div class="figure-container">
-                            <figure class="figure">
-                                <img src="/Frontend/Image/Landlords/onboarding-listing-creation-icon.svg" alt="" class="figure-img">
-                            </figure>
-                        </div>
 
-                        <div>
-                            <h3 class="title">Create a new property
-                            </h3>
-                            <span class="text">Start renting in 15 minutes or less</span>
-                        </div>
-                    </div>
-
-                    <div class="status button-container"><span data-testid="VerificationStartButton"><a class="css-1f5nxeo" href="{{ URL::to('/landlord/add_property_address') }}"><span>Add</span><span class="css-1y4naco"><svg width="18" height="18" viewBox="0 0 18 18" class="css-6su6fj">
-                                        <path d="M10.05 15.95H7.12L13.03 10.04L1 10.04L1 7.96L13.03 7.96L7.12 2.05L10.05 2.05L17 9L10.05 15.95Z" fill="white"></path>
-                                    </svg></span></a></span></div>
-                </div>
             </div>
 
 

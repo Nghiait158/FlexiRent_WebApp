@@ -430,7 +430,9 @@
             <img src="{{$randomImageProperty1->path}}">
             <div class="content">
                 <div class="author">Price: ${{strtoupper($randomProperty1->price_per_month)}}</div>
-                <div class="title">{{strtoupper($randomProperty1->district)}}, {{strtoupper($randomProperty1->city)}}</div>
+                <div class="title">
+                    {{ Str::limit(strtoupper($randomProperty1->location), 30, '...') }}
+                </div>
                 <div class="topic">{{strtoupper($randomProperty1->accommodation_type)}}</div>
                 <div class="des">
                     {{$randomProperty1->description}}
@@ -449,7 +451,9 @@
             <img src="{{$randomImageProperty2 -> path}}">
             <div class="content">
                 <div class="author">Price: ${{strtoupper($randomProperty2 -> price_per_month)}}</div>
-                <div class="title">{{strtoupper($randomProperty2 -> district) }}, {{strtoupper($randomProperty2 -> city)}}</div>
+                <div class="title">
+                    {{ Str::limit(strtoupper($randomProperty2->location), 30, '...') }}
+                </div>
                 <div class="topic">{{strtoupper($randomProperty2 -> accommodation_type)}}</div>
                 <div class="des">
                     {{$randomProperty2 -> description}}
@@ -468,7 +472,9 @@
             <img src="{{$randomImageProperty3 -> path}}">
             <div class="content">
                 <div class="author">Price: ${{strtoupper($randomProperty3 -> price_per_month)}}</div>
-                <div class="title">{{strtoupper($randomProperty3 -> district) }}, {{strtoupper($randomProperty3 -> city)}}</div>
+                <div class="title">
+                    {{ Str::limit(strtoupper($randomProperty3->location), 30, '...') }}
+                </div>
                 <div class="topic">{{strtoupper($randomProperty3 -> accommodation_type)}}</div>
                 <div class="des">
                     {{$randomProperty3 -> description}}
@@ -487,18 +493,20 @@
             <img src="{{$randomImageProperty4 -> path}}">
             <div class="content">
                 <div class="author">Price: ${{strtoupper($randomProperty4 -> price_per_month)}}</div>
-                <div class="title">{{strtoupper($randomProperty4 -> district) }}, {{strtoupper($randomProperty4 -> city)}}</div>
+                <div class="title">
+                    {{ Str::limit(strtoupper($randomProperty4->location), 30, '...') }}
+                </div>
                 <div class="topic">{{strtoupper($randomProperty4 -> accommodation_type)}}</div>
                 <div class="des">
                     {{$randomProperty4 -> description}}
                 </div>
                 <div class="buttons">
-                <div class="buttons">
-                    <!-- Rent Now -->
-                    <button class="btn rent-now" type="submit" onclick="redirectToPropertyDetails('{{ $randomProperty2->property_id }}', '{{ $randomProperty2->city }}')">RENT NOW</button>
-                    <!-- See More Button -->
-                    <button class="btn see-more" id="seeMoreBtn" onclick="redirectToBookingPage('{{ $randomProperty2->city }}')">SEE MORE</button>
-                </div>
+                    <div class="buttons">
+                        <!-- Rent Now -->
+                        <button class="btn rent-now" type="submit" onclick="redirectToPropertyDetails('{{ $randomProperty2->property_id }}', '{{ $randomProperty2->city }}')">RENT NOW</button>
+                        <!-- See More Button -->
+                        <button class="btn see-more" id="seeMoreBtn" onclick="redirectToBookingPage('{{ $randomProperty2->city }}')">SEE MORE</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -512,7 +520,7 @@
                     {{ucwords($randomProperty1 -> accommodation_type)}}
                 </div>
                 <div class="description">
-                    {{$randomProperty1 -> district}}, {{$randomProperty1 -> city}}
+                    {{ Str::limit(strtoupper($randomProperty1->location), 20, '...') }}
                 </div>
             </div>
         </div>
@@ -523,7 +531,7 @@
                     {{ucwords($randomProperty2 -> accommodation_type)}}
                 </div>
                 <div class="description">
-                    {{$randomProperty2 -> district}}, {{$randomProperty2 -> city}}
+                    {{ Str::limit(strtoupper($randomProperty2->location), 20, '...') }}
                 </div>
             </div>
         </div>
@@ -534,7 +542,7 @@
                     {{ucwords($randomProperty3 -> accommodation_type)}}
                 </div>
                 <div class="description">
-                    {{$randomProperty3 -> district}}, {{$randomProperty3 -> city}}
+                    {{ Str::limit(strtoupper($randomProperty3->location), 20, '...') }}
                 </div>
             </div>
         </div>
@@ -545,7 +553,7 @@
                     {{ucwords($randomProperty4 -> accommodation_type)}}
                 </div>
                 <div class="description">
-                    {{$randomProperty4 -> district}}, {{$randomProperty4 -> city}}
+                    {{ Str::limit(strtoupper($randomProperty4->location), 20, '...') }}
                 </div>
             </div>
         </div>
@@ -622,8 +630,8 @@
                 </div>
             </div>
             @endforeach
-            
-            
+
+
         </div>
 
     </div>
@@ -641,205 +649,205 @@
     <div class="swiper blogSwiper">
         <div class="swiper-wrapper">
             <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic1.jfif" alt="">
+<img class="slide-picture" src="\Frontend\Image\Homepage blog\pic1.jfif" alt="">
 
-                <div class="text">
-                    <div class="slide-content">
-                        <h2>Faucibus egestas ut sit purus ultricies at eu</h2>
-                        <p>Viverra tellus risus lacus commodo urna fringilla cursus nulla amet.</p>
-                    </div>
-                    <div class="time-to-read">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
-                        </svg>
-                        <p>3 min read</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic2.jfif" alt="">
-
-                <div class="text">
-                    <div class="slide-content">
-                        <h2>Turpis elit in dictum eget eget</h2>
-                        <p>Neque faucibus pharetra condimentum tincidunt commodo velit.</p>
-                    </div>
-                    <div class="time-to-read">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
-                        </svg>
-                        <p>3 min read</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic3.jfif" alt="">
-
-                <div class="text">
-                    <div class="slide-content">
-                        <h2>Turpis elit in dictum eget eget</h2>
-                        <p>Convallis eu vel fames feugiat et venenatis nulla ipsum.</p>
-                    </div>
-                    <div class="time-to-read">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
-                        </svg>
-                        <p>1 min read</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic4.jfif" alt="">
-
-                <div class="text">
-                    <div class="slide-content">
-                        <h2>Feugiat gravida sed sit lacus sagittis</h2>
-                        <p>Pellentesque ultrices hendrerit lacus lectus.</p>
-                    </div>
-                    <div class="time-to-read">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
-                        </svg>
-                        <p>3 min read</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic1.jfif" alt="">
-
-                <div class="text">
-                    <div class="slide-content">
-                        <h2>Faucibus egestas ut sit purus ultricies at eu</h2>
-                        <p>Viverra tellus risus lacus commodo urna fringilla cursus nulla amet.</p>
-                    </div>
-                    <div class="time-to-read">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
-                        </svg>
-                        <p>3 min read</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic5.jfif" alt="">
-
-                <div class="text">
-                    <div class="slide-content">
-                        <h2>Feugiat gravida sed sit lacus sagittis</h2>
-                        <p>Dolor elit viverra facilisis aliquam, aliquet arcu nec.</p>
-                    </div>
-                    <div class="time-to-read">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
-                        </svg>
-                        <p>3 min read</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic2.jfif" alt="">
-
-                <div class="text">
-                    <div class="slide-content">
-                        <h2>Faucibus egestas ut sit purus ultricies at eu</h2>
-                        <p>Viverra tellus risus lacus commodo urna fringilla cursus nulla amet.</p>
-                    </div>
-                    <div class="time-to-read">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
-                        </svg>
-                        <p>3 min read</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic1.jfif" alt="">
-
-                <div class="text">
-                    <div class="slide-content">
-                        <h2>Turpis elit in dictum eget eget</h2>
-                        <p>Neque faucibus pharetra condimentum tincidunt commodo velit.</p>
-                    </div>
-                    <div class="time-to-read">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
-                        </svg>
-                        <p>3 min read</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic2.jfif" alt="">
-
-                <div class="text">
-                    <div class="slide-content">
-                        <h2>Turpis elit in dictum eget eget</h2>
-                        <p>Convallis eu vel fames feugiat et venenatis nulla ipsum.</p>
-                    </div>
-                    <div class="time-to-read">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
-                        </svg>
-                        <p>1 min read</p>
-                    </div>
-                </div>
-            </a>
-
-
-
-            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic3.jfif" alt="">
-
-                <div class="text">
-                    <div class="slide-content">
-                        <h2>Faucibus egestas ut sit purus ultricies at eu</h2>
-                        <p>Viverra tellus risus lacus commodo urna fringilla cursus nulla amet.</p>
-                    </div>
-                    <div class="time-to-read">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
-                        </svg>
-                        <p>3 min read</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="{{URL::to('/Blog')}}" class="swiper-slide">
-                <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic4.jfif" alt="">
-
-                <div class="text">
-                    <div class="slide-content">
-                        <h2>Feugiat gravida sed sit lacus sagittis</h2>
-                        <p>Dolor elit viverra facilisis aliquam, aliquet arcu nec.</p>
-                    </div>
-                    <div class="time-to-read">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
-                        </svg>
-                        <p>3 min read</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+<div class="text">
+    <div class="slide-content">
+        <h2>Faucibus egestas ut sit purus ultricies at eu</h2>
+        <p>Viverra tellus risus lacus commodo urna fringilla cursus nulla amet.</p>
     </div>
+    <div class="time-to-read">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+        </svg>
+        <p>3 min read</p>
+    </div>
+</div>
+</a>
 
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="\Frontend\js\homeBlogSlider.js"></script>
+<a href="{{URL::to('/Blog')}}" class="swiper-slide">
+    <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic2.jfif" alt="">
+
+    <div class="text">
+        <div class="slide-content">
+            <h2>Turpis elit in dictum eget eget</h2>
+            <p>Neque faucibus pharetra condimentum tincidunt commodo velit.</p>
+        </div>
+        <div class="time-to-read">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+            </svg>
+            <p>3 min read</p>
+        </div>
+    </div>
+</a>
+
+<a href="{{URL::to('/Blog')}}" class="swiper-slide">
+    <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic3.jfif" alt="">
+
+    <div class="text">
+        <div class="slide-content">
+            <h2>Turpis elit in dictum eget eget</h2>
+            <p>Convallis eu vel fames feugiat et venenatis nulla ipsum.</p>
+        </div>
+        <div class="time-to-read">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+            </svg>
+            <p>1 min read</p>
+        </div>
+    </div>
+</a>
+
+<a href="{{URL::to('/Blog')}}" class="swiper-slide">
+    <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic4.jfif" alt="">
+
+    <div class="text">
+        <div class="slide-content">
+            <h2>Feugiat gravida sed sit lacus sagittis</h2>
+            <p>Pellentesque ultrices hendrerit lacus lectus.</p>
+        </div>
+        <div class="time-to-read">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+            </svg>
+            <p>3 min read</p>
+        </div>
+    </div>
+</a>
+
+<a href="{{URL::to('/Blog')}}" class="swiper-slide">
+    <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic1.jfif" alt="">
+
+    <div class="text">
+        <div class="slide-content">
+            <h2>Faucibus egestas ut sit purus ultricies at eu</h2>
+            <p>Viverra tellus risus lacus commodo urna fringilla cursus nulla amet.</p>
+        </div>
+        <div class="time-to-read">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+            </svg>
+            <p>3 min read</p>
+        </div>
+    </div>
+</a>
+
+<a href="{{URL::to('/Blog')}}" class="swiper-slide">
+    <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic5.jfif" alt="">
+
+    <div class="text">
+        <div class="slide-content">
+            <h2>Feugiat gravida sed sit lacus sagittis</h2>
+            <p>Dolor elit viverra facilisis aliquam, aliquet arcu nec.</p>
+        </div>
+        <div class="time-to-read">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+            </svg>
+            <p>3 min read</p>
+        </div>
+    </div>
+</a>
+
+<a href="{{URL::to('/Blog')}}" class="swiper-slide">
+    <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic2.jfif" alt="">
+
+    <div class="text">
+        <div class="slide-content">
+            <h2>Faucibus egestas ut sit purus ultricies at eu</h2>
+            <p>Viverra tellus risus lacus commodo urna fringilla cursus nulla amet.</p>
+        </div>
+        <div class="time-to-read">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+            </svg>
+            <p>3 min read</p>
+        </div>
+    </div>
+</a>
+
+<a href="{{URL::to('/Blog')}}" class="swiper-slide">
+    <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic1.jfif" alt="">
+
+    <div class="text">
+        <div class="slide-content">
+            <h2>Turpis elit in dictum eget eget</h2>
+            <p>Neque faucibus pharetra condimentum tincidunt commodo velit.</p>
+        </div>
+        <div class="time-to-read">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+            </svg>
+            <p>3 min read</p>
+        </div>
+    </div>
+</a>
+
+<a href="{{URL::to('/Blog')}}" class="swiper-slide">
+    <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic2.jfif" alt="">
+
+    <div class="text">
+        <div class="slide-content">
+            <h2>Turpis elit in dictum eget eget</h2>
+            <p>Convallis eu vel fames feugiat et venenatis nulla ipsum.</p>
+        </div>
+        <div class="time-to-read">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+            </svg>
+            <p>1 min read</p>
+        </div>
+    </div>
+</a>
 
 
-    <a class="readBtn" href="{{URL::to('/Blog')}}">Read more</a>
+
+<a href="{{URL::to('/Blog')}}" class="swiper-slide">
+    <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic3.jfif" alt="">
+
+    <div class="text">
+        <div class="slide-content">
+            <h2>Faucibus egestas ut sit purus ultricies at eu</h2>
+            <p>Viverra tellus risus lacus commodo urna fringilla cursus nulla amet.</p>
+        </div>
+        <div class="time-to-read">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+            </svg>
+            <p>3 min read</p>
+        </div>
+    </div>
+</a>
+
+<a href="{{URL::to('/Blog')}}" class="swiper-slide">
+    <img class="slide-picture" src="\Frontend\Image\Homepage blog\pic4.jfif" alt="">
+
+    <div class="text">
+        <div class="slide-content">
+            <h2>Feugiat gravida sed sit lacus sagittis</h2>
+            <p>Dolor elit viverra facilisis aliquam, aliquet arcu nec.</p>
+        </div>
+        <div class="time-to-read">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7363 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2ZM16 13H12C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13Z" fill="#181A18" />
+            </svg>
+            <p>3 min read</p>
+        </div>
+    </div>
+</a>
+</div>
+
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
+</div>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="\Frontend\js\homeBlogSlider.js"></script>
+
+
+<a class="readBtn" href="{{URL::to('/Blog')}}">Read more</a>
 </div> --}}
 
 

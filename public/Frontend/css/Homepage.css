@@ -655,6 +655,7 @@ body {
 
 .carousel .list .item .title,
 .carousel .list .item .topic {
+    font-family: "Roboto";
     font-size: 5em;
     font-weight: bold;
     line-height: 1.3em;
@@ -683,6 +684,7 @@ body {
     color: #333;
     letter-spacing: 2px;
     font-family: "Lato", sans-serif;
+    height: 44px;
     padding: 14px 20px;
     font-weight: 600;
     border-radius: 6px;

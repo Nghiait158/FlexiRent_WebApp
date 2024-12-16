@@ -72,7 +72,7 @@
             </div>
 
             <div class="input-container">
-                <form action="{{ route('property.store.images') }}" method="post">
+                <form action="{{ route('property.store.images') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="imageChoice">Decide how to import pictures:</label><br>
@@ -82,112 +82,87 @@
                         <label for="textOption">Provide URL</label>
                     </div>
                     <br>
+            
+                    <!-- File Input Section -->
                     <div class="form-group" id="fileInput" style="display: none;">
-                        <input type="file" class="form-control" name="loImgPath" id="loImgPath" multiple>
+                        <div class="input-group mb-2">
+                            <input type="file" class="form-control" name="loImgPath[]">
+                            <button type="button" class="btn btn-secondary add-file-input">Add More Files</button>
+                        </div>
                     </div>
+            
+                    <!-- URL Input Section -->
                     <div class="form-group" id="textInput">
-                        <div id="urlInputsContainer">
-                            <div class="url-input-group" style="margin-top: 10px; display: flex; align-items: center;">
-                                <input type="text" class="form-control url-input" name="locationImgUrl[]" placeholder="Enter URL">
-                            </div>
-                        </div>
-                        <div style="margin-top: 10px; display: flex; align-items: center;">
-                            <button type="button" id="addUrlInput" class="btn btn-secondary">Add Another URL</button>
-                            <button type="button" id="deleteAllUrls" class="btn btn-danger" style="margin-left: 10px;">Delete All</button>
+                        <div class="input-group mb-2">
+                            <input type="text" class="form-control" name="locationImgUrl[]" placeholder="Enter URL">
+                            <button type="button" class="btn btn-secondary add-url-input">Add More URLs</button>
                         </div>
                     </div>
-
-                    <div class="image-preview-container" id="imagePreviewContainer"></div>
-                </form>
+            
+                    {{-- <button type="submit" class="btn btn-primary">Upload Images</button>
+                </form> --}}
             </div>
-
             <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    const fileOption = document.getElementById('fileOption');
-                    const textOption = document.getElementById('textOption');
-                    const fileInput = document.getElementById('fileInput');
-                    const textInput = document.getElementById('textInput');
-                    const urlInputsContainer = document.getElementById('urlInputsContainer');
-                    const addUrlInputButton = document.getElementById('addUrlInput');
-                    const deleteAllUrlsButton = document.getElementById('deleteAllUrls');
+                document.addEventListener('DOMContentLoaded', function () {
+    const fileOption = document.getElementById('fileOption');
+    const textOption = document.getElementById('textOption');
+    const fileInputContainer = document.getElementById('fileInput');
+    const textInputContainer = document.getElementById('textInput');
 
-                    let urlInputCount = 1; // Initialize the count with the first input
-                    const maxUrlInputs = 5; // Allow 4 more inputs in addition to the first
+    // Toggle between file and URL input
+    fileOption.addEventListener('change', function () {
+        fileInputContainer.style.display = 'block';
+        textInputContainer.style.display = 'none';
+    });
 
-                    // Toggle between file and URL inputs
-                    fileOption.addEventListener('change', function() {
-                        fileInput.style.display = 'block';
-                        textInput.style.display = 'none';
-                    });
+    textOption.addEventListener('change', function () {
+        fileInputContainer.style.display = 'none';
+        textInputContainer.style.display = 'block';
+    });
 
-                    textOption.addEventListener('change', function() {
-                        fileInput.style.display = 'none';
-                        textInput.style.display = 'block';
-                    });
+    // Add event listener for adding more file input fields
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('add-file-input')) {
+            const container = document.getElementById('fileInput');
+            const newInputGroup = document.createElement('div');
+            newInputGroup.className = 'input-group mb-2';
+            newInputGroup.innerHTML = `
+                <input type="file" class="form-control" name="loImgPath[]">
+                <button type="button" class="btn btn-danger remove-input">Remove</button>
+            `;
+            container.appendChild(newInputGroup);
 
-                    // Add new URL input field
-                    addUrlInputButton.addEventListener('click', function() {
-                        if (urlInputCount < maxUrlInputs) {
-                            const newGroup = document.createElement('div');
-                            newGroup.className = 'url-input-group';
-                            newGroup.style.marginTop = '10px';
-                            newGroup.style.display = 'flex';
-                            newGroup.style.alignItems = 'center';
+            // Add event listener to the "Remove" button
+            attachRemoveListener(newInputGroup.querySelector('.remove-input'));
+        }
+    });
 
-                            const newInput = document.createElement('input');
-                            newInput.type = 'text';
-                            newInput.className = 'form-control url-input';
-                            newInput.name = 'locationImgUrl[]';
-                            newInput.placeholder = 'Enter another URL';
+    // Add event listener for adding more URL input fields
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('add-url-input')) {
+            const container = document.getElementById('textInput');
+            const newInputGroup = document.createElement('div');
+            newInputGroup.className = 'input-group mb-2';
+            newInputGroup.innerHTML = `
+                <input type="text" class="form-control" name="locationImgUrl[]" placeholder="Enter URL">
+                <button type="button" class="btn btn-danger remove-input">Remove</button>
+            `;
+            container.appendChild(newInputGroup);
 
-                            const deleteButton = document.createElement('button');
-                            deleteButton.type = 'button';
-                            deleteButton.className = 'btn btn-danger btn-sm';
-                            deleteButton.textContent = 'Delete';
-                            deleteButton.style.marginLeft = '10px';
+            // Add event listener to the "Remove" button
+            attachRemoveListener(newInputGroup.querySelector('.remove-input'));
+        }
+    });
 
-                            deleteButton.addEventListener('click', function() {
-                                newGroup.remove();
-                                urlInputCount--;
-                                addUrlInputButton.disabled = false; // Re-enable the button if within limit
-                            });
+    // Function to handle removing input fields
+    function attachRemoveListener(button) {
+        button.addEventListener('click', function () {
+            this.parentElement.remove();
+        });
+    }
+});
 
-                            newGroup.appendChild(newInput);
-                            newGroup.appendChild(deleteButton);
-                            urlInputsContainer.appendChild(newGroup);
-
-                            urlInputCount++;
-
-                            if (urlInputCount === maxUrlInputs) {
-                                addUrlInputButton.disabled = true; // Disable the button when max inputs are reached
-                            }
-                        }
-                    });
-
-                    // Delete all URL inputs
-                    deleteAllUrlsButton.addEventListener('click', function() {
-                        urlInputsContainer.innerHTML = '';
-                        const firstInputGroup = document.createElement('div');
-                        firstInputGroup.className = 'url-input-group';
-                        firstInputGroup.style.marginTop = '10px';
-                        firstInputGroup.style.display = 'flex';
-                        firstInputGroup.style.alignItems = 'center';
-
-                        const firstInput = document.createElement('input');
-                        firstInput.type = 'text';
-                        firstInput.className = 'form-control url-input';
-                        firstInput.name = 'locationImgUrl[]';
-                        firstInput.placeholder = 'Enter URL';
-
-                        firstInputGroup.appendChild(firstInput);
-                        urlInputsContainer.appendChild(firstInputGroup);
-
-                        urlInputCount = 1;
-                        addUrlInputButton.disabled = false;
-                    });
-                });
             </script>
-
             <div class="foot">
                 <div class="progress-bar-container">
                     <div class="progress-bar" style="width: 60%;"></div>

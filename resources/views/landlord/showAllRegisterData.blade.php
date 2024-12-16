@@ -504,28 +504,33 @@
                                 </svg>
                             </button>
                         </label>
-
+                    
                         <div class="review-input">
-                            <!-- Title Field -->
+                            <!-- Loop through image paths -->
                             <div class="form-check">
-                                <label for="">Title</label>
-                                <div style="display: flex; align-items: center; width: 100%">
-                                    <span id="titleText" class="plain-text" style="width: 100%; text-align: end">
-                                        {{$data['Images']['path']}}
-                                    </span>
+                                <label for="">Uploaded Images</label>
+                                <div id="imagesContainer" style="display: flex; flex-direction: column; gap: 10px;">
+                                    @foreach ($data['Images']['paths'] as $path)
+                                    <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                                        <!-- Display image preview -->
+                                        <span class="plain-text" style="width: 80%;">
+                                            <img src="{{ $path }}" alt="Image" style="max-height: 100px; max-width: 150px;">
 
-                                    <input id="titleInput"
-                                        class="form-control"
-                                        name="listing_title"
-                                        type="text"
-                                        value="{{$data['Images']['path']}}"
-                                        style="display:none"
-                                        placeholder="Enter URL"
-                                        required>
+                                        </span>
+                                        <!-- Editable input for each URL -->
+                                        <input type="text"
+                                               class="form-control"
+                                               name="image_urls[]"
+                                               value="{{ $path }}"
+                                               style="display: none; width: 80%;"
+                                               placeholder="Edit URL">
+                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
 
                     <script>
                         const toggleEditButtonImages = document.getElementById("toggleEditButtonImages");
