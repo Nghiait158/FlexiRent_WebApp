@@ -56,7 +56,7 @@ body {
 }
 
 
-.headerContainerImage .VewAllPhoto {
+.headerContainerImage .ViewAllPhoto {
     display: inline-flex;
     padding: 12px 40px;
     justify-content: center;
@@ -70,7 +70,7 @@ body {
     /* Khoảng cách từ trên cùng */
     left: 100px;
     /* Khoảng cách từ bên trái */
-    z-index: 10;
+    z-index: 1;
     /* Đảm bảo nó nằm trên cùng */
     color: var(--White, #FFF);
 
@@ -84,7 +84,7 @@ body {
 
 }
 
-.headerContainerImage .VewAllPhoto:hover {
+.headerContainerImage .ViewAllPhoto:hover {
     background: #0b6b6e;
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
     transform: scale(1.05);
@@ -653,7 +653,6 @@ body {
 }
 
 
-
 .svg-button:hover {
     transform: scale(1.1) translateY(-5%);
 }
@@ -664,6 +663,101 @@ body {
 
 .svg-button:active {
     transform: scale(0.95);
+}
+
+
+/* The Modal (background) */
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 40px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Transparent black background */
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal content */
+.modal-content {
+    position: relative;
+    width: 80%; /* Adjust the width as needed */
+    max-height: 100%; /* Control the modal height */
+    margin: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: black;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Slider Container */
+.slider-container {
+    position: relative;
+    width: 80%;
+    height: 80vh; /* Adjust height to suit your needs */
+    overflow: hidden;
+}
+
+/* Each slide */
+.slide {
+    display: none;
+    width: 100%;
+    height: 100%; /* Ensure the slides fill the height of the container */
+    text-align: center;
+}
+
+/* Style for images inside the modal */
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image fills the container */
+    object-position: center; /* Centers the image in the container */
+    
+}
+
+/* Navigation buttons (prev & next) */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    color: white;
+    background: linear-gradient(45deg, #feb47b, var(--Green, #064749)); /* Custom gradient */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 5px; /* Optional: Adds rounded corners to the buttons */
+    transition: background 0.3s ease; /* Adds smooth transition when hovered */
+}
+
+/* Hover effect */
+.prev:hover, .next:hover {
+    background: linear-gradient(45deg, var(--Green, #064749), #feb47b); /* Reverses the gradient on hover */
+}
+
+/* Left and right buttons positioning */
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
 }
 
 

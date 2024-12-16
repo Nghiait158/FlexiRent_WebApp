@@ -129,7 +129,7 @@ class GuestController extends Controller
             'propertyName' => $property->property_name,
         ];
         Mail::to($guest->user->email)->send(new UserNotificationMail($emailsContent));
-        return Redirect::to('');
+        return Redirect::to('/thankBooking');
     }
     // ----------------Backend-----------------
 

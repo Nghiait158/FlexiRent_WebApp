@@ -159,6 +159,10 @@ Route::middleware(['auth', 'guest'])->group(function () {
     Route::get('/CheckoutPageB/{property_id}', [GuestController::class, 'Booking']);
     Route::post('/savedBooking/{property_id}/{guest_id}', [GuestController::class, 'savedBooking']);
 
+    Route::get('/thankBooking', function () {
+        return view('guest.thankBooking');
+    });
+
     // Route::get('/CheckoutPageB/{property_id}',  [GuestController::class, 'index'] {
     //     return view('CheckoutPageB');
     // });
@@ -253,6 +257,7 @@ Route::post('/CheckoutPageA/{property_id}', [GuestController::class, 'sendDatafr
 Route::get('/Contact', function () {
     return view('contactPage');
 });
+
 
 Route::get('/thankFeedback', function () {
     return view('thankFeedback');

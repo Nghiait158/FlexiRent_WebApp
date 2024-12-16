@@ -34,17 +34,72 @@
     <!-- Use the first image from the array as the main image -->
     <img class="mainImg" src="{{ asset($firstImage) }}" alt="Main Image">
 
-    <div class="VewAllPhoto">
+    <div class="ViewAllPhoto" onclick="openModal()">
         View all photos
     </div>
 
     <div class="fourImgNext">
-        <!-- Iterate over the rest of the images -->
-        @foreach ($imagesArray as $index => $image)
+        <!-- Iterate over the rest of the images, skipping the first one -->
+        @foreach (array_slice($imagesArray, 1) as $index => $image)
         <img src="{{ asset($image) }}" alt="Property Image {{ $index + 1 }}">
         @endforeach
     </div>
 </div>
+
+<!-- The Modal -->
+<div id="photoModal" class="modal" style="display: none;">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <!-- Close Button (X) -->
+        <span class="close" onclick="closeModal()">&times;</span>
+
+        <!-- Slider Images -->
+        <div class="slider-container">
+            @foreach ($imagesArray as $index => $image)
+                <div class="slide">
+                    <img src="{{ asset($image) }}" alt="Property Image {{ $index + 1 }}">
+                </div>
+            @endforeach
+        </div>
+
+        <!-- Navigation buttons (next & prev) -->
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+</div>
+
+<script>
+    var currentSlideIndex = 0;
+
+    // Open the modal
+    function openModal() {
+        document.getElementById("photoModal").style.display = "flex";
+        showSlide(currentSlideIndex);
+    }
+
+    // Close the modal
+    function closeModal() {
+        document.getElementById("photoModal").style.display = "none";
+    }
+
+    // Show the current slide
+    function showSlide(index) {
+        var slides = document.querySelectorAll(".slide");
+        if (index >= slides.length) currentSlideIndex = 0;
+        if (index < 0) currentSlideIndex = slides.length - 1;
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[currentSlideIndex].style.display = "block";
+    }
+
+    // Change slide (next or previous)
+    function changeSlide(n) {
+        currentSlideIndex += n;
+        showSlide(currentSlideIndex);
+    }
+</script>
+
 
 <div class="contentPropertyDetails">
 

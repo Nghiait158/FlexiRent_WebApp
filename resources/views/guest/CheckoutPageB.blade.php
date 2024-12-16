@@ -361,6 +361,7 @@
 
                 <div class="ToS">
                     <p>By clicking "Book" below, I have read and agreed to the <a href="">key contract terms</a>, <a href="">cancellation policy and apartment & building rules</a> , and to pay the total amount shown.</p>
+                    <p>Please check all information carefully before clicking this button!!!</p>
                 </div>
 
                 <div>

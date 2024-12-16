@@ -619,6 +619,7 @@ body {
     width: 100vw;
     overflow: hidden;
     position: relative;
+    font-family: "Roboto";
     margin-top: 140px;
 }
 
@@ -655,7 +656,7 @@ body {
 
 .carousel .list .item .title,
 .carousel .list .item .topic {
-    font-family: "Roboto";
+    
     font-size: 5em;
     font-weight: bold;
     line-height: 1.3em;

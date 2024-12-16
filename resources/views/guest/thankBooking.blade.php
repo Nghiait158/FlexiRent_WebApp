@@ -19,9 +19,10 @@
         </div>
 
         <div class="add-info-container">
-
+ 
             <div class="header">
-                <p>Thanks for your feedback! <br>Your insights help us grow and improve.</p>
+                <p>Thanks for your booking! <br>Please check your email to see the booking.</p>
+                
             </div>
 
             <div class="navigation">
@@ -34,7 +35,7 @@
                         </div>
 
                         {{-- <h3 class="title">{{$address}} --}}
-                {{-- </h3>
+                        {{-- </h3>
                     </div>
 
                     <div class="status button-container" style="display:flex; gap:5px;"><span>Done</span><svg width="26" height="26" viewBox="0 0 26 26" class="css-6su6fj">
@@ -53,9 +54,9 @@
                         </div>
 
                         <div>
-                            <h3 class="title">Go back to HomePage
+                            <h3 class="title">Go back to Home Page
                             </h3>
-                            <span class="text">Click here to return to the main page where you can find more property.</span>
+                            <span class="text">Click here to return to the main page where you can rent more property.</span>
                         </div>
                     </div>
 
@@ -70,9 +71,8 @@
 
             <div class="picture">
                 <div class="text">
-                    <h3>We Appreciate Your Feedback!</h3>
-                    <p>We appreciate you taking the time to share your thoughts with us. Your feedback helps us improve and provide a better experience for all our users.
-                        Have more to say? Feel free to reach out anytime—we’re here to listen!</p>
+                    <h3>Our Home. Your Choice. Our Support.</h3>
+                    <p>Discover a place to call home with ease. Browse through countless listings tailored to your needs and preferences. We’re here to make your renting journey simple and stress-free.</p>
                 </div>
                 <div class="footer">
 

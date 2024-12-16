@@ -287,7 +287,7 @@
         <!-- block1 -->
         <div class="location-block">
             <h4>District 1</h4>
-            <a href="{{URL::to('/bookingPage?city=District%201')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/Distrit1.png') }}" alt=""></a>
+            <a href="{{URL::to('/bookingPage?city=Quan%201')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/Distrit1.png') }}" alt=""></a>
         </div>
 
         <!-- block2 -->
@@ -298,8 +298,8 @@
 
         <!-- block3 -->
         <div class="location-block">
-            <h4>Thu Duc City</h4>
-            <a href="{{URL::to('/bookingPage?city=Thu%20Duc')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/Thu Duc.jfif') }}" alt=""></a>
+            <h4>Thu Duc District</h4>
+            <a href="{{URL::to('/bookingPage?city=Thủ%20Đức')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/Thu Duc.jfif') }}" alt=""></a>
         </div>
 
         <!-- block4 -->
@@ -311,13 +311,13 @@
         <!-- block5 -->
         <div class="location-block">
             <h4>District 2</h4>
-            <a href="{{URL::to('/bookingPage?city=District%202')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/District-2.jfif') }}" alt=""></a>
+            <a href="{{URL::to('/bookingPage?city=Quan%202')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/District-2.jfif') }}" alt=""></a>
         </div>
 
         <!-- block6 -->
         <div class="location-block">
             <h4>District 7</h4>
-            <a href="{{URL::to('/bookingPage?city=District%207')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/District-7.jfif') }}" alt=""></a>
+            <a href="{{URL::to('/bookingPage?city=Quan%207')}}"><img class="location-img" src="{{ ('/Frontend/Image/Location/District-7.jfif') }}" alt=""></a>
         </div>
     </div>
 
@@ -402,29 +402,26 @@
         $randomProperty4 = $availableProperties->shuffle()->first();
 
         $randomImageProperty1 = $properties_images
-        ->where('propertyID', $randomProperty1->propertyID)
-        ->shuffle()
+        ->where('property_id', $randomProperty1->property_id)
         ->first();
 
         $randomImageProperty2 = $properties_images
-        ->where('propertyID', $randomProperty2->propertyID)
-        ->shuffle()
+        ->where('property_id', $randomProperty2->property_id)
         ->first();
 
         $randomImageProperty3 = $properties_images
-        ->where('propertyID', $randomProperty3->propertyID)
-        ->shuffle()
+        ->where('property_id', $randomProperty3->property_id)
         ->first();
 
         $randomImageProperty4 = $properties_images
-        ->where('propertyID', $randomProperty4->propertyID)
-        ->shuffle()
+        ->where('property_id', $randomProperty4->property_id)
         ->first();
         } else {
         $randomProperty1 = $randomProperty2 = $randomProperty3 = $randomProperty4 = null;
         $randomImageProperty1 = $randomImageProperty2 = $randomImageProperty3 = $randomImageProperty4 = null;
         }
         @endphp
+
 
         <div class="item">
             <img src="{{$randomImageProperty1->path}}">
@@ -482,9 +479,9 @@
                 <div class="buttons">
                     <div class="buttons">
                         <!-- Rent Now -->
-                        <button class="btn rent-now" type="submit" onclick="redirectToPropertyDetails('{{ $randomProperty2->property_id }}', '{{ $randomProperty2->city }}')">RENT NOW</button>
+                        <button class="btn rent-now" type="submit" onclick="redirectToPropertyDetails('{{ $randomProperty3->property_id }}', '{{ $randomProperty3->city }}')">RENT NOW</button>
                         <!-- See More Button -->
-                        <button class="btn see-more" id="seeMoreBtn" onclick="redirectToBookingPage('{{ $randomProperty2->city }}')">SEE MORE</button>
+                        <button class="btn see-more" id="seeMoreBtn" onclick="redirectToBookingPage('{{ $randomProperty3->city }}')">SEE MORE</button>
                     </div>
                 </div>
             </div>
@@ -503,9 +500,9 @@
                 <div class="buttons">
                     <div class="buttons">
                         <!-- Rent Now -->
-                        <button class="btn rent-now" type="submit" onclick="redirectToPropertyDetails('{{ $randomProperty2->property_id }}', '{{ $randomProperty2->city }}')">RENT NOW</button>
+                        <button class="btn rent-now" type="submit" onclick="redirectToPropertyDetails('{{ $randomProperty4->property_id }}', '{{ $randomProperty4->city }}')">RENT NOW</button>
                         <!-- See More Button -->
-                        <button class="btn see-more" id="seeMoreBtn" onclick="redirectToBookingPage('{{ $randomProperty2->city }}')">SEE MORE</button>
+                        <button class="btn see-more" id="seeMoreBtn" onclick="redirectToBookingPage('{{ $randomProperty4->city }}')">SEE MORE</button>
                     </div>
                 </div>
             </div>
