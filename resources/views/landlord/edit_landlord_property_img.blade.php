@@ -29,7 +29,10 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     padding: 30px;
     margin-top: 40px;
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
 }
+
 
 .panel h2 {
     font-size: 1.8rem;
