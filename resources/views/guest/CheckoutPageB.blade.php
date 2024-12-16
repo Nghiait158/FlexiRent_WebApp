@@ -306,7 +306,7 @@
                                 <h4 style="font-weight:400">Reserve this apaptment</h4>
                                 <p style="font-weight:400; font-size: 14px;">Due now</p>
                             </div>
-                            <input type="text" id="Reserve" name="Reserve" value="0.00$" readonly
+                            <input type="text" id="Reserve" name="Reserve" value="{{ $Reserve }}$" readonly
                                 style="border: none; background: transparent; color: var(--Text, #181A18);
                                    font-family: Lato; font-size: 18px; font-style: normal; 
                                    font-weight: 700; line-height: 24px; display: flex; 

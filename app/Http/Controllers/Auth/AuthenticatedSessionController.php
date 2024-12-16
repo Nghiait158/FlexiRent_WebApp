@@ -24,6 +24,10 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        // if (!session()->has('url.intended')) {
+        //     session()->put('url.intended', url()->previous());
+        // }
+    
         $request->authenticate();
 
         $request->session()->regenerate();
@@ -35,7 +39,7 @@ class AuthenticatedSessionController extends Controller
             // return redirect('landlord/dashboard');
         }else if ($request ->user()-> role === 'guest'){
             // return redirect('guest/dashboard');   
-            return redirect()->intended('/guest/dashboard');         
+            return redirect()->intended('/');         
         }
 
         // return redirect(session()->pull('url.intended', default: '/dashboard'));
