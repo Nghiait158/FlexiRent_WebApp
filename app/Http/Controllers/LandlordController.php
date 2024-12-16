@@ -618,7 +618,81 @@ class LandlordController extends Controller
     return Redirect::to('landlord/myProperty');
 }
 
+public function manageLandlordPropertyImg($property_id) {
+    $property = Property::find($property_id);
+    if (!$property) {
+        return redirect()->back()->with('error', 'Property not found.');
+    }
+    $allImgOfProperty = PropertyImg::where('property_id', $property_id)->get();
+    $data = [
+        'allImgOfProperty' => $allImgOfProperty,
+        'property' => $property,
+    ];
+    return view('landlord.manage_landlord_property_img', $data);
+}
 
+public function addLandlordPropertyImg($property_id) {
+    $property = Property::find($property_id);
+    if (!$property) {
+        return redirect()->back()->with('error', 'Property not found.');
+    }
+    $data = [
+        'property' => $property,
+    ];
+    return view('landlord.add_landlord_property_img', $data);
+}
+
+public function saveLandlordPropertyImg(Request $request, $property_id) {
+    $data = $request->all();
+    $img = new PropertyImg();
+
+    $img->propertyImg_name = $data['propertyImg_name'];
+    $img->property_id = $property_id;
+
+    if (!empty($data['PropertyImgUrl'])) {
+        $img->path = $data['PropertyImgUrl'];
+    }
+
+    $img->save();
+    Session::put('message', 'Image uploaded successfully');
+    return Redirect::to('manage_landlord_property_img/' . $property_id);
+}
+
+public function editLandlordPropertyImg($propertyImg_id) {
+    $editPropertyImg = PropertyImg::find($propertyImg_id);
+    $data = [
+        'editPropertyImg' => $editPropertyImg,
+    ];
+    return view('landlord.edit_landlord_property_img', $data);
+}
+
+public function updateLandlordPropertyImg(Request $request, $propertyImg_id) {
+    $data = $request->all();
+    $img = PropertyImg::find($propertyImg_id);
+    if (!$img) {
+        return redirect()->back()->withErrors(['error' => 'Image not found']);
+    }
+    $img->propertyImg_name = $data['propertyImg_name'];
+
+    if (!empty($data['PropertyImgUrl'])) {
+        $img->path = $data['PropertyImgUrl'];
+    }
+
+    $img->save();
+    Session::put('message', 'Image edited successfully');
+    return Redirect::to('manage_landlord_property_img/' . $img->property_id);
+}
+
+public function deleteLandlordPropertyImg($propertyImg_id) {
+    $img = PropertyImg::find($propertyImg_id);
+    if ($img) {
+        $img->delete();
+        Session::flash('message', 'Image deleted successfully.');
+    } else {
+        Session::flash('message', 'Image does not exist');
+    }
+    return Redirect::to('manage_landlord_property_img/' . $img->property_id);
+}
 
 
 

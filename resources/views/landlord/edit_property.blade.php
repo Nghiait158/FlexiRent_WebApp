@@ -32,12 +32,46 @@
                 <form id="editPropertyForm" action="{{ URL::to('/updateLandlordProperty/'.$editProperty->property_id) }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
-                    <!-- Property Images Upload -->
-                    <div class="input-container">
-                        <label for="fileInput" class="mb-2">Upload Property Images</label>
-                        <input type="file" class="form-control file-input" id="fileInput" name="property_images[]" multiple onchange="previewImages(event)">
-                        <div class="image-preview-container" id="imagePreviewContainer"></div>
-                    </div>
+                    <!-- Property Images -->
+<div class="input-container">
+    <label for="imagePreviewContainer" class="mb-2">Property Images</label>
+    <div class="image-preview-container" id="imagePreviewContainer">
+        @foreach ($editProperty->images as $image)
+            <div class="image-item">
+                <img src="{{ $image->path }}" alt="Property Image">
+            </div>
+        @endforeach
+    </div>
+    <a href="{{ URL::to('/manage_landlord_property_img/'.$editProperty->property_id) }}" class="btn btn-primary btn-sm mt-3">
+        <i class="fa fa-edit"></i> Edit Images
+    </a>
+</div>
+
+<script>
+function previewImagesByUrl(event) {
+    const urls = event.target.value.split(','); // Get the entered URLs
+    const previewContainer = document.getElementById('imagePreviewContainer');
+    previewContainer.innerHTML = ''; // Clear previous previews
+
+    const maxFiles = 8;
+
+    // Check if the number of URLs exceeds the max limit
+    if (urls.length > maxFiles) {
+        alert(`You can only upload up to ${maxFiles} images.`);
+        event.target.value = ''; // Reset the input value to prevent form submission
+        return; // Stop the function if the number of URLs exceeds the limit
+    }
+
+    // Loop through the entered URLs and show the previews
+    urls.forEach(url => {
+        if (url.trim()) { // Check if the URL is not empty
+            const image = document.createElement('img'); // Create an img element
+            image.src = url.trim(); // Set the source to the URL
+            previewContainer.appendChild(image); // Append the image to the container
+        }
+    });
+}
+</script>
 
                     <!-- Property ID (Auto Generated) -->
                     <div class="form-group">
@@ -250,37 +284,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        function previewImages(event) {
-            const files = event.target.files; // Get the selected files
-            const previewContainer = document.getElementById('imagePreviewContainer');
-            previewContainer.innerHTML = ''; // Clear previous previews
-
-            const maxFiles = 8;
-
-            // Check if the number of files exceeds the max limit
-            if (files.length > maxFiles) {
-                alert(`You can only upload up to ${maxFiles} images.`);
-                event.target.value = ''; // Reset the input value to prevent form submission
-                return; // Stop the function if the number of files exceeds the limit
-            }
-
-            // Loop through the selected files and show the previews
-            for (let i = 0; i < files.length; i++) {
-                const file = files[i];
-
-                if (file && file.type.startsWith('image/')) { // Check if the file is an image
-                    const reader = new FileReader(); // Create a FileReader object
-
-                    reader.onload = function(e) {
-                        const image = document.createElement('img'); // Create an img element
-                        image.src = e.target.result; // Set the source to the file's data URL
-                        previewContainer.appendChild(image); // Append the image to the container
-                    };
-
-                    reader.readAsDataURL(file); // Read the file as a data URL
-                }
-            }
-        }
 
         const form = document.getElementById('editPropertyForm');
         const confirmBtn = document.getElementById('confirmBtn');

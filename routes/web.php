@@ -178,6 +178,13 @@ Route::middleware(['auth', 'landlord'])->group(function () {
     Route::get('/editLandlordProperty/{property_id}', [LandlordController::class, 'editLandlordProperty']);
     Route::post('/updateLandlordProperty/{property_id}', [LandlordController::class, 'updateLandlordProperty']);
 
+    Route::get('/manage_landlord_property_img/{property_id}', [LandlordController::class, 'manageLandlordPropertyImg']);
+    Route::get('/addLandlordPropertyImg/{property_id}', [LandlordController::class, 'addLandlordPropertyImg']);
+    Route::post('/saveLandlordPropertyImg/{property_id}', [LandlordController::class, 'saveLandlordPropertyImg']);
+    Route::get('/editLandlordPropertyImg/{propertyImg_id}', [LandlordController::class, 'editLandlordPropertyImg']);
+    Route::post('/updateLandlordPropertyImg/{propertyImg_id}', [LandlordController::class, 'updateLandlordPropertyImg']);
+    Route::get('/deleteLandlordPropertyImg/{propertyImg_id}', [LandlordController::class, 'deleteLandlordPropertyImg']);
+    
 
     Route::get('landlord/add_property_address', [LandlordController::class, 'addPropertyAddress'])->name('property.add.address');
     Route::post('/store_property_address', [LandlordController::class, 'storePropertyAddress'])->name('property.store.address');
