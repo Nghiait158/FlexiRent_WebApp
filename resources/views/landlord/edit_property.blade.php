@@ -33,45 +33,45 @@
                     {{ csrf_field() }}
 
                     <!-- Property Images -->
-<div class="input-container">
-    <label for="imagePreviewContainer" class="mb-2">Property Images</label>
-    <div class="image-preview-container" id="imagePreviewContainer">
-        @foreach ($editProperty->images as $image)
-            <div class="image-item">
-                <img src="{{ $image->path }}" alt="Property Image">
-            </div>
-        @endforeach
-    </div>
-    <a href="{{ URL::to('/manage_landlord_property_img/'.$editProperty->property_id) }}" class="btn btn-primary btn-sm mt-3">
-        <i class="fa fa-edit"></i> Edit Images
-    </a>
-</div>
+                    <div class="input-container">
+                        <label for="imagePreviewContainer" class="mb-2">Property Images</label>
+                        <div class="image-preview-container" id="imagePreviewContainer">
+                            @foreach ($editProperty->images as $image)
+                            <div class="image-item">
+                                <img src="{{ $image->path }}" alt="Property Image">
+                            </div>
+                            @endforeach
+                        </div>
+                        <a href="{{ URL::to('/manage_landlord_property_img/'.$editProperty->property_id) }}" class="btn btn-primary btn-sm mt-3">
+                            <i class="fa fa-edit"></i> Edit Images
+                        </a>
+                    </div>
 
-<script>
-function previewImagesByUrl(event) {
-    const urls = event.target.value.split(','); // Get the entered URLs
-    const previewContainer = document.getElementById('imagePreviewContainer');
-    previewContainer.innerHTML = ''; // Clear previous previews
+                    <script>
+                        function previewImagesByUrl(event) {
+                            const urls = event.target.value.split(','); // Get the entered URLs
+                            const previewContainer = document.getElementById('imagePreviewContainer');
+                            previewContainer.innerHTML = ''; // Clear previous previews
 
-    const maxFiles = 8;
+                            const maxFiles = 8;
 
-    // Check if the number of URLs exceeds the max limit
-    if (urls.length > maxFiles) {
-        alert(`You can only upload up to ${maxFiles} images.`);
-        event.target.value = ''; // Reset the input value to prevent form submission
-        return; // Stop the function if the number of URLs exceeds the limit
-    }
+                            // Check if the number of URLs exceeds the max limit
+                            if (urls.length > maxFiles) {
+                                alert(`You can only upload up to ${maxFiles} images.`);
+                                event.target.value = ''; // Reset the input value to prevent form submission
+                                return; // Stop the function if the number of URLs exceeds the limit
+                            }
 
-    // Loop through the entered URLs and show the previews
-    urls.forEach(url => {
-        if (url.trim()) { // Check if the URL is not empty
-            const image = document.createElement('img'); // Create an img element
-            image.src = url.trim(); // Set the source to the URL
-            previewContainer.appendChild(image); // Append the image to the container
-        }
-    });
-}
-</script>
+                            // Loop through the entered URLs and show the previews
+                            urls.forEach(url => {
+                                if (url.trim()) { // Check if the URL is not empty
+                                    const image = document.createElement('img'); // Create an img element
+                                    image.src = url.trim(); // Set the source to the URL
+                                    previewContainer.appendChild(image); // Append the image to the container
+                                }
+                            });
+                        }
+                    </script>
 
                     <!-- Property ID (Auto Generated) -->
                     <div class="form-group">
@@ -88,7 +88,7 @@ function previewImagesByUrl(event) {
                     <!-- Landlord -->
                     <div class="form-group">
                         <label for="landlord_id">Landlord</label>
-                        <select name="landlord_id" id="landlord_id" class="form-control">
+                        <select name="landlord_id" id="landlord_id" class="form-control" disabled>
                             <option value="">-- Select Landlord --</option>
                             @foreach ($landlords as $landlord)
                             <option value="{{ $landlord->landlord_id }}" {{ $editProperty->landlord_id == $landlord->landlord_id ? 'selected' : '' }}>
@@ -96,7 +96,10 @@ function previewImagesByUrl(event) {
                             </option>
                             @endforeach
                         </select>
+                        <!-- Ẩn input chứa giá trị landlord_id -->
+                        <input type="hidden" name="landlord_id" value="{{ $editProperty->landlord_id }}">
                     </div>
+
 
                     <!-- Amenities -->
                     <div class="form-group">
@@ -199,6 +202,22 @@ function previewImagesByUrl(event) {
                         <input type="date" class="form-control" name="available" id="available" value="{{ $editProperty->available }}">
                     </div>
 
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            var today = new Date();
+                            var todayString = today.toISOString().split('T')[0];
+
+                            var availableDate = '{{ $editProperty->available }}';
+
+                            var minDate = availableDate >= todayString ? availableDate : todayString;
+
+                            var dateInput = document.getElementById('available');
+                            dateInput.setAttribute('min', minDate);
+                        });
+                    </script>
+
+
+
                     <!-- Guest Capacity -->
                     <div class="form-group">
                         <label for="guest_capacity">Guest Capacity</label>
@@ -284,7 +303,6 @@ function previewImagesByUrl(event) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-
         const form = document.getElementById('editPropertyForm');
         const confirmBtn = document.getElementById('confirmBtn');
         const cancelBtn = document.getElementById('cancelBtn');
