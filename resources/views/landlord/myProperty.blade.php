@@ -163,13 +163,18 @@
 
             // Handle View button - open the modal popup
             $(document).on('click', '.view-btn', function() {
-                var row = $(this).closest('tr');
-                var rowData = table.row(row).data(); // Use DataTable API to get row data
+    var row = $(this).closest('tr');
+    var rowData = table.row(row).data(); // Use DataTable API to get row data
+    var propertyId = rowData[1];
 
-                // Populate the modal with property details
-                $('#propertyDetailsModal .modal-body').html(`
-                        <div class="list-group">
-            <div class="list-group-item"><strong>Property ID:</strong> <span id="propertyId">${rowData[1]}</span></div>
+    // Populate the modal with property details
+    $('#propertyDetailsModal .modal-body').html(`
+        <div id="propertyImages" class="list-group-item">
+            <strong>Property Images:</strong>
+            <div id="imagesContainer"></div>
+        </div>
+        <div class="list-group">
+            <div class="list-group-item"><strong>Property ID:</strong> <span id="propertyId">${propertyId}</span></div>
             <div class="list-group-item"><strong>Property Name:</strong> <span id="propertyName">${rowData[2]}</span></div>
             <div class="list-group-item"><strong>Landlord ID:</strong> <span id="landlordId">${rowData[3]}</span></div>
             <div class="list-group-item"><strong>Location:</strong> <span id="location">${rowData[4]}</span></div>
@@ -195,13 +200,33 @@
             <div class="list-group-item"><strong>Wifi:</strong> <span id="wifi">${rowData[24]}</span></div>
             <div class="list-group-item"><strong>Internet Speed:</strong> <span id="internetSpeed">${rowData[25]}</span></div>
             <div class="list-group-item"><strong>Is Verified:</strong> <span id="isVerified">${rowData[26]}</span></div>
+        </div>
+        
+    `);
 
-                        </div>
-                    `);
+    // Fetch and display property images
+    $.ajax({
+        url: `/property/${propertyId}/images`,
+        method: 'GET',
+        success: function(images) {
+            var imagesContainer = $('#imagesContainer');
+            imagesContainer.empty();
+            if (images.length > 0) {
+                images.forEach(function(image) {
+                    imagesContainer.append(`<img src="${image.path}" alt="Property Image" style="width:45%; height:auto; margin-bottom: 10px; margin-right: 10px">`);
+                });
+            } else {
+                imagesContainer.append('<p>No images available for this property.</p>');
+            }
+        },
+        error: function() {
+            $('#imagesContainer').append('<p>Failed to load images.</p>');
+        }
+    });
 
-                // Show the modal
-                $('#propertyDetailsModal').fadeIn();
-            });
+    // Show the modal
+    $('#propertyDetailsModal').fadeIn();
+});
 
             // Close modal popup
             $(document).on('click', '.cancelbtn, .close', function() {
