@@ -249,10 +249,19 @@
                     <div class="form-group">
                         <label for="accommodation_type">Accommodation Type</label>
                         <select name="accommodation_type" id="accommodation_type" class="form-control">
+                            <option value="Entire House" {{ $editProperty->accommodation_type == 'Entire House' ? 'selected' : '' }}>Entire House</option>
+                            <option value="Private Room - House" {{ $editProperty->accommodation_type == 'Private Room - House' ? 'selected' : '' }}>Private Room - House</option>
+                            <option value="Shared House" {{ $editProperty->accommodation_type == 'Shared House' ? 'selected' : '' }}>Shared House</option>
+                            <option value="Mansion" {{ $editProperty->accommodation_type == 'Mansion' ? 'selected' : '' }}>Mansion</option>
+                            <option value="Duplex" {{ $editProperty->accommodation_type == 'Duplex' ? 'selected' : '' }}>Duplex</option>
+                            <option value="Townhouse" {{ $editProperty->accommodation_type == 'Townhouse' ? 'selected' : '' }}>Townhouse</option>
+                            <option value="Villa" {{ $editProperty->accommodation_type == 'Villa' ? 'selected' : '' }}>Villa</option>
                             <option value="Entire Apartment" {{ $editProperty->accommodation_type == 'Entire Apartment' ? 'selected' : '' }}>Entire Apartment</option>
-                            <option value="Private Room" {{ $editProperty->accommodation_type == 'Private Room' ? 'selected' : '' }}>Private Room</option>
+                            <option value="Private Room - Apartment" {{ $editProperty->accommodation_type == 'Private Room - Apartment' ? 'selected' : '' }}>Private Room - Apartment</option>
                             <option value="Shared Place" {{ $editProperty->accommodation_type == 'Shared Place' ? 'selected' : '' }}>Shared Place</option>
-                            <option value="Entire Room" {{ $editProperty->accommodation_type == 'Entire Room' ? 'selected' : '' }}>Entire Room</option>
+                            <option value="Studio Apartment" {{ $editProperty->accommodation_type == 'Studio Apartment' ? 'selected' : '' }}>Studio Apartment</option>
+                            <option value="Penthouse" {{ $editProperty->accommodation_type == 'Penthouse' ? 'selected' : '' }}>Penthouse</option>
+                            <option value="Duplex apartment" {{ $editProperty->accommodation_type == 'Duplex apartment' ? 'selected' : '' }}>Duplex apartment</option>
                         </select>
                     </div>
 

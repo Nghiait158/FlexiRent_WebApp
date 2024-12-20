@@ -33,6 +33,23 @@ class Booking extends Model
         return $this->belongsTo(Property::class, 'property_id');
     }
 
+    public function updateCheckOutDate($date)
+    {
+        $this->check_out = $date;
+        $this->save();
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::updated(function ($booking) {
+            if ($booking->property->available != $booking->check_out) {
+                $booking->property->updateAvailableDate($booking->check_out);
+            }
+        });
+    }
+
     public function guest()
     {
         return $this->belongsTo(Guest::class, 'guest_id');

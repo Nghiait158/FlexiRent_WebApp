@@ -55,4 +55,10 @@ class Property extends Model
     {
         return $this->hasMany(Booking::class, 'property_id');
     }
+    public function updateAvailableDate($date)
+    {
+        $this->available = $date;
+        $this->save();
+    }
+    
 }
