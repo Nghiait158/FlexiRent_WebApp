@@ -8,7 +8,7 @@ use App\Models\PropertyImg;
 use App\Models\PropertyAmenity;
 use App\Models\Booking;
 use App\Models\Amenity;
-
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
@@ -416,6 +416,7 @@ class LandlordController extends Controller
         $property->smokingAllowed = $data['smoking_allowed'];
         $property->rules = $data['rules'];
         $property->view = $data['listing_view'];
+        $property->available = Carbon::now()->format('Y-m-d');
 
         $property->save();
 

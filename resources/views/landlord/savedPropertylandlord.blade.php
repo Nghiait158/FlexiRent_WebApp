@@ -29,7 +29,7 @@
                     <div class="info">
                         <div class="figure-container">
                             <figure class="figure">
-                                <img src="" alt="" class="figure-img">
+                                <p class="figure-img">📑</p>
                             </figure>
                         </div>
 

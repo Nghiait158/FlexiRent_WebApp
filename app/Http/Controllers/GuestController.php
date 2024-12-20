@@ -90,6 +90,8 @@ class GuestController extends Controller
             $guest->user->email = $data['email'];
             $guest->user->save(); // Save the User changes
         }
+
+        
         $property = Property::find($property_id);
         if (!$property) {
             return redirect()->back()->withErrors(['error' => 'Property not found']);

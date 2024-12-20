@@ -221,7 +221,7 @@
     <!-- Lease Status Section -->
     <div class="lease-status">
       <h2>Property Status</h2>
-      @foreach ($bookingOfPropertyhasStatus1 as $booking)
+        @foreach ($bookingOfPropertyhasStatus1 as $booking)
             <div class="lease-card">
                 <img src="apartment1.jpg" alt="Apartment" class="apartment-pic">
                 <div class="lease-info">
